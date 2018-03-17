@@ -1,0 +1,38 @@
+{
+   "commons":{
+      "language": "Idioma"
+   },
+   "flags": {
+      "brazil": "Brasil",
+      "english": "Inglês"
+   },
+   "actions": {
+      "edit": "Editar",
+      "update" : "Atualizar",
+      "save" : "Salvar",
+      "add": "Adicionar",
+      "cancel" : "Cancelar",
+      "delete": "Excluir",
+      "select": "Selecione",
+      "global_filter": "Filtro global - min 3 caracteres",
+      "no_records_found": "Nenhum registro encontrado",
+      "required": "obrigatório",
+      "confirm": "Confirmação",
+      "type_to_search" : "Buscar por tipo",
+      "success": "Sucesso",
+      "error": "Erro",
+      "info": "Info"
+   },
+
+
+   "bank": {
+      "fields":{
+         "code": "Código",
+         "name" : "Nome",
+         "url":"URL"
+      },
+      "title": "Banco",
+      "list_of_banks" : "Lista de Bancos"
+   }
+
+}

@@ -1,0 +1,48 @@
+<div class="ui-g">
+   <div class="ui-g-12">
+      <div class="card card-w-title">
+         <h1>{{'bank.title' | translate}}</h1>
+
+         <p-dataTable [value]="banks"
+                      [(selection)]="selectedBank"
+                      selectionMode="single"
+                      [scrollable]="true"
+                      emptyMessage="{{ 'actions.no_records_found' | translate}}"
+                      [paginator]="true"
+                      [rows]="10"
+                      [pageLinks]="5"
+                      [rowsPerPageOptions]="[5, 10, 20]"
+                      [responsive]="true">
+
+            <p-header>{{'bank.list_of_banks' | translate}}</p-header>
+            <p-column field="code" header="{{'bank.fields.code' | translate}}"></p-column>
+            <p-column field="name" header="{{'bank.fields.name' | translate}}"></p-column>
+            <p-column field="url" header="{{'bank.fields.url' | translate}}"></p-column>
+         </p-dataTable>
+
+         <br><br>
+
+         <p-table [columns]="tableCollumnsName"
+                  [value]="banks"
+                  [paginator]="true" [rows]="10"
+                  [resizableColumns]="true"
+                  [(contextMenuSelection)]="selectedBank">
+            <ng-template pTemplate="header" let-columns>
+               <tr>
+                  <th *ngFor="let col of columns">
+                     {{col.header}}
+                  </th>
+               </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+               <tr>
+                  <td *ngFor="let col of columns">
+                     {{rowData[col.field]}}
+                  </td>
+               </tr>
+            </ng-template>
+         </p-table>
+
+      </div>
+   </div>
+</div>

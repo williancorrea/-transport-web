@@ -129,39 +129,29 @@ import {AppComponent} from './app.component';
                         </li>
                     </ul>
                 </li>
-                <li #notifications [ngClass]="{'active-topmenuitem':app.activeTopbarItem === notifications}">
-                    <a href="#" (click)="app.onTopbarItemClick($event,notifications)">
-                        <i class="topbar-icon fa fa-fw fa-bell-o"></i>
-                        <span class="topbar-badge">4</span>
-                        <span class="topbar-item-name">Notifications</span>
-                    </a>
-                    <ul class="fadeInDown">
-                        <li role="menuitem">
-                            <a href="#">
-                                <i class="fa fa-fw fa-tasks"></i>
-                                <span>Pending tasks</span>
-                            </a>
-                        </li>
-                        <li role="menuitem">
-                            <a href="#">
-                                <i class="fa fa-fw fa-calendar-check-o"></i>
-                                <span>Meeting today at 3pm</span>
-                            </a>
-                        </li>
-                        <li role="menuitem">
-                            <a href="#">
-                                <i class="fa fa-fw fa-download"></i>
-                                <span>Download documents</span>
-                            </a>
-                        </li>
-                        <li role="menuitem">
-                            <a href="#">
-                                <i class="fa fa-fw fa-plane"></i>
-                                <span>Book flight</span>
-                            </a>
-                        </li>
-                    </ul>
+               
+                <li #notifications [ngClass]="{'active-topmenuitem':app.activeTopbarItem === notifications}"
+                    (click)="app.onTopbarItemClick($event,notifications)">
+                   <a href="#">
+                      <i class="topbar-icon fa fa-fw fa-globe"></i>
+                      <span class="topbar-item-name">{{'commons.language' | translate}}</span>
+                   </a>
+                   <ul class="fadeInDown">
+                      <li role="menuitem">
+                         <a href="#" (click)="app.changeLanguage('pt-BR')">
+                            <i class="fa fa-fw fa-flag"></i>
+                            <span>{{'flags.brazil' | translate}}</span>
+                         </a>
+                      </li>                      
+                      <li role="menuitem">
+                         <a href="#" (click)="app.changeLanguage('en')">
+                            <i class="fa fa-fw fa-flag"></i>
+                            <span>{{'flags.english' | translate}}</span>
+                         </a>
+                      </li>
+                   </ul>
                 </li>
+               
                 <li #search class="search-item" [ngClass]="{'active-topmenuitem':app.activeTopbarItem === search}"
                     (click)="app.onTopbarItemClick($event,search)">
                     <span class="md-inputfield">

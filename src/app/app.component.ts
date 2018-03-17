@@ -1,110 +1,136 @@
-import {Component, AfterViewInit, Renderer, OnDestroy} from '@angular/core';
+import {Component, AfterViewInit, Renderer, OnDestroy, OnInit} from '@angular/core';
+import {TranslateService} from 'ng2-translate';
+import {Subscription} from 'rxjs/Subscription';
+import {ActivatedRoute} from '@angular/router';
 
 enum MenuOrientation {
-    STATIC,
-    OVERLAY
+   STATIC,
+   OVERLAY
 }
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+   selector: 'app-root',
+   templateUrl: './app.component.html',
+   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit, OnDestroy {
+export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
 
-    activeTabIndex: number;
+   activeTabIndex: number;
+   sidebarActive: boolean;
+   layoutMode: MenuOrientation = MenuOrientation.STATIC;
+   darkMenu = false;
+   topbarMenuActive: boolean;
+   sidebarClick: boolean;
+   topbarItemClick: boolean;
+   activeTopbarItem: any;
+   documentClickListener: Function;
 
-    sidebarActive: boolean;
+   private subscription: Subscription;
 
-    layoutMode: MenuOrientation = MenuOrientation.STATIC;
+   constructor(public renderer: Renderer,
+               private translate: TranslateService,
+               private activatedRoute: ActivatedRoute) {
 
-    darkMenu = false;
+      this.translate.addLangs(['pt-BR', 'en']);
+      this.translate.setDefaultLang('en');
+      const browserLang = translate.getBrowserLang();
+      translate.use(browserLang.match(/en|pt-BR/) ? browserLang : 'pt-BR');
 
-    topbarMenuActive: boolean;
+   }
 
-    sidebarClick: boolean;
-
-    topbarItemClick: boolean;
-
-    activeTopbarItem: any;
-
-    documentClickListener: Function;
-
-    constructor(public renderer: Renderer) {}
-
-    ngAfterViewInit() {
-        this.documentClickListener = this.renderer.listenGlobal('body', 'click', (event) => {
-            if (!this.topbarItemClick) {
-                this.activeTopbarItem = null;
-                this.topbarMenuActive = false;
+   ngOnInit() {
+      // subscribe to router event
+      this.subscription = this.activatedRoute.queryParams.subscribe(
+         (param: any) => {
+            const locale = param['locale'];
+            if (locale !== undefined) {
+               this.translate.use(locale);
             }
+         });
+   }
 
-            if (!this.sidebarClick && (this.overlay || !this.isDesktop())) {
-                this.sidebarActive = false;
-            }
+   changeLanguage(lang) {
+      this.translate.use(lang);
+   }
 
-            this.topbarItemClick = false;
-            this.sidebarClick = false;
-        });
-    }
+   ngAfterViewInit() {
+      this.documentClickListener = this.renderer.listenGlobal('body', 'click', (event) => {
+         if (!this.topbarItemClick) {
+            this.activeTopbarItem = null;
+            this.topbarMenuActive = false;
+         }
 
-    onTabClick(event, index: number) {
-        if (this.activeTabIndex === index) {
-            this.sidebarActive = !this.sidebarActive;
-        } else {
-            this.activeTabIndex = index;
-            this.sidebarActive = true;
-        }
+         if (!this.sidebarClick && (this.overlay || !this.isDesktop())) {
+            this.sidebarActive = false;
+         }
 
-        event.preventDefault();
-    }
+         this.topbarItemClick = false;
+         this.sidebarClick = false;
+      });
+   }
 
-    closeSidebar(event) {
-        this.sidebarActive = false;
-        event.preventDefault();
-    }
+   onTabClick(event, index: number) {
+      if (this.activeTabIndex === index) {
+         this.sidebarActive = !this.sidebarActive;
+      } else {
+         this.activeTabIndex = index;
+         this.sidebarActive = true;
+      }
 
-    onSidebarClick(event) {
-        this.sidebarClick = true;
-    }
+      event.preventDefault();
+   }
 
-    onTopbarMenuButtonClick(event) {
-        this.topbarItemClick = true;
-        this.topbarMenuActive = !this.topbarMenuActive;
+   closeSidebar(event) {
+      this.sidebarActive = false;
+      event.preventDefault();
+   }
 
-        event.preventDefault();
-    }
+   onSidebarClick(event) {
+      this.sidebarClick = true;
+   }
 
-    onTopbarItemClick(event, item) {
-        this.topbarItemClick = true;
+   onTopbarMenuButtonClick(event) {
+      this.topbarItemClick = true;
+      this.topbarMenuActive = !this.topbarMenuActive;
 
-        if (this.activeTopbarItem === item) {
-            this.activeTopbarItem = null; } else {
-            this.activeTopbarItem = item; }
+      event.preventDefault();
+   }
 
-        event.preventDefault();
-    }
+   onTopbarItemClick(event, item) {
+      this.topbarItemClick = true;
 
-    get overlay(): boolean {
-        return this.layoutMode === MenuOrientation.OVERLAY;
-    }
+      if (this.activeTopbarItem === item) {
+         this.activeTopbarItem = null;
+      } else {
+         this.activeTopbarItem = item;
+      }
 
-    changeToStaticMenu() {
-        this.layoutMode = MenuOrientation.STATIC;
-    }
+      event.preventDefault();
+   }
 
-    changeToOverlayMenu() {
-        this.layoutMode = MenuOrientation.OVERLAY;
-    }
+   get overlay(): boolean {
+      return this.layoutMode === MenuOrientation.OVERLAY;
+   }
 
-    isDesktop() {
-        return window.innerWidth > 1024;
-    }
+   changeToStaticMenu() {
+      this.layoutMode = MenuOrientation.STATIC;
+   }
 
-    ngOnDestroy() {
-        if (this.documentClickListener) {
-            this.documentClickListener();
-        }
-    }
+   changeToOverlayMenu() {
+      this.layoutMode = MenuOrientation.OVERLAY;
+   }
+
+   isDesktop() {
+      return window.innerWidth > 1024;
+   }
+
+   ngOnDestroy() {
+      if (this.documentClickListener) {
+         this.documentClickListener();
+      }
+
+      // prevent memory leak by unsubcribing
+      this.subscription.unsubscribe();
+   }
 
 }

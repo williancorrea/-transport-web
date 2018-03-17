@@ -1,0 +1,10 @@
+{
+   "language": "Language",
+   "flags": {
+      "brazil": "Brazil",
+      "english": "English"
+   },
+   "bank": {
+      "title": "Bank"
+   }
+}
