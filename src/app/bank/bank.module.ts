@@ -2,17 +2,32 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BankSearchComponent} from './bank-search/bank-search.component';
 import {BankNewComponent} from './bank-new/bank-new.component';
-import {DataTableModule} from 'primeng/primeng';
 import {TranslateModule, TranslateService} from 'ng2-translate';
 import {TableModule} from 'primeng/table';
+import {ButtonModule} from 'primeng/button';
+import {MessageModule} from 'primeng/message';
+import {DataTableModule, DropdownModule, InputTextModule} from 'primeng/primeng';
+import {SharedModule} from 'primeng/shared';
+import {PanelModule} from 'primeng/panel';
+import {TransportShareModule} from '../transort-share/transport-share.module';
 
 @NgModule({
    imports: [
       CommonModule,
-      DataTableModule,
-      TableModule,
 
-      TranslateModule
+      TranslateModule,
+
+      TransportShareModule,
+
+      DataTableModule,
+      SharedModule,
+      TableModule,
+      InputTextModule,
+      ButtonModule,
+      DropdownModule,
+      MessageModule,
+      ButtonModule,
+      PanelModule
    ],
    declarations: [
       BankSearchComponent,

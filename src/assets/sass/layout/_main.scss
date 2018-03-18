@@ -342,7 +342,7 @@ body {
 
                         .menuitem-badge {
                             position: absolute;
-                            right: 32px;
+                            right: 45px;
                             display: inline-block;
                             width: 16px;
                             height: 16px;
@@ -379,27 +379,24 @@ body {
                         height: 100%;
                         overflow: auto;
 
-                        .nano {
-                            > .nano-content {
-                                padding-right:6px;
+                        .ui-scrollpanel {
+                            background: transparent;
+                            border-radius: 0;
+                            border: none;
 
-                                &.menu-scroll-content {
-                                    display: block;
-                                    height: 100%;
-                                    overflow-x: hidden;
-                                    overflow-y: scroll;
-                                    position: relative;
-                                }
-
-                                > *:last-child {
-                                    padding-bottom: 120px;
-                                }
+                            .ui-scrollpanel-bar-y {
+                                background-color: #aaa;
+                                opacity: 0.4;
                             }
-
-                            > .nano-pane {
-                                > .nano-slider {
-                                    background-color: #aaa;
-                                    opacity: 0.4;
+                            .ui-scrollpanel-hidden {
+                                display: block;
+                                visibility: hidden;
+                            }
+                            .ui-scrollpanel-content {
+                                > *:last-child {
+                                    overflow: visible;
+                                    padding-bottom: 170px;
+                                    padding-right: 22px;
                                 }
                             }
                         }
@@ -654,41 +651,6 @@ body {
                     .layout-tabmenu-content {
                         .layout-submenu-content {
                             padding: 6px 6px 6px 0px;
-
-                            .nano {
-                                .nano-content {
-                                    margin-right: 0px !important;
-                                    margin-left: -17px;
-                                    padding-right: 0px;
-                                    padding-left: 6px;
-
-                                    .navigation-menu {
-                                        li {
-                                            > a {
-                                                i {
-                                                    &:first-child {
-                                                        margin-right: 0px;
-                                                        margin-left: 4px;
-                                                    }
-
-                                                    &:last-child {
-                                                        float: left;
-                                                    }
-                                                }
-                                            }
-
-                                            > ul {
-                                                padding: 0px 18px 0px 0px;
-                                            }
-                                        }
-                                    }
-                                }
-
-                                > .nano-pane {
-                                    right: auto;
-                                    left: 0;
-                                }
-                            }
                         }
 
                         .layout-submenu-title {

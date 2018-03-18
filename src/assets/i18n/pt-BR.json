@@ -32,7 +32,8 @@
          "url":"URL"
       },
       "title": "Banco",
-      "list_of_banks" : "Lista de Bancos"
+      "list_of_banks" : "Lista de Bancos",
+      "add_bank" : "Adicionar novo banco"
    }
 
 }

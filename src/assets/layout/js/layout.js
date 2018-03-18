@@ -1,8 +1,8 @@
-/** 
+/**
  * PrimeFaces Atlantis Layout
  */
 PrimeFaces.widget.Atlantis = PrimeFaces.widget.BaseWidget.extend({
-    
+
     init: function(cfg) {
         this._super(cfg);
         this.wrapper = $(document.body).children('.layout-wrapper');
@@ -14,7 +14,7 @@ PrimeFaces.widget.Atlantis = PrimeFaces.widget.BaseWidget.extend({
         this.topbarMenu = this.topbar.children('.topbar-menu');
         this.topbarItems = this.topbarMenu.children('li');
         this.topbarLinks = this.topbarItems.children('a');
-        this.topbarMenuButton = $('#topbar-menu-button');        
+        this.topbarMenuButton = $('#topbar-menu-button');
         this.menuActive = false;
         this.sidebarClick = false;
         this.topbarLinkClick = false;
@@ -22,20 +22,20 @@ PrimeFaces.widget.Atlantis = PrimeFaces.widget.BaseWidget.extend({
 
         this._bindEvents();
     },
-    
+
     _bindEvents: function() {
         var $this = this;
-        
+
         this.tabMenu.find('.menu-button').on('click', function(e) {
             $this.sidebar.css('overflow','visible');
             $this.wrapper.removeClass('layout-wrapper-menu-active');
             if(!$this.isOverlayMenu()) {
                 $(window).trigger('resize');
             }
-            
+
             e.preventDefault();
         });
-        
+
         this.tabMenuNavLinks.on('click', function(e) {
             $this.sidebar.css('overflow','hidden');
             var link = $(this);
@@ -43,14 +43,14 @@ PrimeFaces.widget.Atlantis = PrimeFaces.widget.BaseWidget.extend({
             $this.wrapper.addClass('layout-wrapper-menu-active');
             $this.tabMenu.find('.layout-tabmenu-content').removeClass('layout-tabmenu-content-active').
                     eq(link.parent().index()).addClass('layout-tabmenu-content-active');
-            
+
             if(!$this.isOverlayMenu()) {
                 $(window).trigger('resize');
             }
             $(this).children('.layout-tabmenu-tooltip').hide();
             e.preventDefault();
         });
-        
+
         if(!this.isIOS()) {
             this.tabMenuNavLinks.on('mouseenter', function(e) {
                 var link = $(this);
@@ -69,7 +69,7 @@ PrimeFaces.widget.Atlantis = PrimeFaces.widget.BaseWidget.extend({
 
             if($this.topbarMenu.hasClass('topbar-menu-visible')) {
                 $this.topbarMenu.addClass('fadeOutUp');
-                
+
                 setTimeout(function() {
                     $this.topbarMenu.removeClass('fadeOutUp topbar-menu-visible');
                 },500);
@@ -77,15 +77,15 @@ PrimeFaces.widget.Atlantis = PrimeFaces.widget.BaseWidget.extend({
             else {
                 $this.topbarMenu.addClass('topbar-menu-visible fadeInDown');
             }
-                        
+
             e.preventDefault();
         });
-                
+
         this.topbarLinks.on('click', function(e) {
             var link = $(this),
             item = link.parent(),
             submenu = link.next();
-            
+
             $this.topbarLinkClick = true;
 
             item.siblings('.active-topmenuitem').removeClass('active-topmenuitem');
@@ -94,7 +94,7 @@ PrimeFaces.widget.Atlantis = PrimeFaces.widget.BaseWidget.extend({
                 if(submenu.length) {
                     if(item.hasClass('active-topmenuitem')) {
                         submenu.addClass('fadeOutUp');
-                        
+
                         setTimeout(function() {
                             item.removeClass('active-topmenuitem'),
                             submenu.removeClass('fadeOutUp');
@@ -109,35 +109,35 @@ PrimeFaces.widget.Atlantis = PrimeFaces.widget.BaseWidget.extend({
             else {
                 item.children('ul').removeClass('fadeInDown fadeOutUp');
                 item.toggleClass('active-topmenuitem');
-            }   
-                        
-            e.preventDefault();   
+            }
+
+            e.preventDefault();
         });
-        
+
         this.topbarMenu.children('.search-item').on('click', function(e) {
             $this.topbarLinkClick = true;
         });
-        
+
         this.sidebar.off('click.sidebar').on('click.sidebar', function(e) {
             $this.sidebarClick = true;
         });
-        
+
         $(document.body).on('click', function() {
             if(!$this.topbarMenuClick && !$this.topbarLinkClick) {
                 $this.topbarItems.filter('.active-topmenuitem').removeClass('active-topmenuitem');
                 $this.topbarMenu.removeClass('topbar-menu-visible');
             }
-            
+
             if(!$this.sidebarClick && ($this.isOverlayMenu() || !$this.isDesktop())) {
                 $this.wrapper.removeClass('layout-wrapper-menu-active');
             }
-            
+
             $this.topbarLinkClick = false;
             $this.topbarMenuClick = false;
             $this.sidebarClick = false;
         });
     },
-    
+
     isTablet: function() {
         var width = window.innerWidth;
         return width <= 1024 && width > 640;
@@ -150,43 +150,42 @@ PrimeFaces.widget.Atlantis = PrimeFaces.widget.BaseWidget.extend({
     isMobile: function() {
         return window.innerWidth <= 640;
     },
-    
+
     isOverlayMenu: function() {
         return this.wrapper.hasClass('layout-overlay-menu');
     },
-    
+
     isIOS: function(e) {
         return ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i)));
     }
-    
+
 });
 
-/** 
+/**
  * PrimeFaces AtlantisMenu Component
  */
 PrimeFaces.widget.AtlantisMenu = PrimeFaces.widget.BaseWidget.extend({
-    
+
     init: function(cfg) {
         this._super(cfg);
         this.menulinks = this.jq.find('a');
-        this.expandedMenuitems = this.expandedMenuitems || [];     
+        this.expandedMenuitems = this.expandedMenuitems || [];
         this.menuActive = false;
         this.topbarLinkClick = false;
-        this.topbarMenuClick = false;
-        this.nano = this.jq.closest('.nano');
+        this.topbarMenuClick = false
 
         this._bindEvents();
         this.restoreMenuState();
     },
-    
+
     _bindEvents: function() {
         var $this = this;
-        
+
         this.menulinks.off('click').on('click', function(e) {
             var link = $(this),
             item = link.parent(),
             submenu = item.children('ul');
-                                     
+
             if(item.hasClass('active-menuitem')) {
                 if(submenu.length) {
                     $this.removeMenuitem(item.attr('id'));
@@ -199,17 +198,13 @@ PrimeFaces.widget.AtlantisMenu = PrimeFaces.widget.BaseWidget.extend({
                 $this.deactivateItems(item.siblings(), true);
                 $this.activate(item);
             }
-            
-            setTimeout(function() {
-                $this.nano.nanoScroller();
-            }, 500);
-                                    
+
             if(submenu.length) {
                 e.preventDefault();
             }
         });
     },
-         
+
     activate: function(item) {
         var submenu = item.children('ul');
         item.addClass('active-menuitem');
@@ -218,29 +213,29 @@ PrimeFaces.widget.AtlantisMenu = PrimeFaces.widget.BaseWidget.extend({
             submenu.slideDown();
         }
     },
-    
+
     deactivate: function(item) {
         var submenu = item.children('ul');
         item.removeClass('active-menuitem');
-        
+
         if(submenu.length) {
             submenu.hide();
         }
     },
-        
+
     deactivateItems: function(items, animate) {
         var $this = this;
-        
+
         for(var i = 0; i < items.length; i++) {
             var item = items.eq(i),
             submenu = item.children('ul');
-            
+
             if(submenu.length) {
                 if(item.hasClass('active-menuitem')) {
                     var activeSubItems = item.find('.active-menuitem');
                     item.removeClass('active-menuitem');
                     item.find('.ink').remove();
-                    
+
                     if(animate) {
                         submenu.slideUp('normal', function() {
                             $(this).parent().find('.active-menuitem').each(function() {
@@ -254,7 +249,7 @@ PrimeFaces.widget.AtlantisMenu = PrimeFaces.widget.BaseWidget.extend({
                             $this.deactivate($(this));
                         });
                     }
-                    
+
                     $this.removeMenuitem(item.attr('id'));
                     activeSubItems.each(function() {
                         $this.removeMenuitem($(this).attr('id'));
@@ -274,7 +269,7 @@ PrimeFaces.widget.AtlantisMenu = PrimeFaces.widget.BaseWidget.extend({
             }
         }
     },
-    
+
     clearActiveItems: function() {
         var activeItems = this.jq.find('li.active-menuitem'),
         subContainers = activeItems.children('ul');
@@ -282,29 +277,29 @@ PrimeFaces.widget.AtlantisMenu = PrimeFaces.widget.BaseWidget.extend({
         activeItems.removeClass('active-menuitem');
         subContainers.hide();
     },
-            
+
     removeMenuitem: function (id) {
         this.expandedMenuitems = $.grep(this.expandedMenuitems, function (value) {
             return value !== id;
         });
         this.saveMenuState();
     },
-    
+
     addMenuitem: function (id) {
         if ($.inArray(id, this.expandedMenuitems) === -1) {
             this.expandedMenuitems.push(id);
         }
         this.saveMenuState();
     },
-    
+
     saveMenuState: function() {
         $.cookie('atlantis_expandeditems', this.expandedMenuitems.join(','), {path: '/'});
     },
-    
+
     clearMenuState: function() {
         $.removeCookie('atlantis_expandeditems', {path: '/'});
     },
-        
+
     restoreMenuState: function() {
         var menucookie = $.cookie('atlantis_expandeditems');
         if (menucookie) {
@@ -314,7 +309,7 @@ PrimeFaces.widget.AtlantisMenu = PrimeFaces.widget.BaseWidget.extend({
                 if (id) {
                     var menuitem = $("#" + this.expandedMenuitems[i].replace(/:/g, "\\:"));
                     menuitem.addClass('active-menuitem');
-                    
+
                     var submenu = menuitem.children('ul');
                     if(submenu.length) {
                         submenu.show();
@@ -322,17 +317,16 @@ PrimeFaces.widget.AtlantisMenu = PrimeFaces.widget.BaseWidget.extend({
                 }
             }
         }
-        
+
         var inlineProfileCookie = $.cookie('atlantis_inlineprofile_expanded');
         if (inlineProfileCookie) {
             this.profileMenu.show().prev('.profile').addClass('profile-expanded');
         }
     }
-    
+
 });
 
 $(document).ready(function() {
-    $('.nano').nanoScroller({flash:true});
 });
 
 /*!
@@ -453,12 +447,12 @@ $(document).ready(function() {
 /* Issue #924 is fixed for 5.3+ and 6.0. (compatibility with 5.3) */
 if(window['PrimeFaces'] && window['PrimeFaces'].widget.Dialog) {
     PrimeFaces.widget.Dialog = PrimeFaces.widget.Dialog.extend({
-        
+
         enableModality: function() {
             this._super();
             $(document.body).children(this.jqId + '_modal').addClass('ui-dialog-mask');
         },
-        
+
         syncWindowResize: function() {}
     });
 }

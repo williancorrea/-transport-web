@@ -967,7 +967,7 @@ body {
           color: #545b61; }
           .layout-wrapper .layout-sidebar .layout-tabmenu .layout-tabmenu-contents .layout-tabmenu-content a .menuitem-badge {
             position: absolute;
-            right: 32px;
+            right: 45px;
             display: inline-block;
             width: 16px;
             height: 16px;
@@ -999,19 +999,20 @@ body {
           padding: 6px 0px 6px 6px;
           height: 100%;
           overflow: auto; }
-          .layout-wrapper .layout-sidebar .layout-tabmenu .layout-tabmenu-contents .layout-tabmenu-content .layout-submenu-content .nano > .nano-content {
-            padding-right: 6px; }
-            .layout-wrapper .layout-sidebar .layout-tabmenu .layout-tabmenu-contents .layout-tabmenu-content .layout-submenu-content .nano > .nano-content.menu-scroll-content {
+          .layout-wrapper .layout-sidebar .layout-tabmenu .layout-tabmenu-contents .layout-tabmenu-content .layout-submenu-content .ui-scrollpanel {
+            background: transparent;
+            border-radius: 0;
+            border: none; }
+            .layout-wrapper .layout-sidebar .layout-tabmenu .layout-tabmenu-contents .layout-tabmenu-content .layout-submenu-content .ui-scrollpanel .ui-scrollpanel-bar-y {
+              background-color: #aaa;
+              opacity: 0.4; }
+            .layout-wrapper .layout-sidebar .layout-tabmenu .layout-tabmenu-contents .layout-tabmenu-content .layout-submenu-content .ui-scrollpanel .ui-scrollpanel-hidden {
               display: block;
-              height: 100%;
-              overflow-x: hidden;
-              overflow-y: scroll;
-              position: relative; }
-            .layout-wrapper .layout-sidebar .layout-tabmenu .layout-tabmenu-contents .layout-tabmenu-content .layout-submenu-content .nano > .nano-content > *:last-child {
-              padding-bottom: 120px; }
-          .layout-wrapper .layout-sidebar .layout-tabmenu .layout-tabmenu-contents .layout-tabmenu-content .layout-submenu-content .nano > .nano-pane > .nano-slider {
-            background-color: #aaa;
-            opacity: 0.4; }
+              visibility: hidden; }
+            .layout-wrapper .layout-sidebar .layout-tabmenu .layout-tabmenu-contents .layout-tabmenu-content .layout-submenu-content .ui-scrollpanel .ui-scrollpanel-content > *:last-child {
+              overflow: visible;
+              padding-bottom: 170px;
+              padding-right: 22px; }
           .layout-wrapper .layout-sidebar .layout-tabmenu .layout-tabmenu-contents .layout-tabmenu-content .layout-submenu-content .navigation-menu {
             margin: 0;
             padding: 0;
@@ -1144,21 +1145,6 @@ body {
       left: auto; }
       .layout-wrapper.layout-rtl .layout-sidebar .layout-tabmenu .layout-tabmenu-contents .layout-tabmenu-content .layout-submenu-content {
         padding: 6px 6px 6px 0px; }
-        .layout-wrapper.layout-rtl .layout-sidebar .layout-tabmenu .layout-tabmenu-contents .layout-tabmenu-content .layout-submenu-content .nano .nano-content {
-          margin-right: 0px !important;
-          margin-left: -17px;
-          padding-right: 0px;
-          padding-left: 6px; }
-          .layout-wrapper.layout-rtl .layout-sidebar .layout-tabmenu .layout-tabmenu-contents .layout-tabmenu-content .layout-submenu-content .nano .nano-content .navigation-menu li > a i:first-child {
-            margin-right: 0px;
-            margin-left: 4px; }
-          .layout-wrapper.layout-rtl .layout-sidebar .layout-tabmenu .layout-tabmenu-contents .layout-tabmenu-content .layout-submenu-content .nano .nano-content .navigation-menu li > a i:last-child {
-            float: left; }
-          .layout-wrapper.layout-rtl .layout-sidebar .layout-tabmenu .layout-tabmenu-contents .layout-tabmenu-content .layout-submenu-content .nano .nano-content .navigation-menu li > ul {
-            padding: 0px 18px 0px 0px; }
-        .layout-wrapper.layout-rtl .layout-sidebar .layout-tabmenu .layout-tabmenu-contents .layout-tabmenu-content .layout-submenu-content .nano > .nano-pane {
-          right: auto;
-          left: 0; }
       .layout-wrapper.layout-rtl .layout-sidebar .layout-tabmenu .layout-tabmenu-contents .layout-tabmenu-content .layout-submenu-title .menu-button {
         float: left; }
     .layout-wrapper.layout-rtl .layout-sidebar .layout-tabmenu .layout-tabmenu-nav li a .layout-tabmenu-tooltip {

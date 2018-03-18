@@ -19,7 +19,6 @@ import {ChipsModule} from 'primeng/primeng';
 import {CodeHighlighterModule} from 'primeng/primeng';
 import {ConfirmDialogModule} from 'primeng/primeng';
 import {ColorPickerModule} from 'primeng/primeng';
-import {SharedModule} from 'primeng/primeng';
 import {ContextMenuModule} from 'primeng/primeng';
 import {DataGridModule} from 'primeng/primeng';
 import {DataListModule} from 'primeng/primeng';
@@ -106,6 +105,7 @@ import {MyMissingTranslationHandler} from './missingtemplate.component';
 import {
    MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateStaticLoader, TranslateService
 } from 'ng2-translate';
+import {SharedModule} from 'primeng/shared';
 
 export function HttpLoaderFactory(http: Http) {
    return new TranslateStaticLoader(http, '/assets/i18n', '.json');
@@ -117,12 +117,6 @@ export function HttpLoaderFactory(http: Http) {
       FormsModule,
       AppRoutes,
       HttpClientModule,
-
-      TranslateModule.forRoot({
-         provide: TranslateLoader,
-         useFactory: HttpLoaderFactory,
-         deps: [Http]
-      }),
 
 
       BrowserAnimationsModule,
@@ -192,6 +186,11 @@ export function HttpLoaderFactory(http: Http) {
       TreeModule,
       TreeTableModule,
 
+      TranslateModule.forRoot({
+         provide: TranslateLoader,
+         useFactory: HttpLoaderFactory,
+         deps: [Http]
+      }),
 
       BankModule
    ],
@@ -204,6 +203,8 @@ export function HttpLoaderFactory(http: Http) {
       AppTopbarComponent,
       AppFooterComponent,
       DashboardDemoComponent,
+
+      // TODO: REMOVER
       SampleDemoComponent,
       FormsDemoComponent,
       DataDemoComponent,
@@ -225,7 +226,7 @@ export function HttpLoaderFactory(http: Http) {
       TranslateService,
       {provide: MissingTranslationHandler, useClass: MyMissingTranslationHandler},
 
-
+      // TODO: REMOVER
       CarService, CountryService, EventService, NodeService
    ],
    bootstrap: [AppComponent]
