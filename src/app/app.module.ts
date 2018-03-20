@@ -106,6 +106,8 @@ import {
    MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateStaticLoader, TranslateService
 } from 'ng2-translate';
 import {SharedModule} from 'primeng/shared';
+import {CoreModule} from './core/core.module';
+import {SecurityModule} from './security/security.module';
 
 export function HttpLoaderFactory(http: Http) {
    return new TranslateStaticLoader(http, '/assets/i18n', '.json');
@@ -114,12 +116,14 @@ export function HttpLoaderFactory(http: Http) {
 @NgModule({
    imports: [
       BrowserModule,
+      BrowserAnimationsModule,
+
       FormsModule,
-      AppRoutes,
+
       HttpClientModule,
 
 
-      BrowserAnimationsModule,
+
       AccordionModule,
       AutoCompleteModule,
       BreadcrumbModule,
@@ -186,12 +190,17 @@ export function HttpLoaderFactory(http: Http) {
       TreeModule,
       TreeTableModule,
 
+
+
       TranslateModule.forRoot({
          provide: TranslateLoader,
          useFactory: HttpLoaderFactory,
          deps: [Http]
       }),
 
+      CoreModule,
+      SecurityModule,
+      AppRoutes,
       BankModule
    ],
    declarations: [

@@ -15,9 +15,11 @@ import {FileDemoComponent} from './demo/view/filedemo.component';
 import {UtilsDemoComponent} from './demo/view/utilsdemo.component';
 import {DocumentationComponent} from './demo/view/documentation.component';
 import {BankSearchComponent} from './bank/bank-search/bank-search.component';
+import {NaoAutorizadoComponent} from './core/nao-autorizado.component';
+import {PaginaNaoEncontradaComponent} from './core/pagina-nao-encontrada.component';
 
 export const routes: Routes = [
-   {path: '', component: DashboardDemoComponent},
+   {path: '', component: DashboardDemoComponent, pathMatch: 'full'},
    {path: 'sample', component: SampleDemoComponent},
    {path: 'forms', component: FormsDemoComponent},
    {path: 'data', component: DataDemoComponent},
@@ -32,7 +34,13 @@ export const routes: Routes = [
    {path: 'utils', component: UtilsDemoComponent},
    {path: 'documentation', component: DocumentationComponent},
 
-   {path: 'bank', component: BankSearchComponent},
+   {path: 'nao-autorizado', component: NaoAutorizadoComponent},
+   {path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent},
+
+   {path: 'banks', component: BankSearchComponent},
+
+   {path: '**', redirectTo: 'pagina-nao-encontrada'},
+
 ];
 
 export const AppRoutes: ModuleWithProviders = RouterModule.forRoot(routes);

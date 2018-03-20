@@ -10,14 +10,15 @@ import {DataTableModule, DropdownModule, InputTextModule} from 'primeng/primeng'
 import {SharedModule} from 'primeng/shared';
 import {PanelModule} from 'primeng/panel';
 import {TransportShareModule} from '../transort-share/transport-share.module';
+import {CoreModule} from '../core/core.module';
 
 @NgModule({
    imports: [
       CommonModule,
 
       TranslateModule,
-
       TransportShareModule,
+      CoreModule,
 
       DataTableModule,
       SharedModule,

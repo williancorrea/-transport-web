@@ -1,8 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {TranslateService} from 'ng2-translate';
 import {Router} from '@angular/router';
-import {LazyLoadEvent, Message} from 'primeng/api';
+import {ConfirmationService, LazyLoadEvent, Message} from 'primeng/api';
 import {Bank} from '../../core/model/bank';
+import {BankService} from '../bank.service';
+import {ToastyService} from 'ng2-toasty';
+import {AuthService} from '../../security/auth.service';
+import {ErrorHandlerService} from '../../core/error-handler.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
    selector: 'app-bank-search',
@@ -12,68 +17,64 @@ import {Bank} from '../../core/model/bank';
 export class BankSearchComponent implements OnInit {
 
    banks = [];
-   selectedBank: Bank;
+   selectedBank = null;
 
    tableCollumnsName: any[];
    loading: boolean;
+   totalRecords = 0;
 
 
    constructor(private router: Router,
-               private translate: TranslateService) {
+               private translate: TranslateService,
+               private bankService: BankService,
+               private auth: AuthService,
+               private errorHandler: ErrorHandlerService,
+               private toasty: ToastyService,
+               private confirmation: ConfirmationService,
+               private title: Title) {
    }
 
    ngOnInit() {
       this.setLoading(true);
-
-      this.banks.push({id: 1, code: '104', name: 'Caixa Economica Federal', url: 'www.caixafederal.com.br'});
-      this.banks.push({id: 2, code: '001', name: 'Banco do Brasil SA', url: 'www.bb.com.br'});
-      this.banks.push({id: 3, code: '223', name: 'Bradesco SA', url: 'www.bradesco.com.br'});
-
-      // this.selectedBank = {id: 2, code: '001', name: 'Banco do Brasil SA', url: 'www.bb.com.br'}
-
       this.translate.get('bank').subscribe(s => {
-         this.tableCollumnsName = [
-            {field: 'id', header: s.fields.code, hidden: true},
-            {field: 'code', header: s.fields.code, sortable: true, style: {'width': '15%'}},
-            {field: 'name', header: s.fields.name, sortable: true},
-            {field: 'url', header: s.fields.url, sortable: true}
-         ];
-      });
+         this.title.setTitle(s['list_of_banks']);
 
-      this.setLoading(false);
+         // this.tableCollumnsName = [
+         //    {field: 'id', header: s.fields.code, hidden: true},
+         //    {field: 'code', header: s.fields.code, sortable: true, style: {'width': '15%'}},
+         //    {field: 'name', header: s.fields.name, sortable: true},
+         //    {field: 'url', header: s.fields.url, sortable: true}
+         // ];
+      });
    }
 
    setLoading(loading) {
       this.loading = loading;
    }
 
-   loadBank(event: LazyLoadEvent) {
+   loadBank(lazyLoad: LazyLoadEvent) {
       this.setLoading(true);
-      //in a real application, make a remote request to load data using state metadata from event
-      //event.first = First row offset
-      //event.rows = Number of rows per page
-      //event.sortField = Field name to sort with
-      //event.sortOrder = Sort order as number, 1 for asc and -1 for dec
-      //filters: FilterMetadata object having field as key and filter value, filter matchMode as value
-
-      console.log('lazyloading', event);
-
-      this.setLoading(false);
+      this.selectedBank = null;
+      this.bankService.findAll(lazyLoad).then(result => {
+            this.banks = result.content;
+            this.totalRecords = result.totalElements;
+            this.setLoading(false);
+         })
+         .catch(error => {
+            this.errorHandler.handle(error);
+         });
    }
-
 
    findAll(filter, dataTable) {
       this.setLoading(true);
-      filter.value = '';
-      this.selectedBank = null;
-
-      console.log('efetua uma nova busca');
-
+      if (filter) {
+         filter.value = '';
+      }
       this.loadBank(
          {
             filters: dataTable.filters,
             first: dataTable.first,
-            globalFilter: dataTable.globalFilter,
+            globalFilter: filter.value,
             multiSortMeta: dataTable.multiSortMeta,
             rows: dataTable.rows,
             sortField: dataTable.sortField,
@@ -84,6 +85,17 @@ export class BankSearchComponent implements OnInit {
 
    edit() {
       console.log('Editar o item selecionado', this.selectedBank);
+   }
+
+   ConfirmDeletion() {
+      this.translate.get('actions').subscribe(s => {
+         this.confirmation.confirm({
+            message: s['confirm-deletion'],
+            accept: () => {
+               this.delete();
+            }
+         });
+      });
    }
 
    delete() {

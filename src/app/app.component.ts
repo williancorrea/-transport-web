@@ -2,6 +2,7 @@ import {Component, AfterViewInit, Renderer, OnDestroy, OnInit} from '@angular/co
 import {TranslateService} from 'ng2-translate';
 import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute} from '@angular/router';
+import {ToastyConfig} from 'ng2-toasty';
 
 enum MenuOrientation {
    STATIC,
@@ -28,6 +29,7 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
    private subscription: Subscription;
 
    constructor(public renderer: Renderer,
+               private toastyConfig: ToastyConfig,
                private translate: TranslateService,
                private activatedRoute: ActivatedRoute) {
 

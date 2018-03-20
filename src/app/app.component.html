@@ -10,3 +10,14 @@
       </div>
    </div>
 </div>
+
+<ng2-toasty></ng2-toasty>
+
+<p-confirmDialog header="{{'actions.confirm' | translate}}" icon="fa fa-question-circle" #confirm [width]="400">
+   <p-footer>
+      <button type="button" pButton icon="fa-check" label="{{'actions.yes' | translate}}"
+              (click)="confirm.accept()"></button>
+      <button type="button" pButton icon="fa-times" label="{{'actions.no' | translate}}"
+              (click)="confirm.reject()"></button>
+   </p-footer>
+</p-confirmDialog>

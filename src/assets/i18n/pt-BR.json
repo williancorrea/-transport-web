@@ -18,10 +18,13 @@
       "no_records_found": "Nenhum registro encontrado",
       "required": "obrigatório",
       "confirm": "Confirmação",
+      "confirm-deletion" : "Tem certeza que deseja excluir o item selecionado?",
       "type_to_search" : "Buscar por tipo",
       "success": "Sucesso",
       "error": "Erro",
-      "info": "Info"
+      "info": "Info",
+      "yes" : "Sim",
+      "no": "Não"
    },
 
 
@@ -34,6 +37,12 @@
       "title": "Banco",
       "list_of_banks" : "Lista de Bancos",
       "add_bank" : "Adicionar novo banco"
-   }
+   },
 
+   "errors" : {
+      "session_expired" : "Sua sessão expirou",
+      "processing_request" :"Ocorreu um erro ao processar a sua solicitação",
+      "access_denied": "Você não tem permissão para executar esta ação",
+      "service_error" :"Erro ao processar serviço remoto. Tente novamente."
+   }
 }

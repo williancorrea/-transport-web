@@ -18,7 +18,8 @@
                       [value]="banks"
                       [(selection)]="selectedBank"
                       selectionMode="single"
-                      [lazy]="true" s
+                      [lazy]="true"
+                      [totalRecords]="totalRecords"
                       [globalFilter]="globalFilter"
                       (onLazyLoad)="loadBank($event)"
                       [loading]="loading"
@@ -27,7 +28,6 @@
                       emptyMessage="{{ 'actions.no_records_found' | translate}}"
                       [paginator]="true"
                       [rows]="10"
-                      [pageLinks]="5"
                       [rowsPerPageOptions]="[5, 10, 20]"
                       [responsive]="true"
                       [dataKey]="id">
@@ -43,7 +43,7 @@
                <a pButton icon="fa-refresh" (click)="findAll(globalFilter, dataTable)"></a>
             </ng-template>
 
-            <ng-template pTemplate="paginatorRight">
+            <ng-template pTemplate="paginatorRight" let-obj="rowData">
                <button type="button"
                        pButton
                        icon="fa-pencil"
@@ -56,7 +56,7 @@
                        class="ui-button-danger"
                        label="{{'actions.delete' | translate}}"
                        [disabled]="selectedBank ? false :true"
-                       (click)="delete()"></button>
+                       (click)="ConfirmDeletion(obj)"></button>
             </ng-template>
          </p-dataTable>
 
