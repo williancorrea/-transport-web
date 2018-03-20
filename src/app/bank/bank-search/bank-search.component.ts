@@ -100,5 +100,17 @@ export class BankSearchComponent implements OnInit {
 
    delete() {
       console.log('Deletar o item selecionado', this.selectedBank);
+
+      // this.lancamentoService.excluir(lancamento.codigo)
+      //    .then(() => {
+      //       if (this.grid.first === 0) {
+      //          this.pesquisar();
+      //       } else {
+      //          this.grid.first = 0;
+      //       }
+      //
+            this.toasty.success('Lançamento excluído com sucesso!');
+      //    })
+      //    .catch(erro => this.errorHandler.handle(erro));
    }
 }

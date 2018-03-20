@@ -38,6 +38,7 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
       const browserLang = translate.getBrowserLang();
       translate.use(browserLang.match(/en|pt-BR/) ? browserLang : 'pt-BR');
 
+      this.toastyConfig.theme = 'bootstrap';
    }
 
    ngOnInit() {
