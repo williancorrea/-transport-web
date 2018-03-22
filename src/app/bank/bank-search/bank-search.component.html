@@ -17,6 +17,11 @@
                <span class="ui-inputgroup-addon"><i class="fa fa-search"></i></span>
                <input #globalFilter pInputText type="text" size="50"
                       placeholder="{{'actions.global_filter' | translate}}">
+               <button pButton
+                       type="button" icon="fa-close"
+                       class="ui-button-danger"
+                       *ngIf="globalFilter.value.length > 0"
+                       (click)="findAll(globalFilter, dataTable)"></button>
             </div>
          </div>
          <p-dataTable #dataTable
@@ -28,12 +33,11 @@
                       [globalFilter]="globalFilter"
                       (onLazyLoad)="loadBank($event)"
                       [loading]="loading"
-                      [filterDelay]="1000"
-                      [scrollable]="true"
+                      [filterDelay]="env.dataTable.filterDelay"
                       emptyMessage="{{ 'actions.no_records_found' | translate}}"
                       [paginator]="true"
-                      [rows]="10"
-                      [rowsPerPageOptions]="[5, 10, 20]"
+                      [rows]="env.dataTable.rows"
+                      [rowsPerPageOptions]="env.dataTable.rowsPerPageOptions"
                       [responsive]="true"
                       dataKey="key">
 

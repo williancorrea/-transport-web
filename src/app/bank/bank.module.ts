@@ -6,13 +6,14 @@ import {TranslateModule, TranslateService} from 'ng2-translate';
 import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import {MessageModule} from 'primeng/message';
-import {DataTableModule, DropdownModule, InputTextModule, TooltipModule} from 'primeng/primeng';
+import {DataTableModule, DropdownModule, InputTextModule, ProgressBarModule, TooltipModule} from 'primeng/primeng';
 import {SharedModule} from 'primeng/shared';
 import {PanelModule} from 'primeng/panel';
 import {TransportSharedModule} from '../transort-shared/transport-share.module';
 import {CoreModule} from '../core/core.module';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {BlockUIModule} from 'primeng/blockui';
 
 @NgModule({
    imports: [
@@ -33,7 +34,8 @@ import {FormsModule} from '@angular/forms';
       MessageModule,
       ButtonModule,
       PanelModule,
-      TooltipModule
+      TooltipModule,
+      ProgressBarModule
    ],
    declarations: [
       BankSearchComponent,

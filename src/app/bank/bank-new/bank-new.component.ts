@@ -16,6 +16,7 @@ export class BankNewComponent implements OnInit {
 
    bank: Bank;
    bankTranslate: any;
+   loading: boolean;
 
    constructor(private router: Router,
                private activatedRoute: ActivatedRoute,
@@ -28,6 +29,7 @@ export class BankNewComponent implements OnInit {
    }
 
    ngOnInit() {
+      this.showLoading(true);
       this.translate.get('bank').subscribe(s => {
          this.bankTranslate = s;
 
@@ -38,19 +40,27 @@ export class BankNewComponent implements OnInit {
             this.bankService.findOne(isEditing)
                .then(response => {
                   this.bank = response;
+                  // this.showLoading(false);
                })
                .catch(error => {
                   this.errorHandler.handle(error);
                   this.title.setTitle(s['add_bank']);
+                  // this.showLoading(false);
                });
          } else {
             this.title.setTitle(s['add_bank']);
+            // this.showLoading(false);
          }
       });
    }
 
+   showLoading(value: boolean) {
+      this.loading = value;
+   }
+
+
    save(form) {
-      if(form.valid) {
+      if (form.valid) {
          if (this.bank.key) {
             this.bankService.update(this.bank)
                .then(

@@ -1,8 +1,9 @@
 <div class="ui-g">
    <div class="ui-g-12">
-      <div class="card card-w-title">
+      <p-progressBar *ngIf="loading === true" mode="indeterminate"></p-progressBar>
 
-         <div>
+      <div class="card card-w-title">
+         <div >
             <h1>{{(bank?.key?.length > 0 ? 'bank.edit_bank' : 'bank.add_bank') | translate}}</h1>
          </div>
 

@@ -8,6 +8,7 @@ import {ToastyService} from 'ng2-toasty';
 import {AuthService} from '../../security/auth.service';
 import {ErrorHandlerService} from '../../core/error-handler.service';
 import {Title} from '@angular/platform-browser';
+import {environment} from '../../../environments/environment';
 
 @Component({
    selector: 'app-bank-search',
@@ -20,6 +21,7 @@ export class BankSearchComponent implements OnInit {
    selectedBank = null;
    loading: boolean;
    totalRecords = 0;
+   env: any;
 
    /*
     * Binds with items on html page
@@ -42,6 +44,7 @@ export class BankSearchComponent implements OnInit {
     * Run the information as soon as the page finishes rendering
     */
    ngOnInit() {
+      this.env = environment;
       this.setLoading(true);
       this.translate.get('bank').subscribe(s => {
          this.title.setTitle(s['list_of_banks']);
@@ -84,17 +87,22 @@ export class BankSearchComponent implements OnInit {
       if (filter) {
          filter.value = '';
       }
-      this.loadBank(
-         {
-            filters: dataTable.filters,
-            first: dataTable.first,
-            globalFilter: filter.value,
-            multiSortMeta: dataTable.multiSortMeta,
-            rows: dataTable.rows,
-            sortField: dataTable.sortField,
-            sortOrder: dataTable.sortOrder
-         }
-      );
+
+      if (this.grid.first === 0) {
+         this.loadBank(
+            {
+               filters: dataTable.filters,
+               first: 0,
+               globalFilter: filter.value,
+               multiSortMeta: dataTable.multiSortMeta,
+               rows: dataTable.rows,
+               sortField: dataTable.sortField,
+               sortOrder: dataTable.sortOrder
+            }
+         );
+      } else {
+         this.grid.first = 0;
+      }
    }
 
    /**

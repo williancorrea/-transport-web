@@ -5,5 +5,11 @@
 
 export const environment = {
    production: false,
-   apiUrl: 'http://localhost:8080'
+   apiUrl: 'http://localhost:8080',
+
+   dataTable: {
+      filterDelay: 1000,
+      rows: 10,
+      rowsPerPageOptions: [5, 10, 20, 50, 100]
+   }
 };
