@@ -40,16 +40,16 @@ export class BankNewComponent implements OnInit {
             this.bankService.findOne(isEditing)
                .then(response => {
                   this.bank = response;
-                  // this.showLoading(false);
+                  this.showLoading(false);
                })
                .catch(error => {
                   this.errorHandler.handle(error);
                   this.title.setTitle(s['add_bank']);
-                  // this.showLoading(false);
+                  this.showLoading(false);
                });
          } else {
             this.title.setTitle(s['add_bank']);
-            // this.showLoading(false);
+            this.showLoading(false);
          }
       });
    }
