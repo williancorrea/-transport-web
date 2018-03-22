@@ -37,7 +37,6 @@ export class BankNewComponent implements OnInit {
 
             this.bankService.findOne(isEditing)
                .then(response => {
-                  console.log(response);
                   this.bank = response;
                })
                .catch(error => {
@@ -50,24 +49,26 @@ export class BankNewComponent implements OnInit {
       });
    }
 
-   save() {
-      if (this.bank.key) {
-         this.bankService.update(this.bank)
-            .then(
-               response => {
-                  this.toasty.success(this.bankTranslate['update_success']);
+   save(form) {
+      if(form.valid) {
+         if (this.bank.key) {
+            this.bankService.update(this.bank)
+               .then(
+                  response => {
+                     this.toasty.success(this.bankTranslate['update_success']);
 
-                  this.router.navigateByUrl('/banks');
-               }
-            ).catch(erro => this.errorHandler.handle(erro));
-      } else {
-         this.bankService.save(this.bank)
-            .then(
-               response => {
-                  this.toasty.success(this.bankTranslate['add_success']);
-                  this.router.navigateByUrl('/banks');
-               }
-            ).catch(erro => this.errorHandler.handle(erro));
+                     this.router.navigateByUrl('/banks');
+                  }
+               ).catch(erro => this.errorHandler.handle(erro));
+         } else {
+            this.bankService.save(this.bank)
+               .then(
+                  response => {
+                     this.toasty.success(this.bankTranslate['add_success']);
+                     this.router.navigateByUrl('/banks');
+                  }
+               ).catch(erro => this.errorHandler.handle(erro));
+         }
       }
    }
 

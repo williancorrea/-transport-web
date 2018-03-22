@@ -6,7 +6,7 @@
             <h1>{{(bank?.key?.length > 0 ? 'bank.edit_bank' : 'bank.add_bank') | translate}}</h1>
          </div>
 
-         <form #f="ngForm" novalidate autocomplete="off" (submit)="f.valid ? save(f) : ''" autocomplete="off">
+         <form #f="ngForm" novalidate autocomplete="off" (submit)="save(f)" autocomplete="off">
 
             <div class="ui-g">
 
