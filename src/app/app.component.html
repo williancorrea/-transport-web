@@ -7,11 +7,13 @@
       <div class="layout-main-content">
          <router-outlet></router-outlet>
          <app-footer></app-footer>
+
+         <ng2-toasty></ng2-toasty>
       </div>
    </div>
 </div>
 
-<ng2-toasty></ng2-toasty>
+
 
 <p-confirmDialog header="{{'actions.confirm' | translate}}" icon="fa fa-question-circle" #confirm [width]="400">
    <p-footer>

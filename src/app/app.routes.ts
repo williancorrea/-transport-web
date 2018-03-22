@@ -17,6 +17,7 @@ import {DocumentationComponent} from './demo/view/documentation.component';
 import {BankSearchComponent} from './bank/bank-search/bank-search.component';
 import {NaoAutorizadoComponent} from './core/nao-autorizado.component';
 import {PaginaNaoEncontradaComponent} from './core/pagina-nao-encontrada.component';
+import {BankNewComponent} from './bank/bank-new/bank-new.component';
 
 export const routes: Routes = [
    {path: '', component: DashboardDemoComponent, pathMatch: 'full'},
@@ -38,6 +39,8 @@ export const routes: Routes = [
    {path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent},
 
    {path: 'banks', component: BankSearchComponent},
+   {path: 'banks/new', component: BankNewComponent},
+   {path: 'banks/:key', component: BankNewComponent},
 
    {path: '**', redirectTo: 'pagina-nao-encontrada'},
 

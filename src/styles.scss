@@ -1,6 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
-.btn-add-new{
+button:disabled {
+   cursor: not-allowed;
+   pointer-events: all !important;
+}
+
+body .ui-state-disabled *, body .ui-widget:disabled *{
+   cursor: not-allowed !important;
+}
+
+.btn-add-new {
    float: right;
    margin-top: -50px;
+}
+
+.requiredLabel {
+   color: #da3d3d;
+   font-size: smaller;
+   font-weight: bold;
+   margin-left: 5px;
 }

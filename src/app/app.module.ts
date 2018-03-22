@@ -108,6 +108,7 @@ import {
 import {SharedModule} from 'primeng/shared';
 import {CoreModule} from './core/core.module';
 import {SecurityModule} from './security/security.module';
+import {ToastyModule} from 'ng2-toasty';
 
 export function HttpLoaderFactory(http: Http) {
    return new TranslateStaticLoader(http, '/assets/i18n', '.json');
@@ -198,6 +199,7 @@ export function HttpLoaderFactory(http: Http) {
          deps: [Http]
       }),
 
+      ToastyModule.forRoot(),
       CoreModule,
       SecurityModule,
       AppRoutes,

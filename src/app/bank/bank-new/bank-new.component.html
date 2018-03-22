@@ -1,3 +1,70 @@
-<p>
-  bank-new works!
-</p>
+<div class="ui-g">
+   <div class="ui-g-12">
+      <div class="card card-w-title">
+
+         <div>
+            <h1>{{(bank?.key?.length > 0 ? 'bank.edit_bank' : 'bank.add_bank') | translate}}</h1>
+         </div>
+
+         <form #f="ngForm" novalidate autocomplete="off" (submit)="f.valid ? save(f) : ''" autocomplete="off">
+
+            <div class="ui-g">
+
+                  <div class="ui-g-3 ui-fluid">
+                     <label>{{'bank.fields.code' | translate}}</label>
+                     <input pInputText
+                            type="text"
+                            name="bankCode"
+                            [(ngModel)]="bank.code"
+                            #codeItem="ngModel"
+                            maxlength="10"
+                     >
+                     <app-message [form]="f" [control]="codeItem"></app-message>
+                  </div>
+
+                  <div class="ui-sm-12 ui-g-12 ui-fluid">
+                     <label>{{'bank.fields.name' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                     <input pInputText
+                            type="text"
+                            name="bankName"
+                            [(ngModel)]="bank.name"
+                            #nameItem="ngModel"
+                            required="true"
+                            minlength="5" maxlength="150"
+                     >
+                     <app-message [form]="f" [control]="nameItem"></app-message>
+                  </div>
+
+                  <div class="ui-sm-12 ui-g-12 ui-fluid">
+                     <label>{{'bank.fields.url' | translate}}</label>
+                     <input pInputText
+                            type="text"
+                            name="bankUrl"
+                            [(ngModel)]="bank.url"
+                            #urlItem="ngModel"
+                            minlength="5" maxlength="150"
+                     >
+                     <app-message [form]="f" [control]="urlItem"></app-message>
+                  </div>
+
+
+               <div class="ui-sm-12 ui-g-12">
+                  <button pButton type="button"
+                          label="{{'actions.cancel' | translate}}"
+                          class="ui-button-danger"
+                          tooltipPosition="top" pTooltip="{{'actions.tooltip.cancel' | translate}}"
+                          (click)="cancel()"></button>
+                  <button pButton type="submit"
+                          [disabled]="f.invalid"
+                          label="{{(bank.key ? 'actions.update' : 'actions.save') | translate}}"
+                          tooltipPosition="top" pTooltip="{{'actions.tooltip.save' | translate}}"
+                          class="ui-button-success"></button>
+               </div>
+
+            </div>
+
+         </form>
+
+      </div>
+   </div>
+</div>

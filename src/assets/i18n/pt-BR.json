@@ -1,48 +1,70 @@
 {
-   "commons":{
+   "commons": {
       "language": "Idioma"
+   },
+   "menu": {
+      "base": "Base",
+      "bank": "Bancos",
+      "financial": "Financeiro"
    },
    "flags": {
       "brazil": "Brasil",
       "english": "Inglês"
    },
    "actions": {
+      "tooltip": {
+         "edit": "Editar item selecionado",
+         "delete": "Excluir item selecionado",
+         "save": "Salvar dados",
+         "cancel": "Retornar para a lista",
+         "new": "Adicionar item"
+      },
       "edit": "Editar",
-      "update" : "Atualizar",
-      "save" : "Salvar",
+      "update": "Atualizar",
+      "refresh": "Recarregar",
+      "save": "Salvar",
       "add": "Adicionar",
-      "cancel" : "Cancelar",
+      "cancel": "Cancelar",
       "delete": "Excluir",
       "select": "Selecione",
       "global_filter": "Filtro global - min 3 caracteres",
       "no_records_found": "Nenhum registro encontrado",
-      "required": "obrigatório",
+      "required": "Obrigatório",
       "confirm": "Confirmação",
-      "confirm-deletion" : "Tem certeza que deseja excluir o item selecionado?",
-      "type_to_search" : "Buscar por tipo",
+      "confirm-deletion": "Tem certeza que deseja excluir o item selecionado?",
+      "type_to_search": "Buscar por tipo",
       "success": "Sucesso",
       "error": "Erro",
       "info": "Info",
-      "yes" : "Sim",
+      "yes": "Sim",
       "no": "Não"
    },
-
-
+   "validation": {
+      "required": "O campo é obrigatório.",
+      "requiredLabel": "[obrigatório]",
+      "minlength": "Mínimo de ",
+      "maxlength": "Máximo de ",
+      "character": "Caracter(es).",
+      "pattern": "Conteúdo inválido."
+   },
    "bank": {
-      "fields":{
+      "fields": {
          "code": "Código",
-         "name" : "Nome",
-         "url":"URL"
+         "name": "Nome",
+         "url": "URL"
       },
       "title": "Banco",
-      "list_of_banks" : "Lista de Bancos",
-      "add_bank" : "Adicionar novo banco"
+      "list_of_banks": "Lista de Bancos",
+      "add_bank": "Adicionar novo banco",
+      "edit_bank": "Editar Banco",
+      "delete_success": "Banco removido com sucesso!",
+      "add_success": "Banco adicionado com sucesso.",
+      "update_success": "Banco atualizado com sucesso."
    },
-
-   "errors" : {
-      "session_expired" : "Sua sessão expirou",
-      "processing_request" :"Ocorreu um erro ao processar a sua solicitação",
+   "errors": {
+      "session_expired": "Sua sessão expirou",
+      "processing_request": "Ocorreu um erro ao processar a sua solicitação",
       "access_denied": "Você não tem permissão para executar esta ação",
-      "service_error" :"Erro ao processar serviço remoto. Tente novamente."
+      "service_error": "Erro ao processar serviço remoto. Tente novamente."
    }
 }

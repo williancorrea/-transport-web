@@ -1,6 +1,6 @@
 export class Bank {
-   id: number;
-   code: number;
+   key: string;
+   code: string;
    name: string;
    url: string;
 

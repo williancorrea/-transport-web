@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {TranslateService} from 'ng2-translate';
 import {Router} from '@angular/router';
 import {ConfirmationService, LazyLoadEvent, Message} from 'primeng/api';
@@ -18,10 +18,14 @@ export class BankSearchComponent implements OnInit {
 
    banks = [];
    selectedBank = null;
-
-   tableCollumnsName: any[];
    loading: boolean;
    totalRecords = 0;
+
+   /*
+    * Binds with items on html page
+    */
+   @ViewChild('dataTable') grid;
+   @ViewChild('globalFilter') filterGrid;
 
 
    constructor(private router: Router,
@@ -34,24 +38,28 @@ export class BankSearchComponent implements OnInit {
                private title: Title) {
    }
 
+   /**
+    * Run the information as soon as the page finishes rendering
+    */
    ngOnInit() {
       this.setLoading(true);
       this.translate.get('bank').subscribe(s => {
          this.title.setTitle(s['list_of_banks']);
-
-         // this.tableCollumnsName = [
-         //    {field: 'id', header: s.fields.code, hidden: true},
-         //    {field: 'code', header: s.fields.code, sortable: true, style: {'width': '15%'}},
-         //    {field: 'name', header: s.fields.name, sortable: true},
-         //    {field: 'url', header: s.fields.url, sortable: true}
-         // ];
       });
    }
 
+   /**
+    * Assigns the value to enable or disable the loading icon in the datatable
+    */
    setLoading(loading) {
       this.loading = loading;
    }
 
+   /**
+    * Load lazy datatable according to the information passed in the filters
+    *
+    * @param {LazyLoadEvent} lazyLoad
+    */
    loadBank(lazyLoad: LazyLoadEvent) {
       this.setLoading(true);
       this.selectedBank = null;
@@ -65,6 +73,12 @@ export class BankSearchComponent implements OnInit {
          });
    }
 
+   /**
+    * Reloads all datatable records
+    *
+    * @param filter
+    * @param dataTable
+    */
    findAll(filter, dataTable) {
       this.setLoading(true);
       if (filter) {
@@ -83,10 +97,18 @@ export class BankSearchComponent implements OnInit {
       );
    }
 
+   /**
+    * Redirects you to the data edit screen
+    */
    edit() {
-      console.log('Editar o item selecionado', this.selectedBank);
+      this.router.navigateByUrl(`banks/${this.selectedBank.key}`);
    }
 
+   /**
+    * Opens the popup to confirm the deletion of the registry
+    *
+    * @constructor
+    */
    ConfirmDeletion() {
       this.translate.get('actions').subscribe(s => {
          this.confirmation.confirm({
@@ -98,19 +120,24 @@ export class BankSearchComponent implements OnInit {
       });
    }
 
+   /**
+    * Deletes the selected record
+    */
    delete() {
-      console.log('Deletar o item selecionado', this.selectedBank);
-
-      // this.lancamentoService.excluir(lancamento.codigo)
-      //    .then(() => {
-      //       if (this.grid.first === 0) {
-      //          this.pesquisar();
-      //       } else {
-      //          this.grid.first = 0;
-      //       }
-      //
-            this.toasty.success('Lançamento excluído com sucesso!');
-      //    })
-      //    .catch(erro => this.errorHandler.handle(erro));
+      this.translate.get('bank').subscribe(s => {
+         this.bankService.delete(this.selectedBank.key)
+            .then(() => {
+               if (this.grid.first === 0) {
+                  this.findAll(this.filterGrid.nativeElement, this.grid);
+               } else {
+                  this.filterGrid.nativeElement.value = '';
+                  this.grid.first = 0;
+               }
+               this.toasty.success(s['delete_success']);
+            })
+            .catch(
+               error => this.errorHandler.handle(error)
+            );
+      });
    }
 }

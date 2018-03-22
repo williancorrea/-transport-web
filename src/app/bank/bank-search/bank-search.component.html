@@ -4,7 +4,12 @@
 
          <div>
             <h1>{{'bank.list_of_banks' | translate}}</h1>
-            <button pButton class="btn-add-new ui-button-secondary" label="{{'bank.add_bank' | translate}}" iconPos="left" icon="fa-plus"></button>
+            <a pButton class="btn-add-new ui-button-secondary"
+               label="{{'bank.add_bank' | translate}}"
+               iconPos="left" icon="fa-plus"
+               tooltipPosition="top" pTooltip="{{'actions.tooltip.new' | translate}}"
+               routerLink="/banks/new">
+            </a>
          </div>
 
          <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
@@ -40,7 +45,9 @@
             <p-column field="url" header="{{'bank.fields.url' | translate}}" [sortable]="true"></p-column>
 
             <ng-template pTemplate="paginatorLeft">
-               <a pButton icon="fa-refresh" (click)="findAll(globalFilter, dataTable)"></a>
+               <a pButton icon="fa-refresh"
+                  (click)="findAll(globalFilter, dataTable)"
+                  tooltipPosition="top" pTooltip="{{'actions.refresh' | translate}}"></a>
             </ng-template>
 
             <ng-template pTemplate="paginatorRight" let-obj="rowData">
@@ -49,6 +56,7 @@
                        icon="fa-pencil"
                        label="{{'actions.edit' | translate}}"
                        [disabled]="selectedBank ? false :true"
+                       tooltipPosition="top" pTooltip="{{'actions.tooltip.edit' | translate}}"
                        (click)="edit()"></button>
                <button type="button"
                        pButton
@@ -56,6 +64,7 @@
                        class="ui-button-danger"
                        label="{{'actions.delete' | translate}}"
                        [disabled]="selectedBank ? false :true"
+                       tooltipPosition="top" pTooltip="{{'actions.tooltip.delete' | translate}}"
                        (click)="ConfirmDeletion(obj)"></button>
             </ng-template>
          </p-dataTable>
