@@ -21,6 +21,7 @@ import {BankNewComponent} from './bank/bank-new/bank-new.component';
 
 export const routes: Routes = [
    {path: '', component: DashboardDemoComponent, pathMatch: 'full'},
+
    {path: 'sample', component: SampleDemoComponent},
    {path: 'forms', component: FormsDemoComponent},
    {path: 'data', component: DataDemoComponent},

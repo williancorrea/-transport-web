@@ -14,6 +14,8 @@ import {ErrorHandlerService} from './error-handler.service';
 import {NaoAutorizadoComponent} from './nao-autorizado.component';
 import {PaginaNaoEncontradaComponent} from './pagina-nao-encontrada.component';
 import {BankService} from '../bank/bank.service';
+import {TranslateModule} from 'ng2-translate';
+import {ButtonModule} from 'primeng/button';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import {BankService} from '../bank/bank.service';
       CommonModule,
       HttpModule,
       RouterModule,
+      TranslateModule,
+      ButtonModule,
 
       ToastyModule.forRoot(),
       ConfirmDialogModule,

@@ -58,26 +58,33 @@ export class BankNewComponent implements OnInit {
       this.loading = value;
    }
 
-
    save(form) {
       if (form.valid) {
+         this.showLoading(true);
          if (this.bank.key) {
             this.bankService.update(this.bank)
                .then(
                   response => {
                      this.toasty.success(this.bankTranslate['update_success']);
-
+                     this.showLoading(false);
                      this.router.navigateByUrl('/banks');
                   }
-               ).catch(erro => this.errorHandler.handle(erro));
+               ).catch(erro => {
+               this.errorHandler.handle(erro);
+               this.showLoading(false);
+            });
          } else {
             this.bankService.save(this.bank)
                .then(
                   response => {
                      this.toasty.success(this.bankTranslate['add_success']);
+                     this.showLoading(false);
                      this.router.navigateByUrl('/banks');
                   }
-               ).catch(erro => this.errorHandler.handle(erro));
+               ).catch(erro => {
+               this.errorHandler.handle(erro);
+               this.showLoading(false);
+            });
          }
       }
    }

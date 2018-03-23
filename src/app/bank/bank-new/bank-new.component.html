@@ -4,7 +4,9 @@
 
       <div class="card card-w-title">
          <div >
-            <h1>{{(bank?.key?.length > 0 ? 'bank.edit_bank' : 'bank.add_bank') | translate}}</h1>
+
+            <h1 *ngIf="loading === true">{{('commons.loading') | translate}}</h1>
+            <h1 *ngIf="loading === false">{{(bank?.key?.length > 0 ? 'bank.edit_bank' : 'bank.add_bank') | translate}}</h1>
          </div>
 
          <form #f="ngForm" novalidate autocomplete="off" (submit)="save(f)" autocomplete="off">

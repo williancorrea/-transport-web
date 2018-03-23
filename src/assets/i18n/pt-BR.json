@@ -1,6 +1,12 @@
 {
    "commons": {
-      "language": "Idioma"
+      "language": "Idioma",
+      "loading": "Aguarde, carregando ...",
+      "dashboard" : "Dashboard",
+      "page": {
+         "not_found" : "Página não encontrada",
+         "not_found_description" : "A página que você solicitou não pode ser encontrada."
+      }
    },
    "menu": {
       "base": "Base",
