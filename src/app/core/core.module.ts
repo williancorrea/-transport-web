@@ -12,7 +12,7 @@ import {JwtHelper} from 'angular2-jwt';
 import {AuthService} from './../security/auth.service';
 import {ErrorHandlerService} from './error-handler.service';
 import {NaoAutorizadoComponent} from './nao-autorizado.component';
-import {PaginaNaoEncontradaComponent} from './pagina-nao-encontrada.component';
+import {PageNotFoundComponent} from './page-not-found.component';
 import {BankService} from '../bank/bank.service';
 import {TranslateModule} from 'ng2-translate';
 import {ButtonModule} from 'primeng/button';
@@ -26,11 +26,10 @@ import {ButtonModule} from 'primeng/button';
       TranslateModule,
       ButtonModule,
 
-      ToastyModule.forRoot(),
       ConfirmDialogModule,
    ],
    declarations: [
-      PaginaNaoEncontradaComponent,
+      PageNotFoundComponent,
       NaoAutorizadoComponent
    ],
    exports: [

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
    template: `
@@ -17,6 +17,6 @@ import {Component, OnInit} from '@angular/core';
    `,
    styles: []
 })
-export class PaginaNaoEncontradaComponent {
+export class PageNotFoundComponent {
 
 }

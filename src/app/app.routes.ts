@@ -16,11 +16,13 @@ import {UtilsDemoComponent} from './demo/view/utilsdemo.component';
 import {DocumentationComponent} from './demo/view/documentation.component';
 import {BankSearchComponent} from './bank/bank-search/bank-search.component';
 import {NaoAutorizadoComponent} from './core/nao-autorizado.component';
-import {PaginaNaoEncontradaComponent} from './core/pagina-nao-encontrada.component';
+import {PageNotFoundComponent} from './core/page-not-found.component';
 import {BankNewComponent} from './bank/bank-new/bank-new.component';
+import {LoginFormComponent} from './security/login-form/login-form.component';
 
 export const routes: Routes = [
    {path: '', component: DashboardDemoComponent, pathMatch: 'full'},
+
 
    {path: 'sample', component: SampleDemoComponent},
    {path: 'forms', component: FormsDemoComponent},
@@ -37,13 +39,15 @@ export const routes: Routes = [
    {path: 'documentation', component: DocumentationComponent},
 
    {path: 'nao-autorizado', component: NaoAutorizadoComponent},
-   {path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent},
+   {path: 'page-not-found', component: PageNotFoundComponent},
+
+   {path: 'login', component: LoginFormComponent},
 
    {path: 'banks', component: BankSearchComponent},
    {path: 'banks/new', component: BankNewComponent},
    {path: 'banks/:key', component: BankNewComponent},
 
-   {path: '**', redirectTo: 'pagina-nao-encontrada'},
+   {path: '**', redirectTo: 'page-not-found'}
 
 ];
 

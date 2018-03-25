@@ -1,0 +1,18 @@
+.login-body{
+   margin-right: 60px;
+}
+.login-body{
+   background-color: #f1f3f6;
+   padding-top: 0px
+}
+.login-body .login-panel{
+   background-color: #f1f3f6;
+   border: 1px solid #ccc;
+}
+.login-body .login-panel h1{
+   font-size: 21px;
+}
+
+.margin-button-login{
+   margin-top: 30px;
+}

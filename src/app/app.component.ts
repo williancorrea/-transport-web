@@ -1,7 +1,7 @@
 import {Component, AfterViewInit, Renderer, OnDestroy, OnInit} from '@angular/core';
 import {TranslateService} from 'ng2-translate';
 import {Subscription} from 'rxjs/Subscription';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ToastyConfig} from 'ng2-toasty';
 
 enum MenuOrientation {
@@ -31,7 +31,8 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
    constructor(public renderer: Renderer,
                private toastyConfig: ToastyConfig,
                private translate: TranslateService,
-               private activatedRoute: ActivatedRoute) {
+               private activatedRoute: ActivatedRoute,
+               private router: Router) {
 
       this.translate.addLangs(['pt-BR', 'en']);
       this.translate.setDefaultLang('en');
@@ -50,6 +51,9 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
                this.translate.use(locale);
             }
          });
+   }
+   isOnLoginPage():boolean{
+      return this.router.url !== '/login';
    }
 
    changeLanguage(lang) {

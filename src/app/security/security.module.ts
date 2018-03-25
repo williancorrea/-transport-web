@@ -11,8 +11,11 @@ import {AuthGuard} from './auth.guard';
 import {LogoutService} from './logout.service';
 import {AuthService} from './auth.service';
 import {TransportHttp} from './transport-http';
-import {SegurancaRoutingModule} from './seguranca-routing.module';
 import {LoginFormComponent} from './login-form/login-form.component';
+import {TransportSharedModule} from '../transort-shared/transport-share.module';
+import {CoreModule} from '../core/core.module';
+import {TranslateModule, TranslateService} from 'ng2-translate';
+import {MessageModule} from 'primeng/message';
 
 export function authHttpServiceFactory(auth: AuthService, http: Http, options: RequestOptions) {
    const config = new AuthConfig({
@@ -29,11 +32,13 @@ export function authHttpServiceFactory(auth: AuthService, http: Http, options: R
       CommonModule,
 
       FormsModule,
+      TranslateModule,
+      TransportSharedModule,
+      CoreModule,
 
+      MessageModule,
       InputTextModule,
       ButtonModule,
-
-      SegurancaRoutingModule
    ],
    declarations: [LoginFormComponent],
    providers: [
@@ -43,6 +48,7 @@ export function authHttpServiceFactory(auth: AuthService, http: Http, options: R
          deps: [AuthService, Http, RequestOptions]
       },
       AuthGuard,
+      TranslateService,
       LogoutService
    ]
 })

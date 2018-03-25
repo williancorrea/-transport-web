@@ -67,6 +67,14 @@
       "add_success": "Banco adicionado com sucesso.",
       "update_success": "Banco atualizado com sucesso."
    },
+   "login":{
+      "login_to_your_account": "Faça login na sua conta",
+      "welcome_to" : "Bem vindo a Rosinha Turismo",
+      "sign_in": "Entrar",
+      "email" :"E-mail",
+      "password" : "Senha",
+      "forgot_password": "Esqueceu a senha"
+   },
    "errors": {
       "session_expired": "Sua sessão expirou",
       "processing_request": "Ocorreu um erro ao processar a sua solicitação",

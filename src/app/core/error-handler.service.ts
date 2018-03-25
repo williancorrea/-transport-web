@@ -16,8 +16,9 @@ export class ErrorHandlerService {
 
    handle(errorResponse: any) {
       let msg: string;
+      // console.log('DEU ZICA', errorResponse);
 
-      this.translate.get('bank').subscribe(s => {
+      this.translate.get('errors').subscribe(s => {
          if (typeof errorResponse === 'string') {
             msg = errorResponse;
 
