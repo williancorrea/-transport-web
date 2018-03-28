@@ -6,6 +6,12 @@
       "page": {
          "not_found" : "Página não encontrada",
          "not_found_description" : "A página que você solicitou não pode ser encontrada."
+      },
+      "filter":{
+         "filter" : "Filtrar",
+         "more_filters" : "Mais Filtros",
+         "less_filters" : "Menos Filtros",
+         "fields" : "Filtrar por campos"
       }
    },
    "menu": {

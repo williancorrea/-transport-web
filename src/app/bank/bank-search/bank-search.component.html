@@ -13,7 +13,7 @@
          </div>
 
          <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
-            <div class="ui-inputgroup">
+            <div class="ui-inputgroup" ngClass="{{showFilter ? 'd-none': ''}}">
                <span class="ui-inputgroup-addon"><i class="fa fa-search"></i></span>
                <input #globalFilter pInputText type="text" size="50"
                       placeholder="{{'actions.global_filter' | translate}}">
@@ -22,6 +22,57 @@
                        class="ui-button-danger"
                        *ngIf="globalFilter.value.length > 0"
                        (click)="findAll(globalFilter, dataTable)"></button>
+               <button pButton
+                       type="button" icon="fa-filter"
+                       *ngIf="globalFilter.value.length === 0"
+                       label="{{'commons.filter.more_filters' | translate}}"
+                       class="ui-button-secondary"
+                       (click)="showFilterFields(true)"></button>
+            </div>
+
+
+            <div class="ui-g" ngClass="{{!showFilter ? 'd-none': ''}}">
+               <div class="ui-g-12">
+                  <h2>{{'commons.filter.fields' | translate}}</h2>
+               </div>
+               <div class="ui-g-4 ui-fluid">
+                  <label>{{'bank.fields.code' | translate}}</label>
+                  <input pInputText
+                         type="text"
+                         name="bankCode"
+                         [(ngModel)]="bankFilters.code"
+                         maxlength="30"
+                  >
+               </div>
+               <div class="ui-g-4 ui-fluid">
+                  <label>{{'bank.fields.name' | translate}}</label>
+                  <input pInputText
+                         type="text"
+                         name="bankName"
+                         [(ngModel)]="bankFilters.name"
+                         maxlength="30"
+                  >
+               </div>
+               <div class="ui-g-4 ui-fluid">
+                  <label>{{'bank.fields.url' | translate}}</label>
+                  <input pInputText
+                         type="text"
+                         name="bankUrl"
+                         [(ngModel)]="bankFilters.url"
+                         maxlength="30"
+                  >
+               </div>
+               <div class="ui-g-12" style="text-align: right">
+                  <button pButton
+                          type="button" icon="fa-minus"
+                          label="{{'commons.filter.less_filters' | translate}}"
+                          class="ui-button-secondary"
+                          (click)="findAll(globalFilter, dataTable)"></button>
+                  <button pButton
+                          type=" button" icon="fa-filter"
+                          (click)="filterFields(dataTable)"
+                          label="{{'commons.filter.filter' | translate}}"></button>
+               </div>
             </div>
          </div>
          <p-dataTable #dataTable
@@ -29,7 +80,7 @@
                       [(selection)]="selectedBank"
                       selectionMode="single"
                       [lazy]="true"
-                      [totalRecords]="totalRecords"
+                      [(totalRecords)]="totalRecords"
                       [globalFilter]="globalFilter"
                       (onLazyLoad)="loadBank($event)"
                       [loading]="loading"

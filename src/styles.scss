@@ -24,12 +24,17 @@ body .ui-button.ui-button-icon-only .fa {
    margin-left: -0.5em;
 }
 
-.exception-body{
+.exception-body {
    background-color: #f7f7f7;
    padding-top: 50px;
 }
-.exception-body .exception-panel{
-   border-bottom : 0px;
+
+.exception-body .exception-panel {
+   border-bottom: 0px;
+}
+
+.d-none {
+   display: none !important;
 }
 
 //.footer-fixed{

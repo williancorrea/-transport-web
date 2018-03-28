@@ -9,6 +9,7 @@ import {AuthService} from '../../security/auth.service';
 import {ErrorHandlerService} from '../../core/error-handler.service';
 import {Title} from '@angular/platform-browser';
 import {environment} from '../../../environments/environment';
+import {BankFilters} from '../../core/model/bankFilters';
 
 @Component({
    selector: 'app-bank-search',
@@ -18,6 +19,8 @@ import {environment} from '../../../environments/environment';
 export class BankSearchComponent implements OnInit {
 
    banks = [];
+   bankFilters: BankFilters;
+   showFilter: boolean;
    selectedBank = null;
    loading: boolean;
    totalRecords = 0;
@@ -44,6 +47,9 @@ export class BankSearchComponent implements OnInit {
     * Run the information as soon as the page finishes rendering
     */
    ngOnInit() {
+      this.showFilter = false;
+      this.bankFilters = new BankFilters();
+
       this.env = environment;
       this.setLoading(true);
       this.translate.get('bank').subscribe(s => {
@@ -53,10 +59,36 @@ export class BankSearchComponent implements OnInit {
 
    /**
     * Assigns the value to enable or disable the loading icon in the datatable
+    *
+    * @param loading
     */
    setLoading(loading) {
       this.loading = loading;
    }
+
+   /**
+    * Show more filters with individual fields
+    *
+    * @param {boolean} value
+    */
+   showFilterFields(value: boolean) {
+      this.showFilter = value;
+      this.bankFilters = new BankFilters();
+      if (this.filterGrid) {
+         this.filterGrid.nativeElement.value = '';
+      }
+
+   }
+
+   /**
+    * Filter through individual fields
+    *
+    * @param dataTable
+    */
+   filterFields(dataTable) {
+      this.setFilterDataTable(null, dataTable);
+   }
+
 
    /**
     * Load lazy datatable according to the information passed in the filters
@@ -66,9 +98,9 @@ export class BankSearchComponent implements OnInit {
    loadBank(lazyLoad: LazyLoadEvent) {
       this.setLoading(true);
       this.selectedBank = null;
-      this.bankService.findAll(lazyLoad).then(result => {
-            this.banks = result.content;
+      this.bankService.findAll(lazyLoad, this.bankFilters).then(result => {
             this.totalRecords = result.totalElements;
+            this.banks = result.content;
             this.setLoading(false);
          })
          .catch(error => {
@@ -77,7 +109,7 @@ export class BankSearchComponent implements OnInit {
    }
 
    /**
-    * Reloads all datatable records
+    * Reloads all DataTable records
     *
     * @param filter
     * @param dataTable
@@ -88,12 +120,23 @@ export class BankSearchComponent implements OnInit {
          filter.value = '';
       }
 
+      this.showFilterFields(false);
+      this.setFilterDataTable(filter, dataTable);
+   }
+
+   /**
+    * Assigns values to DataTable LazyLoading
+    *
+    * @param filter
+    * @param dataTable
+    */
+   setFilterDataTable(filter, dataTable) {
       if (this.grid.first === 0) {
          this.loadBank(
             {
                filters: dataTable.filters,
                first: 0,
-               globalFilter: filter.value,
+               globalFilter: filter && filter.value ? filter.value : '',
                multiSortMeta: dataTable.multiSortMeta,
                rows: dataTable.rows,
                sortField: dataTable.sortField,
