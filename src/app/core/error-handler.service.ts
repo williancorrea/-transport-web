@@ -33,6 +33,7 @@ export class ErrorHandlerService {
 
             if (errorResponse.status === 403) {
                msg = s['access_denied'];
+               this.router.navigate(['/access-denied']);
             }
 
             try {

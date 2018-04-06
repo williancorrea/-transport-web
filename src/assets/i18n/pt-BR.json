@@ -5,7 +5,9 @@
       "dashboard" : "Dashboard",
       "page": {
          "not_found" : "Página não encontrada",
-         "not_found_description" : "A página que você solicitou não pode ser encontrada."
+         "not_found_description" : "A página que você solicitou não pode ser encontrada.",
+         "access_denied": "Acesso Negado.",
+         "access_denied_description": "Você não tem permissão para acessar este recurso"
       },
       "filter":{
          "filter" : "Filtrar",

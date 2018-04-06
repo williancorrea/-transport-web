@@ -37,6 +37,23 @@ body .ui-button.ui-button-icon-only .fa {
    display: none !important;
 }
 
+
+
+.splash-screen {
+   background: #f1f3f6 !important;
+}
+.splash-screen .splash-loader {
+   background-color: #f1f3f6;
+   border: 10px solid #f1f3f6; }
+.splash-screen .splash-loader img {
+   width: 100px;
+   margin-top: 35px;
+}
+
+.layout-wrapper .topbar .logo img {
+   margin-top: 10px;
+}
+
 //.footer-fixed{
 //   position: fixed;
 //   bottom: 0;

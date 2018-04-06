@@ -15,7 +15,7 @@ import {FileDemoComponent} from './demo/view/filedemo.component';
 import {UtilsDemoComponent} from './demo/view/utilsdemo.component';
 import {DocumentationComponent} from './demo/view/documentation.component';
 import {BankSearchComponent} from './bank/bank-search/bank-search.component';
-import {NaoAutorizadoComponent} from './core/nao-autorizado.component';
+import {AccessDeniedComponent} from './core/access-denied.component';
 import {PageNotFoundComponent} from './core/page-not-found.component';
 import {BankNewComponent} from './bank/bank-new/bank-new.component';
 import {LoginFormComponent} from './security/login-form/login-form.component';
@@ -38,7 +38,7 @@ export const routes: Routes = [
    {path: 'utils', component: UtilsDemoComponent},
    {path: 'documentation', component: DocumentationComponent},
 
-   {path: 'nao-autorizado', component: NaoAutorizadoComponent},
+   {path: 'access-denied', component: AccessDeniedComponent},
    {path: 'page-not-found', component: PageNotFoundComponent},
 
    {path: 'login', component: LoginFormComponent},

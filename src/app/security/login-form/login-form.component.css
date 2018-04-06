@@ -10,9 +10,16 @@
    border: 1px solid #ccc;
 }
 .login-body .login-panel h1{
-   font-size: 21px;
+   font-size: 19px;
+}
+.login-body .login-panel h2 {
+   font-size: 12px;
 }
 
 .margin-button-login{
    margin-top: 30px;
+}
+
+.login-body .login-panel img{
+   width: 240px;
 }
