@@ -6,6 +6,7 @@ import {Bank} from '../../core/model/bank';
 import {BankService} from '../bank.service';
 import {ErrorHandlerService} from '../../core/error-handler.service';
 import {ToastyService} from 'ng2-toasty';
+import {AuthService} from '../../security/auth.service';
 
 @Component({
    selector: 'app-bank-new',
@@ -24,6 +25,7 @@ export class BankNewComponent implements OnInit {
                private title: Title,
                private bankService: BankService,
                private toasty: ToastyService,
+               private auth: AuthService,
                private errorHandler: ErrorHandlerService) {
       this.bank = new Bank();
    }

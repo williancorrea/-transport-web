@@ -58,6 +58,7 @@
                           tooltipPosition="top" pTooltip="{{'actions.tooltip.cancel' | translate}}"
                           (click)="cancel()"></button>
                   <button pButton type="submit"
+                          *ngIf="bank.key ? auth.hasPermission('ROLE_UPDATE_BANK') : auth.hasPermission('ROLE_SAVE_BANK')"
                           [disabled]="f.invalid"
                           label="{{(bank.key ? 'actions.update' : 'actions.save') | translate}}"
                           tooltipPosition="top" pTooltip="{{'actions.tooltip.save' | translate}}"

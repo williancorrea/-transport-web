@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/primeng';
 import {AppComponent} from './app.component';
 import {TranslateService} from 'ng2-translate';
+import {AuthService} from './security/auth.service';
 
 @Component({
     selector: 'app-menu',
@@ -17,7 +18,8 @@ export class AppMenuComponent implements OnInit {
     public model: any[];
 
     constructor(public app: AppComponent,
-                public translate: TranslateService) {}
+                public translate: TranslateService,
+                private auth: AuthService) {}
 
     ngOnInit() {
        this.translate.get('menu').subscribe(m => {
@@ -29,7 +31,7 @@ export class AppMenuComponent implements OnInit {
                {
                   label: m['base'], icon: 'fa fa-fw fa-book',
                   items: [
-                     {label:  m['bank'], icon: 'fa fa-fw fa-building', routerLink: ['/banks']},
+                     {label:  m['bank'], icon: 'fa fa-fw fa-building', routerLink: ['/banks'], visible: this.auth.hasPermission('ROLE_LIST_BANK')},
                   ]
                },
                {

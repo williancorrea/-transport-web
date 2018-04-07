@@ -48,12 +48,12 @@ export class TransportHttp extends AuthHttp {
   }
 
   private fazerRequisicao(fn: Function): Observable<Response> {
-    if (this.auth.isAccessTokenInvalido()) {
+    if (this.auth.isInvalidAccessToken()) {
       console.log('Requisição HTTP com access token inválido. Obtendo novo token...');
 
-      const chamadaNovoAccessToken = this.auth.obterNovoAccessToken()
+      const chamadaNovoAccessToken = this.auth.getNewAccessToken()
         .then(() => {
-          if (this.auth.isAccessTokenInvalido()) {
+          if (this.auth.isInvalidAccessToken()) {
             throw new NotAuthenticatedError();
           }
 

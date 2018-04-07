@@ -3,6 +3,7 @@ import {AppComponent} from './app.component';
 import {LogoutService} from './security/logout.service';
 import {ErrorHandlerService} from './core/error-handler.service';
 import {Router} from '@angular/router';
+import {AuthService} from './security/auth.service';
 
 @Component({
    selector: 'app-topbar',
@@ -27,8 +28,7 @@ import {Router} from '@angular/router';
                      <img src="assets/layout/images/profile-image.png">
                   </div>
                   <div class="profile-info">
-                     <span class="topbar-item-name profile-name">Claire White</span>
-                     <span class="topbar-item-name profile-role">System Admin</span>
+                     <span class="topbar-item-name profile-name">{{auth.jwtPayload?.nome}}</span>                     
                   </div>
                </a>
 
@@ -169,6 +169,7 @@ import {Router} from '@angular/router';
 export class AppTopbarComponent {
 
    constructor(public app: AppComponent,
+               private auth: AuthService,
                private logoutService: LogoutService,
                private errorHandler: ErrorHandlerService,
                private router: Router) {
