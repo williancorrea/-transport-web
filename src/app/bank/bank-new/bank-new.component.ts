@@ -25,7 +25,7 @@ export class BankNewComponent implements OnInit {
                private title: Title,
                private bankService: BankService,
                private toasty: ToastyService,
-               private auth: AuthService,
+               public auth: AuthService,
                private errorHandler: ErrorHandlerService) {
       this.bank = new Bank();
    }

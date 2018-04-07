@@ -36,7 +36,7 @@ export class BankSearchComponent implements OnInit {
    constructor(private router: Router,
                private translate: TranslateService,
                private bankService: BankService,
-               private auth: AuthService,
+               public auth: AuthService,
                private errorHandler: ErrorHandlerService,
                private toasty: ToastyService,
                private confirmation: ConfirmationService,

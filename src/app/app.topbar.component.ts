@@ -169,7 +169,7 @@ import {AuthService} from './security/auth.service';
 export class AppTopbarComponent {
 
    constructor(public app: AppComponent,
-               private auth: AuthService,
+               public auth: AuthService,
                private logoutService: LogoutService,
                private errorHandler: ErrorHandlerService,
                private router: Router) {
