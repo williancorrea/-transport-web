@@ -12,7 +12,7 @@ import {PanelModule} from 'primeng/panel';
 import {TransportSharedModule} from '../transort-shared/transport-share.module';
 import {CoreModule} from '../core/core.module';
 import {RouterModule} from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
    imports: [
@@ -23,6 +23,7 @@ import {FormsModule} from '@angular/forms';
       CoreModule,
       RouterModule,
       FormsModule,
+      ReactiveFormsModule,
 
       DataTableModule,
       SharedModule,

@@ -3,52 +3,50 @@
       <p-progressBar *ngIf="loading === true" mode="indeterminate"></p-progressBar>
 
       <div class="card card-w-title">
-         <div >
+         <div>
 
             <h1 *ngIf="loading === true">{{('commons.loading') | translate}}</h1>
-            <h1 *ngIf="loading === false">{{(bank?.key?.length > 0 ? 'bank.edit_bank' : 'bank.add_bank') | translate}}</h1>
+            <h1 *ngIf="loading === false">{{(bank?.key?.length > 0 ? 'bank.edit_bank' : 'bank.add_bank') |
+               translate}}</h1>
          </div>
 
-         <form #f="ngForm" novalidate autocomplete="off" (submit)="save(f)" autocomplete="off">
+         <form #f novalidate autocomplete="off" (submit)="save()" autocomplete="off" [formGroup]="form">
 
             <div class="ui-g">
+               <input pInputText
+                      type="text"
+                      [hidden]="true"
+                      name="key"
+                      formControlName="key">
 
-                  <div class="ui-g-3 ui-fluid">
-                     <label>{{'bank.fields.code' | translate}}</label>
-                     <input pInputText
-                            type="text"
-                            name="bankCode"
-                            [(ngModel)]="bank.code"
-                            #codeItem="ngModel"
-                            maxlength="10"
-                     >
-                     <app-message [form]="f" [control]="codeItem"></app-message>
-                  </div>
+               <div class="ui-g-3 ui-fluid">
+                  <label>{{'bank.fields.code' | translate}}</label>
+                  <input pInputText
+                         type="text"
+                         name="code"
+                         formControlName="code">
+                  <app-message [form]="f" [control]="form.get('code')"></app-message>
+               </div>
 
-                  <div class="ui-sm-12 ui-g-12 ui-fluid">
-                     <label>{{'bank.fields.name' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
-                     <input pInputText
-                            type="text"
-                            name="bankName"
-                            [(ngModel)]="bank.name"
-                            #nameItem="ngModel"
-                            required="true"
-                            minlength="5" maxlength="150"
-                     >
-                     <app-message [form]="f" [control]="nameItem"></app-message>
-                  </div>
+               <div class="ui-sm-12 ui-g-12 ui-fluid">
+                  <label>{{'bank.fields.name' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <input pInputText
+                         type="text"
+                         name="name"
+                         formControlName="name"
+                  >
+                  <app-message [form]="f" [control]="form.get('name')"></app-message>
+               </div>
 
-                  <div class="ui-sm-12 ui-g-12 ui-fluid">
-                     <label>{{'bank.fields.url' | translate}}</label>
-                     <input pInputText
-                            type="text"
-                            name="bankUrl"
-                            [(ngModel)]="bank.url"
-                            #urlItem="ngModel"
-                            maxlength="150"
-                     >
-                     <app-message [form]="f" [control]="urlItem"></app-message>
-                  </div>
+               <div class="ui-sm-12 ui-g-12 ui-fluid">
+                  <label>{{'bank.fields.url' | translate}}</label>
+                  <input pInputText
+                         type="text"
+                         name="url"
+                         formControlName="url"
+                  >
+                  <app-message [form]="f" [control]="form.get('url')"></app-message>
+               </div>
 
 
                <div class="ui-sm-12 ui-g-12">
@@ -58,9 +56,9 @@
                           tooltipPosition="top" pTooltip="{{'actions.tooltip.cancel' | translate}}"
                           (click)="cancel()"></button>
                   <button pButton type="submit"
-                          *ngIf="bank.key ? auth.hasPermission('ROLE_UPDATE_BANK') : auth.hasPermission('ROLE_SAVE_BANK')"
-                          [disabled]="f.invalid"
-                          label="{{(bank.key ? 'actions.update' : 'actions.save') | translate}}"
+                          *ngIf="form.get('key').value ? auth.hasPermission('ROLE_UPDATE_BANK') : auth.hasPermission('ROLE_SAVE_BANK')"
+                          [disabled]="form.invalid"
+                          label="{{(form.get('key').value ? 'actions.update' : 'actions.save') | translate}}"
                           tooltipPosition="top" pTooltip="{{'actions.tooltip.save' | translate}}"
                           class="ui-button-success"></button>
                </div>

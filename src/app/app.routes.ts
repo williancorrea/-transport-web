@@ -22,7 +22,17 @@ import {LoginFormComponent} from './security/login-form/login-form.component';
 import {AuthGuard} from './security/auth.guard';
 
 export const routes: Routes = [
-   {path: '', component: DashboardDemoComponent, pathMatch: 'full'},
+   {
+      path: '',
+      component: DashboardDemoComponent,
+      pathMatch: 'full',
+      canActivate: [AuthGuard],
+      data: {
+         roles: [
+            'ROLE_LIST_BANK'
+         ]
+      }
+   },
 
    {path: 'sample', component: SampleDemoComponent},
    {path: 'forms', component: FormsDemoComponent},
@@ -40,7 +50,6 @@ export const routes: Routes = [
 
    {path: 'access-denied', component: AccessDeniedComponent},
    {path: 'page-not-found', component: PageNotFoundComponent},
-
    {path: 'login', component: LoginFormComponent},
 
    {path: 'banks', component: BankSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_BANK']}},

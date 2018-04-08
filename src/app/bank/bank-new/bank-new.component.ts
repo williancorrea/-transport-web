@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TranslateService} from 'ng2-translate';
 import {Title} from '@angular/platform-browser';
-import {Bank} from '../../core/model/bank';
 import {BankService} from '../bank.service';
 import {ErrorHandlerService} from '../../core/error-handler.service';
 import {ToastyService} from 'ng2-toasty';
 import {AuthService} from '../../security/auth.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
    selector: 'app-bank-new',
@@ -15,7 +15,7 @@ import {AuthService} from '../../security/auth.service';
 })
 export class BankNewComponent implements OnInit {
 
-   bank: Bank;
+   form: FormGroup;
    bankTranslate: any;
    loading: boolean;
 
@@ -26,11 +26,12 @@ export class BankNewComponent implements OnInit {
                private bankService: BankService,
                private toasty: ToastyService,
                public auth: AuthService,
-               private errorHandler: ErrorHandlerService) {
-      this.bank = new Bank();
+               private errorHandler: ErrorHandlerService,
+               private formBuild: FormBuilder) {
    }
 
    ngOnInit() {
+      this.configForm();
       this.showLoading(true);
       this.translate.get('bank').subscribe(s => {
          this.bankTranslate = s;
@@ -41,7 +42,8 @@ export class BankNewComponent implements OnInit {
 
             this.bankService.findOne(isEditing)
                .then(response => {
-                  this.bank = response;
+                  // this.bank = response;
+                  this.form.patchValue(response);
                   this.showLoading(false);
                })
                .catch(error => {
@@ -56,27 +58,42 @@ export class BankNewComponent implements OnInit {
       });
    }
 
+   configForm() {
+      this.form = this.formBuild.group({
+         key: [null],
+         code: [null, Validators.maxLength(10)],
+         name: [
+            null, [
+               Validators.required,
+               Validators.minLength(5),
+               Validators.maxLength(150)
+            ]
+         ],
+         url: [null, Validators.maxLength(150)]
+      });
+   }
+
    showLoading(value: boolean) {
       this.loading = value;
    }
 
-   save(form) {
-      if (form.valid) {
+   save() {
+      if (this.form.valid) {
          this.showLoading(true);
-         if (this.bank.key) {
-            this.bankService.update(this.bank)
+         if (this.form.get('key').value) {
+            this.bankService.update(this.form.value)
                .then(
                   response => {
                      this.toasty.success(this.bankTranslate['update_success']);
                      this.showLoading(false);
                      this.router.navigateByUrl('/banks');
                   }
-               ).catch(erro => {
-               this.errorHandler.handle(erro);
+               ).catch(error => {
+               this.errorHandler.handle(error);
                this.showLoading(false);
             });
          } else {
-            this.bankService.save(this.bank)
+            this.bankService.save(this.form.value)
                .then(
                   response => {
                      this.toasty.success(this.bankTranslate['add_success']);

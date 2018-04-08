@@ -90,6 +90,7 @@ export class BankService {
     * @returns {Promise<Bank>}
     */
    save(bank: Bank): Promise<Bank> {
+      delete bank['key'];
       delete bank['properties'];
 
       return this.http.post(this.apiUrl,
