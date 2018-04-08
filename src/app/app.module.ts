@@ -109,6 +109,7 @@ import {SharedModule} from 'primeng/shared';
 import {CoreModule} from './core/core.module';
 import {SecurityModule} from './security/security.module';
 import {ToastyModule} from 'ng2-toasty';
+import {ProductUnitModule} from './product-unit/product-unit.module';
 
 export function HttpLoaderFactory(http: Http) {
    return new TranslateStaticLoader(http, '/assets/i18n', '.json');
@@ -122,7 +123,6 @@ export function HttpLoaderFactory(http: Http) {
       FormsModule,
 
       HttpClientModule,
-
 
 
       AccordionModule,
@@ -192,7 +192,6 @@ export function HttpLoaderFactory(http: Http) {
       TreeTableModule,
 
 
-
       TranslateModule.forRoot({
          provide: TranslateLoader,
          useFactory: HttpLoaderFactory,
@@ -203,7 +202,10 @@ export function HttpLoaderFactory(http: Http) {
       CoreModule,
       SecurityModule,
       AppRoutes,
-      BankModule
+
+
+      BankModule,
+      ProductUnitModule
    ],
    declarations: [
       AppComponent,

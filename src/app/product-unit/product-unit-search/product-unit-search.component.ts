@@ -1,27 +1,26 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {TranslateService} from 'ng2-translate';
 import {Router} from '@angular/router';
-import {ConfirmationService, LazyLoadEvent, Message} from 'primeng/api';
-import {ProductUnit} from '../../core/model/bank';
-import {BankService} from '../bank.service';
-import {ToastyService} from 'ng2-toasty';
-import {AuthService} from '../../security/auth.service';
+import {TranslateService} from 'ng2-translate';
 import {ErrorHandlerService} from '../../core/error-handler.service';
 import {Title} from '@angular/platform-browser';
+import {ConfirmationService, LazyLoadEvent} from 'primeng/api';
 import {environment} from '../../../environments/environment';
-import {BankFilters} from '../../core/model/bankFilters';
+import {AuthService} from '../../security/auth.service';
+import {ToastyService} from 'ng2-toasty';
+import {ProductUnitService} from '../product-unit.service';
+import {ProductUnitFilters} from '../../core/model/productUnitFilters';
 
 @Component({
-   selector: 'app-bank-search',
-   templateUrl: './bank-search.component.html',
-   styleUrls: ['./bank-search.component.css']
+   selector: 'app-product-unit-search',
+   templateUrl: './product-unit-search.component.html',
+   styleUrls: ['./product-unit-search.component.css']
 })
-export class BankSearchComponent implements OnInit {
+export class ProductUnitSearchComponent implements OnInit {
 
-   banks = [];
-   bankFilters: BankFilters;
+   productUnits = [];
+   productUnitFilters: ProductUnitFilters;
    showFilter: boolean;
-   selectedBank = null;
+   selectedProductUnit = null;
    loading: boolean;
    totalRecords = 0;
    env: any;
@@ -36,7 +35,7 @@ export class BankSearchComponent implements OnInit {
 
    constructor(private router: Router,
                private translate: TranslateService,
-               private bankService: BankService,
+               private productUnitService: ProductUnitService,
                public auth: AuthService,
                private errorHandler: ErrorHandlerService,
                private toasty: ToastyService,
@@ -49,12 +48,12 @@ export class BankSearchComponent implements OnInit {
     */
    ngOnInit() {
       this.showFilter = false;
-      this.bankFilters = new BankFilters();
+      this.productUnitFilters = new ProductUnitFilters();
 
       this.env = environment;
       this.setLoading(true);
-      this.translate.get('bank').subscribe(s => {
-         this.title.setTitle(s['list_of_banks']);
+      this.translate.get('product_unit').subscribe(s => {
+         this.title.setTitle(s['list_of_product_unit']);
 
          this.COLS = [
             {
@@ -64,10 +63,10 @@ export class BankSearchComponent implements OnInit {
                class: ''
             },
             {
-               field: 'code',
-               header: s['fields']['code'],
+               field: 'initials',
+               header: s['fields']['initials'],
                hidden: false,
-               class: 'datatable-collum-field-code'
+               class: 'datatable-collum-field-initials'
             },
             {
                field: 'name',
@@ -76,8 +75,8 @@ export class BankSearchComponent implements OnInit {
                class: ''
             },
             {
-               field: 'url',
-               header: s['fields']['url'],
+               field: 'canFraction',
+               header: s['fields']['canFraction'],
                hidden: false,
                class: ''
             }
@@ -101,7 +100,7 @@ export class BankSearchComponent implements OnInit {
     */
    showFilterFields(value: boolean) {
       this.showFilter = value;
-      this.bankFilters = new BankFilters();
+      this.productUnitFilters = new ProductUnitFilters();
       if (this.filterGrid) {
          this.filterGrid.nativeElement.value = '';
       }
@@ -125,10 +124,10 @@ export class BankSearchComponent implements OnInit {
     */
    loadBank(lazyLoad: LazyLoadEvent) {
       this.setLoading(true);
-      this.selectedBank = null;
-      this.bankService.findAll(lazyLoad, this.bankFilters).then(result => {
+      this.selectedProductUnit = null;
+      this.productUnitService.findAll(lazyLoad, this.productUnitFilters).then(result => {
             this.totalRecords = result.totalElements;
-            this.banks = result.content;
+            this.productUnits = result.content;
             this.setLoading(false);
          })
          .catch(error => {
@@ -178,7 +177,7 @@ export class BankSearchComponent implements OnInit {
     * Redirects you to the data edit screen
     */
    edit() {
-      this.router.navigateByUrl(`banks/${this.selectedBank.key}`);
+      this.router.navigateByUrl(`product-units/${this.selectedProductUnit.key}`);
    }
 
    /**
@@ -202,15 +201,16 @@ export class BankSearchComponent implements OnInit {
     */
    delete() {
       this.translate.get('bank').subscribe(s => {
-         this.bankService.delete(this.selectedBank.key)
+         this.productUnitService.delete(this.selectedProductUnit.key)
             .then(() => {
                this.grid.first = 0;
                this.findAll(this.filterGrid.nativeElement, this.grid);
-               this.toasty.success(s['delete_success']);
+               this.toasty.success(s['actions']['delete_success']);
             })
             .catch(
                error => this.errorHandler.handle(error)
             );
       });
    }
+
 }

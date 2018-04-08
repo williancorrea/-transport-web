@@ -1,26 +1,27 @@
 import {Injectable} from '@angular/core';
-import {environment} from './../../environments/environment';
-import {AuthHttp} from 'angular2-jwt';
-import {ProductUnit} from '../core/model/bank';
 import {BankFilters} from '../core/model/bankFilters';
+import {ProductUnit} from '../core/model/bank';
+import {AuthHttp} from 'angular2-jwt';
+import {environment} from '../../environments/environment';
+import {ProductUnitFilters} from '../core/model/productUnitFilters';
 
 @Injectable()
-export class BankService {
+export class ProductUnitService {
 
    apiUrl: string;
 
    constructor(private http: AuthHttp) {
-      this.apiUrl = `${environment.apiUrl}/banks`;
+      this.apiUrl = `${environment.apiUrl}/product-units`;
    }
 
    /**
     * List all records according to the filters passed by parameters
     *
     * @param filter
-    * @param {BankFilters} bankFilters
+    * @param {BankFilters} productUnitFilters
     * @returns {Promise<any>}
     */
-   findAll(filter: any, bankFilters: BankFilters): Promise<any> {
+   findAll(filter: any, productUnitFilters: ProductUnitFilters): Promise<any> {
       /*
          in a real application, make a remote request to load data using state metadata from event
          event.first = First row offset
@@ -40,14 +41,11 @@ export class BankService {
       if (filter.globalFilter && filter.globalFilter.length > 0) {
          config.params['globalFilter'] = filter.globalFilter;
       }
-      if (bankFilters.code && bankFilters.code.length > 0) {
-         config.params['code'] = bankFilters.code;
+      if (productUnitFilters.name && productUnitFilters.name.length > 0) {
+         config.params['name'] = productUnitFilters.name;
       }
-      if (bankFilters.name && bankFilters.name.length > 0) {
-         config.params['name'] = bankFilters.name;
-      }
-      if (bankFilters.url && bankFilters.url.length > 0) {
-         config.params['url'] = bankFilters.url;
+      if (productUnitFilters.initials && productUnitFilters.initials.length > 0) {
+         config.params['initials'] = productUnitFilters.initials;
       }
 
       return this.http.get(`${this.apiUrl}`, config)
@@ -61,13 +59,13 @@ export class BankService {
     * Search for the record according to the key passed by parameter
     *
     * @param key
-    * @returns {Promise<ProductUnit>}
+    * @returns {Promise<any>}
     */
-   findOne(key): Promise<ProductUnit> {
+   findOne(key): Promise<any> {
       return this.http.get(`${this.apiUrl}/${key}`)
          .toPromise()
          .then(response => {
-            return response.json() as ProductUnit;
+            return response.json();
          });
    }
 
@@ -86,15 +84,15 @@ export class BankService {
    /**
     * Save the record
     *
-    * @param {ProductUnit} bank
-    * @returns {Promise<ProductUnit>}
+    * @param {ProductUnit} obj
+    * @returns {Promise<any>}
     */
-   save(bank: ProductUnit): Promise<ProductUnit> {
-      delete bank['key'];
-      delete bank['properties'];
+   save(obj: ProductUnit): Promise<any> {
+      delete obj['key'];
+      delete obj['properties'];
 
       return this.http.post(this.apiUrl,
-         JSON.stringify(bank))
+         JSON.stringify(obj))
          .toPromise()
          .then(response => {
             return response.json() as ProductUnit;
@@ -107,18 +105,17 @@ export class BankService {
     * @param {ProductUnit} bank
     * @returns {Promise<ProductUnit>}
     */
-   update(bank: ProductUnit): Promise<ProductUnit> {
-      const key = bank.key;
+   update(obj: ProductUnit): Promise<ProductUnit> {
+      const key = obj.key;
 
-      delete bank['key'];
-      delete bank['properties'];
+      delete obj['key'];
+      delete obj['properties'];
 
       return this.http.put(`${this.apiUrl}/${key}`,
-         JSON.stringify(bank))
+         JSON.stringify(obj))
          .toPromise()
          .then(response => {
             return response.json() as ProductUnit;
          });
    }
-
 }

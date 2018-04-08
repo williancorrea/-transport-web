@@ -20,6 +20,7 @@ import {PageNotFoundComponent} from './core/page-not-found.component';
 import {BankNewComponent} from './bank/bank-new/bank-new.component';
 import {LoginFormComponent} from './security/login-form/login-form.component';
 import {AuthGuard} from './security/auth.guard';
+import {ProductUnitSearchComponent} from './product-unit/product-unit-search/product-unit-search.component';
 
 export const routes: Routes = [
    {
@@ -29,7 +30,8 @@ export const routes: Routes = [
       canActivate: [AuthGuard],
       data: {
          roles: [
-            'ROLE_LIST_BANK'
+            'ROLE_LIST_BANK',
+            'ROLE_LIST_PRODUCT-UNIT'
          ]
       }
    },
@@ -55,6 +57,12 @@ export const routes: Routes = [
    {path: 'banks', component: BankSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_BANK']}},
    {path: 'banks/new', component: BankNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_BANK']}},
    {path: 'banks/:key', component: BankNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_BANK']}},
+
+   {path: 'product-units', component: ProductUnitSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_PRODUCT-UNIT']}},
+   // {path: 'banks/new', component: BankNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_BANK']}},
+   // {path: 'banks/:key', component: BankNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_BANK']}},
+
+
 
    {path: '**', redirectTo: 'page-not-found'}
 

@@ -19,6 +19,7 @@
    "menu": {
       "base": "Base",
       "bank": "Bancos",
+      "product-unit": "Unidades de Produto",
       "financial": "Financeiro"
    },
    "flags": {
@@ -74,6 +75,22 @@
       "delete_success": "Banco removido com sucesso!",
       "add_success": "Banco adicionado com sucesso.",
       "update_success": "Banco atualizado com sucesso."
+   },
+   "product_unit":{
+      "fields" : {
+         "initials" : "Sigla",
+         "name" : "Nome",
+         "canFraction": "Pode Fracionar"
+      },
+      "title": "Unidade de Medida",
+      "list_of_product_unit": "Lista de Unidade de Medida",
+      "actions": {
+         "add": "Adicionar nova unidade de medida",
+         "edit": "Editar unidade de medida",
+         "delete_success": "Unidade de medida removida com sucesso!",
+         "add_success": "Unidade de medida adicionada com sucesso.",
+         "update_success": "Unidade de medida atualizada com sucesso."
+      }
    },
    "login":{
       "login_to_your_account": "Faça login na sua conta",

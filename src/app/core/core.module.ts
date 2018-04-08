@@ -16,6 +16,7 @@ import {PageNotFoundComponent} from './page-not-found.component';
 import {BankService} from '../bank/bank.service';
 import {TranslateModule} from 'ng2-translate';
 import {ButtonModule} from 'primeng/button';
+import {ProductUnitService} from '../product-unit/product-unit.service';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import {ButtonModule} from 'primeng/button';
       AuthService,
 
       BankService,
+      ProductUnitService,
 
       ConfirmationService,
       JwtHelper,

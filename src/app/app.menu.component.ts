@@ -32,6 +32,7 @@ export class AppMenuComponent implements OnInit {
                   label: m['base'], icon: 'fa fa-fw fa-book',
                   items: [
                      {label:  m['bank'], icon: 'fa fa-fw fa-building', routerLink: ['/banks'], visible: this.auth.hasPermission('ROLE_LIST_BANK')},
+                     {label:  m['product-unit'], icon: 'fa fa-fw fa-pencil-square-o', routerLink: ['/product-units'], visible: this.auth.hasPermission('ROLE_LIST_PRODUCT-UNIT')},
                   ]
                },
                {
