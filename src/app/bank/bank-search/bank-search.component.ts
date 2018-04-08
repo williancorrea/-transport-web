@@ -25,6 +25,7 @@ export class BankSearchComponent implements OnInit {
    loading: boolean;
    totalRecords = 0;
    env: any;
+   COLS: any;
 
    /*
     * Binds with items on html page
@@ -54,6 +55,33 @@ export class BankSearchComponent implements OnInit {
       this.setLoading(true);
       this.translate.get('bank').subscribe(s => {
          this.title.setTitle(s['list_of_banks']);
+
+         this.COLS = [
+            {
+               field: 'key',
+               header: '',
+               hidden: true,
+               class: ''
+            },
+            {
+               field: 'code',
+               header: s['fields']['code'],
+               hidden: false,
+               class: 'datatable-collum-field-code'
+            },
+            {
+               field: 'name',
+               header: s['fields']['name'],
+               hidden: false,
+               class: ''
+            },
+            {
+               field: 'url',
+               header: s['fields']['url'],
+               hidden: false,
+               class: ''
+            }
+         ];
       });
    }
 
@@ -131,21 +159,21 @@ export class BankSearchComponent implements OnInit {
     * @param dataTable
     */
    setFilterDataTable(filter, dataTable) {
-      if (this.grid.first === 0) {
-         this.loadBank(
-            {
-               filters: dataTable.filters,
-               first: 0,
-               globalFilter: filter && filter.value ? filter.value : '',
-               multiSortMeta: dataTable.multiSortMeta,
-               rows: dataTable.rows,
-               sortField: dataTable.sortField,
-               sortOrder: dataTable.sortOrder
-            }
-         );
-      } else {
-         this.grid.first = 0;
-      }
+      // if (this.grid.first === 0) {
+      this.loadBank(
+         {
+            filters: dataTable.filters,
+            first: 0,
+            globalFilter: filter && filter.value ? filter.value : '',
+            multiSortMeta: dataTable.multiSortMeta,
+            rows: dataTable.rows,
+            sortField: dataTable.sortField,
+            sortOrder: dataTable.sortOrder
+         }
+      );
+      // } else {
+      //    this.grid.first = 0;
+      // }
    }
 
    /**
@@ -178,12 +206,15 @@ export class BankSearchComponent implements OnInit {
       this.translate.get('bank').subscribe(s => {
          this.bankService.delete(this.selectedBank.key)
             .then(() => {
-               if (this.grid.first === 0) {
-                  this.findAll(this.filterGrid.nativeElement, this.grid);
-               } else {
-                  this.filterGrid.nativeElement.value = '';
-                  this.grid.first = 0;
-               }
+
+               // if (this.grid.first === 0) {
+               this.grid.first = 0;
+               this.findAll(this.filterGrid.nativeElement, this.grid);
+               // } else {
+               //    this.filterGrid.nativeElement.value = '';
+               //
+               // }
+
                this.toasty.success(s['delete_success']);
             })
             .catch(

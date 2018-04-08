@@ -13,7 +13,7 @@
          "filter" : "Filtrar",
          "more_filters" : "Mais Filtros",
          "less_filters" : "Menos Filtros",
-         "fields" : "Filtrar por campos"
+         "fields" : "Filtrar campos contendo qualquer parte do(s) conteúdo(s) abaixo"
       }
    },
    "menu": {

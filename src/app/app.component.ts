@@ -52,8 +52,9 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
             }
          });
    }
-   isOnLoginPage():boolean{
-      return this.router.url !== '/login';
+
+   showMenus(): boolean {
+      return (this.router.url !== '/login' && this.router.url !== '/page-not-found');
    }
 
    changeLanguage(lang) {

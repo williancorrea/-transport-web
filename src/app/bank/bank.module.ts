@@ -13,7 +13,6 @@ import {TransportSharedModule} from '../transort-shared/transport-share.module';
 import {CoreModule} from '../core/core.module';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
-import {BlockUIModule} from 'primeng/blockui';
 
 @NgModule({
    imports: [

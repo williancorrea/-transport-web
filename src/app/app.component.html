@@ -1,12 +1,12 @@
 <div class="layout-wrapper" [ngClass]="{'layout-wrapper-menu-active':sidebarActive, 'layout-overlay-menu':overlay}">
 
-   <app-topbar *ngIf="isOnLoginPage()"></app-topbar>
-   <app-sidebar *ngIf="isOnLoginPage()"></app-sidebar>
+   <app-topbar *ngIf="showMenus()"></app-topbar>
+   <app-sidebar *ngIf="showMenus()"></app-sidebar>
 
    <div class="layout-main">
       <div class="layout-main-content">
          <router-outlet></router-outlet>
-         <app-footer *ngIf="isOnLoginPage()" class="footer-fixed"></app-footer>
+         <app-footer *ngIf="showMenus()" class="footer-fixed"></app-footer>
 
          <ng2-toasty></ng2-toasty>
       </div>
