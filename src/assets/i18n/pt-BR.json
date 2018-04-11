@@ -83,7 +83,7 @@
          "canFraction": "Pode Fracionar"
       },
       "title": "Unidade de Medida",
-      "list_of_product_unit": "Lista de Unidade de Medida",
+      "list_of_product_unit": "Lista das Unidade de Medida",
       "actions": {
          "add": "Adicionar nova unidade de medida",
          "edit": "Editar unidade de medida",

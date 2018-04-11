@@ -2,3 +2,7 @@
    width: 15%;
    text-align: center !important;
 }
+
+.upper{
+   text-transform: uppercase !important;
+}

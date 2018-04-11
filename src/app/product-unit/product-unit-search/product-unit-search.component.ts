@@ -200,7 +200,7 @@ export class ProductUnitSearchComponent implements OnInit {
     * Deletes the selected record
     */
    delete() {
-      this.translate.get('bank').subscribe(s => {
+      this.translate.get('product_unit').subscribe(s => {
          this.productUnitService.delete(this.selectedProductUnit.key)
             .then(() => {
                this.grid.first = 0;

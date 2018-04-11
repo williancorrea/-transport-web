@@ -21,6 +21,7 @@ import {BankNewComponent} from './bank/bank-new/bank-new.component';
 import {LoginFormComponent} from './security/login-form/login-form.component';
 import {AuthGuard} from './security/auth.guard';
 import {ProductUnitSearchComponent} from './product-unit/product-unit-search/product-unit-search.component';
+import {ProductUnitNewComponent} from './product-unit/product-unit-new/product-unit-new.component';
 
 export const routes: Routes = [
    {
@@ -59,8 +60,8 @@ export const routes: Routes = [
    {path: 'banks/:key', component: BankNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_BANK']}},
 
    {path: 'product-units', component: ProductUnitSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_PRODUCT-UNIT']}},
-   // {path: 'banks/new', component: BankNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_BANK']}},
-   // {path: 'banks/:key', component: BankNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_BANK']}},
+   {path: 'product-units/new', component: ProductUnitNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_PRODUCT-UNIT']}},
+   {path: 'product-units/:key', component: ProductUnitNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_PRODUCT-UNIT']}},
 
 
 

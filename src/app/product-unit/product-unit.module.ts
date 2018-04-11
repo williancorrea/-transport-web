@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PanelModule} from 'primeng/panel';
-import {DataTableModule, DropdownModule, InputTextModule, ProgressBarModule, TooltipModule} from 'primeng/primeng';
+import {CheckboxModule, DataTableModule, DropdownModule, InputTextModule, ProgressBarModule, TooltipModule} from 'primeng/primeng';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MessageModule} from 'primeng/message';
 import {ButtonModule} from 'primeng/button';
@@ -12,6 +12,7 @@ import {RouterModule} from '@angular/router';
 import {TransportSharedModule} from '../transort-shared/transport-share.module';
 import {TranslateModule, TranslateService} from 'ng2-translate';
 import {ProductUnitSearchComponent} from './product-unit-search/product-unit-search.component';
+import { ProductUnitNewComponent } from './product-unit-new/product-unit-new.component';
 
 @NgModule({
    imports: [
@@ -34,10 +35,12 @@ import {ProductUnitSearchComponent} from './product-unit-search/product-unit-sea
       ButtonModule,
       PanelModule,
       TooltipModule,
-      ProgressBarModule
+      ProgressBarModule,
+      CheckboxModule
    ],
    declarations: [
-      ProductUnitSearchComponent
+      ProductUnitSearchComponent,
+      ProductUnitNewComponent
    ],
    exports: [
       ProductUnitSearchComponent

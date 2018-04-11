@@ -1,0 +1,70 @@
+<div class="ui-g">
+   <div class="ui-g-12">
+      <p-progressBar *ngIf="loading === true" mode="indeterminate"></p-progressBar>
+
+      <div class="card card-w-title">
+         <div>
+
+            <h1 *ngIf="loading === true">{{('commons.loading') | translate}}</h1>
+            <h1 *ngIf="loading === false">{{(form.get('key').value?.length > 0 ? 'product_unit.actions.edit' : 'product_unit.actions.add') |
+               translate}}</h1>
+         </div>
+
+         <form #f novalidate autocomplete="off" (submit)="save()" autocomplete="off" [formGroup]="form">
+
+            <div class="ui-g">
+               <input pInputText
+                      type="text"
+                      [hidden]="true"
+                      name="key"
+                      formControlName="key">
+
+               <div class="ui-g-3 ui-fluid">
+                  <label>{{'product_unit.fields.initials' | translate}}</label>
+                  <input pInputText
+                         type="text"
+                         name="initials"
+                         class="upper"
+                         formControlName="initials">
+                  <app-message [form]="f" [control]="form.get('initials')"></app-message>
+               </div>
+
+               <div class="ui-sm-12 ui-g-12 ui-fluid">
+                  <label>{{'product_unit.fields.name' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <input pInputText
+                         type="text"
+                         name="name"
+                         formControlName="name"
+                  >
+                  <app-message [form]="f" [control]="form.get('name')"></app-message>
+               </div>
+
+               <div class="ui-sm-12 ui-g-12 ui-fluid">
+                  <label>{{'product_unit.fields.canFraction' | translate}}</label>
+                  <p-checkbox [formControl]="form.controls['canFraction']" name="canFraction" binary="true"></p-checkbox>
+                  <app-message [form]="f" [control]="form.get('canFraction')"></app-message>
+               </div>
+
+
+
+               <div class="ui-sm-12 ui-g-12">
+                  <button pButton type="button"
+                          label="{{'actions.cancel' | translate}}"
+                          class="ui-button-danger"
+                          tooltipPosition="top" pTooltip="{{'actions.tooltip.cancel' | translate}}"
+                          (click)="cancel()"></button>
+                  <button pButton type="submit"
+                          *ngIf="form.get('key').value ? auth.hasPermission('ROLE_UPDATE_PRODUCT-UNIT') : auth.hasPermission('ROLE_SAVE_PRODUCT-UNIT')"
+                          [disabled]="form.invalid"
+                          label="{{(form.get('key').value ? 'actions.update' : 'actions.save') | translate}}"
+                          tooltipPosition="top" pTooltip="{{'actions.tooltip.save' | translate}}"
+                          class="ui-button-success"></button>
+               </div>
+
+            </div>
+
+         </form>
+
+      </div>
+   </div>
+</div>
