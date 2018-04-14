@@ -110,6 +110,7 @@ import {CoreModule} from './core/core.module';
 import {SecurityModule} from './security/security.module';
 import {ToastyModule} from 'ng2-toasty';
 import {ProductUnitModule} from './product-unit/product-unit.module';
+import {TypeRelationshipModule} from './type-relationship/type-relationship.module';
 
 export function HttpLoaderFactory(http: Http) {
    return new TranslateStaticLoader(http, '/assets/i18n', '.json');
@@ -205,7 +206,8 @@ export function HttpLoaderFactory(http: Http) {
 
 
       BankModule,
-      ProductUnitModule
+      ProductUnitModule,
+      TypeRelationshipModule
    ],
    declarations: [
       AppComponent,

@@ -20,7 +20,8 @@
       "base": "Base",
       "bank": "Bancos",
       "product-unit": "Unidades de Produto",
-      "financial": "Financeiro"
+      "financial": "Financeiro",
+      "types-of-relationships" : "Relacionamentos"
    },
    "flags": {
       "brazil": "Brasil",
@@ -90,6 +91,22 @@
          "delete_success": "Unidade de medida removida com sucesso!",
          "add_success": "Unidade de medida adicionada com sucesso.",
          "update_success": "Unidade de medida atualizada com sucesso."
+      }
+   },
+   "type-relationship": {
+      "fields" : {
+         "code" : "Código",
+         "name" : "Nome",
+         "description": "Descrição"
+      },
+      "title": "Tipo de Relacionamento",
+      "list": "Lista dos tipos de relacionamentos",
+      "actions": {
+         "add": "Adicionar novo tipo de relacionamento",
+         "edit": "Editar tipo de relacionamento",
+         "delete_success": "Tipo de relacionamento removido com sucesso!",
+         "add_success": "Tipo de relacionamento adicionado com sucesso.",
+         "update_success": "Tipo de relacionamento atualizado com sucesso."
       }
    },
    "login":{

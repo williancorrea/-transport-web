@@ -17,6 +17,7 @@ import {BankService} from '../bank/bank.service';
 import {TranslateModule} from 'ng2-translate';
 import {ButtonModule} from 'primeng/button';
 import {ProductUnitService} from '../product-unit/product-unit.service';
+import {TypeRelationshipService} from '../type-relationship/type-relationship.service';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import {ProductUnitService} from '../product-unit/product-unit.service';
 
       BankService,
       ProductUnitService,
+      TypeRelationshipService,
 
       ConfirmationService,
       JwtHelper,

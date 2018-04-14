@@ -22,6 +22,8 @@ import {LoginFormComponent} from './security/login-form/login-form.component';
 import {AuthGuard} from './security/auth.guard';
 import {ProductUnitSearchComponent} from './product-unit/product-unit-search/product-unit-search.component';
 import {ProductUnitNewComponent} from './product-unit/product-unit-new/product-unit-new.component';
+import {TypeRelationshipSearchComponent} from './type-relationship/type-relationship-search/type-relationship-search.component';
+import {TypeRelationshipNewComponent} from './type-relationship/type-relationship-new/type-relationship-new.component';
 
 export const routes: Routes = [
    {
@@ -32,7 +34,8 @@ export const routes: Routes = [
       data: {
          roles: [
             'ROLE_LIST_BANK',
-            'ROLE_LIST_PRODUCT-UNIT'
+            'ROLE_LIST_PRODUCT-UNIT',
+            'ROLE_LIST_TYPE-RELATIONSHIP'
          ]
       }
    },
@@ -63,6 +66,9 @@ export const routes: Routes = [
    {path: 'product-units/new', component: ProductUnitNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_PRODUCT-UNIT']}},
    {path: 'product-units/:key', component: ProductUnitNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_PRODUCT-UNIT']}},
 
+   {path: 'types-of-relationships', component: TypeRelationshipSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_TYPE-RELATIONSHIP']}},
+   {path: 'types-of-relationships/new', component: TypeRelationshipNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_TYPE-RELATIONSHIP']}},
+   {path: 'types-of-relationships/:key', component: TypeRelationshipNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_TYPE-RELATIONSHIP']}},
 
 
    {path: '**', redirectTo: 'page-not-found'}
