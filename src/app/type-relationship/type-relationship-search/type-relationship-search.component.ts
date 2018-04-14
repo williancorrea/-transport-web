@@ -200,15 +200,20 @@ export class TypeRelationshipSearchComponent implements OnInit {
     * Deletes the selected record
     */
    delete() {
+      this.setLoading(true);
       this.translate.get('type-relationship').subscribe(s => {
          this.typeRelationshipService.delete(this.selectedObj.key)
             .then(() => {
                this.grid.first = 0;
                this.findAll(this.filterGrid.nativeElement, this.grid);
+               this.setLoading(false);
                this.toasty.success(s['actions']['delete_success']);
             })
             .catch(
-               error => this.errorHandler.handle(error)
+               error => {
+                  this.setLoading(false);
+                  this.errorHandler.handle(error);
+               }
             );
       });
    }

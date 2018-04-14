@@ -111,6 +111,7 @@ import {SecurityModule} from './security/security.module';
 import {ToastyModule} from 'ng2-toasty';
 import {ProductUnitModule} from './product-unit/product-unit.module';
 import {TypeRelationshipModule} from './type-relationship/type-relationship.module';
+import {ANIMATION_TYPES, LoadingModule} from 'ngx-loading';
 
 export function HttpLoaderFactory(http: Http) {
    return new TranslateStaticLoader(http, '/assets/i18n', '.json');
@@ -204,6 +205,14 @@ export function HttpLoaderFactory(http: Http) {
       SecurityModule,
       AppRoutes,
 
+      LoadingModule.forRoot({
+         animationType: ANIMATION_TYPES.wanderingCubes,
+         backdropBackgroundColour: 'rgba(0,0,0,0.2)',
+         backdropBorderRadius: '0px',
+         primaryColour: 'green',
+         secondaryColour: 'red',
+         tertiaryColour: 'blue'
+      }),
 
       BankModule,
       ProductUnitModule,

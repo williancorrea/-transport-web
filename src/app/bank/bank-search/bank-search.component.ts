@@ -1,8 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {TranslateService} from 'ng2-translate';
 import {Router} from '@angular/router';
-import {ConfirmationService, LazyLoadEvent, Message} from 'primeng/api';
-import {ProductUnit} from '../../core/model/bank';
+import {ConfirmationService, LazyLoadEvent} from 'primeng/api';
 import {BankService} from '../bank.service';
 import {ToastyService} from 'ng2-toasty';
 import {AuthService} from '../../security/auth.service';
@@ -132,6 +131,7 @@ export class BankSearchComponent implements OnInit {
             this.setLoading(false);
          })
          .catch(error => {
+            this.setLoading(false);
             this.errorHandler.handle(error);
          });
    }
@@ -201,15 +201,20 @@ export class BankSearchComponent implements OnInit {
     * Deletes the selected record
     */
    delete() {
+      this.loading = true;
       this.translate.get('bank').subscribe(s => {
          this.bankService.delete(this.selectedBank.key)
             .then(() => {
                this.grid.first = 0;
                this.findAll(this.filterGrid.nativeElement, this.grid);
                this.toasty.success(s['delete_success']);
+               this.loading = false;
             })
             .catch(
-               error => this.errorHandler.handle(error)
+               error => {
+                  this.errorHandler.handle(error)
+                  this.loading = false;
+               }
             );
       });
    }

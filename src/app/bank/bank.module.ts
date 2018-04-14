@@ -13,6 +13,7 @@ import {TransportSharedModule} from '../transort-shared/transport-share.module';
 import {CoreModule} from '../core/core.module';
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {LoadingModule} from 'ngx-loading';
 
 @NgModule({
    imports: [
@@ -24,6 +25,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
       RouterModule,
       FormsModule,
       ReactiveFormsModule,
+      LoadingModule,
 
       DataTableModule,
       SharedModule,

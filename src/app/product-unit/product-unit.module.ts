@@ -13,6 +13,7 @@ import {TransportSharedModule} from '../transort-shared/transport-share.module';
 import {TranslateModule, TranslateService} from 'ng2-translate';
 import {ProductUnitSearchComponent} from './product-unit-search/product-unit-search.component';
 import { ProductUnitNewComponent } from './product-unit-new/product-unit-new.component';
+import {LoadingModule} from 'ngx-loading';
 
 @NgModule({
    imports: [
@@ -24,6 +25,7 @@ import { ProductUnitNewComponent } from './product-unit-new/product-unit-new.com
       RouterModule,
       FormsModule,
       ReactiveFormsModule,
+      LoadingModule,
 
       DataTableModule,
       SharedModule,

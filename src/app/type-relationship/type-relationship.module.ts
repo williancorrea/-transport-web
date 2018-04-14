@@ -13,6 +13,7 @@ import {TransportSharedModule} from '../transort-shared/transport-share.module';
 import {SharedModule} from 'primeng/shared';
 import {PanelModule} from 'primeng/panel';
 import {TableModule} from 'primeng/table';
+import {LoadingModule} from 'ngx-loading';
 
 @NgModule({
    imports: [
@@ -24,6 +25,7 @@ import {TableModule} from 'primeng/table';
       RouterModule,
       FormsModule,
       ReactiveFormsModule,
+      LoadingModule,
 
       DataTableModule,
       SharedModule,

@@ -14,6 +14,7 @@ export class LoginFormComponent implements OnInit {
 
    email: string;
    password: string;
+   public loading = false;
 
    constructor(private auth: AuthService,
                private errorHandler: ErrorHandlerService,
@@ -22,16 +23,20 @@ export class LoginFormComponent implements OnInit {
    }
 
    ngOnInit() {
+      this.loading = false;
       this.translate.get('bank').subscribe(s => {
       });
    }
 
    login() {
+      this.loading = true;
       this.auth.login(this.email, this.password)
          .then(() => {
             this.router.navigate(['/banks']);
+            this.loading = false;
          })
          .catch(erro => {
+            this.loading = false;
             this.errorHandler.handle(erro);
             this.password = '';
          });
