@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from '../../security/auth.service';
 import {Router} from '@angular/router';
 import {ErrorHandlerService} from '../../core/error-handler.service';
-import {TypeRelationshipFilters} from '../../core/model/TypeRelationshipFilters';
+import {TypeRelationshipFilters} from '../../core/model/typeRelationshipFilters';
 import {ConfirmationService, LazyLoadEvent} from 'primeng/api';
 import {environment} from '../../../environments/environment';
 import {TranslateService} from 'ng2-translate';
