@@ -211,7 +211,8 @@ export function HttpLoaderFactory(http: Http) {
          backdropBorderRadius: '0px',
          primaryColour: 'green',
          secondaryColour: 'red',
-         tertiaryColour: 'blue'
+         tertiaryColour: 'blue',
+         fullScreenBackdrop: true
       }),
 
       BankModule,
