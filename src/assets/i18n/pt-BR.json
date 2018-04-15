@@ -2,18 +2,18 @@
    "commons": {
       "language": "Idioma",
       "loading": "Aguarde, carregando ...",
-      "dashboard" : "Dashboard",
+      "dashboard": "Dashboard",
       "page": {
-         "not_found" : "Página não encontrada",
-         "not_found_description" : "A página que você solicitou não pode ser encontrada.",
+         "not_found": "Página não encontrada",
+         "not_found_description": "A página que você solicitou não pode ser encontrada.",
          "access_denied": "Acesso Negado.",
          "access_denied_description": "Você não tem permissão para acessar este recurso"
       },
-      "filter":{
-         "filter" : "Filtrar",
-         "more_filters" : "Mais Filtros",
-         "less_filters" : "Menos Filtros",
-         "fields" : "Filtrar campos contendo qualquer parte do(s) conteúdo(s) abaixo"
+      "filter": {
+         "filter": "Filtrar",
+         "more_filters": "Mais Filtros",
+         "less_filters": "Menos Filtros",
+         "fields": "Filtrar campos contendo qualquer parte do(s) conteúdo(s) abaixo"
       }
    },
    "menu": {
@@ -21,7 +21,8 @@
       "bank": "Bancos",
       "product-unit": "Unidades de Produto",
       "financial": "Financeiro",
-      "types-of-relationships" : "Relacionamentos"
+      "types-of-relationships": "Relacionamentos",
+      "level-of-education": "Nível de Formação"
    },
    "flags": {
       "brazil": "Brasil",
@@ -77,10 +78,10 @@
       "add_success": "Banco adicionado com sucesso.",
       "update_success": "Banco atualizado com sucesso."
    },
-   "product_unit":{
-      "fields" : {
-         "initials" : "Sigla",
-         "name" : "Nome",
+   "product_unit": {
+      "fields": {
+         "initials": "Sigla",
+         "name": "Nome",
          "canFraction": "Pode Fracionar"
       },
       "title": "Unidade de Medida",
@@ -94,9 +95,9 @@
       }
    },
    "type-relationship": {
-      "fields" : {
-         "code" : "Código",
-         "name" : "Nome",
+      "fields": {
+         "code": "Código",
+         "name": "Nome",
          "description": "Descrição"
       },
       "title": "Tipo de Relacionamento",
@@ -109,12 +110,30 @@
          "update_success": "Tipo de relacionamento atualizado com sucesso."
       }
    },
-   "login":{
+   "level-of-education": {
+      "fields": {
+         "name": "Nome",
+         "description": "Descrição",
+         "degreeOfInstructionCaged": "Caged",
+         "degreeOfInstructionSefip": "Sefip",
+         "degreeOfInstructionRais": "Rais"
+      },
+      "title": "Nível de Formação",
+      "list": "Lista dos níveis de formação",
+      "actions": {
+         "add": "Adicionar novo nível de formação",
+         "edit": "Editar nível de formação",
+         "delete_success": "Nível de formação removido com sucesso!",
+         "add_success": "Nível de formação adicionado com sucesso.",
+         "update_success": "Nível de formação atualizado com sucesso."
+      }
+   },
+   "login": {
       "login_to_your_account": "Faça login na sua conta",
-      "welcome_to" : "Bem vindo a Rosinha Turismo",
+      "welcome_to": "Bem vindo a Rosinha Turismo",
       "sign_in": "Entrar",
-      "email" :"E-mail",
-      "password" : "Senha",
+      "email": "E-mail",
+      "password": "Senha",
       "forgot_password": "Esqueceu a senha"
    },
    "errors": {

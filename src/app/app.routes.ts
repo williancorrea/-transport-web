@@ -24,6 +24,8 @@ import {ProductUnitSearchComponent} from './product-unit/product-unit-search/pro
 import {ProductUnitNewComponent} from './product-unit/product-unit-new/product-unit-new.component';
 import {TypeRelationshipSearchComponent} from './type-relationship/type-relationship-search/type-relationship-search.component';
 import {TypeRelationshipNewComponent} from './type-relationship/type-relationship-new/type-relationship-new.component';
+import {LevelOfEducationNewComponent} from './level-of-education/level-of-education-new/level-of-education-new.component';
+import {LevelOfEducationSearchComponent} from './level-of-education/level-of-education-search/level-of-education-search.component';
 
 export const routes: Routes = [
    {
@@ -70,6 +72,9 @@ export const routes: Routes = [
    {path: 'types-of-relationships/new', component: TypeRelationshipNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_TYPE-RELATIONSHIP']}},
    {path: 'types-of-relationships/:key', component: TypeRelationshipNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_TYPE-RELATIONSHIP']}},
 
+   {path: 'levels-of-education', component: LevelOfEducationSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_LEVEL-OF-EDUCATION']}},
+   {path: 'levels-of-education/new', component: LevelOfEducationNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_LEVEL-OF-EDUCATION']}},
+   {path: 'levels-of-education/:key', component: LevelOfEducationNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_LEVEL-OF-EDUCATION']}},
 
    {path: '**', redirectTo: 'page-not-found'}
 

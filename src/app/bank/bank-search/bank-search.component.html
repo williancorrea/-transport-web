@@ -107,7 +107,7 @@
 
             <ng-template pTemplate="header" let-columns>
                <tr>
-                  <th *ngFor="let col of columns" [pSortableColumn]="col.field" [hidden]="col.hidden">
+                  <th *ngFor="let col of columns" [pSortableColumn]="col.field" [hidden]="col.hidden" [class]="col.class">
                      {{col.header}}
                      <p-sortIcon [field]="col.field"></p-sortIcon>
                   </th>

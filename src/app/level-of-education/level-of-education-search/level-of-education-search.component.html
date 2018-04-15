@@ -5,13 +5,13 @@
       <div class="card card-w-title">
 
          <div>
-            <h1>{{'product_unit.list_of_product_unit' | translate}}</h1>
+            <h1>{{'level-of-education.list' | translate}}</h1>
             <a pButton class="btn-add-new ui-button-secondary"
-               *ngIf="auth.hasPermission('ROLE_SAVE_PRODUCT-UNIT')"
-               label="{{'product_unit.actions.add' | translate}}"
+               *ngIf="auth.hasPermission('ROLE_SAVE_LEVEL-OF-EDUCATION')"
+               label="{{'level-of-education.actions.add' | translate}}"
                iconPos="left" icon="fa-plus"
                tooltipPosition="top" pTooltip="{{'actions.tooltip.new' | translate}}"
-               routerLink="/product-units/new">
+               routerLink="/levels-of-education/new">
             </a>
          </div>
 
@@ -42,21 +42,21 @@
                   <h2>{{'commons.filter.fields' | translate}}</h2>
                </div>
                <div class="ui-g-4 ui-fluid">
-                  <label>{{'product_unit.fields.initials' | translate}}</label>
+                  <label>{{'level-of-education.fields.name' | translate}}</label>
                   <input pInputText
                          type="text"
-                         name="initials"
-                         [(ngModel)]="productUnitFilters.initials"
-                         maxlength="10"
+                         name="bankName"
+                         [(ngModel)]="levelOfEducationFilters.name"
+                         maxlength="150"
                   >
                </div>
                <div class="ui-g-4 ui-fluid">
-                  <label>{{'bank.fields.name' | translate}}</label>
+                  <label>{{'level-of-education.fields.description' | translate}}</label>
                   <input pInputText
                          type="text"
-                         name="name"
-                         [(ngModel)]="productUnitFilters.name"
-                         maxlength="30"
+                         name="bankUrl"
+                         [(ngModel)]="levelOfEducationFilters.description"
+                         maxlength="150"
                   >
                </div>
                <div class="ui-g-12" style="text-align: right">
@@ -73,8 +73,8 @@
             </div>
          </div>
          <p-table #dataTable
-                  [value]="productUnits"
-                  [(selection)]="selectedProductUnit"
+                  [value]="list"
+                  [(selection)]="selectedObj"
                   selectionMode="single"
                   dataKey="key"
 
@@ -121,20 +121,20 @@
 
             <ng-template pTemplate="paginatorright" let-obj="rowData">
                <button type="button"
-                       *ngIf="auth.hasPermission('ROLE_UPDATE_PRODUCT-UNIT')"
+                       *ngIf="auth.hasPermission('ROLE_UPDATE_LEVEL-OF-EDUCATION')"
                        pButton
                        icon="fa-pencil"
                        label="{{'actions.edit' | translate}}"
-                       [disabled]="selectedProductUnit ? false :true"
+                       [disabled]="selectedObj ? false :true"
                        tooltipPosition="top" pTooltip="{{'actions.tooltip.edit' | translate}}"
                        (click)="edit()"></button>
                <button type="button"
-                       *ngIf="auth.hasPermission('ROLE_DELETE_PRODUCT-UNIT')"
+                       *ngIf="auth.hasPermission('ROLE_DELETE_LEVEL-OF-EDUCATION')"
                        pButton
                        icon="fa-trash"
                        class="ui-button-danger"
                        label="{{'actions.delete' | translate}}"
-                       [disabled]="selectedProductUnit ? false :true"
+                       [disabled]="selectedObj ? false :true"
                        tooltipPosition="top" pTooltip="{{'actions.tooltip.delete' | translate}}"
                        (click)="ConfirmDeletion(obj)"></button>
             </ng-template>
