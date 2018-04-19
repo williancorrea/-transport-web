@@ -22,7 +22,8 @@
       "product-unit": "Unidades de Produto",
       "financial": "Financeiro",
       "types-of-relationships": "Relacionamentos",
-      "level-of-education": "Nível de Formação"
+      "level-of-education": "Nível de Formação",
+      "marital-status": "Estado Civil"
    },
    "flags": {
       "brazil": "Brasil",
@@ -63,6 +64,20 @@
       "maxlength": "Máximo de ",
       "character": "Caracter(es).",
       "pattern": "Conteúdo inválido."
+   },
+   "login": {
+      "login_to_your_account": "Faça login na sua conta",
+      "welcome_to": "Bem vindo a Rosinha Turismo",
+      "sign_in": "Entrar",
+      "email": "E-mail",
+      "password": "Senha",
+      "forgot_password": "Esqueceu a senha"
+   },
+   "errors": {
+      "session_expired": "Sua sessão expirou",
+      "processing_request": "Ocorreu um erro ao processar a sua solicitação",
+      "access_denied": "Você não tem permissão para executar esta ação",
+      "service_error": "Erro ao processar serviço remoto. Tente novamente."
    },
    "bank": {
       "fields": {
@@ -128,18 +143,19 @@
          "update_success": "Nível de formação atualizado com sucesso."
       }
    },
-   "login": {
-      "login_to_your_account": "Faça login na sua conta",
-      "welcome_to": "Bem vindo a Rosinha Turismo",
-      "sign_in": "Entrar",
-      "email": "E-mail",
-      "password": "Senha",
-      "forgot_password": "Esqueceu a senha"
-   },
-   "errors": {
-      "session_expired": "Sua sessão expirou",
-      "processing_request": "Ocorreu um erro ao processar a sua solicitação",
-      "access_denied": "Você não tem permissão para executar esta ação",
-      "service_error": "Erro ao processar serviço remoto. Tente novamente."
+   "marital-status": {
+      "fields": {
+         "name": "Nome",
+         "description": "Descrição"
+      },
+      "title": "Estado Civil",
+      "list": "Lista dos Estados Civis",
+      "actions": {
+         "add": "Adicionar novo estado cicil",
+         "edit": "Editar estado civil",
+         "delete_success": "Estado civil removido com sucesso!",
+         "add_success": "Estado civil adicionado com sucesso.",
+         "update_success": "Estado civil atualizado com sucesso."
+      }
    }
 }

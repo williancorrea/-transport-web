@@ -43,10 +43,7 @@ import {LoadingModule} from 'ngx-loading';
       BankSearchComponent,
       BankNewComponent
    ],
-   exports: [
-      BankSearchComponent,
-      BankNewComponent
-   ],
+   exports: [],
    providers: [
       TranslateService
    ]

@@ -26,6 +26,8 @@ import {TypeRelationshipSearchComponent} from './type-relationship/type-relation
 import {TypeRelationshipNewComponent} from './type-relationship/type-relationship-new/type-relationship-new.component';
 import {LevelOfEducationNewComponent} from './level-of-education/level-of-education-new/level-of-education-new.component';
 import {LevelOfEducationSearchComponent} from './level-of-education/level-of-education-search/level-of-education-search.component';
+import {MaritalStatusSearchComponent} from './marital-status/marital-status-search/marital-status-search.component';
+import {MaritalStatusNewComponent} from './marital-status/marital-status-new/marital-status-new.component';
 
 export const routes: Routes = [
    {
@@ -75,6 +77,10 @@ export const routes: Routes = [
    {path: 'levels-of-education', component: LevelOfEducationSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_LEVEL-OF-EDUCATION']}},
    {path: 'levels-of-education/new', component: LevelOfEducationNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_LEVEL-OF-EDUCATION']}},
    {path: 'levels-of-education/:key', component: LevelOfEducationNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_LEVEL-OF-EDUCATION']}},
+
+   {path: 'marital-status', component: MaritalStatusSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_MARITAL_STATUS']}},
+   {path: 'marital-status/new', component: MaritalStatusNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_MARITAL_STATUS']}},
+   {path: 'marital-status/:key', component: MaritalStatusNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_MARITAL_STATUS']}},
 
    {path: '**', redirectTo: 'page-not-found'}
 

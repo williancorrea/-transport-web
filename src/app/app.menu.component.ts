@@ -35,6 +35,7 @@ export class AppMenuComponent implements OnInit {
                      {label:  m['product-unit'], icon: 'fa fa-fw fa-pencil-square-o', routerLink: ['/product-units'], visible: this.auth.hasPermission('ROLE_LIST_PRODUCT-UNIT')},
                      {label:  m['types-of-relationships'], icon: 'fa fa-fw fa-handshake-o', routerLink: ['/types-of-relationships'], visible: this.auth.hasPermission('ROLE_LIST_TYPE-RELATIONSHIP')},
                      {label:  m['level-of-education'], icon: 'fa fa-fw fa-lightbulb-o', routerLink: ['/levels-of-education'], visible: this.auth.hasPermission('ROLE_LIST_LEVEL-OF-EDUCATION')},
+                     {label:  m['marital-status'], icon: 'fa fa-fw fa-heart-o', routerLink: ['/marital-status'], visible: this.auth.hasPermission('ROLE_LIST_MARITAL_STATUS')},
                   ]
                },
                {

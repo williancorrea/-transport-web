@@ -44,10 +44,7 @@ import {LoadingModule} from 'ngx-loading';
       LevelOfEducationSearchComponent,
       LevelOfEducationNewComponent
    ],
-   exports: [
-      LevelOfEducationSearchComponent,
-      LevelOfEducationNewComponent
-   ],
+   exports: [],
    providers: [
       TranslateService
    ]

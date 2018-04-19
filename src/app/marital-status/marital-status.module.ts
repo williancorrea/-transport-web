@@ -1,19 +1,19 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {TypeRelationshipNewComponent} from './type-relationship-new/type-relationship-new.component';
-import {TypeRelationshipSearchComponent} from './type-relationship-search/type-relationship-search.component';
-import {RouterModule} from '@angular/router';
+import {TransportSharedModule} from '../transort-shared/transport-share.module';
+import {TableModule} from 'primeng/table';
+import {TranslateModule, TranslateService} from 'ng2-translate';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {PanelModule} from 'primeng/panel';
 import {DataTableModule, DropdownModule, InputTextareaModule, InputTextModule, ProgressBarModule, TooltipModule} from 'primeng/primeng';
 import {MessageModule} from 'primeng/message';
-import {CoreModule} from '../core/core.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ButtonModule} from 'primeng/button';
-import {TranslateModule, TranslateService} from 'ng2-translate';
-import {TransportSharedModule} from '../transort-shared/transport-share.module';
 import {SharedModule} from 'primeng/shared';
-import {PanelModule} from 'primeng/panel';
-import {TableModule} from 'primeng/table';
 import {LoadingModule} from 'ngx-loading';
+import {CoreModule} from '../core/core.module';
+import {ButtonModule} from 'primeng/button';
+import {RouterModule} from '@angular/router';
+import {MaritalStatusSearchComponent} from './marital-status-search/marital-status-search.component';
+import {MaritalStatusNewComponent} from './marital-status-new/marital-status-new.component';
 
 @NgModule({
    imports: [
@@ -40,14 +40,11 @@ import {LoadingModule} from 'ngx-loading';
       ProgressBarModule,
       InputTextareaModule
    ],
-   declarations: [
-      TypeRelationshipNewComponent,
-      TypeRelationshipSearchComponent
-   ],
+   declarations: [MaritalStatusSearchComponent, MaritalStatusNewComponent],
    exports: [],
    providers: [
       TranslateService
    ]
 })
-export class TypeRelationshipModule {
+export class MaritalStatusModule {
 }

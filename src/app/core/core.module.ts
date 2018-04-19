@@ -19,6 +19,7 @@ import {ButtonModule} from 'primeng/button';
 import {ProductUnitService} from '../product-unit/product-unit.service';
 import {TypeRelationshipService} from '../type-relationship/type-relationship.service';
 import {LevelOfEducationService} from '../level-of-education/level-of-education.service';
+import {MaritalStatusService} from '../marital-status/marital-status.service';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import {LevelOfEducationService} from '../level-of-education/level-of-education.
       ProductUnitService,
       TypeRelationshipService,
       LevelOfEducationService,
+      MaritalStatusService,
 
       ConfirmationService,
       JwtHelper,

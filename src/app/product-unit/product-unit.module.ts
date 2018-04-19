@@ -45,7 +45,6 @@ import {LoadingModule} from 'ngx-loading';
       ProductUnitNewComponent
    ],
    exports: [
-      ProductUnitSearchComponent
    ],
    providers: [
       TranslateService

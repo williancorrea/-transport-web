@@ -113,6 +113,7 @@ import {ProductUnitModule} from './product-unit/product-unit.module';
 import {TypeRelationshipModule} from './type-relationship/type-relationship.module';
 import {ANIMATION_TYPES, LoadingModule} from 'ngx-loading';
 import {LevelOfEducationModule} from './level-of-education/level-of-education.module';
+import {MaritalStatusModule} from './marital-status/marital-status.module';
 
 export function HttpLoaderFactory(http: Http) {
    return new TranslateStaticLoader(http, '/assets/i18n', '.json');
@@ -219,7 +220,8 @@ export function HttpLoaderFactory(http: Http) {
       BankModule,
       ProductUnitModule,
       TypeRelationshipModule,
-      LevelOfEducationModule
+      LevelOfEducationModule,
+      MaritalStatusModule
    ],
    declarations: [
       AppComponent,
