@@ -20,6 +20,7 @@ import {ProductUnitService} from '../product-unit/product-unit.service';
 import {TypeRelationshipService} from '../type-relationship/type-relationship.service';
 import {LevelOfEducationService} from '../level-of-education/level-of-education.service';
 import {MaritalStatusService} from '../marital-status/marital-status.service';
+import {PersonService} from '../person/person.service';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import {MaritalStatusService} from '../marital-status/marital-status.service';
       TypeRelationshipService,
       LevelOfEducationService,
       MaritalStatusService,
+      PersonService,
 
       ConfirmationService,
       JwtHelper,

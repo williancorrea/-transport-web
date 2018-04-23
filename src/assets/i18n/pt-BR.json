@@ -23,7 +23,8 @@
       "financial": "Financeiro",
       "types-of-relationships": "Relacionamentos",
       "level-of-education": "Nível de Formação",
-      "marital-status": "Estado Civil"
+      "marital-status": "Estado Civil",
+      "persons": "Pessoas"
    },
    "flags": {
       "brazil": "Brasil",
@@ -156,6 +157,20 @@
          "delete_success": "Estado civil removido com sucesso!",
          "add_success": "Estado civil adicionado com sucesso.",
          "update_success": "Estado civil atualizado com sucesso."
+      }
+   },
+   "person": {
+      "fields": {
+         "name": "Nome"
+      },
+      "title": "Pessoa",
+      "list": "Lista das Pessoas Cadastradas",
+      "actions": {
+         "add": "Adicionar",
+         "edit": "Editar",
+         "delete_success": "Pessoa removida com sucesso!",
+         "add_success": "Pessoa adicionada com sucesso.",
+         "update_success": "Pessoa atualizada com sucesso."
       }
    }
 }

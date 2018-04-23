@@ -28,6 +28,8 @@ import {LevelOfEducationNewComponent} from './level-of-education/level-of-educat
 import {LevelOfEducationSearchComponent} from './level-of-education/level-of-education-search/level-of-education-search.component';
 import {MaritalStatusSearchComponent} from './marital-status/marital-status-search/marital-status-search.component';
 import {MaritalStatusNewComponent} from './marital-status/marital-status-new/marital-status-new.component';
+import {PersonSearchComponent} from './person/person-search/person-search.component';
+import {PersonNewComponent} from './person/person-new/person-new.component';
 
 export const routes: Routes = [
    {
@@ -81,6 +83,10 @@ export const routes: Routes = [
    {path: 'marital-status', component: MaritalStatusSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_MARITAL_STATUS']}},
    {path: 'marital-status/new', component: MaritalStatusNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_MARITAL_STATUS']}},
    {path: 'marital-status/:key', component: MaritalStatusNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_MARITAL_STATUS']}},
+
+   {path: 'persons', component: PersonSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_PERSON']}},
+   {path: 'persons/new', component: PersonNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_PERSON']}},
+   {path: 'persons/:key', component: PersonNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_PERSON']}},
 
    {path: '**', redirectTo: 'page-not-found'}
 
