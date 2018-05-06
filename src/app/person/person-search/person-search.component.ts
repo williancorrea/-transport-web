@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import {ConfirmationService, LazyLoadEvent} from 'primeng/api';
 import {environment} from '../../../environments/environment';
 import {Title} from '@angular/platform-browser';
-import {PersonFilters} from '../../core/model/personFilters';
+import {PersonFilters} from '../../core/model/PersonFilters';
 import {TranslateService} from 'ng2-translate';
 import {PersonService} from '../person.service';
 import {ToastyService} from 'ng2-toasty';
