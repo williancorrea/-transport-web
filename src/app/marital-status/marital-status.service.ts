@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {MaritalStatusFilters} from '../core/model/maritalStatusFilters';
 import {ProductUnit} from '../core/model/bank';
 import {environment} from '../../environments/environment';
@@ -29,22 +29,25 @@ export class MaritalStatusService {
          event.sortOrder = Sort order as number, 1 for asc and -1 for dec
          filters: FilterMetadata object having field as key and filter value, filter matchMode as value
       */
+
       const config = {
          params: {
             'size': filter.rows,
             'page': filter.first / filter.rows,
             'sortOrder': filter.sortOrder > 0 ? 'asc' : 'desc',
-            'sortField': filter.sortField,
+            'sortField': filter.sortField != null ? filter.sortField : null
          }
       };
       if (filter.globalFilter && filter.globalFilter.length > 0) {
          config.params['globalFilter'] = filter.globalFilter;
       }
-      if (maritalStatusFilters.name && maritalStatusFilters.name.length > 0) {
-         config.params['name'] = maritalStatusFilters.name;
-      }
-      if (maritalStatusFilters.description && maritalStatusFilters.description.length > 0) {
-         config.params['description'] = maritalStatusFilters.description;
+      if (maritalStatusFilters) {
+         if (maritalStatusFilters.name && maritalStatusFilters.name.length > 0) {
+            config.params['name'] = maritalStatusFilters.name;
+         }
+         if (maritalStatusFilters.description && maritalStatusFilters.description.length > 0) {
+            config.params['description'] = maritalStatusFilters.description;
+         }
       }
 
       return this.http.get(`${this.apiUrl}`, config)

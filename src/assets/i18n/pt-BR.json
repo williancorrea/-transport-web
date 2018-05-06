@@ -45,7 +45,10 @@
       "add": "Adicionar",
       "cancel": "Cancelar",
       "delete": "Excluir",
+      "deleted": "Deletado",
+      "removed": "Removido",
       "select": "Selecione",
+      "select2": "Selecione ...",
       "global_filter": "Filtro global - min 3 caracteres",
       "no_records_found": "Nenhum registro encontrado",
       "required": "Obrigatório",
@@ -149,6 +152,9 @@
          "name": "Nome",
          "description": "Descrição"
       },
+      "labels": {
+         "selecione-um-estado-civil": "Selecione um estado cívil"
+      },
       "title": "Estado Civil",
       "list": "Lista dos Estados Civis",
       "actions": {
@@ -161,7 +167,45 @@
    },
    "person": {
       "fields": {
-         "name": "Nome"
+         "name": "Nome",
+         "student": "Estudante",
+         "shippingCompany": "Transportadora",
+         "collaborator": "Colaborador",
+         "provider": "Fornecedor",
+         "client": "Cliente",
+         "site": "Site",
+         "email": "E-mail",
+         "cpf": "CPF",
+         "rg": "RG",
+         "orgaoRg": "Orgão Emissor",
+         "dataEmissaoRg": "Data de Expedição",
+         "dataNascimento": "Data de Nascimento",
+         "sexo": "Sexo",
+         "naturalidade": "Naturalidade",
+         "nacionalidade": "Nacionalidade",
+         "tipoSangue": "Tipo Sanqguineo",
+         "cnhNumero": "Número de Registro",
+         "cnhCategoria": "Categoria",
+         "cnhVencimento": "Vencimento",
+         "tituloEleitoralNumero": "Número",
+         "tituloEleitoralZona": "Zona",
+         "tituloEleitoralSecao": "Seção",
+         "reservistaNumero": "Número",
+         "reservistaCategoria": "Categoria",
+         "nomeMae": "Nome da Mãe",
+         "nomePai": "Nome do Pai",
+         "estadoCivil": "Estado Cívil"
+      },
+      "labels": {
+         "person_legal": "Pessoa Jurídica",
+         "person_physical": "Pessoa Física",
+         "social_reason": "Razão Social",
+         "reservista": "reservista",
+         "registro_geral": "Registro Geral",
+         "cnh": "Carteira Nacional de Habilitação",
+         "tituloEleitoral": "Titulo de Eleitor",
+         "masculino" : "Masculino",
+         "feminino" : "Feminino"
       },
       "title": "Pessoa",
       "list": "Lista das Pessoas Cadastradas",

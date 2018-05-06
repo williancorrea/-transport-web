@@ -1,0 +1,29 @@
+.person-group-type-record {
+   text-align: center;
+   background: #b9b9b9;
+   padding: 10px;
+   margin-bottom: 30px;
+}
+
+.person-group-type {
+   text-align: center;
+   background: #f5f5f5;
+   margin-left: 10%;
+   margin-bottom: 10px;
+}
+
+.person-group-type label {
+   margin-left: 10px;
+}
+
+.person-group-type p-checkbox {
+   margin-right: 10px;
+}
+
+.card-cinza {
+   background: #f5f5f5;
+}
+
+.ui-fieldset-content{
+   background: #f5f5f5 !important;
+}

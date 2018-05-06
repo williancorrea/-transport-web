@@ -63,11 +63,48 @@ export class PersonSearchComponent implements OnInit {
                class: ''
             },
             {
-               field: 'name',
+               field: 'nome',
                header: s['fields']['name'],
                hidden: false,
                class: ''
+            },
+            {
+               field: 'cliente',
+               header: s['fields']['client'],
+               hidden: false,
+               class: 'datatable-collum-field-boolean'
+            },
+            {
+               field: 'estudante',
+               header: s['fields']['student'],
+               hidden: false,
+               class: 'datatable-collum-field-boolean'
+            },
+            {
+               field: 'fornecedor',
+               header: s['fields']['provider'],
+               hidden: false,
+               class: 'datatable-collum-field-boolean'
+            },
+            {
+               field: 'colaborador',
+               header: s['fields']['collaborator'],
+               hidden: false,
+               class: 'datatable-collum-field-boolean'
+            },
+            {
+               field: 'transportadora',
+               header: s['fields']['shippingCompany'],
+               hidden: false,
+               class: 'datatable-collum-field-boolean'
+            },
+            {
+               field: 'inativo',
+               header: s['actions']['deleted'],
+               hidden: true,
+               class: 'datatable-collum-field-boolean'
             }
+
          ];
       });
    }

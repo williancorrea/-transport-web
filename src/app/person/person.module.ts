@@ -4,12 +4,13 @@ import {PersonSearchComponent} from './person-search/person-search.component';
 import {PersonNewComponent} from './person-new/person-new.component';
 import {LoadingModule} from 'ngx-loading';
 import {
+   CalendarModule,
    CheckboxModule,
    DataTableModule,
-   DropdownModule,
-   InputTextModule,
+   DropdownModule, FieldsetModule, InputMaskModule,
+   InputTextModule, KeyFilterModule,
    ProgressBarModule,
-   RadioButtonModule,
+   RadioButtonModule, TabViewModule,
    TooltipModule
 } from 'primeng/primeng';
 import {MessageModule} from 'primeng/message';
@@ -47,7 +48,11 @@ import {RouterModule} from '@angular/router';
       TooltipModule,
       ProgressBarModule,
       CheckboxModule,
-      RadioButtonModule
+      RadioButtonModule,
+      CalendarModule,
+      KeyFilterModule,
+      FieldsetModule,
+      InputMaskModule
    ],
    declarations: [
       PersonSearchComponent,

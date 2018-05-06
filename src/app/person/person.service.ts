@@ -9,7 +9,7 @@ export class PersonService {
    apiUrl: string;
 
    constructor(private http: AuthHttp) {
-      this.apiUrl = `${environment.apiUrl}/persons`;
+      this.apiUrl = `${environment.apiUrl}/pessoas`;
    }
 
    /**
