@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
-import {PersonFilters} from '../core/model/personFilters';
+import {PersonFilters} from '../core/model/PersonFilters';
 import {AuthHttp} from 'angular2-jwt';
 
 @Injectable()
