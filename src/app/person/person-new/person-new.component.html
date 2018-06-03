@@ -60,7 +60,8 @@
                           formGroupName="pessoaFisica">
                         <label>{{'person.fields.cpf'| translate}}</label>
                         <span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
-                        <p-inputMask mask="999.999.999-99" slotChar="_" formControlName="cpf" [disabled]="form.get('key').value != null"></p-inputMask>
+                        <p-inputMask mask="999.999.999-99" slotChar="_" formControlName="cpf"
+                                     [disabled]="form.get('key').value != null"></p-inputMask>
                         <app-message [form]="f" [control]="form.get('pessoaFisica').get('cpf')"></app-message>
                      </div>
 
@@ -128,231 +129,223 @@
                </div>
 
                <div class="ui-g-12 ui-fluid">
+                  <p-tabView>
+                     <!--GRUPO REGISTRO GERAL-->
+                     <p-tabPanel header="{{'person.labels.registro_geral' | translate}}" class="ui-g">
+                        <!--PESSOA FISICA - RG-->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-g-3 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.rg'| translate}}</label>
+                           <input pInputText type="text"
+                                  formControlName="rg"
+                                  class="rg_mask">
+                           <app-message [form]="f" [control]="form.get('pessoaFisica').get('rg')"></app-message>
+                        </div>
 
-                  <!--GRUPO REGISTRO GERAL-->
-                  <p-fieldset class="card-cinza" legend="{{'person.labels.registro_geral' | translate}}"
-                              [toggleable]="true">
+                        <!--PESSOA FISICA - DATA NASCIMENTO-->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-g-3 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.dataNascimento'| translate}}</label>
+                           <p-calendar formGroupName="dataNascimento"
+                                       dateFormat="dd/mm/yy"
+                                       [readonlyInput]="false"
+                                       [showIcon]="true"
+                                       [maxDate]="dataAtual"
+                                       [monthNavigator]="true"></p-calendar>
+                           <app-message [form]="f"
+                                        [control]="form.get('pessoaFisica').get('dataNascimento')"></app-message>
+                        </div>
 
-                     <!--class="ui-sm-6 ui-md-3 ui-lg-2 ui-xl-1 ui-fluid"-->
+                        <!--PESSOA FISICA - ORGAO RG-->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-g-3 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.orgaoRg'| translate}}</label>
+                           <p-inputMask mask="aaa/aa" slotChar="_" formControlName="orgaoRg"></p-inputMask>
+                           <app-message [form]="f" [control]="form.get('pessoaFisica').get('orgaoRg')"></app-message>
+                        </div>
 
-                     <!--PESSOA FISICA - RG-->
-                     <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                          class="ui-g-3 ui-fluid"
-                          formGroupName="pessoaFisica">
-                        <label>{{'person.fields.rg'| translate}}</label>
-                        <input pInputText type="text"
-                               formControlName="rg"
-                               class="rg_mask">
-                        <app-message [form]="f" [control]="form.get('pessoaFisica').get('rg')"></app-message>
-                     </div>
+                        <!--PESSOA FISICA - DATA EMISSAO RG-->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-g-3 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.dataEmissaoRg'| translate}}</label>
+                           <p-calendar formGroupName="dataEmissaoRg"
+                                       dateFormat="dd/mm/yy"
+                                       [readonlyInput]="true"
+                                       [showIcon]="true"
+                                       [maxDate]="dataAtual"
+                                       [monthNavigator]="true"></p-calendar>
+                           <app-message [form]="f"
+                                        [control]="form.get('pessoaFisica').get('dataEmissaoRg')"></app-message>
+                        </div>
 
-                     <!--PESSOA FISICA - DATA NASCIMENTO-->
-                     <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                          class="ui-g-3 ui-fluid"
-                          formGroupName="pessoaFisica">
-                        <label>{{'person.fields.dataNascimento'| translate}}</label>
-                        <p-calendar formGroupName="dataNascimento"
-                                    dateFormat="dd/mm/yy"
-                                    [readonlyInput]="true"
-                                    [showIcon]="true"
-                                    [maxDate]="dataAtual"
-                                    [monthNavigator]="true"></p-calendar>
-                        <app-message [form]="f"
-                                     [control]="form.get('pessoaFisica').get('dataNascimento')"></app-message>
-                     </div>
+                        <!--PESSOA FISICA - NATURALIDADE -->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-g-6 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.naturalidade'| translate}}</label>
+                           <input pInputText type="text"
+                                  formControlName="naturalidade">
+                           <app-message [form]="f"
+                                        [control]="form.get('pessoaFisica').get('naturalidade')"></app-message>
+                        </div>
 
-                     <!--PESSOA FISICA - ORGAO RG-->
-                     <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                          class="ui-g-3 ui-fluid"
-                          formGroupName="pessoaFisica">
-                        <label>{{'person.fields.orgaoRg'| translate}}</label>
-                        <p-inputMask mask="aaa/aa" slotChar="_" formControlName="orgaoRg"></p-inputMask>
-                        <app-message [form]="f" [control]="form.get('pessoaFisica').get('orgaoRg')"></app-message>
-                     </div>
-
-                     <!--PESSOA FISICA - DATA EMISSAO RG-->
-                     <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                          class="ui-g-3 ui-fluid"
-                          formGroupName="pessoaFisica">
-                        <label>{{'person.fields.dataEmissaoRg'| translate}}</label>
-                        <p-calendar formGroupName="dataEmissaoRg"
-                                    dateFormat="dd/mm/yy"
-                                    [readonlyInput]="true"
-                                    [showIcon]="true"
-                                    [maxDate]="dataAtual"
-                                    [monthNavigator]="true"></p-calendar>
-                        <app-message [form]="f"
-                                     [control]="form.get('pessoaFisica').get('dataEmissaoRg')"></app-message>
-                     </div>
-
-                     <!--PESSOA FISICA - NATURALIDADE -->
-                     <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                          class="ui-g-6 ui-fluid"
-                          formGroupName="pessoaFisica">
-                        <label>{{'person.fields.naturalidade'| translate}}</label>
-                        <input pInputText type="text"
-                               formControlName="naturalidade">
-                        <app-message [form]="f"
-                                     [control]="form.get('pessoaFisica').get('naturalidade')"></app-message>
-                     </div>
-
-                     <!--PESSOA FISICA - NACIONALIDADE -->
-                     <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                          class="ui-g-6 ui-fluid"
-                          formGroupName="pessoaFisica">
-                        <label>{{'person.fields.nacionalidade'| translate}}</label>
-                        <input pInputText type="text"
-                               formControlName="nacionalidade">
-                        <app-message [form]="f"
-                                     [control]="form.get('pessoaFisica').get('nacionalidade')"></app-message>
-                     </div>
+                        <!--PESSOA FISICA - NACIONALIDADE -->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-g-6 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.nacionalidade'| translate}}</label>
+                           <input pInputText type="text"
+                                  formControlName="nacionalidade">
+                           <app-message [form]="f"
+                                        [control]="form.get('pessoaFisica').get('nacionalidade')"></app-message>
+                        </div>
 
 
-                     <!--PESSOA FISICA - NOME MAE -->
-                     <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                          class="ui-g-6 ui-fluid"
-                          formGroupName="pessoaFisica">
-                        <label>{{'person.fields.nomeMae'| translate}}</label>
-                        <input pInputText type="text"
-                               formControlName="nomeMae">
-                        <app-message [form]="f"
-                                     [control]="form.get('pessoaFisica').get('nomeMae')"></app-message>
-                     </div>
+                        <!--PESSOA FISICA - NOME MAE -->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-g-6 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.nomeMae'| translate}}</label>
+                           <input pInputText type="text"
+                                  formControlName="nomeMae">
+                           <app-message [form]="f"
+                                        [control]="form.get('pessoaFisica').get('nomeMae')"></app-message>
+                        </div>
 
-                     <!--PESSOA FISICA - NOME PAI -->
-                     <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                          class="ui-g-6 ui-fluid"
-                          formGroupName="pessoaFisica">
-                        <label>{{'person.fields.nomePai'| translate}}</label>
-                        <input pInputText type="text"
-                               formControlName="nomePai">
-                        <app-message [form]="f"
-                                     [control]="form.get('pessoaFisica').get('nomePai')"></app-message>
-                     </div>
-                  </p-fieldset>
-                  <br>
+                        <!--PESSOA FISICA - NOME PAI -->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-g-6 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.nomePai'| translate}}</label>
+                           <input pInputText type="text"
+                                  formControlName="nomePai">
+                           <app-message [form]="f"
+                                        [control]="form.get('pessoaFisica').get('nomePai')"></app-message>
+                        </div>
+                     </p-tabPanel>
 
-                  <!--GRUPO CNH-->
-                  <p-fieldset class="card-cinza" legend="{{'person.labels.cnh' | translate}}" [toggleable]="true">
-                     <!--PESSOA FISICA - NUMERO CNH -->
-                     <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                          class="ui-g-3 ui-fluid"
-                          formGroupName="pessoaFisica">
-                        <label>{{'person.fields.cnhNumero'| translate}}</label>
-                        <input pInputText type="text"
-                               pattern="[0-9]+$"
-                               formControlName="cnhNumero">
-                        <app-message [form]="f" [control]="form.get('pessoaFisica').get('cnhNumero')"></app-message>
-                     </div>
+                     <!--GRUPO CNH-->
+                     <p-tabPanel header="{{'person.labels.cnh' | translate}}" class="ui-g">
+                        <!--PESSOA FISICA - NUMERO CNH -->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-g-3 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.cnhNumero'| translate}}</label>
+                           <input pInputText type="text"
+                                  pattern="[0-9]+$"
+                                  formControlName="cnhNumero">
+                           <app-message [form]="f" [control]="form.get('pessoaFisica').get('cnhNumero')"></app-message>
+                        </div>
 
-                     <!--PESSOA FISICA - CNH CATEGORIA -->
-                     <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                          class="ui-sm-3 ui-g-3 ui-fluid"
-                          formGroupName="pessoaFisica">
-                        <label>{{'person.fields.cnhCategoria'| translate}}</label>
-                        <input pInputText type="text"
-                               formControlName="cnhCategoria"
-                               pattern="[A-Za-z]+$"
-                               class="text-upercase"
-                        >
-                        <app-message [form]="f"
-                                     [control]="form.get('pessoaFisica').get('cnhCategoria')"></app-message>
-                     </div>
+                        <!--PESSOA FISICA - CNH CATEGORIA -->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-sm-3 ui-g-3 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.cnhCategoria'| translate}}</label>
+                           <input pInputText type="text"
+                                  formControlName="cnhCategoria"
+                                  pattern="[A-Za-z]+$"
+                                  class="text-upercase"
+                           >
+                           <app-message [form]="f"
+                                        [control]="form.get('pessoaFisica').get('cnhCategoria')"></app-message>
+                        </div>
 
-                     <!--PESSOA FISICA - CNH VENCIMENTO -->
-                     <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                          class="ui-sm-3 ui-g-3 ui-fluid"
-                          formGroupName="pessoaFisica">
-                        <label>{{'person.fields.cnhVencimento'| translate}}</label>
-                        <p-calendar formGroupName="cnhVencimento"
-                                    dateFormat="dd/mm/yy"
-                                    [readonlyInput]="true"
-                                    [showIcon]="true"
-                                    [maxDate]="dataAtual"
-                                    [monthNavigator]="true"></p-calendar>
-                        <app-message [form]="f"
-                                     [control]="form.get('pessoaFisica').get('cnhVencimento')"></app-message>
-                     </div>
-                  </p-fieldset>
-                  <br>
+                        <!--PESSOA FISICA - CNH VENCIMENTO -->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-sm-3 ui-g-3 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.cnhVencimento'| translate}}</label>
+                           <p-calendar formGroupName="cnhVencimento"
+                                       dateFormat="dd/mm/yy"
+                                       [readonlyInput]="true"
+                                       [showIcon]="true"
+                                       [maxDate]="dataAtual"
+                                       [monthNavigator]="true"></p-calendar>
+                           <app-message [form]="f"
+                                        [control]="form.get('pessoaFisica').get('cnhVencimento')"></app-message>
+                        </div>
+                     </p-tabPanel>
 
-                  <!--GRUPO TITULO DE ELEITOR -->
-                  <p-fieldset class="card-cinza" legend="{{'person.labels.tituloEleitoral' | translate}}"
-                              [toggleable]="true">
-                     <!--PESSOA FISICA - TITULO ELEITORAL NUMERO -->
-                     <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                          class="ui-sm-3 ui-g-3 ui-fluid"
-                          formGroupName="pessoaFisica">
-                        <label>{{'person.fields.tituloEleitoralNumero'| translate}}</label>
-                        <input pInputText type="text"
-                               formControlName="tituloEleitoralNumero">
-                        <app-message [form]="f"
-                                     [control]="form.get('pessoaFisica').get('tituloEleitoralNumero')"></app-message>
-                     </div>
+                     <!--GRUPO TITULO DE ELEITOR -->
+                     <p-tabPanel header="{{'person.labels.tituloEleitoral' | translate}}" class="ui-g">
+                        <!--PESSOA FISICA - TITULO ELEITORAL NUMERO -->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-sm-3 ui-g-3 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.tituloEleitoralNumero'| translate}}</label>
+                           <input pInputText type="text"
+                                  formControlName="tituloEleitoralNumero">
+                           <app-message [form]="f"
+                                        [control]="form.get('pessoaFisica').get('tituloEleitoralNumero')"></app-message>
+                        </div>
 
-                     <!--PESSOA FISICA - TITULO ELEITORAL ZONA -->
-                     <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                          class="ui-sm-3 ui-g-3 ui-fluid"
-                          formGroupName="pessoaFisica">
-                        <label>{{'person.fields.tituloEleitoralZona'| translate}}</label>
-                        <input pInputText type="text"
-                               formControlName="tituloEleitoralZona">
-                        <app-message [form]="f"
-                                     [control]="form.get('pessoaFisica').get('tituloEleitoralZona')"></app-message>
-                     </div>
+                        <!--PESSOA FISICA - TITULO ELEITORAL ZONA -->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-sm-3 ui-g-3 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.tituloEleitoralZona'| translate}}</label>
+                           <input pInputText type="text"
+                                  formControlName="tituloEleitoralZona">
+                           <app-message [form]="f"
+                                        [control]="form.get('pessoaFisica').get('tituloEleitoralZona')"></app-message>
+                        </div>
 
-                     <!--PESSOA FISICA - TITULO ELEITORAL SECAO -->
-                     <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                          class="ui-sm-3 ui-g-3 ui-fluid"
-                          formGroupName="pessoaFisica">
-                        <label>{{'person.fields.tituloEleitoralSecao'| translate}}</label>
-                        <span class="requiredLabel"></span>
-                        <input pInputText type="text"
-                               formControlName="tituloEleitoralSecao">
-                        <app-message [form]="f"
-                                     [control]="form.get('pessoaFisica').get('tituloEleitoralSecao')"></app-message>
-                     </div>
-                  </p-fieldset>
-                  <br>
-                  <!--GRUPO RESERVISTA-->
-                  <p-fieldset class="card-cinza" legend="{{'person.labels.reservista' | translate}}"
-                              [toggleable]="true">
-                     <!--PESSOA FISICA - TIPO SANGUINEO -->
-                     <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                          class="ui-g-3 ui-fluid"
-                          formGroupName="pessoaFisica">
-                        <label>{{'person.fields.tipoSangue'| translate}}</label>
-                        <input pInputText type="text"
-                               formControlName="tipoSangue">
-                        <app-message [form]="f" [control]="form.get('pessoaFisica').get('tipoSangue')"></app-message>
-                     </div>
+                        <!--PESSOA FISICA - TITULO ELEITORAL SECAO -->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-sm-3 ui-g-3 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.tituloEleitoralSecao'| translate}}</label>
+                           <span class="requiredLabel"></span>
+                           <input pInputText type="text"
+                                  formControlName="tituloEleitoralSecao">
+                           <app-message [form]="f"
+                                        [control]="form.get('pessoaFisica').get('tituloEleitoralSecao')"></app-message>
+                        </div>
+                     </p-tabPanel>
 
-                     <!--PESSOA FISICA - RESERVISTA NUMERO -->
-                     <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                          class="ui-sm-3 ui-g-3 ui-fluid"
-                          formGroupName="pessoaFisica">
-                        <label>{{'person.fields.reservistaNumero'| translate}}</label>
-                        <input pInputText type="text"
-                               formControlName="reservistaNumero">
-                        <app-message [form]="f"
-                                     [control]="form.get('pessoaFisica').get('reservistaNumero')"></app-message>
-                     </div>
+                     <!--GRUPO RESERVISTA-->
+                     <p-tabPanel header="{{'person.labels.reservista' | translate}}" class="ui-g">
+                        <!--PESSOA FISICA - TIPO SANGUINEO -->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-g-3 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.tipoSangue'| translate}}</label>
+                           <input pInputText type="text"
+                                  formControlName="tipoSangue">
+                           <app-message [form]="f"
+                                        [control]="form.get('pessoaFisica').get('tipoSangue')"></app-message>
+                        </div>
 
-                     <!--PESSOA FISICA - RESERVISTA CATEGORIA -->
-                     <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                          class="ui-sm-3 ui-g-3 ui-fluid"
-                          formGroupName="pessoaFisica">
-                        <label>{{'person.fields.reservistaCategoria'| translate}}</label>
-                        <input pInputText type="text"
-                               formControlName="reservistaCategoria">
-                        <app-message [form]="f"
-                                     [control]="form.get('pessoaFisica').get('reservistaCategoria')"></app-message>
-                     </div>
-                  </p-fieldset>
-                  <br>
+                        <!--PESSOA FISICA - RESERVISTA NUMERO -->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-sm-3 ui-g-3 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.reservistaNumero'| translate}}</label>
+                           <input pInputText type="text"
+                                  formControlName="reservistaNumero">
+                           <app-message [form]="f"
+                                        [control]="form.get('pessoaFisica').get('reservistaNumero')"></app-message>
+                        </div>
 
+                        <!--PESSOA FISICA - RESERVISTA CATEGORIA -->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-sm-3 ui-g-3 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.reservistaCategoria'| translate}}</label>
+                           <input pInputText type="text"
+                                  formControlName="reservistaCategoria">
+                           <app-message [form]="f"
+                                        [control]="form.get('pessoaFisica').get('reservistaCategoria')"></app-message>
+                        </div>
+                     </p-tabPanel>
+
+                  </p-tabView>
                </div>
-
 
                <div class="ui-sm-12 ui-g-12">
                   <button pButton type="button"

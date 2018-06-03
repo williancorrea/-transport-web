@@ -44,7 +44,6 @@ export class ErrorHandlerService {
             }
 
             console.error('An error has occurred', errorResponse);
-
          } else {
             msg = s['service_error'];
             console.error('An error has occurred', errorResponse);

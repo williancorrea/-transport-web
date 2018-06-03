@@ -26,10 +26,10 @@
                   <label>{{'marital-status.fields.name' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
                   <input pInputText
                          type="text"
-                         name="name"
-                         formControlName="name"
+                         name="nome"
+                         formControlName="nome"
                   >
-                  <app-message [form]="f" [control]="form.get('name')"></app-message>
+                  <app-message [form]="f" [control]="form.get('nome')"></app-message>
                </div>
 
                <div class="ui-sm-12 ui-g-12 ui-fluid">
@@ -37,10 +37,10 @@
                   <textarea [rows]="5"
                             [cols]="30"
                             pInputTextarea
-                            name="description"
-                            formControlName="description"
+                            name="descricao"
+                            formControlName="descricao"
                             autoResize></textarea>
-                  <app-message [form]="f" [control]="form.get('description')"></app-message>
+                  <app-message [form]="f" [control]="form.get('descricao')"></app-message>
                </div>
 
                <div class="ui-sm-12 ui-g-12">
@@ -50,7 +50,7 @@
                           tooltipPosition="top" pTooltip="{{'actions.tooltip.cancel' | translate}}"
                           (click)="cancel()"></button>
                   <button pButton type="submit"
-                          *ngIf="form.get('key').value ? auth.hasPermission('ROLE_UPDATE_MARITAL_STATUS') : auth.hasPermission('ROLE_SAVE_MARITAL_STATUS')"
+                          *ngIf="form.get('key').value ? auth.hasPermission('ROLE_ATUALIZAR_ESTADO_CIVIL') : auth.hasPermission('ROLE_SALVAR_ESTADO_CIVIL')"
                           [disabled]="form.invalid"
                           label="{{(form.get('key').value ? 'actions.update' : 'actions.save') | translate}}"
                           tooltipPosition="top" pTooltip="{{'actions.tooltip.save' | translate}}"

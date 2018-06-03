@@ -10,11 +10,11 @@ export class MaritalStatusService {
    apiUrl: string;
 
    constructor(private http: AuthHttp) {
-      this.apiUrl = `${environment.apiUrl}/marital_status`;
+      this.apiUrl = `${environment.apiUrl}/estado-civil`;
    }
 
    /**
-    * List all records according to the filters passed by parameters
+    * Lista todos os registro de acordo com os filtros passados por parametros
     *
     * @param filter
     * @param {BankFilters} maritalStatusFilters
@@ -34,19 +34,23 @@ export class MaritalStatusService {
          params: {
             'size': filter.rows,
             'page': filter.first / filter.rows,
-            'sortOrder': filter.sortOrder > 0 ? 'asc' : 'desc',
-            'sortField': filter.sortField != null ? filter.sortField : null
+            'sortOrder': filter.sortOrder > 0 ? 'asc' : 'desc'
          }
       };
-      if (filter.globalFilter && filter.globalFilter.length > 0) {
-         config.params['globalFilter'] = filter.globalFilter;
+      if (filter.sortField != null) {
+         config.params['sortField'] = filter.sortField;
       }
+      if (filter.globalFilter && filter.globalFilter.length > 0) {
+         config.params['filtroGlobal'] = filter.globalFilter;
+      }
+
+
       if (maritalStatusFilters) {
          if (maritalStatusFilters.name && maritalStatusFilters.name.length > 0) {
-            config.params['name'] = maritalStatusFilters.name;
+            config.params['nome'] = maritalStatusFilters.name;
          }
          if (maritalStatusFilters.description && maritalStatusFilters.description.length > 0) {
-            config.params['description'] = maritalStatusFilters.description;
+            config.params['descricao'] = maritalStatusFilters.description;
          }
       }
 
@@ -90,7 +94,7 @@ export class MaritalStatusService {
     */
    save(obj): Promise<any> {
       delete obj['key'];
-      delete obj['properties'];
+      delete obj['controle'];
 
       return this.http.post(this.apiUrl,
          JSON.stringify(obj))
@@ -110,7 +114,7 @@ export class MaritalStatusService {
       const key = obj.key;
 
       delete obj['key'];
-      delete obj['properties'];
+      delete obj['controle'];
 
       return this.http.put(`${this.apiUrl}/${key}`,
          JSON.stringify(obj))

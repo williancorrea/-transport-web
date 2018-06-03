@@ -1,34 +1,38 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Atlantis</title>
-  <base href="/">
+   <meta charset="utf-8">
+   <title>Atlantis</title>
+   <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-  <!-- Layout CSS -->
-  <link id="theme-css" rel="stylesheet" type="text/css" href="assets/theme/theme-blue.css">
-  <link id="layout-css" rel="stylesheet" type="text/css" href="assets/layout/css/layout-dark.css">
+   <script src="assets/js/jquery-3.2.1.js"></script>
+   <!--<script src="assets/js/jquery.mask.js" ></script>-->
+
+   <!-- Layout CSS -->
+   <link id="theme-css" rel="stylesheet" type="text/css" href="assets/theme/theme-blue.css">
+   <link id="layout-css" rel="stylesheet" type="text/css" href="assets/layout/css/layout-dark.css">
 
 </head>
 <body>
-    <app-root>
-        <div class="splash-screen">
-            <div class="splash-loader">
-                <img src="assets/layout/images/logo.png">
-            </div>
-        </div>
-    </app-root>
+<app-root>
+   <div class="splash-screen">
+      <div class="splash-loader">
+         <img src="assets/layout/images/logo.png">
+      </div>
+   </div>
+</app-root>
 
-    <!--<script>-->
-       <!--//  https://igorescobar.github.io/jQuery-Mask-Plugin/docs.html-->
-        <!--$(function () {-->
-          <!--$('.rg_mask').mask('00.000.000-A', {reverse: true});-->
-           <!--$('.cpf').mask('000.000.000-00', {reverse: true});-->
-        <!--});-->
-    <!--</script>-->
+<script>
+   //  https://igorescobar.github.io/jQuery-Mask-Plugin/docs.html
+   $(document).ready(function(){
+      $('.rg_mask').mask('00.000.000-A', {reverse: false});
+      $('.cpf').mask('000.000.000-00', {reverse: true});
+      $('.date').mask('00/00/0000');
+   });
+</script>
 
 </body>
 </html>

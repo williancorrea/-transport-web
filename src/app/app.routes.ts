@@ -80,9 +80,9 @@ export const routes: Routes = [
    {path: 'levels-of-education/new', component: LevelOfEducationNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_LEVEL-OF-EDUCATION']}},
    {path: 'levels-of-education/:key', component: LevelOfEducationNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_LEVEL-OF-EDUCATION']}},
 
-   {path: 'marital-status', component: MaritalStatusSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_MARITAL_STATUS']}},
-   {path: 'marital-status/new', component: MaritalStatusNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_MARITAL_STATUS']}},
-   {path: 'marital-status/:key', component: MaritalStatusNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_MARITAL_STATUS']}},
+   {path: 'marital-status', component: MaritalStatusSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_ESTADO_CIVIL']}},
+   {path: 'marital-status/new', component: MaritalStatusNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_ESTADO_CIVIL']}},
+   {path: 'marital-status/:key', component: MaritalStatusNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_ESTADO_CIVIL']}},
 
    {path: 'persons', component: PersonSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_PERSON']}},
    {path: 'persons/new', component: PersonNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_PERSON']}},

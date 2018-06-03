@@ -60,14 +60,14 @@ export class MaritalStatusNewComponent implements OnInit {
    configForm() {
       this.form = this.formBuild.group({
          key: [null],
-         name: [
+         nome: [
             null, [
                Validators.required,
                Validators.minLength(5),
                Validators.maxLength(150)
             ]
          ],
-         description: [
+         descricao: [
             null, [
                Validators.required,
                Validators.minLength(1),

@@ -52,7 +52,8 @@ import {RouterModule} from '@angular/router';
       CalendarModule,
       KeyFilterModule,
       FieldsetModule,
-      InputMaskModule
+      InputMaskModule,
+      TabViewModule
    ],
    declarations: [
       PersonSearchComponent,

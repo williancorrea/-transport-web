@@ -63,13 +63,13 @@ export class MaritalStatusSearchComponent implements OnInit {
                class: ''
             },
             {
-               field: 'name',
+               field: 'nome',
                header: s['fields']['name'],
                hidden: false,
                class: 'datatable-collum-field-name'
             },
             {
-               field: 'description',
+               field: 'descricao',
                header: s['fields']['description'],
                hidden: false,
                class: ''

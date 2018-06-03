@@ -7,7 +7,7 @@
          <div>
             <h1>{{'marital-status.list' | translate}}</h1>
             <a pButton class="btn-add-new ui-button-secondary"
-               *ngIf="auth.hasPermission('ROLE_SAVE_MARITAL_STATUS')"
+               *ngIf="auth.hasPermission('ROLE_SALVAR_ESTADO_CIVIL')"
                label="{{'marital-status.actions.add' | translate}}"
                iconPos="left" icon="fa-plus"
                tooltipPosition="top" pTooltip="{{'actions.tooltip.new' | translate}}"
@@ -121,7 +121,7 @@
 
             <ng-template pTemplate="paginatorright" let-obj="rowData">
                <button type="button"
-                       *ngIf="auth.hasPermission('ROLE_UPDATE_MARITAL_STATUS')"
+                       *ngIf="auth.hasPermission('ROLE_ATUALIZAR_ESTADO_CIVIL')"
                        pButton
                        icon="fa-pencil"
                        label="{{'actions.edit' | translate}}"
@@ -129,7 +129,7 @@
                        tooltipPosition="top" pTooltip="{{'actions.tooltip.edit' | translate}}"
                        (click)="edit()"></button>
                <button type="button"
-                       *ngIf="auth.hasPermission('ROLE_DELETE_MARITAL_STATUS')"
+                       *ngIf="auth.hasPermission('ROLE_DELETAR_ESTADO_CIVIL')"
                        pButton
                        icon="fa-trash"
                        class="ui-button-danger"
