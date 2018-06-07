@@ -12,8 +12,8 @@ import {LoadingModule} from 'ngx-loading';
 import {CoreModule} from '../core/core.module';
 import {ButtonModule} from 'primeng/button';
 import {RouterModule} from '@angular/router';
-import {MaritalStatusSearchComponent} from './marital-status-search/marital-status-search.component';
-import {MaritalStatusNewComponent} from './marital-status-new/marital-status-new.component';
+import {EstadoCivilPesquisarComponent} from './estado-civil-pesquisar/estado-civil-pesquisar.component';
+import {EstadoCivilNovoComponent} from './estado-civil-novo/estado-civil-novo.component';
 
 @NgModule({
    imports: [
@@ -40,11 +40,11 @@ import {MaritalStatusNewComponent} from './marital-status-new/marital-status-new
       ProgressBarModule,
       InputTextareaModule
    ],
-   declarations: [MaritalStatusSearchComponent, MaritalStatusNewComponent],
+   declarations: [EstadoCivilPesquisarComponent, EstadoCivilNovoComponent],
    exports: [],
    providers: [
       TranslateService
    ]
 })
-export class MaritalStatusModule {
+export class EstadoCivilModule {
 }

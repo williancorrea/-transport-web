@@ -53,7 +53,7 @@ export class TypeRelationshipSearchComponent implements OnInit {
       this.env = environment;
       this.setLoading(true);
       this.translate.get('type-relationship').subscribe(s => {
-         this.title.setTitle(s['list']);
+         this.title.setTitle(s['estadoCivilList']);
 
          this.COLS = [
             {
@@ -85,7 +85,7 @@ export class TypeRelationshipSearchComponent implements OnInit {
    }
 
    /**
-    * Assigns the value to enable or disable the loading icon in the datatable
+    * Assigns the value to enable or disable the mostrarTelaCarregando icon in the datatable
     *
     * @param loading
     */

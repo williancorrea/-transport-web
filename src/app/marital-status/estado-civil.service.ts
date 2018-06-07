@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
-import {MaritalStatusFilters} from '../core/model/maritalStatusFilters';
+import {EstadoCivilFiltro} from '../core/model/estadoCivilFiltro';
 import {ProductUnit} from '../core/model/bank';
 import {environment} from '../../environments/environment';
 import {AuthHttp} from 'angular2-jwt';
 
 @Injectable()
-export class MaritalStatusService {
+export class EstadoCivilService {
 
    apiUrl: string;
 
@@ -20,7 +20,7 @@ export class MaritalStatusService {
     * @param {BankFilters} maritalStatusFilters
     * @returns {Promise<any>}
     */
-   findAll(filter: any, maritalStatusFilters: MaritalStatusFilters): Promise<any> {
+   findAll(filter: any, maritalStatusFilters: EstadoCivilFiltro): Promise<any> {
       /*
          in a real application, make a remote request to load data using state metadata from event
          event.first = First row offset
@@ -46,11 +46,11 @@ export class MaritalStatusService {
 
 
       if (maritalStatusFilters) {
-         if (maritalStatusFilters.name && maritalStatusFilters.name.length > 0) {
-            config.params['nome'] = maritalStatusFilters.name;
+         if (maritalStatusFilters.nome && maritalStatusFilters.nome.length > 0) {
+            config.params['nome'] = maritalStatusFilters.nome;
          }
-         if (maritalStatusFilters.description && maritalStatusFilters.description.length > 0) {
-            config.params['descricao'] = maritalStatusFilters.description;
+         if (maritalStatusFilters.descricao && maritalStatusFilters.descricao.length > 0) {
+            config.params['descricao'] = maritalStatusFilters.descricao;
          }
       }
 

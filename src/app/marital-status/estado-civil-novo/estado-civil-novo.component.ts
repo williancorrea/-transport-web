@@ -4,16 +4,16 @@ import {AuthService} from '../../security/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ErrorHandlerService} from '../../core/error-handler.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MaritalStatusService} from '../../marital-status/marital-status.service';
+import {EstadoCivilService} from '../estado-civil.service';
 import {Title} from '@angular/platform-browser';
 import {ToastyService} from 'ng2-toasty';
 
 @Component({
    selector: 'app-marital-status-new',
-   templateUrl: './marital-status-new.component.html',
-   styleUrls: ['./marital-status-new.component.css']
+   templateUrl: './estado-civil-novo.component.html',
+   styleUrls: ['./estado-civil-novo.component.css']
 })
-export class MaritalStatusNewComponent implements OnInit {
+export class EstadoCivilNovoComponent implements OnInit {
 
    form: FormGroup;
    translateObj: any;
@@ -23,7 +23,7 @@ export class MaritalStatusNewComponent implements OnInit {
                private activatedRoute: ActivatedRoute,
                private translate: TranslateService,
                private title: Title,
-               private maritalStatusService: MaritalStatusService,
+               private maritalStatusService: EstadoCivilService,
                private toasty: ToastyService,
                public auth: AuthService,
                private errorHandler: ErrorHandlerService,
@@ -33,12 +33,12 @@ export class MaritalStatusNewComponent implements OnInit {
    ngOnInit() {
       this.configForm();
       this.showLoading(true);
-      this.translate.get('marital-status').subscribe(s => {
+      this.translate.get('estado-civil').subscribe(s => {
          this.translateObj = s;
 
          const isEditing = this.activatedRoute.snapshot.params['key'];
          if (isEditing) {
-            this.title.setTitle(s['actions']['edit']);
+            this.title.setTitle(s['acoes']['editar']);
 
             this.maritalStatusService.findOne(isEditing)
                .then(response => {
@@ -47,11 +47,11 @@ export class MaritalStatusNewComponent implements OnInit {
                })
                .catch(error => {
                   this.errorHandler.handle(error);
-                  this.title.setTitle(s['actions']['add']);
+                  this.title.setTitle(s['acoes']['adicionar']);
                   this.showLoading(false);
                });
          } else {
-            this.title.setTitle(s['actions']['add']);
+            this.title.setTitle(s['acoes']['adicionar']);
             this.showLoading(false);
          }
       });
@@ -88,9 +88,9 @@ export class MaritalStatusNewComponent implements OnInit {
             this.maritalStatusService.update(this.form.value)
                .then(
                   response => {
-                     this.toasty.success(this.translateObj['actions']['update_success']);
+                     this.toasty.success(this.translateObj['acoes']['atualizar_sucesso']);
                      this.showLoading(false);
-                     this.router.navigateByUrl('/marital-status');
+                     this.router.navigateByUrl('/estado-civil');
                   }
                ).catch(error => {
                this.errorHandler.handle(error);
@@ -100,9 +100,9 @@ export class MaritalStatusNewComponent implements OnInit {
             this.maritalStatusService.save(this.form.value)
                .then(
                   response => {
-                     this.toasty.success(this.translateObj['actions']['add_success']);
+                     this.toasty.success(this.translateObj['acoes']['adicionar_sucesso']);
                      this.showLoading(false);
-                     this.router.navigateByUrl('/marital-status');
+                     this.router.navigateByUrl('/estado-civil');
                   }
                ).catch(erro => {
                this.errorHandler.handle(erro);
@@ -113,6 +113,6 @@ export class MaritalStatusNewComponent implements OnInit {
    }
 
    cancel() {
-      this.router.navigateByUrl('/marital-status');
+      this.router.navigateByUrl('/estado-civil');
    }
 }

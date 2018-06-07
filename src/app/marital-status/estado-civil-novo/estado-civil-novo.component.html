@@ -8,8 +8,8 @@
          <div>
 
             <h1 *ngIf="loading === true">{{('commons.loading') | translate}}</h1>
-            <h1 *ngIf="loading === false">{{(form.get('key').value?.length > 0 ? 'marital-status.actions.edit' :
-               'marital-status.actions.add') |
+            <h1 *ngIf="loading === false">{{(form.get('key').value?.length > 0 ? 'estado-civil.acoes.editar' :
+               'estado-civil.acoes.adicionar') |
                translate}}</h1>
          </div>
 
@@ -23,7 +23,7 @@
                       formControlName="key">
 
                <div class="ui-sm-12 ui-g-12 ui-fluid">
-                  <label>{{'marital-status.fields.name' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <label>{{'estado-civil.campos.nome' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
                   <input pInputText
                          type="text"
                          name="nome"
@@ -33,7 +33,7 @@
                </div>
 
                <div class="ui-sm-12 ui-g-12 ui-fluid">
-                  <label>{{'marital-status.fields.description' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <label>{{'estado-civil.campos.descricao' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
                   <textarea [rows]="5"
                             [cols]="30"
                             pInputTextarea

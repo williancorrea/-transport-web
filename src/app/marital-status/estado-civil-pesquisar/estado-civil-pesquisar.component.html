@@ -1,24 +1,24 @@
-<ngx-loading [show]="loading"></ngx-loading>
+<ngx-loading [show]="mostrarTelaCarregando"></ngx-loading>
 
 <div class="ui-g">
    <div class="ui-g-12">
       <div class="card card-w-title">
 
          <div>
-            <h1>{{'marital-status.list' | translate}}</h1>
+            <h1>{{'estado-civil.list' | translate}}</h1>
             <a pButton class="btn-add-new ui-button-secondary"
                *ngIf="auth.hasPermission('ROLE_SALVAR_ESTADO_CIVIL')"
-               label="{{'marital-status.actions.add' | translate}}"
+               label="{{'estado-civil.acoes.adicionar' | translate}}"
                iconPos="left" icon="fa-plus"
                tooltipPosition="top" pTooltip="{{'actions.tooltip.new' | translate}}"
-               routerLink="/marital-status/new">
+               routerLink="/estado-civil/novo">
             </a>
          </div>
 
          <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
 
             <!--GLOBAL FILTER-->
-            <div class="ui-inputgroup" ngClass="{{showFilter ? 'd-none': ''}}">
+            <div class="ui-inputgroup" ngClass="{{mostarFiltros ? 'd-none': ''}}">
                <span class="ui-inputgroup-addon"><i class="fa fa-search"></i></span>
                <input #globalFilter pInputText type="text" size="50"
                       (input)="dataTable.filterGlobal($event.target.value, 'contains')"
@@ -27,35 +27,35 @@
                        type="button" icon="fa-close"
                        class="ui-button-danger"
                        *ngIf="globalFilter.value.length > 0"
-                       (click)="findAll(globalFilter, dataTable)"></button>
+                       (click)="buscarTodos(globalFilter, dataTable)"></button>
                <button pButton
                        type="button" icon="fa-filter"
                        *ngIf="globalFilter.value.length === 0"
                        label="{{'commons.filter.more_filters' | translate}}"
                        class="ui-button-secondary"
-                       (click)="showFilterFields(true)"></button>
+                       (click)="mostrarCamposFiltros(true)"></button>
             </div>
 
             <!--FILTER BY FIELDS-->
-            <div class="ui-g" ngClass="{{!showFilter ? 'd-none': ''}}">
+            <div class="ui-g" ngClass="{{!mostarFiltros ? 'd-none': ''}}">
                <div class="ui-g-12 filter-title">
                   <h2>{{'commons.filter.fields' | translate}}</h2>
                </div>
                <div class="ui-g-4 ui-fluid">
-                  <label>{{'marital-status.fields.name' | translate}}</label>
+                  <label>{{'estado-civil.campos.nome' | translate}}</label>
                   <input pInputText
                          type="text"
                          name="bankName"
-                         [(ngModel)]="maritalStatusFilters.name"
+                         [(ngModel)]="estadoCivilFiltro.nome"
                          maxlength="150"
                   >
                </div>
                <div class="ui-g-4 ui-fluid">
-                  <label>{{'marital-status.fields.description' | translate}}</label>
+                  <label>{{'estado-civil.campos.descricao' | translate}}</label>
                   <input pInputText
                          type="text"
                          name="bankUrl"
-                         [(ngModel)]="maritalStatusFilters.description"
+                         [(ngModel)]="estadoCivilFiltro.descricao"
                          maxlength="150"
                   >
                </div>
@@ -64,7 +64,7 @@
                           type="button" icon="fa-minus"
                           label="{{'commons.filter.less_filters' | translate}}"
                           class="ui-button-secondary"
-                          (click)="findAll(globalFilter, dataTable)"></button>
+                          (click)="buscarTodos(globalFilter, dataTable)"></button>
                   <button pButton
                           type=" button" icon="fa-filter"
                           (click)="filterFields(dataTable)"
@@ -73,22 +73,22 @@
             </div>
          </div>
          <p-table #dataTable
-                  [value]="list"
-                  [(selection)]="selectedObj"
+                  [value]="estadoCivilList"
+                  [(selection)]="estadoCivilSelecionado"
                   selectionMode="single"
                   dataKey="key"
 
                   [lazy]="true"
-                  [(totalRecords)]="totalRecords"
+                  [(totalRecords)]="totalRegistros"
                   (onLazyLoad)="loadBank($event)"
 
-                  [filterDelay]="env.dataTable.filterDelay"
+                  [filterDelay]="variaveisAmbiente.dataTable.filterDelay"
                   [paginator]="true"
-                  [rows]="env.dataTable.rows"
-                  [rowsPerPageOptions]="env.dataTable.rowsPerPageOptions"
+                  [rows]="variaveisAmbiente.dataTable.rows"
+                  [rowsPerPageOptions]="variaveisAmbiente.dataTable.rowsPerPageOptions"
                   [responsive]="true"
 
-                  [columns]="COLS"
+                  [columns]="COLUNAS"
          >
             <ng-template pTemplate="emptymessage">
                <tr>
@@ -115,7 +115,7 @@
 
             <ng-template pTemplate="paginatorleft">
                <a pButton icon="fa-refresh"
-                  (click)="findAll(globalFilter, dataTable)"
+                  (click)="buscarTodos(globalFilter, dataTable)"
                   tooltipPosition="top" pTooltip="{{'actions.refresh' | translate}}"></a>
             </ng-template>
 
@@ -125,7 +125,7 @@
                        pButton
                        icon="fa-pencil"
                        label="{{'actions.edit' | translate}}"
-                       [disabled]="selectedObj ? false :true"
+                       [disabled]="estadoCivilSelecionado ? false :true"
                        tooltipPosition="top" pTooltip="{{'actions.tooltip.edit' | translate}}"
                        (click)="edit()"></button>
                <button type="button"
@@ -134,9 +134,9 @@
                        icon="fa-trash"
                        class="ui-button-danger"
                        label="{{'actions.delete' | translate}}"
-                       [disabled]="selectedObj ? false :true"
+                       [disabled]="estadoCivilSelecionado ? false :true"
                        tooltipPosition="top" pTooltip="{{'actions.tooltip.delete' | translate}}"
-                       (click)="ConfirmDeletion(obj)"></button>
+                       (click)="confirmarExclusao(obj)"></button>
             </ng-template>
          </p-table>
 

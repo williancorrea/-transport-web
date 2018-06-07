@@ -7,7 +7,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TranslateService} from 'ng2-translate';
 import {ToastyService} from 'ng2-toasty';
 import {PersonService} from '../person.service';
-import {MaritalStatusService} from '../../marital-status/marital-status.service';
+import {EstadoCivilService} from '../../marital-status/estado-civil.service';
 
 @Component({
    selector: 'app-person-new',
@@ -29,7 +29,7 @@ export class PersonNewComponent implements OnInit {
                private translate: TranslateService,
                private title: Title,
                private personService: PersonService,
-               private estadoCivilService: MaritalStatusService,
+               private estadoCivilService: EstadoCivilService,
                private toasty: ToastyService,
                public auth: AuthService,
                private errorHandler: ErrorHandlerService,

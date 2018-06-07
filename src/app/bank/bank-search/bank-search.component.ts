@@ -85,7 +85,7 @@ export class BankSearchComponent implements OnInit {
    }
 
    /**
-    * Assigns the value to enable or disable the loading icon in the datatable
+    * Assigns the value to enable or disable the mostrarTelaCarregando icon in the datatable
     *
     * @param loading
     */

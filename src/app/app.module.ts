@@ -113,7 +113,7 @@ import {ProductUnitModule} from './product-unit/product-unit.module';
 import {TypeRelationshipModule} from './type-relationship/type-relationship.module';
 import {ANIMATION_TYPES, LoadingModule} from 'ngx-loading';
 import {LevelOfEducationModule} from './level-of-education/level-of-education.module';
-import {MaritalStatusModule} from './marital-status/marital-status.module';
+import {EstadoCivilModule} from './marital-status/estado-civil.module';
 import {PersonModule} from './person/person.module';
 
 export function HttpLoaderFactory(http: Http) {
@@ -222,7 +222,7 @@ export function HttpLoaderFactory(http: Http) {
       ProductUnitModule,
       TypeRelationshipModule,
       LevelOfEducationModule,
-      MaritalStatusModule,
+      EstadoCivilModule,
       PersonModule
    ],
    declarations: [

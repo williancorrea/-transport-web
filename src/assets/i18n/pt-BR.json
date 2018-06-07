@@ -23,7 +23,7 @@
       "financial": "Financeiro",
       "types-of-relationships": "Relacionamentos",
       "level-of-education": "Nível de Formação",
-      "marital-status": "Estado Civil",
+      "estado-civil": "Estado Civil",
       "persons": "Pessoas"
    },
    "flags": {
@@ -147,22 +147,22 @@
          "update_success": "Nível de formação atualizado com sucesso."
       }
    },
-   "marital-status": {
-      "fields": {
-         "name": "Nome",
-         "description": "Descrição"
+   "estado-civil": {
+      "campos": {
+         "nome": "Nome",
+         "descricao": "Descrição"
       },
-      "labels": {
+      "rotulos": {
          "selecione-um-estado-civil": "Selecione um estado cívil"
       },
-      "title": "Estado Civil",
-      "list": "Lista dos Estados Civis",
-      "actions": {
-         "add": "Adicionar novo estado cicil",
-         "edit": "Editar estado civil",
-         "delete_success": "Estado civil removido com sucesso!",
-         "add_success": "Estado civil adicionado com sucesso.",
-         "update_success": "Estado civil atualizado com sucesso."
+      "titulo": "Estado Civil",
+      "lista": "Lista dos Estados Civis",
+      "acoes": {
+         "adicionar": "Adicionar novo estado cicil",
+         "editar": "Editar estado civil",
+         "deletar_sucesso": "Estado civil removido com sucesso!",
+         "adicionar_sucesso": "Estado civil adicionado com sucesso.",
+         "atualizar_sucesso": "Estado civil atualizado com sucesso."
       }
    },
    "person": {

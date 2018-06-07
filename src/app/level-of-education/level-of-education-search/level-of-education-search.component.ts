@@ -53,7 +53,7 @@ export class LevelOfEducationSearchComponent implements OnInit {
       this.env = environment;
       this.setLoading(true);
       this.translate.get('level-of-education').subscribe(s => {
-         this.title.setTitle(s['list']);
+         this.title.setTitle(s['estadoCivilList']);
 
          this.COLS = [
             {
@@ -97,7 +97,7 @@ export class LevelOfEducationSearchComponent implements OnInit {
    }
 
    /**
-    * Assigns the value to enable or disable the loading icon in the datatable
+    * Assigns the value to enable or disable the mostrarTelaCarregando icon in the datatable
     *
     * @param loading
     */
