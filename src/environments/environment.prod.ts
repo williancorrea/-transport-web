@@ -1,6 +1,6 @@
 export const environment = {
    production: true,
-   apiUrl: 'https://transport-api-wcorrea.herokuapp.com',
+   apiUrl: 'https://gestao-api-wcorrea.herokuapp.com/',
 
    dataTable: {
       filterDelay: 500,
