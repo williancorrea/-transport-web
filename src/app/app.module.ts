@@ -74,10 +74,10 @@ import {TreeTableModule} from 'primeng/primeng';
 
 import {AppComponent} from './app.component';
 import {AppMenuComponent, AppSubMenuComponent} from './app.menu.component';
-import {AppSideBarComponent} from './app.sidebar.component';
+import {AppMenuLateralComponent} from './app.menu-lateral.component';
 import {AppSideBarTabContentComponent} from './app.sidebartabcontent.component';
 import {AppTopbarComponent} from './app.topbar.component';
-import {AppFooterComponent} from './app.footer.component';
+import {AppRodapeComponent} from './app.rodape.component';
 import {DashboardDemoComponent} from './dashboard/dashboarddemo.component';
 import {SampleDemoComponent} from './demo/view/sampledemo.component';
 import {FormsDemoComponent} from './demo/view/formsdemo.component';
@@ -229,10 +229,10 @@ export function HttpLoaderFactory(http: Http) {
       AppComponent,
       AppMenuComponent,
       AppSubMenuComponent,
-      AppSideBarComponent,
+      AppMenuLateralComponent,
       AppSideBarTabContentComponent,
       AppTopbarComponent,
-      AppFooterComponent,
+      AppRodapeComponent,
       DashboardDemoComponent,
 
       // TODO: REMOVER

@@ -3,9 +3,9 @@ import {AppComponent} from './app.component';
 
 @Component({
    selector: 'app-sidebar',
-   templateUrl: './app.sidebar.component.html'
+   templateUrl: './app.menu-lateral.component.html'
 })
-export class AppSideBarComponent {
+export class AppMenuLateralComponent {
 
    constructor(public app: AppComponent) {
    }

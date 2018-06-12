@@ -12,6 +12,6 @@ import {Component} from '@angular/core';
       </div>
    `
 })
-export class AppFooterComponent {
+export class AppRodapeComponent {
 
 }
