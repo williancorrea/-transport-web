@@ -7,7 +7,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TranslateService} from 'ng2-translate';
 import {ToastyService} from 'ng2-toasty';
 import {PersonService} from '../person.service';
-import {EstadoCivilService} from '../../marital-status/estado-civil.service';
+import {EstadoCivilService} from '../../estado-civil/estado-civil.service';
 
 @Component({
    selector: 'app-person-new',

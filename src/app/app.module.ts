@@ -78,7 +78,7 @@ import {AppSideBarComponent} from './app.sidebar.component';
 import {AppSideBarTabContentComponent} from './app.sidebartabcontent.component';
 import {AppTopbarComponent} from './app.topbar.component';
 import {AppFooterComponent} from './app.footer.component';
-import {DashboardDemoComponent} from './demo/view/dashboarddemo.component';
+import {DashboardDemoComponent} from './dashboard/dashboarddemo.component';
 import {SampleDemoComponent} from './demo/view/sampledemo.component';
 import {FormsDemoComponent} from './demo/view/formsdemo.component';
 import {DataDemoComponent} from './demo/view/datademo.component';
@@ -113,7 +113,7 @@ import {ProductUnitModule} from './product-unit/product-unit.module';
 import {TypeRelationshipModule} from './type-relationship/type-relationship.module';
 import {ANIMATION_TYPES, LoadingModule} from 'ngx-loading';
 import {LevelOfEducationModule} from './level-of-education/level-of-education.module';
-import {EstadoCivilModule} from './marital-status/estado-civil.module';
+import {EstadoCivilModule} from './estado-civil/estado-civil.module';
 import {PersonModule} from './person/person.module';
 
 export function HttpLoaderFactory(http: Http) {

@@ -1,4 +1,7 @@
 {
+   "empresa": {
+      "razao_social": "Rosinha Transportes e Turismo Ltda - ME"
+   },
    "commons": {
       "language": "Idioma",
       "loading": "Aguarde, carregando ...",
@@ -204,8 +207,8 @@
          "registro_geral": "Registro Geral",
          "cnh": "Carteira Nacional de Habilitação",
          "tituloEleitoral": "Titulo de Eleitor",
-         "masculino" : "Masculino",
-         "feminino" : "Feminino"
+         "masculino": "Masculino",
+         "feminino": "Feminino"
       },
       "title": "Pessoa",
       "list": "Lista das Pessoas Cadastradas",

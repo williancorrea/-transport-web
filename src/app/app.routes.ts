@@ -1,6 +1,6 @@
 import {Routes, RouterModule} from '@angular/router';
 import {ModuleWithProviders} from '@angular/core';
-import {DashboardDemoComponent} from './demo/view/dashboarddemo.component';
+import {DashboardDemoComponent} from './dashboard/dashboarddemo.component';
 import {SampleDemoComponent} from './demo/view/sampledemo.component';
 import {FormsDemoComponent} from './demo/view/formsdemo.component';
 import {DataDemoComponent} from './demo/view/datademo.component';
@@ -26,8 +26,8 @@ import {TypeRelationshipSearchComponent} from './type-relationship/type-relation
 import {TypeRelationshipNewComponent} from './type-relationship/type-relationship-new/type-relationship-new.component';
 import {LevelOfEducationNewComponent} from './level-of-education/level-of-education-new/level-of-education-new.component';
 import {LevelOfEducationSearchComponent} from './level-of-education/level-of-education-search/level-of-education-search.component';
-import {EstadoCivilPesquisarComponent} from './marital-status/estado-civil-pesquisar/estado-civil-pesquisar.component';
-import {EstadoCivilNovoComponent} from './marital-status/estado-civil-novo/estado-civil-novo.component';
+import {EstadoCivilPesquisarComponent} from './estado-civil/estado-civil-pesquisar/estado-civil-pesquisar.component';
+import {EstadoCivilNovoComponent} from './estado-civil/estado-civil-novo/estado-civil-novo.component';
 import {PersonSearchComponent} from './person/person-search/person-search.component';
 import {PersonNewComponent} from './person/person-new/person-new.component';
 
@@ -41,7 +41,10 @@ export const routes: Routes = [
          roles: [
             'ROLE_LIST_BANK',
             'ROLE_LIST_PRODUCT-UNIT',
-            'ROLE_LIST_TYPE-RELATIONSHIP'
+            'ROLE_LIST_TYPE-RELATIONSHIP',
+            'ROLE_LIST_LEVEL-OF-EDUCATION',
+            'ROLE_LISTAR_ESTADO_CIVIL',
+            'ROLE_LIST_PERSON'
          ]
       }
    },

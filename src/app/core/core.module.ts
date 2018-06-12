@@ -19,7 +19,7 @@ import {ButtonModule} from 'primeng/button';
 import {ProductUnitService} from '../product-unit/product-unit.service';
 import {TypeRelationshipService} from '../type-relationship/type-relationship.service';
 import {LevelOfEducationService} from '../level-of-education/level-of-education.service';
-import {EstadoCivilService} from '../marital-status/estado-civil.service';
+import {EstadoCivilService} from '../estado-civil/estado-civil.service';
 import {PersonService} from '../person/person.service';
 
 
