@@ -32,6 +32,6 @@ export class MessageComponent {
    @Input() label: string;
 
    hasError(): boolean {
-      return this.control.errors !== null && this.control.enabled && (this.form.submitted || this.control.dirty);
+      return this.control.errors !== null && this.control.enabled && (this.form.submitted  || this.control.dirty || this.control.touched);
    }
 }

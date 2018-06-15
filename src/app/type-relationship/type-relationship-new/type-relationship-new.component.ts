@@ -116,6 +116,10 @@ export class TypeRelationshipNewComponent implements OnInit {
                this.showLoading(false);
             });
          }
+      } else {
+         this.translate.get('validation').subscribe(s => {
+            this.toasty.warning(s['form_invalid']);
+         });
       }
    }
 

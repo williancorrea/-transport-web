@@ -30,6 +30,8 @@ import {EstadoCivilPesquisarComponent} from './estado-civil/estado-civil-pesquis
 import {EstadoCivilNovoComponent} from './estado-civil/estado-civil-novo/estado-civil-novo.component';
 import {PersonSearchComponent} from './person/person-search/person-search.component';
 import {PersonNewComponent} from './person/person-new/person-new.component';
+import {VeiculoPesquisaComponent} from './veiculo/veiculo-pesquisa/veiculo-pesquisa.component';
+import {VeiculoNovoComponent} from './veiculo/veiculo-novo/veiculo-novo.component';
 
 export const routes: Routes = [
    {
@@ -86,6 +88,10 @@ export const routes: Routes = [
    {path: 'estado-civil', component: EstadoCivilPesquisarComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_ESTADO_CIVIL']}},
    {path: 'estado-civil/novo', component: EstadoCivilNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_ESTADO_CIVIL']}},
    {path: 'estado-civil/:key', component: EstadoCivilNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_ESTADO_CIVIL']}},
+
+   {path: 'veiculo', component: VeiculoPesquisaComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_VEICULO']}},
+   {path: 'veiculo/novo', component: VeiculoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_VEICULO']}},
+   {path: 'veiculo/:key', component: VeiculoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_VEICULO']}},
 
    {path: 'persons', component: PersonSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_PERSON']}},
    {path: 'persons/new', component: PersonNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_PERSON']}},

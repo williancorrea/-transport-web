@@ -1,29 +1,29 @@
 import {Component, OnInit} from '@angular/core';
 import {TranslateService} from 'ng2-translate';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ErrorHandlerService} from '../../core/error-handler.service';
-import {AuthService} from '../../security/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../security/auth.service';
+import {ErrorHandlerService} from '../../core/error-handler.service';
 import {Title} from '@angular/platform-browser';
+import {ActivatedRoute, Router} from '@angular/router';
+import {VeiculoService} from '../../veiculo/veiculo.service';
 import {ToastyService} from 'ng2-toasty';
-import {ProductUnitService} from '../product-unit.service';
 
 @Component({
-   selector: 'app-product-unit-new',
-   templateUrl: './product-unit-new.component.html',
-   styleUrls: ['./product-unit-new.component.css']
+   selector: 'app-veiculo-novo',
+   templateUrl: './veiculo-novo.component.html',
+   styleUrls: ['./veiculo-novo.component.css']
 })
-export class ProductUnitNewComponent implements OnInit {
+export class VeiculoNovoComponent implements OnInit {
 
    form: FormGroup;
-   bankTranslate: any;
+   translateObj: any;
    loading: boolean;
 
    constructor(private router: Router,
                private activatedRoute: ActivatedRoute,
                private translate: TranslateService,
                private title: Title,
-               private productUnitService: ProductUnitService,
+               private maritalStatusService: VeiculoService,
                private toasty: ToastyService,
                public auth: AuthService,
                private errorHandler: ErrorHandlerService,
@@ -33,26 +33,25 @@ export class ProductUnitNewComponent implements OnInit {
    ngOnInit() {
       this.configForm();
       this.showLoading(true);
-      this.translate.get('product_unit').subscribe(s => {
-         this.bankTranslate = s;
+      this.translate.get('veiculo').subscribe(s => {
+         this.translateObj = s;
 
          const isEditing = this.activatedRoute.snapshot.params['key'];
          if (isEditing) {
-            this.title.setTitle(s['actions']['edit']);
+            this.title.setTitle(s['acoes']['editar']);
 
-            this.productUnitService.findOne(isEditing)
+            this.maritalStatusService.findOne(isEditing)
                .then(response => {
-                  // this.bank = response;
                   this.form.patchValue(response);
                   this.showLoading(false);
                })
                .catch(error => {
                   this.errorHandler.handle(error);
-                  this.title.setTitle(s['actions']['add']);
+                  this.title.setTitle(s['acoes']['adicionar']);
                   this.showLoading(false);
                });
          } else {
-            this.title.setTitle(s['actions']['add']);
+            this.title.setTitle(s['acoes']['adicionar']);
             this.showLoading(false);
          }
       });
@@ -61,20 +60,18 @@ export class ProductUnitNewComponent implements OnInit {
    configForm() {
       this.form = this.formBuild.group({
          key: [null],
-         initials: [null,
-            [
-               Validators.minLength(1),
-               Validators.maxLength(10),
-            ]
-         ],
-         name: [
+         placa: [
             null, [
                Validators.required,
-               Validators.minLength(5),
-               Validators.maxLength(150)
+               Validators.minLength(8),
+               Validators.maxLength(8)
             ]
          ],
-         canFraction: [false]
+         frota: [
+            null, [
+               Validators.maxLength(15),
+            ]
+         ]
       });
    }
 
@@ -86,24 +83,24 @@ export class ProductUnitNewComponent implements OnInit {
       if (this.form.valid) {
          this.showLoading(true);
          if (this.form.get('key').value) {
-            this.productUnitService.update(this.form.value)
+            this.maritalStatusService.update(this.form.value)
                .then(
                   response => {
-                     this.toasty.success(this.bankTranslate['actions']['update_success']);
+                     this.toasty.success(this.translateObj['acoes']['atualizar_sucesso']);
                      this.showLoading(false);
-                     this.router.navigateByUrl('/product-units');
+                     this.router.navigateByUrl('/veiculo');
                   }
                ).catch(error => {
                this.errorHandler.handle(error);
                this.showLoading(false);
             });
          } else {
-            this.productUnitService.save(this.form.value)
+            this.maritalStatusService.save(this.form.value)
                .then(
                   response => {
-                     this.toasty.success(this.bankTranslate['actions']['add_success']);
+                     this.toasty.success(this.translateObj['acoes']['adicionar_sucesso']);
                      this.showLoading(false);
-                     this.router.navigateByUrl('/product-units');
+                     this.router.navigateByUrl('/veiculo');
                   }
                ).catch(erro => {
                this.errorHandler.handle(erro);
@@ -118,6 +115,7 @@ export class ProductUnitNewComponent implements OnInit {
    }
 
    cancel() {
-      this.router.navigateByUrl('/product-units');
+      this.router.navigateByUrl('/veiculo');
    }
+
 }

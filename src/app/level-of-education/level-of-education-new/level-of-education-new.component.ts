@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../security/auth.service';
@@ -9,9 +9,9 @@ import {ToastyService} from 'ng2-toasty';
 import {LevelOfEducationService} from '../level-of-education.service';
 
 @Component({
-  selector: 'app-level-of-education-new',
-  templateUrl: './level-of-education-new.component.html',
-  styleUrls: ['./level-of-education-new.component.css']
+   selector: 'app-level-of-education-new',
+   templateUrl: './level-of-education-new.component.html',
+   styleUrls: ['./level-of-education-new.component.css']
 })
 export class LevelOfEducationNewComponent implements OnInit {
 
@@ -112,6 +112,10 @@ export class LevelOfEducationNewComponent implements OnInit {
                this.showLoading(false);
             });
          }
+      } else {
+         this.translate.get('validation').subscribe(s => {
+            this.toasty.warning(s['form_invalid']);
+         });
       }
    }
 

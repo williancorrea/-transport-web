@@ -12,7 +12,7 @@
                translate}}</h1>
          </div>
 
-         <form #f novalidate (submit)="save()" autocomplete="off" [formGroup]="form">
+         <form #f="ngForm" novalidate (submit)="save()" autocomplete="off" [formGroup]="form">
 
             <div class="ui-g">
                <input pInputText
@@ -59,7 +59,6 @@
                           (click)="cancel()"></button>
                   <button pButton type="submit"
                           *ngIf="form.get('key').value ? auth.hasPermission('ROLE_UPDATE_BANK') : auth.hasPermission('ROLE_SAVE_BANK')"
-                          [disabled]="form.invalid"
                           label="{{(form.get('key').value ? 'actions.update' : 'actions.save') | translate}}"
                           tooltipPosition="top" pTooltip="{{'actions.tooltip.save' | translate}}"
                           class="ui-button-success"></button>

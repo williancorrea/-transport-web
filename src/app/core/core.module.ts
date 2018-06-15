@@ -21,6 +21,7 @@ import {TypeRelationshipService} from '../type-relationship/type-relationship.se
 import {LevelOfEducationService} from '../level-of-education/level-of-education.service';
 import {EstadoCivilService} from '../estado-civil/estado-civil.service';
 import {PersonService} from '../person/person.service';
+import {VeiculoService} from '../veiculo/veiculo.service';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import {PersonService} from '../person/person.service';
       LevelOfEducationService,
       EstadoCivilService,
       PersonService,
+      VeiculoService,
 
       ConfirmationService,
       JwtHelper,

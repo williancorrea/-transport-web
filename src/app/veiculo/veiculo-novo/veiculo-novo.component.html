@@ -8,8 +8,8 @@
          <div>
 
             <h1 *ngIf="loading === true">{{('commons.loading') | translate}}</h1>
-            <h1 *ngIf="loading === false">{{(form.get('key').value?.length > 0 ? 'estado-civil.acoes.editar' :
-               'estado-civil.acoes.adicionar') |
+            <h1 *ngIf="loading === false">{{(form.get('key').value?.length > 0 ? 'veiculo.acoes.editar' :
+               'veiculo.acoes.adicionar') |
                translate}}</h1>
          </div>
 
@@ -22,25 +22,28 @@
                       name="key"
                       formControlName="key">
 
-               <div class="ui-sm-12 ui-g-12 ui-fluid">
-                  <label>{{'estado-civil.campos.nome' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+               <div class="ui-sm-4 ui-g-4 ui-fluid">
+                  <label>{{'veiculo.campos.placa' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
                   <input pInputText
                          type="text"
-                         name="nome"
-                         formControlName="nome"
+                         name="placa"
+                         style="text-transform:uppercase"
+                         class="veiculo_placa"
+                         formControlName="placa"
                   >
-                  <app-message [form]="f" [control]="form.get('nome')"></app-message>
+
+                  <app-message [form]="f" [control]="form.get('placa')"></app-message>
                </div>
 
-               <div class="ui-sm-12 ui-g-12 ui-fluid">
-                  <label>{{'estado-civil.campos.descricao' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
-                  <textarea [rows]="5"
-                            [cols]="30"
-                            pInputTextarea
-                            name="descricao"
-                            formControlName="descricao"
-                            autoResize></textarea>
-                  <app-message [form]="f" [control]="form.get('descricao')"></app-message>
+               <div class="ui-sm-4 ui-g-4 ui-fluid">
+                  <label>{{'veiculo.campos.frota' | translate}}</label>
+                  <input pInputText
+                         type="text"
+                         name="frota"
+                         style="text-transform:uppercase"
+                         formControlName="frota"
+                  >
+                  <app-message [form]="f" [control]="form.get('frota')"></app-message>
                </div>
 
                <div class="ui-sm-12 ui-g-12">
@@ -50,7 +53,7 @@
                           tooltipPosition="top" pTooltip="{{'actions.tooltip.cancel' | translate}}"
                           (click)="cancel()"></button>
                   <button pButton type="submit"
-                          *ngIf="form.get('key').value ? auth.hasPermission('ROLE_ATUALIZAR_ESTADO_CIVIL') : auth.hasPermission('ROLE_SALVAR_ESTADO_CIVIL')"
+                          *ngIf="form.get('key').value ? auth.hasPermission('ROLE_ATUALIZAR_VEICULO') : auth.hasPermission('ROLE_SALVAR_VEICULO')"
                           label="{{(form.get('key').value ? 'actions.update' : 'actions.save') | translate}}"
                           tooltipPosition="top" pTooltip="{{'actions.tooltip.save' | translate}}"
                           class="ui-button-success"></button>

@@ -2,6 +2,6 @@ import {MissingTranslationHandler, MissingTranslationHandlerParams} from 'ng2-tr
 
 export class MyMissingTranslationHandler implements MissingTranslationHandler {
    handle(params: MissingTranslationHandlerParams) {
-      return 'Translations not available for ' + params.key;
+      return 'Tradução não disponível para: ' + params.key;
    }
 }

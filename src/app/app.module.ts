@@ -115,6 +115,7 @@ import {ANIMATION_TYPES, LoadingModule} from 'ngx-loading';
 import {LevelOfEducationModule} from './level-of-education/level-of-education.module';
 import {EstadoCivilModule} from './estado-civil/estado-civil.module';
 import {PersonModule} from './person/person.module';
+import {VeiculoModule} from './veiculo/veiculo.module';
 
 export function HttpLoaderFactory(http: Http) {
    return new TranslateStaticLoader(http, '/assets/i18n', '.json');
@@ -223,7 +224,8 @@ export function HttpLoaderFactory(http: Http) {
       TypeRelationshipModule,
       LevelOfEducationModule,
       EstadoCivilModule,
-      PersonModule
+      PersonModule,
+      VeiculoModule
    ],
    declarations: [
       AppComponent,

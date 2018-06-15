@@ -27,7 +27,8 @@
       "types-of-relationships": "Relacionamentos",
       "level-of-education": "Nível de Formação",
       "estado-civil": "Estado Civil",
-      "persons": "Pessoas"
+      "persons": "Pessoas",
+      "veiculo": "Veículos"
    },
    "flags": {
       "brazil": "Brasil",
@@ -70,7 +71,8 @@
       "minlength": "Mínimo de ",
       "maxlength": "Máximo de ",
       "character": "Caracter(es).",
-      "pattern": "Conteúdo inválido."
+      "pattern": "Conteúdo inválido.",
+      "form_invalid": "Formulário com campos inválido, verifique ..."
    },
    "login": {
       "login_to_your_account": "Faça login na sua conta",
@@ -166,6 +168,24 @@
          "deletar_sucesso": "Estado civil removido com sucesso!",
          "adicionar_sucesso": "Estado civil adicionado com sucesso.",
          "atualizar_sucesso": "Estado civil atualizado com sucesso."
+      }
+   },
+   "veiculo": {
+      "campos": {
+         "placa": "Placa",
+         "frota": "Frota"
+      },
+      "rotulos": {
+         "selecione-um-estado-civil": "Selecione um veículo"
+      },
+      "titulo": "Veículo",
+      "lista": "Lista de Veículos",
+      "acoes": {
+         "adicionar": "Adicionar novo veículo",
+         "editar": "Editar veículo",
+         "deletar_sucesso": "Veículo removido com sucesso!",
+         "adicionar_sucesso": "Veículo adicionado com sucesso.",
+         "atualizar_sucesso": "Veículo atualizado com sucesso."
       }
    },
    "person": {
