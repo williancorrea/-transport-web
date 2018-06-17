@@ -38,6 +38,7 @@ export class AppMenuComponent implements OnInit {
                      {label:  m['estado-civil'], icon: 'fa fa-fw fa-heart-o', routerLink: ['/estado-civil'], visible: this.auth.hasPermission('ROLE_LISTAR_ESTADO_CIVIL')},
                      {label:  m['veiculo'], icon: 'fa fa-fw fa-car', routerLink: ['/veiculo'], visible: this.auth.hasPermission('ROLE_LISTAR_VEICULO')},
                      {label:  m['persons'], icon: 'fa fa-fw fa-address-book-o', routerLink: ['/persons'], visible: this.auth.hasPermission('ROLE_LIST_PERSON')},
+                     {label:  m['itinerario'], icon: 'fa fa-fw fa-map-signs', routerLink: ['/itinerario'], visible: this.auth.hasPermission('ROLE_LISTAR_ITINERARIO')}
                   ]
                }
                // ,

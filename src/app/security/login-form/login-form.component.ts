@@ -14,6 +14,7 @@ export class LoginFormComponent implements OnInit {
 
    email: string;
    password: string;
+
    public loading = false;
 
    constructor(private auth: AuthService,
@@ -32,7 +33,8 @@ export class LoginFormComponent implements OnInit {
       this.loading = true;
       this.auth.login(this.email, this.password)
          .then(() => {
-            this.router.navigate(['/banks']);
+            // Vai redirecionar para a pagina principal da aplicação (Dashboard)
+            this.router.navigate(['/']);
             this.loading = false;
          })
          .catch(erro => {

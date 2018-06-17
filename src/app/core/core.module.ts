@@ -22,6 +22,7 @@ import {LevelOfEducationService} from '../level-of-education/level-of-education.
 import {EstadoCivilService} from '../estado-civil/estado-civil.service';
 import {PersonService} from '../person/person.service';
 import {VeiculoService} from '../veiculo/veiculo.service';
+import {ItinerarioService} from '../itinerario/itinerario.service';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import {VeiculoService} from '../veiculo/veiculo.service';
       EstadoCivilService,
       PersonService,
       VeiculoService,
+      ItinerarioService,
 
       ConfirmationService,
       JwtHelper,

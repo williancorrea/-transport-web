@@ -116,6 +116,7 @@ import {LevelOfEducationModule} from './level-of-education/level-of-education.mo
 import {EstadoCivilModule} from './estado-civil/estado-civil.module';
 import {PersonModule} from './person/person.module';
 import {VeiculoModule} from './veiculo/veiculo.module';
+import {ItinerarioModule} from './itinerario/itinerario.module';
 
 export function HttpLoaderFactory(http: Http) {
    return new TranslateStaticLoader(http, '/assets/i18n', '.json');
@@ -225,7 +226,8 @@ export function HttpLoaderFactory(http: Http) {
       LevelOfEducationModule,
       EstadoCivilModule,
       PersonModule,
-      VeiculoModule
+      VeiculoModule,
+      ItinerarioModule
    ],
    declarations: [
       AppComponent,

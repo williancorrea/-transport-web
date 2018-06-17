@@ -1,0 +1,86 @@
+<ngx-loading [show]="loading"></ngx-loading>
+
+<div class="ui-g">
+   <div class="ui-g-12">
+      <p-progressBar *ngIf="loading === true" mode="indeterminate"></p-progressBar>
+
+      <div class="card card-w-title">
+         <div>
+
+            <h1 *ngIf="loading === true">{{('commons.loading') | translate}}</h1>
+            <h1 *ngIf="loading === false">{{(form.get('key').value?.length > 0 ? 'itinerario.acoes.editar' :
+               'itinerario.acoes.adicionar') |
+               translate}}</h1>
+         </div>
+
+         <form #f="ngForm" novalidate (submit)="save()" autocomplete="off" [formGroup]="form">
+
+            <div class="ui-g">
+               <input pInputText
+                      type="text"
+                      [hidden]="true"
+                      name="key"
+                      formControlName="key">
+
+               <div class="ui-sm-3 ui-g-3 ui-fluid">
+                  <label>{{'itinerario.campos.codigo' | translate}}</label>
+                  <input pInputText
+                         type="text"
+                         name="codigo"
+                         formControlName="codigo"
+                  >
+                  <app-message [form]="f" [control]="form.get('codigo')"></app-message>
+               </div>
+
+               <div class="ui-sm-6 ui-g-6 ui-fluid">
+                  <label>{{'itinerario.campos.nome' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <input pInputText
+                         type="text"
+                         name="nome"
+                         formControlName="nome"
+                  >
+                  <app-message [form]="f" [control]="form.get('nome')"></app-message>
+               </div>
+
+               <div class="ui-sm-3 ui-g-3 ui-fluid">
+                  <label>{{'itinerario.campos.validoAte' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+
+                  <!--TODO: TRADUZIR O COMPONENTE CALENDAR-->
+                  <!--TODO: ADICIONAR NAVEGAÇÃO POR ANO NO COMPONENTE CALENDAR-->
+                  <p-calendar formControlName="validoAte"
+                              dateFormat="dd/mm/yy"
+                              [readonlyInput]="false"
+                              [showIcon]="true"
+                              [monthNavigator]="true"></p-calendar>
+                  <app-message [form]="f" [control]="form.get('validoAte')"></app-message>
+               </div>
+               <div class="ui-sm-12 ui-g-12 ui-fluid">
+                  <label>{{'itinerario.campos.descricao' | translate}}</label>
+                  <textarea [rows]="5"
+                            [cols]="30"
+                            pInputTextarea
+                            name="descricao"
+                            formControlName="descricao"
+                            autoResize></textarea>
+                  <app-message [form]="f" [control]="form.get('descricao')"></app-message>
+               </div>
+
+
+               <div class="ui-sm-12 ui-g-12">
+                  <button pButton type="button"
+                          label="{{'actions.cancel' | translate}}"
+                          class="ui-button-danger"
+                          tooltipPosition="top" pTooltip="{{'actions.tooltip.cancel' | translate}}"
+                          (click)="cancel()"></button>
+                  <button pButton type="submit"
+                          *ngIf="form.get('key').value ? auth.hasPermission('ROLE_ATUALIZAR_ITINERARIO') : auth.hasPermission('ROLE_SALVAR_ITINERARIO')"
+                          label="{{(form.get('key').value ? 'actions.update' : 'actions.save') | translate}}"
+                          tooltipPosition="top" pTooltip="{{'actions.tooltip.save' | translate}}"
+                          class="ui-button-success"></button>
+               </div>
+            </div>
+         </form>
+
+      </div>
+   </div>
+</div>

@@ -28,7 +28,8 @@
       "level-of-education": "Nível de Formação",
       "estado-civil": "Estado Civil",
       "persons": "Pessoas",
-      "veiculo": "Veículos"
+      "veiculo": "Veículos",
+      "itinerario": "Itinerários"
    },
    "flags": {
       "brazil": "Brasil",
@@ -186,6 +187,26 @@
          "deletar_sucesso": "Veículo removido com sucesso!",
          "adicionar_sucesso": "Veículo adicionado com sucesso.",
          "atualizar_sucesso": "Veículo atualizado com sucesso."
+      }
+   },
+   "itinerario": {
+      "campos": {
+         "codigo": "Código",
+         "nome": "Nome",
+         "descricao": "Descrição",
+         "validoAte": "Válido até"
+      },
+      "rotulos": {
+         "selecione-um-estado-civil": "Selecione um itinerário"
+      },
+      "titulo": "Itinerário",
+      "lista": "Lista de Itinerários",
+      "acoes": {
+         "adicionar": "Adicionar novo itinerário",
+         "editar": "Editar itinerário",
+         "deletar_sucesso": "Itinerário removido com sucesso!",
+         "adicionar_sucesso": "Itinerário adicionado com sucesso.",
+         "atualizar_sucesso": "Itinerário atualizado com sucesso."
       }
    },
    "person": {

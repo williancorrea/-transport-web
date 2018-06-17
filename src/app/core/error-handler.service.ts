@@ -16,7 +16,9 @@ export class ErrorHandlerService {
 
    handle(errorResponse: any) {
       let msg: string;
-      // console.log('DEU ZICA', errorResponse);
+
+      //TODO: remover log
+      console.log('DEU ZICA', errorResponse);
 
       this.translate.get('errors').subscribe(s => {
          if (typeof errorResponse === 'string') {

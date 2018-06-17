@@ -32,6 +32,8 @@ import {PersonSearchComponent} from './person/person-search/person-search.compon
 import {PersonNewComponent} from './person/person-new/person-new.component';
 import {VeiculoPesquisaComponent} from './veiculo/veiculo-pesquisa/veiculo-pesquisa.component';
 import {VeiculoNovoComponent} from './veiculo/veiculo-novo/veiculo-novo.component';
+import {ItinerarioPesquisaComponent} from './itinerario/itinerario-pesquisa/itinerario-pesquisa.component';
+import {ItinerarioNovoComponent} from './itinerario/itinerario-novo/itinerario-novo.component';
 
 export const routes: Routes = [
    {
@@ -92,6 +94,10 @@ export const routes: Routes = [
    {path: 'veiculo', component: VeiculoPesquisaComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_VEICULO']}},
    {path: 'veiculo/novo', component: VeiculoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_VEICULO']}},
    {path: 'veiculo/:key', component: VeiculoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_VEICULO']}},
+
+   {path: 'itinerario', component: ItinerarioPesquisaComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_ITINERARIO']}},
+   {path: 'itinerario/novo', component: ItinerarioNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_ITINERARIO']}},
+   {path: 'itinerario/:key', component: ItinerarioNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_ITINERARIO']}},
 
    {path: 'persons', component: PersonSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_PERSON']}},
    {path: 'persons/new', component: PersonNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_PERSON']}},
