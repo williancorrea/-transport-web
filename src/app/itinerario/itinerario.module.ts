@@ -22,6 +22,7 @@ import {PanelModule} from 'primeng/panel';
 import {LoadingModule} from 'ngx-loading';
 import { ItinerarioPesquisaComponent } from './itinerario-pesquisa/itinerario-pesquisa.component';
 import { ItinerarioNovoComponent } from './itinerario-novo/itinerario-novo.component';
+import {Moment} from 'moment';
 
 @NgModule({
    imports: [
@@ -50,7 +51,7 @@ import { ItinerarioNovoComponent } from './itinerario-novo/itinerario-novo.compo
 
       CalendarModule,
       KeyFilterModule,
-      InputMaskModule,
+      InputMaskModule
    ],
    declarations: [ItinerarioPesquisaComponent, ItinerarioNovoComponent],
    providers: [

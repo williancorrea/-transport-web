@@ -10,6 +10,8 @@ import {Router} from '@angular/router';
 import {ItinerarioService} from '../../itinerario/itinerario.service';
 import {ToastyService} from 'ng2-toasty';
 
+import * as moment from 'moment';
+
 @Component({
    selector: 'app-itinerario-pesquisa',
    templateUrl: './itinerario-pesquisa.component.html',
@@ -65,6 +67,10 @@ export class ItinerarioPesquisaComponent implements OnInit {
             // {field: 'validoAte', header: s['campos']['validoAte'], hidden: false, class: 'datatable-collum-field-name'}
          ];
       });
+   }
+
+   formatarData(data) {
+      return moment(data).utc().format('DD/MM/YYYY');
    }
 
    /**

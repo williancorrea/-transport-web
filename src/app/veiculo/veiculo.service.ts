@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ProductUnit} from '../core/model/bank';
+import {Bank} from '../core/model/bank';
 import {AuthHttp} from 'angular2-jwt';
 import {environment} from '../../environments/environment';
 import {VeiculoFiltro} from '../core/model/veiculoFiltro';
@@ -64,9 +64,9 @@ export class VeiculoService {
     * Search for the record according to the key passed by parameter
     *
     * @param key
-    * @returns {Promise<ProductUnit>}
+    * @returns {Promise<Bank>}
     */
-   findOne(key): Promise<ProductUnit> {
+   findOne(key): Promise<Bank> {
       return this.http.get(`${this.apiUrl}/${key}`)
          .toPromise()
          .then(response => {

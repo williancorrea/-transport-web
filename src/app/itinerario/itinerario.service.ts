@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {ProductUnit} from '../core/model/bank';
 import {AuthHttp} from 'angular2-jwt';
 import {environment} from '../../environments/environment';
 import {ItinerarioFiltro} from '../core/model/itinerarioFiltro';
@@ -10,6 +9,7 @@ export class ItinerarioService {
    apiUrl: string;
 
    constructor(private http: AuthHttp) {
+
       this.apiUrl = `${environment.apiUrl}/itinerario`;
    }
 
@@ -20,7 +20,7 @@ export class ItinerarioService {
     * @param {BankFilters} itinerarioFiltro
     * @returns {Promise<any>}
     */
-   findAll(filter: any, itinerarioFiltro: ItinerarioFiltro): Promise<any> {
+   findAll(filter: any, itinerarioFiltro: ItinerarioFiltro) {
       /*
          in a real application, make a remote request to load data using state metadata from event
          event.first = First row offset
@@ -63,7 +63,11 @@ export class ItinerarioService {
       return this.http.get(`${this.apiUrl}`, config)
          .toPromise()
          .then(response => {
-            return response.json();
+            const lista = response.json();
+            for (let i = 0; lista.content > 0; i++) {
+               lista.content[i] = new Date(lista.content[i]['validoAte']);
+            }
+            return lista;
          });
    }
 
@@ -71,13 +75,18 @@ export class ItinerarioService {
     * Search for the record according to the key passed by parameter
     *
     * @param key
-    * @returns {Promise<ProductUnit>}
+    * @returns {Promise<any>}
     */
-   findOne(key): Promise<ProductUnit> {
+   findOne(key) {
       return this.http.get(`${this.apiUrl}/${key}`)
          .toPromise()
          .then(response => {
-            return response.json();
+            response = response.json();
+            if (response['validoAte']) {
+               response['validoAte'] = response['validoAte'] ? new Date(response['validoAte']) : response['validoAte'];
+            }
+
+            return response;
          });
    }
 
@@ -87,7 +96,7 @@ export class ItinerarioService {
     * @param {String} key
     * @returns {Promise<any>}
     */
-   delete(key: String): Promise<any> {
+   delete(key: String) {
       return this.http.delete(`${this.apiUrl}/${key}`)
          .toPromise()
          .then(() => null);
@@ -95,10 +104,8 @@ export class ItinerarioService {
 
    /**
     * Save the record
-    *
-    * @returns {Promise<any>}
     */
-   save(obj): Promise<any> {
+   save(obj) {
       delete obj['key'];
       delete obj['controle'];
 
@@ -114,9 +121,8 @@ export class ItinerarioService {
     * Updates the registry
     *
     * @param  obj
-    * @returns {Promise<any>}
     */
-   update(obj): Promise<any> {
+   update(obj) {
       const key = obj.key;
 
       delete obj['key'];

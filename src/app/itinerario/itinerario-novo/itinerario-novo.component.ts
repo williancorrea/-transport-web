@@ -7,6 +7,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ItinerarioService} from '../../itinerario/itinerario.service';
 import {ToastyService} from 'ng2-toasty';
+import {Utils} from '../../core/utils/Utils';
 
 @Component({
    selector: 'app-itinerario-novo',

@@ -65,16 +65,6 @@
                          maxlength="150"
                   >
                </div>
-
-               <!--TODO: Implementar filtro por intervalo de data -->
-               <div class="ui-g-4 ui-fluid">
-                  <label>{{'itinerario.campos.validoAte' | translate}}</label>
-                  <input pInputText
-                         type="text"
-                         [(ngModel)]="itinerarioFiltro.validoAte"
-                         maxlength="150"
-                  >
-               </div>
                <div class="ui-g-12" style="text-align: right">
                   <button pButton
                           type="button" icon="fa-minus"
@@ -120,9 +110,8 @@
                      <p-sortIcon [field]="col.field"></p-sortIcon>
                   </th>
 
-                  <th [pSortableColumn]="validoAte" [class]="datatable-collum-field-name">
+                  <th [class]="datatable-collum-field-name">
                      {{'itinerario.campos.validoAte' | translate}}
-                     <p-sortIcon [field]="validoAte"></p-sortIcon>
                   </th>
                </tr>
             </ng-template>
@@ -133,9 +122,8 @@
                      {{rowData[col.field]}}
                   </td>
 
-                  <td [class]="datatable-collum-field-name">
-                     <!--{{ rowData['validoAte'] | date}}-->
-                     {{ rowData['validoAte']}}
+                  <td [class]="datatable-collum-field-name" style="text-align: center">
+                     {{ formatarData(rowData['validoAte'])}}
                   </td>
                </tr>
             </ng-template>

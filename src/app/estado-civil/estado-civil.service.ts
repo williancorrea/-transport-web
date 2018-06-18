@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {EstadoCivilFiltro} from '../core/model/estadoCivilFiltro';
-import {ProductUnit} from '../core/model/bank';
+import {Bank} from '../core/model/bank';
 import {environment} from '../../environments/environment';
 import {AuthHttp} from 'angular2-jwt';
 
@@ -65,9 +65,9 @@ export class EstadoCivilService {
     * Search for the record according to the key passed by parameter
     *
     * @param key
-    * @returns {Promise<ProductUnit>}
+    * @returns {Promise<Bank>}
     */
-   findOne(key): Promise<ProductUnit> {
+   findOne(key): Promise<Bank> {
       return this.http.get(`${this.apiUrl}/${key}`)
          .toPromise()
          .then(response => {

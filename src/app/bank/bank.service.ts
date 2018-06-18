@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {environment} from './../../environments/environment';
 import {AuthHttp} from 'angular2-jwt';
-import {ProductUnit} from '../core/model/bank';
+import {Bank} from '../core/model/bank';
 import {BankFilters} from '../core/model/bankFilters';
 
 @Injectable()
@@ -61,13 +61,13 @@ export class BankService {
     * Search for the record according to the key passed by parameter
     *
     * @param key
-    * @returns {Promise<ProductUnit>}
+    * @returns {Promise<Bank>}
     */
-   findOne(key): Promise<ProductUnit> {
+   findOne(key): Promise<Bank> {
       return this.http.get(`${this.apiUrl}/${key}`)
          .toPromise()
          .then(response => {
-            return response.json() as ProductUnit;
+            return response.json() as Bank;
          });
    }
 
@@ -86,10 +86,10 @@ export class BankService {
    /**
     * Save the record
     *
-    * @param {ProductUnit} bank
-    * @returns {Promise<ProductUnit>}
+    * @param {Bank} bank
+    * @returns {Promise<Bank>}
     */
-   save(bank: ProductUnit): Promise<ProductUnit> {
+   save(bank: Bank): Promise<Bank> {
       delete bank['key'];
       delete bank['properties'];
 
@@ -97,17 +97,17 @@ export class BankService {
          JSON.stringify(bank))
          .toPromise()
          .then(response => {
-            return response.json() as ProductUnit;
+            return response.json() as Bank;
          });
    }
 
    /**
     * Updates the registry
     *
-    * @param {ProductUnit} bank
-    * @returns {Promise<ProductUnit>}
+    * @param {Bank} bank
+    * @returns {Promise<Bank>}
     */
-   update(bank: ProductUnit): Promise<ProductUnit> {
+   update(bank: Bank): Promise<Bank> {
       const key = bank.key;
 
       delete bank['key'];
@@ -117,7 +117,7 @@ export class BankService {
          JSON.stringify(bank))
          .toPromise()
          .then(response => {
-            return response.json() as ProductUnit;
+            return response.json() as Bank;
          });
    }
 

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BankFilters} from '../core/model/bankFilters';
-import {ProductUnit} from '../core/model/bank';
+import {Bank} from '../core/model/bank';
 import {AuthHttp} from 'angular2-jwt';
 import {environment} from '../../environments/environment';
 import {ProductUnitFilters} from '../core/model/productUnitFilters';
@@ -84,10 +84,10 @@ export class ProductUnitService {
    /**
     * Save the record
     *
-    * @param {ProductUnit} obj
+    * @param {Bank} obj
     * @returns {Promise<any>}
     */
-   save(obj: ProductUnit): Promise<any> {
+   save(obj: Bank): Promise<any> {
       delete obj['key'];
       delete obj['properties'];
 
@@ -95,17 +95,17 @@ export class ProductUnitService {
          JSON.stringify(obj))
          .toPromise()
          .then(response => {
-            return response.json() as ProductUnit;
+            return response.json() as Bank;
          });
    }
 
    /**
     * Updates the registry
     *
-    * @param {ProductUnit} bank
-    * @returns {Promise<ProductUnit>}
+    * @param {Bank} bank
+    * @returns {Promise<Bank>}
     */
-   update(obj: ProductUnit): Promise<ProductUnit> {
+   update(obj: Bank): Promise<Bank> {
       const key = obj.key;
 
       delete obj['key'];
@@ -115,7 +115,7 @@ export class ProductUnitService {
          JSON.stringify(obj))
          .toPromise()
          .then(response => {
-            return response.json() as ProductUnit;
+            return response.json() as Bank;
          });
    }
 }

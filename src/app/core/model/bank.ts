@@ -1,4 +1,4 @@
-export class ProductUnit {
+export class Bank {
    key: string;
    code: string;
    name: string;
