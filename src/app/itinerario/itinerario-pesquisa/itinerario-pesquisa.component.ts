@@ -62,7 +62,7 @@ export class ItinerarioPesquisaComponent implements OnInit {
          this.COLUNAS = [
             {field: 'key', header: '', hidden: true, class: ''},
             {field: 'codigo', header: s['campos']['codigo'], hidden: false, class: 'datatable-collum-field-name'},
-            {field: 'nome', header: s['campos']['nome'], hidden: false, class: ''},
+            // {field: 'nome', header: s['campos']['nome'], hidden: false, class: ''},
             // {field: 'descricao', header: s['campos']['descricao'], hidden: false, class: ''},
             // {field: 'validoAte', header: s['campos']['validoAte'], hidden: false, class: 'datatable-collum-field-name'}
          ];

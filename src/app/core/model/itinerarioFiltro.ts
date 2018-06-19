@@ -3,6 +3,7 @@ export class ItinerarioFiltro {
    nome: string;
    descricao: string;
    validoAte: string;
+   ativo: boolean;
 
    constructor() {
    }

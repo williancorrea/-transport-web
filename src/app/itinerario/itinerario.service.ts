@@ -59,6 +59,7 @@ export class ItinerarioService {
             config.params['validoAte'] = itinerarioFiltro.validoAte;
          }
       }
+      config.params['ativo'] = itinerarioFiltro.ativo;
 
       return this.http.get(`${this.apiUrl}`, config)
          .toPromise()

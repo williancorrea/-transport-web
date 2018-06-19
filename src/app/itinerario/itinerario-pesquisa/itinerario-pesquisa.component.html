@@ -110,7 +110,9 @@
                      <p-sortIcon [field]="col.field"></p-sortIcon>
                   </th>
 
-                  <th [class]="datatable-collum-field-name">
+                  <th> {{'itinerario.campos.nome' | translate}}</th>
+
+                  <th class="datatable-collum-field-name">
                      {{'itinerario.campos.validoAte' | translate}}
                   </th>
                </tr>
@@ -122,7 +124,12 @@
                      {{rowData[col.field]}}
                   </td>
 
-                  <td [class]="datatable-collum-field-name" style="text-align: center">
+                  <td>
+                     <i *ngIf="rowData['ativo']" class="fa fa-toggle-on" style="color: darkgreen"></i>
+                     <i *ngIf="!rowData['ativo']" class="fa fa-toggle-off" style="color: gray"></i>
+                     {{ rowData['nome']}}
+                  </td>
+                  <td class="datatable-collum-field-name" style="text-align: center">
                      {{ formatarData(rowData['validoAte'])}}
                   </td>
                </tr>

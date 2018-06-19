@@ -64,7 +64,9 @@
       "error": "Erro",
       "info": "Info",
       "yes": "Sim",
-      "no": "Não"
+      "no": "Não",
+      "active": "Habilitado",
+      "disabled": "Desativado"
    },
    "validation": {
       "required": "O campo é obrigatório.",
