@@ -191,9 +191,9 @@ export class PersonNewComponent implements OnInit {
    }
 
    carregarEstadosCivis() {
-      this.estadoCivilService.findAll({'rows': 100, 'first': 0, 'sortOrder': 1, 'sortField': 'name'}, null)
+      this.estadoCivilService.findAll({'rows': 100, 'first': 0, 'sortOrder': 1, 'sortField': 'nome'}, null)
          .then(estadoCivilList => {
-            this.estadoCivilList = estadoCivilList.content.map(p => ({label: p.name, value: p.key}));
+            this.estadoCivilList = estadoCivilList.content.map(p => ({label: p.nome, value: p.key}));
          })
          .catch(error => {
             this.errorHandler.handle(error);

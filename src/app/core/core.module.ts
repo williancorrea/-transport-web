@@ -23,6 +23,7 @@ import {EstadoCivilService} from '../estado-civil/estado-civil.service';
 import {PersonService} from '../person/person.service';
 import {VeiculoService} from '../veiculo/veiculo.service';
 import {ItinerarioService} from '../itinerario/itinerario.service';
+import {ControleKmService} from '../controle-km/controle-km.service';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import {ItinerarioService} from '../itinerario/itinerario.service';
       PersonService,
       VeiculoService,
       ItinerarioService,
+      ControleKmService,
 
       ConfirmationService,
       JwtHelper,

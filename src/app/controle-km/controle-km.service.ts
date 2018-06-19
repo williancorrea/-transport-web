@@ -1,26 +1,26 @@
-import {Injectable} from '@angular/core';
-import {EstadoCivilFiltro} from '../core/model/estadoCivilFiltro';
-import {Bank} from '../core/model/bank';
+import { Injectable } from '@angular/core';
+import {ItinerarioFiltro} from '../core/model/itinerarioFiltro';
 import {environment} from '../../environments/environment';
 import {AuthHttp} from 'angular2-jwt';
 
 @Injectable()
-export class EstadoCivilService {
+export class ControleKmService {
 
    apiUrl: string;
 
    constructor(private http: AuthHttp) {
-      this.apiUrl = `${environment.apiUrl}/estado-civil`;
+
+      this.apiUrl = `${environment.apiUrl}/controle-km`;
    }
 
    /**
     * Lista todos os registro de acordo com os filtros passados por parametros
     *
     * @param filter
-    * @param {BankFilters} estadoCivilFiltro
+    * @param {BankFilters} itinerarioFiltro
     * @returns {Promise<any>}
     */
-   findAll(filter: any, estadoCivilFiltro: EstadoCivilFiltro): Promise<any> {
+   findAll(filter: any, itinerarioFiltro: ItinerarioFiltro) {
       /*
          in a real application, make a remote request to load data using state metadata from event
          event.first = First row offset
@@ -45,19 +45,29 @@ export class EstadoCivilService {
       }
 
 
-      if (estadoCivilFiltro) {
-         if (estadoCivilFiltro.nome && estadoCivilFiltro.nome.length > 0) {
-            config.params['nome'] = estadoCivilFiltro.nome;
-         }
-         if (estadoCivilFiltro.descricao && estadoCivilFiltro.descricao.length > 0) {
-            config.params['descricao'] = estadoCivilFiltro.descricao;
-         }
-      }
+      // if (itinerarioFiltro) {
+      //    if (itinerarioFiltro.nome && itinerarioFiltro.nome.length > 0) {
+      //       config.params['nome'] = itinerarioFiltro.nome;
+      //    }
+      //    if (itinerarioFiltro.descricao && itinerarioFiltro.descricao.length > 0) {
+      //       config.params['descricao'] = itinerarioFiltro.descricao;
+      //    }
+      //    if (itinerarioFiltro.codigo && itinerarioFiltro.codigo.length > 0) {
+      //       config.params['codigo'] = itinerarioFiltro.codigo;
+      //    }
+      //    if (itinerarioFiltro.validoAte && itinerarioFiltro.validoAte.length > 0) {
+      //       config.params['validoAte'] = itinerarioFiltro.validoAte;
+      //    }
+      // }
 
       return this.http.get(`${this.apiUrl}`, config)
          .toPromise()
          .then(response => {
-            return response.json();
+            const lista = response.json();
+            for (let i = 0; lista.content > 0; i++) {
+               // lista.content[i] = new Date(lista.content[i]['validoAte']);
+            }
+            return lista;
          });
    }
 
@@ -65,13 +75,18 @@ export class EstadoCivilService {
     * Search for the record according to the key passed by parameter
     *
     * @param key
-    * @returns {Promise<Bank>}
+    * @returns {Promise<any>}
     */
-   findOne(key): Promise<Bank> {
+   findOne(key) {
       return this.http.get(`${this.apiUrl}/${key}`)
          .toPromise()
          .then(response => {
-            return response.json();
+            response = response.json();
+            // if (response['validoAte']) {
+            //    response['validoAte'] = response['validoAte'] ? new Date(response['validoAte']) : response['validoAte'];
+            // }
+
+            return response;
          });
    }
 
@@ -81,7 +96,7 @@ export class EstadoCivilService {
     * @param {String} key
     * @returns {Promise<any>}
     */
-   delete(key: String): Promise<any> {
+   delete(key: String) {
       return this.http.delete(`${this.apiUrl}/${key}`)
          .toPromise()
          .then(() => null);
@@ -89,10 +104,8 @@ export class EstadoCivilService {
 
    /**
     * Save the record
-    *
-    * @returns {Promise<any>}
     */
-   save(obj): Promise<any> {
+   save(obj) {
       delete obj['key'];
       delete obj['controle'];
 
@@ -108,9 +121,8 @@ export class EstadoCivilService {
     * Updates the registry
     *
     * @param  obj
-    * @returns {Promise<any>}
     */
-   update(obj): Promise<any> {
+   update(obj) {
       const key = obj.key;
 
       delete obj['key'];

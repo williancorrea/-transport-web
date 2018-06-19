@@ -34,6 +34,7 @@ import {VeiculoPesquisaComponent} from './veiculo/veiculo-pesquisa/veiculo-pesqu
 import {VeiculoNovoComponent} from './veiculo/veiculo-novo/veiculo-novo.component';
 import {ItinerarioPesquisaComponent} from './itinerario/itinerario-pesquisa/itinerario-pesquisa.component';
 import {ItinerarioNovoComponent} from './itinerario/itinerario-novo/itinerario-novo.component';
+import {ControleKmPesquisaComponent} from './controle-km/controle-km-pesquisa/controle-km-pesquisa.component';
 
 export const routes: Routes = [
    {
@@ -102,6 +103,8 @@ export const routes: Routes = [
    {path: 'persons', component: PersonSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_PERSON']}},
    {path: 'persons/new', component: PersonNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_PERSON']}},
    {path: 'persons/:key', component: PersonNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_PERSON']}},
+
+   {path: 'controle-de-quilometragem', component: ControleKmPesquisaComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_CONTROLE-KM']}},
 
    {path: '**', redirectTo: 'page-not-found'}
 

@@ -117,6 +117,7 @@ import {EstadoCivilModule} from './estado-civil/estado-civil.module';
 import {PersonModule} from './person/person.module';
 import {VeiculoModule} from './veiculo/veiculo.module';
 import {ItinerarioModule} from './itinerario/itinerario.module';
+import {ControleKmModule} from './controle-km/controle-km.module';
 
 export function HttpLoaderFactory(http: Http) {
    return new TranslateStaticLoader(http, '/assets/i18n', '.json');
@@ -227,7 +228,8 @@ export function HttpLoaderFactory(http: Http) {
       EstadoCivilModule,
       PersonModule,
       VeiculoModule,
-      ItinerarioModule
+      ItinerarioModule,
+      ControleKmModule
    ],
    declarations: [
       AppComponent,

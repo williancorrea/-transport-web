@@ -29,7 +29,8 @@
       "estado-civil": "Estado Civil",
       "persons": "Pessoas",
       "veiculo": "Veículos",
-      "itinerario": "Itinerários"
+      "itinerario": "Itinerários",
+      "controle-km": "Controle Km"
    },
    "flags": {
       "brazil": "Brasil",
@@ -209,6 +210,25 @@
          "deletar_sucesso": "Itinerário removido com sucesso!",
          "adicionar_sucesso": "Itinerário adicionado com sucesso.",
          "atualizar_sucesso": "Itinerário atualizado com sucesso."
+      }
+   },
+   "controle-km": {
+      "campos": {
+         "motorista": "Motorista",
+         "itinerario": "Itinerário",
+         "veiculo": "Veículo"
+      },
+      "rotulos": {
+         "selecione-um-estado-civil": "Selecione um apontamento"
+      },
+      "titulo": "Controle de Km",
+      "lista": "Lista dos Apontamentos de Quilometragem",
+      "acoes": {
+         "adicionar": "Adicionar novo apontamento",
+         "editar": "Editar apontamento",
+         "deletar_sucesso": "Apontamento removido com sucesso!",
+         "adicionar_sucesso": "Apontamento adicionado com sucesso.",
+         "atualizar_sucesso": "Apontamento atualizado com sucesso."
       }
    },
    "person": {

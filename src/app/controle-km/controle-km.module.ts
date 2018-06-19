@@ -1,30 +1,28 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {TranslateModule, TranslateService} from 'ng2-translate';
+import {ControleKmPesquisaComponent} from './controle-km-pesquisa/controle-km-pesquisa.component';
+import {ButtonModule} from 'primeng/button';
+import {TableModule} from 'primeng/table';
 import {TransportSharedModule} from '../transort-shared/transport-share.module';
-import {SharedModule} from 'primeng/shared';
-import {RouterModule} from '@angular/router';
+import {CoreModule} from '../core/core.module';
 import {
    CalendarModule,
    DataTableModule,
    DropdownModule,
    InputMaskModule,
-   InputSwitchModule,
    InputTextareaModule,
    InputTextModule,
    KeyFilterModule,
    ProgressBarModule,
    TooltipModule
 } from 'primeng/primeng';
-import {TableModule} from 'primeng/table';
-import {MessageModule} from 'primeng/message';
+import {TranslateModule, TranslateService} from 'ng2-translate';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ButtonModule} from 'primeng/button';
-import {CoreModule} from '../core/core.module';
-import {PanelModule} from 'primeng/panel';
+import {RouterModule} from '@angular/router';
+import {SharedModule} from 'primeng/shared';
 import {LoadingModule} from 'ngx-loading';
-import {ItinerarioPesquisaComponent} from './itinerario-pesquisa/itinerario-pesquisa.component';
-import {ItinerarioNovoComponent} from './itinerario-novo/itinerario-novo.component';
+import {MessageModule} from 'primeng/message';
+import {PanelModule} from 'primeng/panel';
 
 @NgModule({
    imports: [
@@ -54,12 +52,11 @@ import {ItinerarioNovoComponent} from './itinerario-novo/itinerario-novo.compone
       CalendarModule,
       KeyFilterModule,
       InputMaskModule,
-      InputSwitchModule
    ],
-   declarations: [ItinerarioPesquisaComponent, ItinerarioNovoComponent],
+   declarations: [ControleKmPesquisaComponent],
    providers: [
       TranslateService
    ]
 })
-export class ItinerarioModule {
+export class ControleKmModule {
 }
