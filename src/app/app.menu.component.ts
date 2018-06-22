@@ -41,7 +41,7 @@ export class AppMenuComponent implements OnInit {
                      {label:  m['itinerario'], icon: 'fa fa-fw fa-truck', routerLink: ['/itinerario'], visible: this.auth.hasPermission('ROLE_LISTAR_ITINERARIO')}
                   ]
                },
-              {label:  m['controle-km'], icon: 'fa fa-fw fa-map-signs', routerLink: ['/controle-de-quilometragem'], visible: this.auth.hasPermission('ROLE_LISTAR_CONTROLE-KM')}
+              {label:  m['controle-km'], icon: 'fa fa-fw fa-map-signs', routerLink: ['/controleKm'], visible: this.auth.hasPermission('ROLE_LISTAR_CONTROLE-KM')}
                // ,
                // {
                //     label: 'Themes', icon: 'fa fa-fw fa-paint-brush', badge: '5',

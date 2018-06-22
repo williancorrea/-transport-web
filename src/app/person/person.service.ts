@@ -40,8 +40,10 @@ export class PersonService {
          config.params['globalFilter'] = filter.globalFilter;
       }
 
-      if (personFilters.name && personFilters.name.length > 0) {
-         config.params['name'] = personFilters.name;
+      if (personFilters) {
+         if (personFilters.name && personFilters.name.length > 0) {
+            config.params['name'] = personFilters.name;
+         }
       }
 
       return this.http.get(`${this.apiUrl}`, config)

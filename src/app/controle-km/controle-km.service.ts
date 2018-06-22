@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {ItinerarioFiltro} from '../core/model/itinerarioFiltro';
 import {environment} from '../../environments/environment';
 import {AuthHttp} from 'angular2-jwt';
+import {ControleKmFiltro} from '../core/model/ControleKmFiltro';
 
 @Injectable()
 export class ControleKmService {
@@ -17,10 +18,10 @@ export class ControleKmService {
     * Lista todos os registro de acordo com os filtros passados por parametros
     *
     * @param filter
-    * @param {BankFilters} itinerarioFiltro
+    * @param {BankFilters} controleKmFiltro
     * @returns {Promise<any>}
     */
-   findAll(filter: any, itinerarioFiltro: ItinerarioFiltro) {
+   findAll(filter: any, controleKmFiltro: ControleKmFiltro) {
       /*
          in a real application, make a remote request to load data using state metadata from event
          event.first = First row offset
@@ -45,18 +46,18 @@ export class ControleKmService {
       }
 
 
-      // if (itinerarioFiltro) {
-      //    if (itinerarioFiltro.nome && itinerarioFiltro.nome.length > 0) {
-      //       config.params['nome'] = itinerarioFiltro.nome;
+      // if (controleKmFiltro) {
+      //    if (controleKmFiltro.nome && controleKmFiltro.nome.length > 0) {
+      //       config.params['nome'] = controleKmFiltro.nome;
       //    }
-      //    if (itinerarioFiltro.descricao && itinerarioFiltro.descricao.length > 0) {
-      //       config.params['descricao'] = itinerarioFiltro.descricao;
+      //    if (controleKmFiltro.descricao && controleKmFiltro.descricao.length > 0) {
+      //       config.params['descricao'] = controleKmFiltro.descricao;
       //    }
-      //    if (itinerarioFiltro.codigo && itinerarioFiltro.codigo.length > 0) {
-      //       config.params['codigo'] = itinerarioFiltro.codigo;
+      //    if (controleKmFiltro.codigo && controleKmFiltro.codigo.length > 0) {
+      //       config.params['codigo'] = controleKmFiltro.codigo;
       //    }
-      //    if (itinerarioFiltro.validoAte && itinerarioFiltro.validoAte.length > 0) {
-      //       config.params['validoAte'] = itinerarioFiltro.validoAte;
+      //    if (controleKmFiltro.validoAte && controleKmFiltro.validoAte.length > 0) {
+      //       config.params['validoAte'] = controleKmFiltro.validoAte;
       //    }
       // }
 

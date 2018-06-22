@@ -23,6 +23,7 @@ import {SharedModule} from 'primeng/shared';
 import {LoadingModule} from 'ngx-loading';
 import {MessageModule} from 'primeng/message';
 import {PanelModule} from 'primeng/panel';
+import { ControleKmNovoComponent } from './controle-km-novo/controle-km-novo.component';
 
 @NgModule({
    imports: [
@@ -53,7 +54,7 @@ import {PanelModule} from 'primeng/panel';
       KeyFilterModule,
       InputMaskModule,
    ],
-   declarations: [ControleKmPesquisaComponent],
+   declarations: [ControleKmPesquisaComponent, ControleKmNovoComponent],
    providers: [
       TranslateService
    ]

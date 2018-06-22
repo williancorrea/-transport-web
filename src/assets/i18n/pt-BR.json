@@ -5,7 +5,7 @@
    "commons": {
       "language": "Idioma",
       "loading": "Aguarde, carregando ...",
-      "dashboard": "Dashboard",
+      "dashboard": "Página Inicial",
       "page": {
          "not_found": "Página não encontrada",
          "not_found_description": "A página que você solicitou não pode ser encontrada.",
@@ -212,7 +212,7 @@
          "atualizar_sucesso": "Itinerário atualizado com sucesso."
       }
    },
-   "controle-km": {
+   "controleKm": {
       "campos": {
          "motorista": "Motorista",
          "itinerario": "Itinerário",
@@ -224,7 +224,7 @@
       "titulo": "Controle de Km",
       "lista": "Lista dos Apontamentos de Quilometragem",
       "acoes": {
-         "adicionar": "Adicionar novo apontamento",
+         "adicionar": "Adicionar novo apontamento de quilometragem",
          "editar": "Editar apontamento",
          "deletar_sucesso": "Apontamento removido com sucesso!",
          "adicionar_sucesso": "Apontamento adicionado com sucesso.",
