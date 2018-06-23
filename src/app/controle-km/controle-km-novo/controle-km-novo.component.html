@@ -64,57 +64,91 @@
                   <app-message [form]="f" [control]="form.get('pessoa').get('key')"></app-message>
                </div>
 
-               <!--<div class="ui-g-12">-->
-               <!--<p-inputSwitch formControlName="ativo"-->
-               <!--onLabel="{{'actions.active' | translate }}"-->
-               <!--offLabel="{{'actions.disabled' | translate}}">-->
-               <!--</p-inputSwitch>-->
-               <!--</div>-->
 
-               <!--<div class="ui-sm-3 ui-g-3 ui-fluid">-->
-               <!--<label>{{'controleKm.campos.codigo' | translate}}</label>-->
-               <!--<input pInputText-->
-               <!--type="text"-->
-               <!--name="codigo"-->
-               <!--formControlName="codigo"-->
-               <!--&gt;-->
-               <!--<app-message [form]="f" [control]="form.get('codigo')"></app-message>-->
-               <!--</div>-->
+               <div class="ui-sm-12 ui-g-3 ui-fluid">
+                  <label>{{'controleKm.campos.dataHoraSaida' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
 
-               <!--<div class="ui-sm-6 ui-g-6 ui-fluid">-->
-               <!--<label>{{'controleKm.campos.nome' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>-->
-               <!--<input pInputText-->
-               <!--type="text"-->
-               <!--name="nome"-->
-               <!--formControlName="nome"-->
-               <!--&gt;-->
-               <!--<app-message [form]="f" [control]="form.get('nome')"></app-message>-->
-               <!--</div>-->
+                  <!--TODO: TRADUZIR O COMPONENTE CALENDAR-->
+                  <!--TODO: ADICIONAR NAVEGAÇÃO POR ANO NO COMPONENTE CALENDAR-->
+                  <!--TODO: ADICIONAR MASCARA AO CAMPO-->
+                  <p-calendar formControlName="dataHoraSaida"
+                              dateFormat="dd/mm/yy "
+                              [readonlyInput]="false"
+                              [showIcon]="true"
+                              [monthNavigator]="true"
+                              [showTime]="true"
+                              mask="99/99/9999 99:99"
+                              [showButtonBar]="true">
+                  </p-calendar>
+                  <app-message [form]="f" [control]="form.get('dataHoraSaida')"></app-message>
+               </div>
 
-               <!--<div class="ui-sm-3 ui-g-3 ui-fluid">-->
-               <!--<label>{{'controleKm.campos.validoAte' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>-->
+               <div class="ui-sm-4 ui-g-3 ui-fluid">
+                  <label>{{'controleKm.campos.kmSaida' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <input pInputText
+                         type="text"
+                         name="kmSaida"
+                         class="wc-align-right"
+                         formControlName="kmSaida"
+                         pKeyFilter="pnum">
+                  <app-message [form]="f" [control]="form.get('kmSaida')"></app-message>
+               </div>
 
-               <!--&lt;!&ndash;TODO: TRADUZIR O COMPONENTE CALENDAR&ndash;&gt;-->
-               <!--&lt;!&ndash;TODO: ADICIONAR NAVEGAÇÃO POR ANO NO COMPONENTE CALENDAR&ndash;&gt;-->
-               <!--<p-calendar formControlName="validoAte"-->
-               <!--dateFormat="dd/mm/yy"-->
-               <!--[readonlyInput]="false"-->
-               <!--[showIcon]="true"-->
-               <!--[monthNavigator]="true">-->
-               <!--</p-calendar>-->
-               <!--<app-message [form]="f" [control]="form.get('validoAte')"></app-message>-->
-               <!--</div>-->
-               <!--<div class="ui-sm-12 ui-g-12 ui-fluid">-->
-               <!--<label>{{'controleKm.campos.descricao' | translate}}</label>-->
-               <!--<textarea [rows]="5"-->
-               <!--[cols]="30"-->
-               <!--pInputTextarea-->
-               <!--name="descricao"-->
-               <!--formControlName="descricao"-->
-               <!--autoResize></textarea>-->
-               <!--<app-message [form]="f" [control]="form.get('descricao')"></app-message>-->
-               <!--</div>-->
+               <div class="ui-sm-6 ui-g-6 ui-fluid">
+                  <label>{{'controleKm.campos.origem' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <textarea [rows]="1"
+                            [cols]="30"
+                            pInputTextarea
+                            name="origem"
+                            formControlName="origem"
+                            autoResize></textarea>
+                  <app-message [form]="f" [control]="form.get('origem')"></app-message>
+               </div>
 
+
+               <div class="ui-sm-12 ui-g-3 ui-fluid">
+                  <label>{{'controleKm.campos.dataHoraChegada' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+
+                  <p-inputMask formControlName="dataHoraChegada"
+                               mask="99/99/9999 99:99"
+                               pattern="([0-2][0-9]|3[0-1])\/(0[0-9]|1[0-2])\/[0-9]{4} ([0-1][0-9]|2[0-3]):[0-5][0-9]">
+                  </p-inputMask>
+                  <app-message [form]="f" [control]="form.get('dataHoraChegada')"></app-message>
+               </div>
+
+               <div class="ui-sm-4 ui-g-3 ui-fluid">
+                  <label>{{'controleKm.campos.kmChegada' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <input pInputText
+                         type="text"
+                         name="kmChegada"
+                         class="wc-align-right"
+                         formControlName="kmChegada"
+                         pKeyFilter="pnum">
+                  <app-message [form]="f" [control]="form.get('kmChegada')"></app-message>
+               </div>
+
+
+               <div class="ui-sm-6 ui-g-6 ui-fluid">
+                  <label>{{'controleKm.campos.destino' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <textarea [rows]="1"
+                            [cols]="30"
+                            pInputTextarea
+                            name="destino"
+                            formControlName="destino"
+                            autoResize></textarea>
+                  <app-message [form]="f" [control]="form.get('destino')"></app-message>
+               </div>
+
+               <div class="ui-sm-12 ui-g-12 ui-fluid">
+                  <label>{{'controleKm.campos.obs' | translate}}</label>
+                  <textarea [rows]="5"
+                            [cols]="30"
+                            pInputTextarea
+                            name="obs"
+                            formControlName="obs"
+                            autoResize></textarea>
+                  <app-message [form]="f" [control]="form.get('obs')"></app-message>
+               </div>
 
                <div class="ui-sm-12 ui-g-12">
                   <button pButton type="button"

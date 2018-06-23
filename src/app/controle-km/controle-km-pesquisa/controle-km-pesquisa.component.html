@@ -114,8 +114,13 @@
 
             <ng-template pTemplate="body" let-rowData let-columns="columns" let-obj>
                <tr [pSelectableRow]="rowData">
-                  <td *ngFor="let col of columns" [hidden]="col.hidden" [class]="col.class">
-                     {{rowData[col.field]}}
+
+                  <!--<td *ngFor="let col of columns" [hidden]="col.hidden" [class]="col.class">-->
+                     <!--{{rowData[col.field]}}-->
+                  <!--</td>-->
+
+                  <td>
+                     {{rowData['pessoa']['nome']}}
                   </td>
                </tr>
             </ng-template>

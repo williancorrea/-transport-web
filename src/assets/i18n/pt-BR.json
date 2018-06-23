@@ -216,7 +216,14 @@
       "campos": {
          "motorista": "Motorista",
          "itinerario": "Itinerário",
-         "veiculo": "Veículo"
+         "veiculo": "Veículo",
+         "dataHoraSaida": "Saída",
+         "dataHoraChegada": "Chegada",
+         "origem": "Origem",
+         "destino": "Destino",
+         "obs": "Observações",
+         "kmSaida": "Km de Saída",
+         "kmChegada": "Km de Chegada"
       },
       "rotulos": {
          "selecione-um-estado-civil": "Selecione um apontamento"
@@ -224,7 +231,7 @@
       "titulo": "Controle de Km",
       "lista": "Lista dos Apontamentos de Quilometragem",
       "acoes": {
-         "adicionar": "Adicionar novo apontamento de quilometragem",
+         "adicionar": "Adicionar novo apontamento",
          "editar": "Editar apontamento",
          "deletar_sucesso": "Apontamento removido com sucesso!",
          "adicionar_sucesso": "Apontamento adicionado com sucesso.",

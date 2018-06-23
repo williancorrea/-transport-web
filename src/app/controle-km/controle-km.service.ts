@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
-import {ItinerarioFiltro} from '../core/model/itinerarioFiltro';
+import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {AuthHttp} from 'angular2-jwt';
 import {ControleKmFiltro} from '../core/model/ControleKmFiltro';
+
+import * as moment from 'moment';
 
 @Injectable()
 export class ControleKmService {
@@ -83,9 +84,9 @@ export class ControleKmService {
          .toPromise()
          .then(response => {
             response = response.json();
-            // if (response['validoAte']) {
-            //    response['validoAte'] = response['validoAte'] ? new Date(response['validoAte']) : response['validoAte'];
-            // }
+            if (response['dataHoraSaida']) {
+               response['dataHoraSaida'] = response['dataHoraSaida'] ? moment(response['dataHoraSaida'], 'YYYY-MM-DD HH:mm:ss').utc().format('DD/MM/YYYY HH:mm').toString() : response['dataHoraSaida'];
+            }
 
             return response;
          });
@@ -107,8 +108,7 @@ export class ControleKmService {
     * Save the record
     */
    save(obj) {
-      delete obj['key'];
-      delete obj['controle'];
+      obj = this.formatarDados(obj);
 
       return this.http.post(this.apiUrl,
          JSON.stringify(obj))
@@ -125,9 +125,7 @@ export class ControleKmService {
     */
    update(obj) {
       const key = obj.key;
-
-      delete obj['key'];
-      delete obj['controle'];
+      obj = this.formatarDados(obj);
 
       return this.http.put(`${this.apiUrl}/${key}`,
          JSON.stringify(obj))
@@ -135,6 +133,14 @@ export class ControleKmService {
          .then(response => {
             return response.json();
          });
+   }
+
+   private formatarDados(obj) {
+      delete obj['key'];
+      delete obj['controle'];
+      obj['dataHoraSaida'] = moment(obj['dataHoraSaida']).utc().format('YYYY-MM-DD HH:mm:ss').toString();
+      obj['dataHoraChegada'] = moment(obj['dataHoraChegada']).utc().format('YYYY-MM-DD HH:mm:ss').toString();
+      return obj;
    }
 
 }

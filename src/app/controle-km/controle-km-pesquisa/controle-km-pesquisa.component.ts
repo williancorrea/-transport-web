@@ -63,7 +63,7 @@ export class ControleKmPesquisaComponent implements OnInit {
             {field: 'key', header: '', hidden: true, class: ''},
             // {field: 'codigo', header: s['campos']['codigo'], hidden: false, class: 'datatable-collum-field-name'},
             {field: 'pessoa', header: s['campos']['motorista'], hidden: false, class: ''},
-            // {field: 'descricao', header: s['campos']['descricao'], hidden: false, class: ''},
+            {field: 'veiculo', header: s['campos']['veiculo'], hidden: false, class: ''},
             // {field: 'validoAte', header: s['campos']['validoAte'], hidden: false, class: 'datatable-collum-field-name'}
          ];
       });

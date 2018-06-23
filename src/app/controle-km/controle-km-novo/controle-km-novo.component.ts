@@ -9,7 +9,6 @@ import {ToastyService} from 'ng2-toasty';
 import {ControleKmService} from '../controle-km.service';
 import {VeiculoService} from '../../veiculo/veiculo.service';
 import {ItinerarioService} from '../../itinerario/itinerario.service';
-import {Dropdown} from 'primeng/primeng';
 import {PersonService} from '../../person/person.service';
 
 @Component({
@@ -82,23 +81,38 @@ export class ControleKmNovoComponent implements OnInit {
          }),
          itinerario: this.formBuild.group({
             key: [null, Validators.required]
-         })
-         // codigo: [
-         //    null, [
-         //       Validators.minLength(1),
-         //       Validators.maxLength(15)
-         //    ]
-         // ],
-         // nome: [
-         //    null, [
-         //       Validators.required,
-         //       Validators.minLength(5),
-         //       Validators.maxLength(150)
-         //    ]
-         // ],
-         // descricao: [null, Validators.maxLength(512)],
-         // validoAte: [null, Validators.required],
-         // ativo: [true]
+         }),
+         dataHoraSaida: [null, Validators.required],
+         dataHoraChegada: [null, Validators.required],
+         origem: [
+            null, [
+               Validators.required,
+               Validators.minLength(3),
+               Validators.maxLength(150)
+            ]
+         ],
+         destino: [
+            null, [
+               Validators.required,
+               Validators.minLength(3),
+               Validators.maxLength(150)
+            ]
+         ],
+         obs: [null, Validators.maxLength(512)],
+         kmSaida: [
+            null, [
+               Validators.required,
+               Validators.minLength(1),
+               Validators.maxLength(30)
+            ]
+         ],
+         kmChegada: [
+            null, [
+               Validators.required,
+               Validators.minLength(1),
+               Validators.maxLength(30)
+            ]
+         ]
       });
    }
 
@@ -140,6 +154,8 @@ export class ControleKmNovoComponent implements OnInit {
    }
 
    save() {
+      console.log(this.form);
+
       if (this.form.valid) {
          this.showLoading(true);
          if (this.form.get('key').value) {
