@@ -223,7 +223,8 @@
          "destino": "Destino",
          "obs": "Observações",
          "kmSaida": "Km de Saída",
-         "kmChegada": "Km de Chegada"
+         "kmChegada": "Km de Chegada",
+         "KmNaoInformado": "Km não informado"
       },
       "rotulos": {
          "selecione-um-estado-civil": "Selecione um apontamento"

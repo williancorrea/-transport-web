@@ -2,7 +2,12 @@
    width: 20%;
    text-align: center !important;
 }
-datatable-collum-field-active{
+.datatable-collum-field-active{
    width: 15%;
    text-align: center !important;
+}
+
+.wc-painel-km-nao-informado{
+   background-color: burlywood;
+   border-radius: 10px;
 }

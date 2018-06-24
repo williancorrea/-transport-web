@@ -88,11 +88,12 @@ export class ProductUnitService {
     * @returns {Promise<any>}
     */
    save(obj: Bank): Promise<any> {
-      delete obj['key'];
-      delete obj['properties'];
+      const clone = JSON.parse(JSON.stringify(obj));
+      delete clone['key'];
+      delete clone['properties'];
 
       return this.http.post(this.apiUrl,
-         JSON.stringify(obj))
+         JSON.stringify(clone))
          .toPromise()
          .then(response => {
             return response.json() as Bank;
@@ -108,11 +109,12 @@ export class ProductUnitService {
    update(obj: Bank): Promise<Bank> {
       const key = obj.key;
 
-      delete obj['key'];
-      delete obj['properties'];
+      const clone = JSON.parse(JSON.stringify(obj));
+      delete clone['key'];
+      delete clone['properties'];
 
       return this.http.put(`${this.apiUrl}/${key}`,
-         JSON.stringify(obj))
+         JSON.stringify(clone))
          .toPromise()
          .then(response => {
             return response.json() as Bank;

@@ -90,11 +90,12 @@ export class BankService {
     * @returns {Promise<Bank>}
     */
    save(bank: Bank): Promise<Bank> {
-      delete bank['key'];
-      delete bank['properties'];
+      const clone = JSON.parse(JSON.stringify(bank));
+      delete clone['key'];
+      delete clone['properties'];
 
       return this.http.post(this.apiUrl,
-         JSON.stringify(bank))
+         JSON.stringify(clone))
          .toPromise()
          .then(response => {
             return response.json() as Bank;
@@ -110,11 +111,12 @@ export class BankService {
    update(bank: Bank): Promise<Bank> {
       const key = bank.key;
 
-      delete bank['key'];
-      delete bank['properties'];
+      const clone = JSON.parse(JSON.stringify(bank));
+      delete clone['key'];
+      delete clone['properties'];
 
       return this.http.put(`${this.apiUrl}/${key}`,
-         JSON.stringify(bank))
+         JSON.stringify(clone))
          .toPromise()
          .then(response => {
             return response.json() as Bank;

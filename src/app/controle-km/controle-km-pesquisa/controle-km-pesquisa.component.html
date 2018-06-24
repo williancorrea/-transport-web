@@ -42,28 +42,28 @@
                   <h2>{{'commons.filter.fields' | translate}}</h2>
                </div>
                <!--<div class="ui-g-4 ui-fluid">-->
-                  <!--<label>{{'controleKm.campos.codigo' | translate}}</label>-->
-                  <!--<input pInputText-->
-                         <!--type="text"-->
-                         <!--[(ngModel)]="controleKmFiltro.codigo"-->
-                         <!--maxlength="15"-->
-                  <!--&gt;-->
+               <!--<label>{{'controleKm.campos.codigo' | translate}}</label>-->
+               <!--<input pInputText-->
+               <!--type="text"-->
+               <!--[(ngModel)]="controleKmFiltro.codigo"-->
+               <!--maxlength="15"-->
+               <!--&gt;-->
                <!--</div>-->
                <!--<div class="ui-g-4 ui-fluid">-->
-                  <!--<label>{{'controleKm.campos.nome' | translate}}</label>-->
-                  <!--<input pInputText-->
-                         <!--type="text"-->
-                         <!--[(ngModel)]="controleKmFiltro.nome"-->
-                         <!--maxlength="150"-->
-                  <!--&gt;-->
+               <!--<label>{{'controleKm.campos.nome' | translate}}</label>-->
+               <!--<input pInputText-->
+               <!--type="text"-->
+               <!--[(ngModel)]="controleKmFiltro.nome"-->
+               <!--maxlength="150"-->
+               <!--&gt;-->
                <!--</div>-->
                <!--<div class="ui-g-4 ui-fluid">-->
-                  <!--<label>{{'controleKm.campos.descricao' | translate}}</label>-->
-                  <!--<input pInputText-->
-                         <!--type="text"-->
-                         <!--[(ngModel)]="controleKmFiltro.descricao"-->
-                         <!--maxlength="150"-->
-                  <!--&gt;-->
+               <!--<label>{{'controleKm.campos.descricao' | translate}}</label>-->
+               <!--<input pInputText-->
+               <!--type="text"-->
+               <!--[(ngModel)]="controleKmFiltro.descricao"-->
+               <!--maxlength="150"-->
+               <!--&gt;-->
                <!--</div>-->
                <div class="ui-g-12" style="text-align: right">
                   <button pButton
@@ -102,25 +102,64 @@
                </tr>
             </ng-template>
 
-            <ng-template pTemplate="header" let-columns>
-               <tr>
-                  <th *ngFor="let col of columns" [pSortableColumn]="col.field" [hidden]="col.hidden"
-                      [class]="col.class">
-                     {{col.header}}
-                     <p-sortIcon [field]="col.field"></p-sortIcon>
-                  </th>
-               </tr>
-            </ng-template>
+            <!--<ng-template pTemplate="header" let-columns>-->
+            <!--<tr>-->
+            <!--<th *ngFor="let col of columns" [pSortableColumn]="col.field" [hidden]="col.hidden"-->
+            <!--[class]="col.class">-->
+            <!--{{col.header}}-->
+            <!--<p-sortIcon [field]="col.field"></p-sortIcon>-->
+            <!--</th>-->
+            <!--</tr>-->
+            <!--</ng-template>-->
 
             <ng-template pTemplate="body" let-rowData let-columns="columns" let-obj>
                <tr [pSelectableRow]="rowData">
-
-                  <!--<td *ngFor="let col of columns" [hidden]="col.hidden" [class]="col.class">-->
-                     <!--{{rowData[col.field]}}-->
-                  <!--</td>-->
-
+                  <!--<div class="ui-g">-->
+                  <!--<div class="ui-g-12">-->
+                  <!--<div class="card card-w-title">-->
                   <td>
-                     {{rowData['pessoa']['nome']}}
+                     <div class="ui-g-12" style="margin: 0px; padding: 0px">
+                        <div class="ui-sm-4 ui-g-2" style="margin: 0px; padding: 0px">
+                           <b>{{'veiculo.titulo'| translate}}</b><br>
+                           <span>({{rowData['veiculo']['frota']}}) {{rowData['veiculo']['placa']}}</span>
+                        </div>
+                        <div class="ui-sm-4 ui-g-4" style="margin: 0px; padding: 0px">
+                           <b>{{'controleKm.campos.motorista'| translate}}</b><br>
+                           <span>{{rowData['pessoa']['nome']}}</span>
+                        </div>
+                        <div class="ui-sm-4 ui-g-6" style="margin: 0px; padding: 0px">
+                           <b>{{'itinerario.titulo'| translate}}</b><br>
+                           <span>{{rowData['itinerario']['nome']}}</span>
+                        </div>
+                     </div>
+
+                     <div class="ui-g-12 ui-fluid" style="margin: 0px; padding: 0px" ngClass="{{rowData['kmNaoInformado'] > 0 ?'wc-painel-km-nao-informado' : ''}}">
+                        <div class="ui-g-2 ui-fluid" style="text-align: center" *ngIf="rowData['kmNaoInformado'] > 0">
+                           <b>{{'controleKm.campos.KmNaoInformado'| translate}}</b>
+                           <span style="color: #ff5555; font-weight: bold">{{rowData['kmNaoInformado']}}</span>
+                        </div>
+                        <div class="ui-g-10">
+                           <div class="ui-g-3" style="margin: 0px; padding: 0px">
+                              <label>{{'controleKm.campos.dataHoraSaida' | translate}}</label>:
+                              <span>{{rowData['dataHoraSaida']}}</span>
+                           </div>
+                           <div class="ui-g-3" style="margin: 0px; padding: 0px">
+                              <label>{{'controleKm.campos.kmSaida' | translate}}</label>:
+                              <span>{{rowData['kmSaida']}}</span>
+                           </div>
+                           <div class="ui-g-3" style="margin: 0px; padding: 0px">
+                              <label>{{'controleKm.campos.dataHoraChegada' | translate}}</label>:
+                              <span>{{rowData['dataHoraChegada']}}</span>
+                           </div>
+                           <div class="ui-g-3" style="margin: 0px; padding: 0px">
+                              <label>{{'controleKm.campos.kmChegada' | translate}}</label>:
+                              <span>{{rowData['kmChegada']}}</span>
+                           </div>
+                        </div>
+                     </div>
+                     <!--</div>-->
+                     <!--</div>-->
+                     <!--</div>-->
                   </td>
                </tr>
             </ng-template>

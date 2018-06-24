@@ -24,6 +24,7 @@ export class ControleKmNovoComponent implements OnInit {
    veiculoList: any;
    itinerarioList: any;
    pessoaList: any;
+   msgs: any;
 
    constructor(private router: Router,
                private activatedRoute: ActivatedRoute,
@@ -40,6 +41,7 @@ export class ControleKmNovoComponent implements OnInit {
    }
 
    ngOnInit() {
+      this.msgs = [];
       this.configForm();
       this.showLoading(true);
       this.translate.get('controleKm').subscribe(s => {
@@ -59,7 +61,7 @@ export class ControleKmNovoComponent implements OnInit {
                   this.showLoading(false);
                })
                .catch(error => {
-                  this.errorHandler.handle(error);
+                  this.setMensagensErro(this.errorHandler.handle(error));
                   this.title.setTitle(s['acoes']['adicionar']);
                   this.showLoading(false);
                });
@@ -68,6 +70,10 @@ export class ControleKmNovoComponent implements OnInit {
             this.showLoading(false);
          }
       });
+   }
+
+   setMensagensErro(msg) {
+      this.msgs = [{severity: 'warn', summary: '', detail: msg}];
    }
 
    configForm() {
@@ -123,7 +129,7 @@ export class ControleKmNovoComponent implements OnInit {
             this.veiculoList = veiculoList.content.map(p => ({label: p.frota + ' - ' + p.placa, value: p.key}));
          })
          .catch(error => {
-            this.errorHandler.handle(error);
+            this.setMensagensErro(this.errorHandler.handle(error));
          });
    }
 
@@ -134,18 +140,18 @@ export class ControleKmNovoComponent implements OnInit {
             this.itinerarioList = veiculoList.content.map(p => ({label: p.nome, value: p.key}));
          })
          .catch(error => {
-            this.errorHandler.handle(error);
+            this.setMensagensErro(this.errorHandler.handle(error));
          });
    }
 
-   //TODO: BUSCAR SOMENTE OS MOTORISTAS E COLABORADORES
+   // TODO: BUSCAR SOMENTE OS MOTORISTAS E COLABORADORES
    carregarMotoristas() {
       this.pessoaService.findAll({'rows': 100, 'first': 0, 'sortOrder': 1, 'sortField': 'nome'}, null)
          .then(veiculoList => {
             this.pessoaList = veiculoList.content.map(p => ({label: p.nome, value: p.key}));
          })
          .catch(error => {
-            this.errorHandler.handle(error);
+            this.setMensagensErro(this.errorHandler.handle(error));
          });
    }
 
@@ -167,7 +173,8 @@ export class ControleKmNovoComponent implements OnInit {
                      this.router.navigateByUrl('/controleKm');
                   }
                ).catch(error => {
-               this.errorHandler.handle(error);
+               this.setMensagensErro(this.errorHandler.handle(error));
+               // this.setMensagensErro(error.json()[0].userMessage);
                this.showLoading(false);
             });
          } else {
@@ -178,8 +185,8 @@ export class ControleKmNovoComponent implements OnInit {
                      this.showLoading(false);
                      this.router.navigateByUrl('/controleKm');
                   }
-               ).catch(erro => {
-               this.errorHandler.handle(erro);
+               ).catch(error => {
+               this.setMensagensErro(this.errorHandler.handle(error));
                this.showLoading(false);
             });
          }

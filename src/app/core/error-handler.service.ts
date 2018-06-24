@@ -8,51 +8,52 @@ import {TranslateService} from 'ng2-translate';
 
 @Injectable()
 export class ErrorHandlerService {
+   labels: any;
 
    constructor(private toasty: ToastyService,
                private router: Router,
                private translate: TranslateService) {
+      this.translate.get('errors').subscribe(s => {
+         this.labels = s;
+      });
    }
 
-   handle(errorResponse: any) {
-      let msg: string;
+   handle(errorResponse: any): any {
+      let mensagemErro: string;
 
-      //TODO: remover log
+      // TODO: remover log
       console.log('DEU ZICA', errorResponse);
+      if (typeof errorResponse === 'string') {
+         mensagemErro = errorResponse;
 
-      this.translate.get('errors').subscribe(s => {
-         if (typeof errorResponse === 'string') {
-            msg = errorResponse;
+      } else if (errorResponse instanceof NotAuthenticatedError) {
+         mensagemErro = this.labels['session_expired'];
+         this.router.navigate(['/login']);
 
-         } else if (errorResponse instanceof NotAuthenticatedError) {
-            msg = s['session_expired'];
-            this.router.navigate(['/login']);
+      } else if (errorResponse instanceof Response
+         && errorResponse.status >= 400 && errorResponse.status <= 499) {
+         let errors;
+         mensagemErro = this.labels['processing_request'];
 
-         } else if (errorResponse instanceof Response
-            && errorResponse.status >= 400 && errorResponse.status <= 499) {
-            let errors;
-            msg = s['processing_request'];
-
-            if (errorResponse.status === 403) {
-               msg = s['access_denied'];
-               this.router.navigate(['/access-denied']);
-            }
-
-            try {
-               errors = errorResponse.json();
-
-               msg = errors[0].userMessage;
-            } catch (e) {
-            }
-
-            console.error('An error has occurred', errorResponse);
-         } else {
-            msg = s['service_error'];
-            console.error('An error has occurred', errorResponse);
+         if (errorResponse.status === 403) {
+            mensagemErro = this.labels['access_denied'];
+            this.router.navigate(['/access-denied']);
          }
 
-         this.toasty.error(msg);
-      });
+         try {
+            errors = errorResponse.json();
+            mensagemErro = errors[0].userMessage;
+         } catch (e) {
+         }
+
+         console.error('An error has occurred', errorResponse);
+      } else {
+         mensagemErro = this.labels['service_error'];
+         console.error('An error has occurred', errorResponse);
+      }
+
+      this.toasty.error(mensagemErro);
+      return mensagemErro;
    }
 
 }

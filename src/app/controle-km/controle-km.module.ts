@@ -13,6 +13,7 @@ import {
    InputTextareaModule,
    InputTextModule,
    KeyFilterModule,
+   MessagesModule,
    ProgressBarModule,
    TooltipModule
 } from 'primeng/primeng';
@@ -23,7 +24,7 @@ import {SharedModule} from 'primeng/shared';
 import {LoadingModule} from 'ngx-loading';
 import {MessageModule} from 'primeng/message';
 import {PanelModule} from 'primeng/panel';
-import { ControleKmNovoComponent } from './controle-km-novo/controle-km-novo.component';
+import {ControleKmNovoComponent} from './controle-km-novo/controle-km-novo.component';
 
 @NgModule({
    imports: [
@@ -44,6 +45,7 @@ import { ControleKmNovoComponent } from './controle-km-novo/controle-km-novo.com
       ButtonModule,
       DropdownModule,
       MessageModule,
+      MessagesModule,
       ButtonModule,
       PanelModule,
       TooltipModule,
@@ -52,7 +54,7 @@ import { ControleKmNovoComponent } from './controle-km-novo/controle-km-novo.com
 
       CalendarModule,
       KeyFilterModule,
-      InputMaskModule,
+      InputMaskModule
    ],
    declarations: [ControleKmPesquisaComponent, ControleKmNovoComponent],
    providers: [

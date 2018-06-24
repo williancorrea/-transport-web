@@ -36,13 +36,12 @@ export class ControleKmService {
          params: {
             'size': filter.rows,
             'page': filter.first / filter.rows,
-            'sortOrder': filter.sortOrder > 0 ? 'asc' : 'desc'
+            'sortOrder': 'desc'
          }
       };
-      if (filter.sortField != null) {
-         config.params['sortField'] = filter.sortField;
-      }
-      if (filter.globalFilter && filter.globalFilter.length > 0) {
+      config.params['sortField'] = 'dataHoraSaida';
+
+         if (filter.globalFilter && filter.globalFilter.length > 0) {
          config.params['filtroGlobal'] = filter.globalFilter;
       }
 
@@ -66,15 +65,20 @@ export class ControleKmService {
          .toPromise()
          .then(response => {
             const lista = response.json();
-            for (let i = 0; lista.content > 0; i++) {
-               // lista.content[i] = new Date(lista.content[i]['validoAte']);
+            for (let i = 0; i < lista.content.length; i++) {
+               if (lista.content[i]['dataHoraChegada']) {
+                  lista.content[i]['dataHoraChegada'] = moment(lista.content[i]['dataHoraChegada'], 'YYYY-MM-DD HH:mm:ss').format('DD/MM/YYYY HH:mm').toString();
+               }
+               if (lista.content[i]['dataHoraSaida']) {
+                  lista.content[i]['dataHoraSaida'] = moment(lista.content[i]['dataHoraSaida'], 'YYYY-MM-DD HH:mm:ss').format('DD/MM/YYYY HH:mm').toString();
+               }
             }
             return lista;
          });
    }
 
    /**
-    * Search for the record according to the key passed by parameter
+    * Efetua a pesquisa de acordo com o chave passada por paramentro
     *
     * @param key
     * @returns {Promise<any>}
@@ -84,16 +88,18 @@ export class ControleKmService {
          .toPromise()
          .then(response => {
             response = response.json();
-            if (response['dataHoraSaida']) {
-               response['dataHoraSaida'] = response['dataHoraSaida'] ? moment(response['dataHoraSaida'], 'YYYY-MM-DD HH:mm:ss').utc().format('DD/MM/YYYY HH:mm').toString() : response['dataHoraSaida'];
+            if (response['dataHoraChegada']) {
+               response['dataHoraChegada'] = moment(response['dataHoraChegada'], 'YYYY-MM-DD HH:mm:ss').format('DD/MM/YYYY HH:mm').toString();
             }
-
+            if (response['dataHoraSaida']) {
+               response['dataHoraSaida'] = moment(response['dataHoraSaida'], 'YYYY-MM-DD HH:mm:ss').format('DD/MM/YYYY HH:mm').toString();
+            }
             return response;
          });
    }
 
    /**
-    * Delete the record according to the key passed by parameter
+    * Exclui o registro de acordo com o chave passada por parametro
     *
     * @param {String} key
     * @returns {Promise<any>}
@@ -105,13 +111,15 @@ export class ControleKmService {
    }
 
    /**
-    * Save the record
+    * Salva o registro
     */
    save(obj) {
-      obj = this.formatarDados(obj);
+
+      let clone = JSON.parse(JSON.stringify(obj));
+      clone = this.formatarDados(clone);
 
       return this.http.post(this.apiUrl,
-         JSON.stringify(obj))
+         JSON.stringify(clone))
          .toPromise()
          .then(response => {
             return response.json();
@@ -119,16 +127,18 @@ export class ControleKmService {
    }
 
    /**
-    * Updates the registry
+    * Atualiza o registro
     *
     * @param  obj
     */
    update(obj) {
       const key = obj.key;
-      obj = this.formatarDados(obj);
+
+      let clone = JSON.parse(JSON.stringify(obj));
+      clone = this.formatarDados(clone);
 
       return this.http.put(`${this.apiUrl}/${key}`,
-         JSON.stringify(obj))
+         JSON.stringify(clone))
          .toPromise()
          .then(response => {
             return response.json();
@@ -138,8 +148,8 @@ export class ControleKmService {
    private formatarDados(obj) {
       delete obj['key'];
       delete obj['controle'];
-      obj['dataHoraSaida'] = moment(obj['dataHoraSaida']).utc().format('YYYY-MM-DD HH:mm:ss').toString();
-      obj['dataHoraChegada'] = moment(obj['dataHoraChegada']).utc().format('YYYY-MM-DD HH:mm:ss').toString();
+      obj['dataHoraSaida'] = moment(obj['dataHoraSaida'], 'DD/MM/YYYY HH:mm').format('YYYY-MM-DD HH:mm:ss').toString();
+      obj['dataHoraChegada'] = moment(obj['dataHoraChegada'], 'DD/MM/YYYY HH:mm').format('YYYY-MM-DD HH:mm:ss').toString();
       return obj;
    }
 

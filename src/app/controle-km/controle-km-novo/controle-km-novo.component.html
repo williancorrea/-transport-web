@@ -2,8 +2,6 @@
 
 <div class="ui-g">
    <div class="ui-g-12">
-      <p-progressBar *ngIf="loading === true" mode="indeterminate"></p-progressBar>
-
       <div class="card card-w-title">
          <div>
 
@@ -13,6 +11,7 @@
                translate}}</h1>
          </div>
 
+         <p-messages [(value)]="msgs"></p-messages>
          <form #f="ngForm" novalidate (submit)="save()" autocomplete="off" [formGroup]="form">
 
             <div class="ui-g">
@@ -64,22 +63,12 @@
                   <app-message [form]="f" [control]="form.get('pessoa').get('key')"></app-message>
                </div>
 
-
                <div class="ui-sm-12 ui-g-3 ui-fluid">
                   <label>{{'controleKm.campos.dataHoraSaida' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
-
-                  <!--TODO: TRADUZIR O COMPONENTE CALENDAR-->
-                  <!--TODO: ADICIONAR NAVEGAÇÃO POR ANO NO COMPONENTE CALENDAR-->
-                  <!--TODO: ADICIONAR MASCARA AO CAMPO-->
-                  <p-calendar formControlName="dataHoraSaida"
-                              dateFormat="dd/mm/yy "
-                              [readonlyInput]="false"
-                              [showIcon]="true"
-                              [monthNavigator]="true"
-                              [showTime]="true"
-                              mask="99/99/9999 99:99"
-                              [showButtonBar]="true">
-                  </p-calendar>
+                  <p-inputMask formControlName="dataHoraSaida"
+                               mask="99/99/9999 99:99"
+                               pattern="([0-2][0-9]|3[0-1])\/(0[0-9]|1[0-2])\/[0-9]{4} ([0-1][0-9]|2[0-3]):[0-5][0-9]">
+                  </p-inputMask>
                   <app-message [form]="f" [control]="form.get('dataHoraSaida')"></app-message>
                </div>
 
@@ -108,7 +97,6 @@
 
                <div class="ui-sm-12 ui-g-3 ui-fluid">
                   <label>{{'controleKm.campos.dataHoraChegada' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
-
                   <p-inputMask formControlName="dataHoraChegada"
                                mask="99/99/9999 99:99"
                                pattern="([0-2][0-9]|3[0-1])\/(0[0-9]|1[0-2])\/[0-9]{4} ([0-1][0-9]|2[0-3]):[0-5][0-9]">

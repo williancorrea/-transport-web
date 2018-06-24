@@ -86,11 +86,12 @@ export class PersonService {
     * @returns {Promise<any>}
     */
    save(obj): Promise<any> {
-      delete obj['key'];
-      delete obj['properties'];
+      const clone = JSON.parse(JSON.stringify(obj));
+      delete clone['key'];
+      delete clone['properties'];
 
       return this.http.post(this.apiUrl,
-         JSON.stringify(obj))
+         JSON.stringify(clone))
          .toPromise()
          .then(response => {
             return response.json();
@@ -106,11 +107,12 @@ export class PersonService {
    update(obj): Promise<any> {
       const key = obj.key;
 
-      delete obj['key'];
-      delete obj['properties'];
+      const clone = JSON.parse(JSON.stringify(obj));
+      delete clone['key'];
+      delete clone['properties'];
 
       return this.http.put(`${this.apiUrl}/${key}`,
-         JSON.stringify(obj))
+         JSON.stringify(clone))
          .toPromise()
          .then(response => {
             return response.json();
