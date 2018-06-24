@@ -77,6 +77,21 @@ textarea { resize: none; }
    text-indent: 0px;
 }
 
+.wc-app-name{
+   color: white;
+   margin-left: 10px;
+   font-size: 20px;
+   font-weight: bold;
+}
+.wc-app-cnpj{
+   color: white;
+   margin-left: 10px;
+   font-size: 10px;
+   font-weight: bold;
+   top: 35px;
+   position: absolute;
+   left: 65px;
+}
 
 //.ui-tabview .ui-tabview-panel{
 //   border-bottom: none !important;

@@ -14,8 +14,11 @@ import {AuthService} from './security/auth.service';
                <img src="assets/layout/images/logo.png">
             </a>
          </div>
+         
+         <span class="wc-app-name">{{'empresa.razao_social' | translate}}</span><br>
+         <span class="wc-app-cnpj">{{'empresa.cnpj' | translate}}</span>
+         
 
-         <img src="assets/layout/images/appname.svg" class="app-name"/>
 
          <a id="topbar-menu-button" href="#" (click)="app.onTopbarMenuButtonClick($event)">
             <i class="fa fa-bars"></i>
@@ -28,7 +31,7 @@ import {AuthService} from './security/auth.service';
                      <img src="assets/layout/images/profile-image.png">
                   </div>
                   <div class="profile-info">
-                     <span class="topbar-item-name profile-name">{{auth.jwtPayload?.nome}}</span>                     
+                     <span class="topbar-item-name profile-name">{{auth.jwtPayload?.nome}}</span>
                   </div>
                </a>
 
