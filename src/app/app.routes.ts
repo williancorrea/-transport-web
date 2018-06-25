@@ -81,13 +81,13 @@ export const routes: Routes = [
    {path: 'product-units/new', component: ProductUnitNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_PRODUCT-UNIT']}},
    {path: 'product-units/:key', component: ProductUnitNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_PRODUCT-UNIT']}},
 
-   {path: 'types-of-relationships', component: TypeRelationshipSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_TYPE-RELATIONSHIP']}},
-   {path: 'types-of-relationships/new', component: TypeRelationshipNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_TYPE-RELATIONSHIP']}},
-   {path: 'types-of-relationships/:key', component: TypeRelationshipNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_TYPE-RELATIONSHIP']}},
-
-   {path: 'levels-of-education', component: LevelOfEducationSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_LEVEL-OF-EDUCATION']}},
-   {path: 'levels-of-education/new', component: LevelOfEducationNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_LEVEL-OF-EDUCATION']}},
-   {path: 'levels-of-education/:key', component: LevelOfEducationNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_LEVEL-OF-EDUCATION']}},
+   // {path: 'types-of-relationships', component: TypeRelationshipSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_TYPE-RELATIONSHIP']}},
+   // {path: 'types-of-relationships/new', component: TypeRelationshipNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_TYPE-RELATIONSHIP']}},
+   // {path: 'types-of-relationships/:key', component: TypeRelationshipNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_TYPE-RELATIONSHIP']}},
+   //
+   // {path: 'levels-of-education', component: LevelOfEducationSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_LEVEL-OF-EDUCATION']}},
+   // {path: 'levels-of-education/new', component: LevelOfEducationNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_LEVEL-OF-EDUCATION']}},
+   // {path: 'levels-of-education/:key', component: LevelOfEducationNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_LEVEL-OF-EDUCATION']}},
 
    {path: 'estado-civil', component: EstadoCivilPesquisarComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_ESTADO_CIVIL']}},
    {path: 'estado-civil/novo', component: EstadoCivilNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_ESTADO_CIVIL']}},
