@@ -15,7 +15,7 @@ import {AuthService} from './security/auth.service';
             </a>
          </div>
          
-         <span class="wc-app-name">{{'empresa.razao_social' | translate}}</span><br>
+         <span class="wc-app-name">{{'empresa.razao_social' | translate}}</span>
          <span class="wc-app-cnpj">{{'empresa.cnpj' | translate}}</span>
          
 
