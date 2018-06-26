@@ -4,7 +4,7 @@ import {VeiculoPesquisaComponent} from './veiculo-pesquisa/veiculo-pesquisa.comp
 import {TableModule} from 'primeng/table';
 import {
    DataTableModule,
-   DropdownModule, InputMask,
+   DropdownModule, InputMask, InputMaskModule,
    InputTextareaModule,
    InputTextModule,
    ProgressBarModule,
@@ -44,7 +44,8 @@ import { VeiculoNovoComponent } from './veiculo-novo/veiculo-novo.component';
       PanelModule,
       TooltipModule,
       ProgressBarModule,
-      InputTextareaModule
+      InputTextareaModule,
+      InputMaskModule
    ],
    declarations: [VeiculoPesquisaComponent, VeiculoNovoComponent],
    exports: [],
