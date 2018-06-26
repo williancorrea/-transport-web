@@ -21,6 +21,7 @@
       }
    },
    "menu": {
+      "dashboard": "Dashboard",
       "base": "Base",
       "bank": "Bancos",
       "product-unit": "Unidades de Produto",
