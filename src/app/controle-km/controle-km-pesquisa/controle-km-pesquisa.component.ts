@@ -61,9 +61,16 @@ export class ControleKmPesquisaComponent implements OnInit {
 
          this.COLUNAS = [
             {field: 'key', header: '', hidden: true, class: ''},
+            {field: 'dataHoraSaida', header: s['campos']['dataHoraSaida'], hidden: false, class: 'datatable-coluna_data', sort: true},
+            {field: 'dataHoraChegada', header: s['campos']['dataHoraChegada'], hidden: false, class: 'datatable-coluna_data', sort: true},
+            {field: 'kmSaida', header: s['campos']['kmSaida'], hidden: false, class: 'datatable-coluna_km', sort: true},
+            {field: 'kmChegada', header: s['campos']['kmChegada'], hidden: false, class: 'datatable-coluna_km', sort: true},
+            {field: 'kmTotal', header: s['campos']['kmTotal'], hidden: false, class: 'datatable-coluna_total', sort: false},
+            {field: 'kmNaoInformado', header: s['campos']['kmNaoInformado2'], hidden: false, class: 'datatable-coluna_km_nao_informado', sort: false},
+            // {field: 'veiculo.placa', header: s['campos']['veiculo'], hidden: false, class: ''}
             // {field: 'codigo', header: s['campos']['codigo'], hidden: false, class: 'datatable-collum-field-name'},
-            {field: 'pessoa', header: s['campos']['motorista'], hidden: false, class: ''},
-            {field: 'veiculo', header: s['campos']['veiculo'], hidden: false, class: ''},
+            // {field: 'pessoa', header: s['campos']['motorista'], hidden: false, class: ''},
+            // {field: 'veiculo', header: s['campos']['veiculo'], hidden: false, class: ''},
             // {field: 'validoAte', header: s['campos']['validoAte'], hidden: false, class: 'datatable-collum-field-name'}
          ];
       });

@@ -21,6 +21,7 @@
       }
    },
    "menu": {
+      "dashboard" : "Ínicio",
       "base": "Base",
       "bank": "Bancos",
       "product-unit": "Unidades de Produto",
@@ -225,10 +226,15 @@
          "obs": "Observações",
          "kmSaida": "Km de Saída",
          "kmChegada": "Km de Chegada",
-         "KmNaoInformado": "Km não informado"
+         "kmNaoInformado": "Km não informado",
+         "kmNaoInformado2": "Km ?",
+         "kmTotal" : "Total"
       },
       "rotulos": {
-         "selecione-um-estado-civil": "Selecione um apontamento"
+         "selecione-um-estado-civil": "Selecione um apontamento",
+         "dataSaidaMaiorQue": "Período",
+         "ate": "Até",
+         "filtro_itinerario": "Filtrar por itinerário (min 3 caracteres)"
       },
       "titulo": "Controle de Km",
       "lista": "Lista dos Apontamentos de Quilometragem",

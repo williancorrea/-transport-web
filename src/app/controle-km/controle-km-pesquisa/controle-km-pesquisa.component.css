@@ -2,6 +2,7 @@
    width: 20%;
    text-align: center !important;
 }
+
 .datatable-collum-field-active{
    width: 15%;
    text-align: center !important;
@@ -11,3 +12,28 @@
    background-color: burlywood;
    border-radius: 10px;
 }
+
+.datatable-coluna_data{
+   width: 135px;
+   text-align: center !important;
+}
+
+.datatable-coluna_km{
+   width: 80px;
+   text-align: center !important;
+}
+
+.datatable-coluna_total{
+   width: 55px;
+   text-align: center !important;
+}
+
+.datatable-coluna_km_nao_informado{
+   width: 55px;
+   text-align: center !important;
+}
+
+.datatable-coluna_veiculo{
+   width: 150px;
+}
+
