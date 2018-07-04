@@ -22,13 +22,10 @@
 
                <div class="ui-sm-4 ui-g-4 ui-fluid">
                   <label>{{'veiculo.campos.placa' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
-                  <input pInputText
-                         type="text"
-                         name="placa"
-                         style="text-transform:uppercase"
-                         class="veiculo_placa"
-                         formControlName="placa"
-                  >
+                  <p-inputMask
+                     name="placa"
+                     mask="aaa-9999"
+                     formControlName="placa"></p-inputMask>
 
                   <app-message [form]="f" [control]="form.get('placa')"></app-message>
                </div>

@@ -202,6 +202,16 @@
                                         [control]="form.get('pessoaFisica').get('nacionalidade')"></app-message>
                         </div>
 
+                        <!--PESSOA FISICA - NOME PAI -->
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
+                             class="ui-g-6 ui-fluid"
+                             formGroupName="pessoaFisica">
+                           <label>{{'person.fields.nomePai'| translate}}</label>
+                           <input pInputText type="text"
+                                  formControlName="nomePai">
+                           <app-message [form]="f"
+                                        [control]="form.get('pessoaFisica').get('nomePai')"></app-message>
+                        </div>
 
                         <!--PESSOA FISICA - NOME MAE -->
                         <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
@@ -214,16 +224,7 @@
                                         [control]="form.get('pessoaFisica').get('nomeMae')"></app-message>
                         </div>
 
-                        <!--PESSOA FISICA - NOME PAI -->
-                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                             class="ui-g-6 ui-fluid"
-                             formGroupName="pessoaFisica">
-                           <label>{{'person.fields.nomePai'| translate}}</label>
-                           <input pInputText type="text"
-                                  formControlName="nomePai">
-                           <app-message [form]="f"
-                                        [control]="form.get('pessoaFisica').get('nomePai')"></app-message>
-                        </div>
+
                      </p-tabPanel>
 
                      <!--GRUPO CNH-->

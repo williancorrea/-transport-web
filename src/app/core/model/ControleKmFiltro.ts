@@ -1,7 +1,9 @@
 export class ControleKmFiltro {
-   veiculo: string;
-   pessoa: string;
-   itinerario: string;
+   veiculoId: string;
+   pessoaId: string;
+   itinerarioId: string;
+   dataSaida: string;
+   dataChegada: string;
 
    constructor() {
    }
