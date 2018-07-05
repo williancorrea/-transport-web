@@ -41,6 +41,18 @@
                   <app-message [form]="f" [control]="form.get('frota')"></app-message>
                </div>
 
+               <div class="ui-sm-4 ui-g-4 ui-fluid">
+                  <label>{{'veiculo.campos.odometroInicial' | translate}}</label>
+                  <input pInputText
+                         type="number"
+                         name="frota"
+                         formControlName="odometroInicial"
+                  >
+                  <app-message [form]="f" [control]="form.get('odometroInicial')"></app-message>
+               </div>
+
+
+
                <div class="ui-sm-12 ui-g-12">
                   <button pButton type="button"
                           label="{{'actions.cancel' | translate}}"

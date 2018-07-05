@@ -71,7 +71,8 @@ export class VeiculoNovoComponent implements OnInit {
             null, [
                Validators.maxLength(15),
             ]
-         ]
+         ],
+         odometroInicial: [null],
       });
    }
 
