@@ -41,7 +41,7 @@ export class ControleKmService {
       };
       config.params['sortField'] = 'dataHoraSaida';
 
-         if (filter.globalFilter && filter.globalFilter.length > 0) {
+      if (filter.globalFilter && filter.globalFilter.length > 0) {
          config.params['filtroGlobal'] = filter.globalFilter;
       }
 
@@ -94,6 +94,24 @@ export class ControleKmService {
             if (response['dataHoraSaida']) {
                response['dataHoraSaida'] = moment(response['dataHoraSaida'], 'YYYY-MM-DD HH:mm:ss').format('DD/MM/YYYY HH:mm').toString();
             }
+            return response;
+         });
+   }
+
+   buscarKmMinimoASerInformado(dataSaida: string, veiculoId: number) {
+      const config = {
+         params: {
+            'veiculoId': veiculoId,
+            'dataSaida': moment(dataSaida, 'DD/MM/YYYY HH:mm').format('YYYY-MM-DD HH:mm:ss').toString()
+         }
+      }
+
+      return this.http.get(`${this.apiUrl}/kmMinimoPeriodo`, config)
+         .toPromise()
+         .then(response => {
+            response = response.json();
+
+            console.log('RETORNO: ', response);
             return response;
          });
    }

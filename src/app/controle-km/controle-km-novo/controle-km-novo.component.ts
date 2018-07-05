@@ -51,6 +51,8 @@ export class ControleKmNovoComponent implements OnInit {
          this.carregarItinerarios();
          this.carregarMotoristas();
 
+         this.controleKmService.buscarKmMinimoASerInformado('05/07/2018 05:00', 2);
+
          const isEditing = this.activatedRoute.snapshot.params['key'];
          if (isEditing) {
             this.title.setTitle(s['acoes']['editar']);
