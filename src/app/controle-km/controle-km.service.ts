@@ -98,23 +98,38 @@ export class ControleKmService {
          });
    }
 
-   buscarKmMinimoASerInformado(dataSaida: string, veiculoId: number) {
+   buscarKmMinimoASerInformado(dataSaida: string, veiculoId: string) {
       const config = {
          params: {
             'veiculoId': veiculoId,
             'dataSaida': moment(dataSaida, 'DD/MM/YYYY HH:mm').format('YYYY-MM-DD HH:mm:ss').toString()
          }
-      }
-
+      };
       return this.http.get(`${this.apiUrl}/kmMinimoPeriodo`, config)
          .toPromise()
          .then(response => {
             response = response.json();
-
-            console.log('RETORNO: ', response);
             return response;
          });
    }
+
+   buscarKmMaximoASerInformado(dataChegada: string, veiculoId: string) {
+      const config = {
+         params: {
+            'veiculoId': veiculoId,
+            'dataChegada': moment(dataChegada, 'DD/MM/YYYY HH:mm').format('YYYY-MM-DD HH:mm:ss').toString()
+         }
+      };
+      return this.http.get(`${this.apiUrl}/kmMaximoPeriodo`, config)
+         .toPromise()
+         .then(response => {
+            response = response.json();
+            return response;
+         });
+   }
+
+
+
 
    /**
     * Exclui o registro de acordo com o chave passada por parametro

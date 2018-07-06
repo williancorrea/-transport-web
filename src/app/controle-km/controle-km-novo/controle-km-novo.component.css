@@ -1,3 +1,10 @@
 .wc-align-right{
    text-align: right;
 }
+
+.wc-label-km-opcao{
+   font-size: 12px;
+   color: green;
+   font-weight: bold;
+   margin-left: 5px;
+}

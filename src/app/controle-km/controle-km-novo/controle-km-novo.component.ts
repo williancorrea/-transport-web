@@ -11,6 +11,8 @@ import {VeiculoService} from '../../veiculo/veiculo.service';
 import {ItinerarioService} from '../../itinerario/itinerario.service';
 import {PersonService} from '../../person/person.service';
 
+import * as moment from 'moment';
+
 @Component({
    selector: 'app-controle-km-novo',
    templateUrl: './controle-km-novo.component.html',
@@ -25,6 +27,9 @@ export class ControleKmNovoComponent implements OnInit {
    itinerarioList: any;
    pessoaList: any;
    msgs: any;
+
+   kmSaidaMinimo: any;
+   kmChegadaMaximo: any;
 
    constructor(private router: Router,
                private activatedRoute: ActivatedRoute,
@@ -50,8 +55,6 @@ export class ControleKmNovoComponent implements OnInit {
          this.carregarVeiculos();
          this.carregarItinerarios();
          this.carregarMotoristas();
-
-         this.controleKmService.buscarKmMinimoASerInformado('05/07/2018 05:00', 2);
 
          const isEditing = this.activatedRoute.snapshot.params['key'];
          if (isEditing) {
@@ -122,6 +125,33 @@ export class ControleKmNovoComponent implements OnInit {
             ]
          ]
       });
+   }
+
+   carregarKmSaidaMinimo() {
+      this.kmSaidaMinimo = '';
+      if (moment(this.form.get('dataHoraSaida').value, 'DD/MM/YYYY HH:mm').isValid() && this.form.get('veiculo').get('key').status === 'VALID') {
+         this.controleKmService.buscarKmMinimoASerInformado(this.form.get('dataHoraSaida').value, this.form.get('veiculo').get('key').value)
+            .then(response => {
+               this.kmSaidaMinimo = Number(response) > 0 ? '( ' + response + ' )' : '';
+            })
+            .catch(error => {
+               this.setMensagensErro(this.errorHandler.handle(error));
+            });
+      }
+   }
+
+   carregarKmChegadaMaximo() {
+      console.log('entrou no metodo');
+      this.kmChegadaMaximo = '';
+      if (moment(this.form.get('dataHoraChegada').value, 'DD/MM/YYYY HH:mm').isValid() && this.form.get('veiculo').get('key').status === 'VALID') {
+         this.controleKmService.buscarKmMaximoASerInformado(this.form.get('dataHoraChegada').value, this.form.get('veiculo').get('key').value)
+            .then(response => {
+               this.kmChegadaMaximo = Number(response) > 0 ?  '( ' + response + ' )' : '';
+            })
+            .catch(error => {
+               this.setMensagensErro(this.errorHandler.handle(error));
+            });
+      }
    }
 
    // TODO: VERIFICAR A PESQUISA POR PLACA E FROTA
