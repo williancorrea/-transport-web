@@ -46,20 +46,29 @@ export class ControleKmService {
       }
 
 
-      // if (controleKmFiltro) {
-      //    if (controleKmFiltro.nome && controleKmFiltro.nome.length > 0) {
-      //       config.params['nome'] = controleKmFiltro.nome;
-      //    }
-      //    if (controleKmFiltro.descricao && controleKmFiltro.descricao.length > 0) {
-      //       config.params['descricao'] = controleKmFiltro.descricao;
-      //    }
-      //    if (controleKmFiltro.codigo && controleKmFiltro.codigo.length > 0) {
-      //       config.params['codigo'] = controleKmFiltro.codigo;
-      //    }
-      //    if (controleKmFiltro.validoAte && controleKmFiltro.validoAte.length > 0) {
-      //       config.params['validoAte'] = controleKmFiltro.validoAte;
-      //    }
-      // }
+      if (controleKmFiltro) {
+         if (controleKmFiltro.kmSaida && controleKmFiltro.kmSaida.toString().trim().length > 0) {
+            config.params['kmSaida'] = controleKmFiltro.kmSaida;
+         }
+         if (controleKmFiltro.kmChegada && controleKmFiltro.kmChegada.toString().trim().length > 0) {
+            config.params['kmChegada'] = controleKmFiltro.kmChegada;
+         }
+         if (controleKmFiltro.dataSaida && moment(controleKmFiltro.dataSaida, 'DD/MM/YYYY').isValid()) {
+            config.params['dataSaida'] = moment(controleKmFiltro.dataSaida + ' 00:00:00', 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD HH:mm:ss').toString();
+         }
+         if (controleKmFiltro.dataChegada && moment(controleKmFiltro.dataChegada, 'DD/MM/YYYY').isValid()) {
+            config.params['dataChegada'] = moment(controleKmFiltro.dataChegada + ' 23:59:59', 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD HH:mm:ss').toString();
+         }
+         if (controleKmFiltro.veiculoId && controleKmFiltro.veiculoId.toString().trim().length > 0) {
+            config.params['veiculoId'] = controleKmFiltro.veiculoId;
+         }
+         if (controleKmFiltro.pessoaId && controleKmFiltro.pessoaId.toString().trim().length > 0) {
+            config.params['pessoaId'] = controleKmFiltro.pessoaId;
+         }
+         if (controleKmFiltro.itinerarioId && controleKmFiltro.itinerarioId.toString().trim().length > 0) {
+            config.params['itinerarioId'] = controleKmFiltro.itinerarioId;
+         }
+      }
 
       return this.http.get(`${this.apiUrl}`, config)
          .toPromise()
@@ -127,8 +136,6 @@ export class ControleKmService {
             return response;
          });
    }
-
-
 
 
    /**

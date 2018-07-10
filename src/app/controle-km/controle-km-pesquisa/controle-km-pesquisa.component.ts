@@ -11,6 +11,9 @@ import {Router} from '@angular/router';
 import {ControleKmFiltro} from '../../core/model/ControleKmFiltro';
 
 import * as moment from 'moment';
+import {ItinerarioService} from '../../itinerario/itinerario.service';
+import {PersonService} from '../../person/person.service';
+import {VeiculoService} from '../../veiculo/veiculo.service';
 
 @Component({
    selector: 'app-controle-km-pesquisa',
@@ -25,6 +28,10 @@ export class ControleKmPesquisaComponent implements OnInit {
    mostarFiltros: boolean;
    mostrarTelaCarregando: boolean;
    totalRegistros = 0;
+
+   veiculoList: any;
+   itinerarioList: any;
+   pessoaList: any;
 
    variaveisAmbiente: any;
    COLUNAS: any;
@@ -43,6 +50,9 @@ export class ControleKmPesquisaComponent implements OnInit {
                private manipuladorErros: ErrorHandlerService,
                private toasty: ToastyService,
                private confirmacao: ConfirmationService,
+               private veiculoService: VeiculoService,
+               private itinerarioService: ItinerarioService,
+               private pessoaService: PersonService,
                private titulo: Title) {
    }
 
@@ -66,7 +76,13 @@ export class ControleKmPesquisaComponent implements OnInit {
             {field: 'kmSaida', header: s['campos']['kmSaida'], hidden: false, class: 'datatable-coluna_km', sort: true},
             {field: 'kmChegada', header: s['campos']['kmChegada'], hidden: false, class: 'datatable-coluna_km', sort: true},
             {field: 'kmTotal', header: s['campos']['kmTotal'], hidden: false, class: 'datatable-coluna_total', sort: false},
-            {field: 'kmNaoInformado', header: s['campos']['kmNaoInformado2'], hidden: false, class: 'datatable-coluna_km_nao_informado', sort: false},
+            {
+               field: 'kmNaoInformado',
+               header: s['campos']['kmNaoInformado2'],
+               hidden: false,
+               class: 'datatable-coluna_km_nao_informado',
+               sort: false
+            },
             // {field: 'veiculo.placa', header: s['campos']['veiculo'], hidden: false, class: ''}
             // {field: 'codigo', header: s['campos']['codigo'], hidden: false, class: 'datatable-collum-field-name'},
             // {field: 'pessoa', header: s['campos']['motorista'], hidden: false, class: ''},
@@ -74,7 +90,45 @@ export class ControleKmPesquisaComponent implements OnInit {
             // {field: 'validoAte', header: s['campos']['validoAte'], hidden: false, class: 'datatable-collum-field-name'}
          ];
       });
+
+      this.carregarVeiculos();
+      this.carregarItinerarios();
+      this.carregarMotoristas();
    }
+
+   // TODO: VERIFICAR A PESQUISA POR PLACA E FROTA
+   carregarVeiculos() {
+      this.veiculoService.findAll({'rows': 100, 'first': 0, 'sortOrder': 1, 'sortField': 'frota'}, null)
+         .then(veiculoList => {
+            this.veiculoList = veiculoList.content.map(p => ({label: p.frota + ' - ' + p.placa, value: p.key}));
+         })
+         .catch(error => {
+            this.manipuladorErros.handle(error);
+         });
+   }
+
+   // TODO: VERIFICAR A PESQUISA POR NOME
+   carregarItinerarios() {
+      this.itinerarioService.findAll({'rows': 100, 'first': 0, 'sortOrder': 1, 'sortField': 'nome'}, null)
+         .then(veiculoList => {
+            this.itinerarioList = veiculoList.content.map(p => ({label: p.nome, value: p.key}));
+         })
+         .catch(error => {
+            this.manipuladorErros.handle(error);
+         });
+   }
+
+   // TODO: BUSCAR SOMENTE OS MOTORISTAS E COLABORADORES
+   carregarMotoristas() {
+      this.pessoaService.findAll({'rows': 100, 'first': 0, 'sortOrder': 1, 'sortField': 'nome'}, null)
+         .then(veiculoList => {
+            this.pessoaList = veiculoList.content.map(p => ({label: p.nome, value: p.key}));
+         })
+         .catch(error => {
+            this.manipuladorErros.handle(error);
+         });
+   }
+
 
    formatarData(data) {
       return moment(data).utc().format('DD/MM/YYYY');

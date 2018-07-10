@@ -15,13 +15,14 @@
       },
       "filter": {
          "filter": "Filtrar",
+         "clean": "Limpar",
          "more_filters": "Mais Filtros",
          "less_filters": "Menos Filtros",
          "fields": "Filtrar campos contendo qualquer parte do(s) conteúdo(s) abaixo"
       }
    },
    "menu": {
-      "dashboard" : "Ínicio",
+      "dashboard": "Ínicio",
       "base": "Base",
       "bank": "Bancos",
       "product-unit": "Unidades de Produto",
@@ -180,7 +181,7 @@
       "campos": {
          "placa": "Placa",
          "frota": "Frota",
-         "odometroInicial" : "Odômetro Inicial"
+         "odometroInicial": "Odômetro Inicial"
       },
       "rotulos": {
          "selecione-um-estado-civil": "Selecione um veículo"
@@ -229,11 +230,12 @@
          "kmChegada": "Km de Chegada",
          "kmNaoInformado": "Km não informado",
          "kmNaoInformado2": "Km ?",
-         "kmTotal" : "Total"
+         "kmTotal": "Total"
       },
       "rotulos": {
          "selecione-um-estado-civil": "Selecione um apontamento",
          "dataSaidaMaiorQue": "Período",
+         "quilometragem": "Quilometragem",
          "ate": "Até",
          "filtro_itinerario": "Filtrar por itinerário (min 3 caracteres)"
       },

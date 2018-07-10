@@ -42,10 +42,45 @@
                   <h2>{{'commons.filter.fields' | translate}}</h2>
                </div>
 
+               <!-- VEICULO -->
+               <div class="ui-sm-4 ui-g-4 ui-fluid">
+                  <label>{{'veiculo.titulo'| translate}}</label>
+                  <p-dropdown emptyFilterMessage="{{'actions.no_records_found' | translate }}"
+                              [options]="veiculoList"
+                              [(ngModel)]="controleKmFiltro.veiculoId"
+                              [showClear]="true"
+                              [filter]="true" [autoWidth]="false"
+                              placeholder="{{'actions.select2' | translate}}">
+                  </p-dropdown>
+               </div>
 
+               <!-- ITINERARIO -->
+               <div class="ui-sm-4 ui-g-4 ui-fluid">
+                  <label>{{'itinerario.titulo'| translate}}</label>
+                  <p-dropdown emptyFilterMessage="{{'actions.no_records_found' | translate }}"
+                              [options]="itinerarioList"
+                              [(ngModel)]="controleKmFiltro.itinerarioId"
+                              [showClear]="true"
+                              [filter]="true" [autoWidth]="false"
+                              placeholder="{{'actions.select2' | translate}}">
+                  </p-dropdown>
+               </div>
+
+               <!-- MOTORISTA -->
+               <div class="ui-sm-4 ui-g-4 ui-fluid">
+                  <label>{{'controleKm.campos.motorista'| translate}}</label>
+                  <p-dropdown emptyFilterMessage="{{'actions.no_records_found' | translate }}"
+                              [options]="pessoaList"
+                              [(ngModel)]="controleKmFiltro.pessoaId"
+                              [showClear]="true"
+                              [filter]="true" [autoWidth]="false"
+                              placeholder="{{'actions.select2' | translate}}">
+                  </p-dropdown>
+               </div>
+
+               <!--Periodo-->
                <div class="ui-g-3 ui-fluid">
                   <label>{{'controleKm.rotulos.dataSaidaMaiorQue' | translate}}</label>
-
                   <div class="wc-remove-padding-margin">
                      <div class="ui-g-5 ui-fluid wc-remove-padding-margin">
                         <p-inputMask [(ngModel)]="controleKmFiltro.dataSaida"
@@ -56,7 +91,7 @@
                      <div class="ui-g-2 ui-fluid wc-remove-padding-margin wc-centrer-text">
                         <span>{{'controleKm.rotulos.ate' | translate}}</span>
                      </div>
-                     <div class="ui-g-4 ui-fluid wc-remove-padding-margin">
+                     <div class="ui-g-5 ui-fluid wc-remove-padding-margin">
                         <p-inputMask [(ngModel)]="controleKmFiltro.dataChegada"
                                      mask="99/99/9999"
                                      pattern="([0-2][0-9]|3[0-1])\/(0[0-9]|1[0-2])\/[0-9]{4}">
@@ -65,23 +100,35 @@
                   </div>
                </div>
 
-               <!--<div class="ui-g-4 ui-fluid">-->
-               <!--<label>{{'controleKm.campos.nome' | translate}}</label>-->
-               <!--<input pInputText-->
-               <!--type="text"-->
-               <!--[(ngModel)]="controleKmFiltro.nome"-->
-               <!--maxlength="150"-->
-               <!--&gt;-->
-               <!--</div>-->
-               <!--<div class="ui-g-4 ui-fluid">-->
-               <!--<label>{{'controleKm.campos.descricao' | translate}}</label>-->
-               <!--<input pInputText-->
-               <!--type="text"-->
-               <!--[(ngModel)]="controleKmFiltro.descricao"-->
-               <!--maxlength="150"-->
-               <!--&gt;-->
-               <!--</div>-->
+               <!--Quilometragem-->
+               <div class="ui-g-3 ui-fluid">
+                  <label>{{'controleKm.rotulos.quilometragem' | translate}}</label>
+
+                  <div class="wc-remove-padding-margin">
+                     <div class="ui-g-5 ui-fluid wc-remove-padding-margin">
+                        <input pInputText
+                               type="text"
+                               [(ngModel)]="controleKmFiltro.kmSaida"
+                               pKeyFilter="pnum">
+                     </div>
+                     <div class="ui-g-2 ui-fluid wc-remove-padding-margin wc-centrer-text">
+                        <span>{{'controleKm.rotulos.ate' | translate}}</span>
+                     </div>
+                     <div class="ui-g-5 ui-fluid wc-remove-padding-margin">
+                        <input pInputText
+                               type="text"
+                               [(ngModel)]="controleKmFiltro.kmChegada"
+                               pKeyFilter="pnum">
+                     </div>
+                  </div>
+               </div>
+
                <div class="ui-g-12" style="text-align: right">
+                  <button pButton
+                          type="button"
+                          label="{{'commons.filter.clean' | translate}}"
+                          class="ui-button-secondary"
+                          (click)="mostrarCamposFiltros(true); filterFields(dataTable);"></button>
                   <button pButton
                           type="button" icon="fa-minus"
                           label="{{'commons.filter.less_filters' | translate}}"
@@ -120,6 +167,7 @@
 
             <ng-template pTemplate="header" let-columns>
                <tr>
+                  <th style="width: 40px"></th>
                   <th class="datatable-coluna_veiculo">
                      {{'controleKm.campos.veiculo'| translate}}
                   </th>
@@ -133,8 +181,14 @@
                </tr>
             </ng-template>
 
-            <ng-template pTemplate="body" let-rowData let-columns="columns" let-obj>
+            <ng-template pTemplate="body" let-rowData let-columns="columns" let-obj let-expanded="expanded">
                <tr [pSelectableRow]="rowData">
+                  <td>
+                     <a href="#" [pRowToggler]="rowData">
+                        <i [ngClass]="expanded ? 'fa fa-chevron-circle-down' : 'fa fa-chevron-circle-right'"
+                           style="font-size: 1.25em; color: #2d353c"></i>
+                     </a>
+                  </td>
                   <td class="datatable-coluna_veiculo">
                      {{rowData['veiculo']['frota']}} - {{rowData['veiculo']['placa']}}
                   </td>
@@ -145,7 +199,30 @@
                   <td *ngFor="let col of columns" [hidden]="col.hidden" [class]="col.class">
                      {{rowData[col.field]}}
                   </td>
-
+               </tr>
+            </ng-template>
+            <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+               <tr>
+                  <td  [attr.colspan]="columns.length + 1">
+                     <div class="ui-g ui-fluid">
+                        <div class="ui-g-3">
+                           <label>{{'controleKm.campos.origem' | translate}}</label>
+                           <span>{{rowData['origem']}}</span>
+                        </div>
+                        <div class="ui-g-3">
+                           <label>{{'controleKm.campos.destino' | translate}}</label>
+                           <span>{{rowData['destino']}}</span>
+                        </div>
+                        <div class="ui-g-6">
+                           <label>{{'controleKm.campos.motorista'| translate}}</label>
+                           <span>{{rowData['pessoa']['nome']}}</span>
+                        </div>
+                        <div class="ui-g-12" *ngIf="(rowData['obs'] && rowData['obs'].length > 0) ? true : false">
+                           <label>{{'controleKm.campos.obs'| translate}}</label>
+                           <span>{{rowData['obs']}}</span>
+                        </div>
+                     </div>
+                  </td>
                </tr>
             </ng-template>
 

@@ -23,6 +23,7 @@ export class ControleKmNovoComponent implements OnInit {
    form: FormGroup;
    translateObj: any;
    loading: boolean;
+
    veiculoList: any;
    itinerarioList: any;
    pessoaList: any;

@@ -4,6 +4,8 @@ export class ControleKmFiltro {
    itinerarioId: string;
    dataSaida: string;
    dataChegada: string;
+   kmSaida: number;
+   kmChegada: number;
 
    constructor() {
    }
