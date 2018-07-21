@@ -14,6 +14,7 @@ import * as moment from 'moment';
 import {ItinerarioService} from '../../itinerario/itinerario.service';
 import {PersonService} from '../../person/person.service';
 import {VeiculoService} from '../../veiculo/veiculo.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
    selector: 'app-controle-km-pesquisa',
@@ -27,6 +28,7 @@ export class ControleKmPesquisaComponent implements OnInit {
    controleKmSelecionado = null;
    mostarFiltros: boolean;
    mostrarTelaCarregando: boolean;
+   mostrarJanelaEdicao: boolean;
    totalRegistros = 0;
 
    veiculoList: any;
@@ -35,6 +37,17 @@ export class ControleKmPesquisaComponent implements OnInit {
 
    variaveisAmbiente: any;
    COLUNAS: any;
+
+
+   // Variaveis modal edicao
+   form: FormGroup;
+   translateObj: any;
+   loading: boolean;
+   msgs: any;
+
+   kmSaidaMinimo: any;
+   kmChegadaMaximo: any;
+
 
    /*
     * Binds com itens da pagina HTML
@@ -45,7 +58,7 @@ export class ControleKmPesquisaComponent implements OnInit {
 
    constructor(private router: Router,
                private traduzir: TranslateService,
-               private maritalStatusService: ControleKmService,
+               private controleKmService: ControleKmService,
                public auth: AuthService,
                private manipuladorErros: ErrorHandlerService,
                private toasty: ToastyService,
@@ -53,7 +66,8 @@ export class ControleKmPesquisaComponent implements OnInit {
                private veiculoService: VeiculoService,
                private itinerarioService: ItinerarioService,
                private pessoaService: PersonService,
-               private titulo: Title) {
+               private titulo: Title,
+               private formBuild: FormBuilder) {
    }
 
    /**
@@ -61,28 +75,55 @@ export class ControleKmPesquisaComponent implements OnInit {
     */
    ngOnInit() {
       this.mostarFiltros = false;
+      this.mostrarJanelaEdicao = false;
+      this.configForm();
       this.controleKmFiltro = new ControleKmFiltro();
 
       this.variaveisAmbiente = environment;
 
       this.setMostrarTelaCarregando(true);
       this.traduzir.get('controleKm').subscribe(s => {
+         this.translateObj = s;
          this.titulo.setTitle(s['lista']);
 
          this.COLUNAS = [
             {field: 'key', header: '', hidden: true, class: ''},
-            {field: 'dataHoraSaida', header: s['campos']['dataHoraSaida'], hidden: false, class: 'datatable-coluna_data', sort: true},
-            {field: 'dataHoraChegada', header: s['campos']['dataHoraChegada'], hidden: false, class: 'datatable-coluna_data', sort: true},
+            {
+               field: 'dataHoraSaida',
+               header: s['campos']['dataHoraSaida'],
+               hidden: false,
+               class: 'datatable-coluna_data',
+               sort: true
+            },
+            {
+               field: 'dataHoraChegada',
+               header: s['campos']['dataHoraChegada'],
+               hidden: false,
+               class: 'datatable-coluna_data',
+               sort: true
+            },
             {field: 'kmSaida', header: s['campos']['kmSaida'], hidden: false, class: 'datatable-coluna_km', sort: true},
-            {field: 'kmChegada', header: s['campos']['kmChegada'], hidden: false, class: 'datatable-coluna_km', sort: true},
-            {field: 'kmTotal', header: s['campos']['kmTotal'], hidden: false, class: 'datatable-coluna_total', sort: false},
+            {
+               field: 'kmChegada',
+               header: s['campos']['kmChegada'],
+               hidden: false,
+               class: 'datatable-coluna_km',
+               sort: true
+            },
+            {
+               field: 'kmTotal',
+               header: s['campos']['kmTotal'],
+               hidden: false,
+               class: 'datatable-coluna_total',
+               sort: false
+            },
             {
                field: 'kmNaoInformado',
                header: s['campos']['kmNaoInformado2'],
                hidden: false,
                class: 'datatable-coluna_km_nao_informado',
                sort: false
-            },
+            }
             // {field: 'veiculo.placa', header: s['campos']['veiculo'], hidden: false, class: ''}
             // {field: 'codigo', header: s['campos']['codigo'], hidden: false, class: 'datatable-collum-field-name'},
             // {field: 'pessoa', header: s['campos']['motorista'], hidden: false, class: ''},
@@ -129,7 +170,6 @@ export class ControleKmPesquisaComponent implements OnInit {
          });
    }
 
-
    formatarData(data) {
       return moment(data).utc().format('DD/MM/YYYY');
    }
@@ -174,7 +214,7 @@ export class ControleKmPesquisaComponent implements OnInit {
    loadBank(lazyLoad: LazyLoadEvent) {
       this.setMostrarTelaCarregando(true);
       this.controleKmSelecionado = null;
-      this.maritalStatusService.findAll(lazyLoad, this.controleKmFiltro).then(result => {
+      this.controleKmService.findAll(lazyLoad, this.controleKmFiltro).then(result => {
          this.totalRegistros = result.totalElements;
          this.controleKmList = result.content;
          this.setMostrarTelaCarregando(false);
@@ -199,6 +239,7 @@ export class ControleKmPesquisaComponent implements OnInit {
       this.tabelaBind.first = 0;
 
       this.mostrarCamposFiltros(false);
+
       this.setFilterDataTable(filtro, dataTable);
    }
 
@@ -222,12 +263,6 @@ export class ControleKmPesquisaComponent implements OnInit {
       );
    }
 
-   /**
-    * Redireciona para a tela de edicao de dados
-    */
-   edit() {
-      this.router.navigateByUrl(`controleKm/${this.controleKmSelecionado.key}`);
-   }
 
    /**
     * Abre um popup para confirmar a exclusão de um registro
@@ -249,9 +284,10 @@ export class ControleKmPesquisaComponent implements OnInit {
     * Deleta o registro selecionado
     */
    excluir() {
+      this.msgs = null;
       this.setMostrarTelaCarregando(true);
       this.traduzir.get('controleKm').subscribe(s => {
-         this.maritalStatusService.delete(this.controleKmSelecionado.key)
+         this.controleKmService.delete(this.controleKmSelecionado.key)
             .then(() => {
                this.tabelaBind.first = 0;
                this.buscarTodos(this.filtroGlobalBind.nativeElement, this.tabelaBind);
@@ -266,5 +302,152 @@ export class ControleKmPesquisaComponent implements OnInit {
             );
       });
    }
+
+   adicionar() {
+      this.kmChegadaMaximo = '';
+      this.kmSaidaMinimo = '';
+      this.msgs = null;
+      this.configForm();
+      this.mostrarJanelaEdicao = true;
+   }
+
+   /**
+    * Redireciona para a tela de edicao de dados
+    */
+   edit() {
+      this.form.patchValue(this.controleKmSelecionado);
+      this.mostrarJanelaEdicao = true;
+   }
+
+   cancel() {
+      this.mostrarJanelaEdicao = false;
+      this.configForm();
+   }
+
+   // SALVAR OU  EDITAR DADOS
+   setMensagensErro(msg) {
+      this.msgs = [{severity: 'warn', summary: '', detail: msg}];
+   }
+
+   configForm() {
+      this.form = this.formBuild.group({
+         key: [null],
+         pessoa: this.formBuild.group({
+            key: [null, Validators.required]
+         }),
+         veiculo: this.formBuild.group({
+            key: [null, Validators.required]
+         }),
+         itinerario: this.formBuild.group({
+            key: [null, Validators.required]
+         }),
+         dataHoraSaida: [null, Validators.required],
+         dataHoraChegada: [null, Validators.required],
+         origem: [
+            null, [
+               Validators.required,
+               Validators.minLength(3),
+               Validators.maxLength(150)
+            ]
+         ],
+         destino: [
+            null, [
+               Validators.required,
+               Validators.minLength(3),
+               Validators.maxLength(150)
+            ]
+         ],
+         obs: [null, Validators.maxLength(512)],
+         kmSaida: [
+            null, [
+               Validators.required,
+               Validators.minLength(1),
+               Validators.maxLength(30)
+            ]
+         ],
+         kmChegada: [
+            null, [
+               Validators.required,
+               Validators.minLength(1),
+               Validators.maxLength(30)
+            ]
+         ]
+      });
+   }
+
+   carregarKmSaidaMinimo() {
+      this.kmSaidaMinimo = '';
+      if (moment(this.form.get('dataHoraSaida').value, 'DD/MM/YYYY HH:mm').isValid() && this.form.get('veiculo').get('key').status === 'VALID') {
+         this.controleKmService.buscarKmMinimoASerInformado(this.form.get('dataHoraSaida').value, this.form.get('veiculo').get('key').value)
+            .then(response => {
+               this.kmSaidaMinimo = Number(response) > 0 ? response : '';
+            })
+            .catch(error => {
+               this.setMensagensErro(this.manipuladorErros.handle(error));
+            });
+      }
+   }
+
+   carregarKmChegadaMaximo() {
+      this.kmChegadaMaximo = '';
+      if (moment(this.form.get('dataHoraChegada').value, 'DD/MM/YYYY HH:mm').isValid() && this.form.get('veiculo').get('key').status === 'VALID') {
+         this.controleKmService.buscarKmMaximoASerInformado(this.form.get('dataHoraChegada').value, this.form.get('veiculo').get('key').value)
+            .then(response => {
+               this.kmChegadaMaximo = Number(response) > 0 ? response : '';
+            })
+            .catch(error => {
+               this.setMensagensErro(this.manipuladorErros.handle(error));
+            });
+      }
+   }
+
+   salvar() {
+      if (this.form.valid) {
+         this.setMostrarTelaCarregando(true);
+         if (this.form.get('key').value) {
+            this.controleKmService.update(this.form.value)
+               .then(
+                  response => {
+                     this.mostrarJanelaEdicao = false;
+                     this.toasty.success(this.translateObj['acoes']['atualizar_sucesso']);
+
+                     this.tabelaBind.first = 0;
+                     if (this.mostarFiltros) {
+                        this.filterFields(this.tabelaBind);
+                     } else {
+                        this.buscarTodos(this.filtroGlobalBind.nativeElement, this.tabelaBind);
+                     }
+                  }
+               ).catch(error => {
+               this.setMensagensErro(this.manipuladorErros.handle(error));
+               this.setMostrarTelaCarregando(false);
+            });
+         } else {
+            this.controleKmService.save(this.form.value)
+               .then(
+                  response => {
+                     this.mostrarJanelaEdicao = false;
+                     this.toasty.success(this.translateObj['acoes']['adicionar_sucesso']);
+
+                     this.tabelaBind.first = 0;
+                     if (this.mostarFiltros) {
+                        this.filterFields(this.tabelaBind);
+                     } else {
+                        this.buscarTodos(this.filtroGlobalBind.nativeElement, this.tabelaBind);
+                     }
+                  }
+               ).catch(error => {
+               this.setMensagensErro(this.manipuladorErros.handle(error));
+               this.setMostrarTelaCarregando(false);
+            });
+         }
+      } else {
+         this.traduzir.get('validation').subscribe(s => {
+            this.toasty.warning(s['form_invalid']);
+            this.setMensagensErro(s['form_invalid']);
+         });
+      }
+   }
+
 
 }

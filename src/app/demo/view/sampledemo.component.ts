@@ -177,8 +177,8 @@ export class SampleDemoComponent implements OnInit {
                         label: 'Edit',
                         icon: 'fa-refresh',
                         items: [
-                            {label: 'Save', icon: 'fa-save'},
-                            {label: 'Update', icon: 'fa-save'},
+                            {label: 'Save', icon: 'fa-salvar'},
+                            {label: 'Update', icon: 'fa-salvar'},
                         ]
                     },
                     {

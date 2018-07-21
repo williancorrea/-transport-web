@@ -62,7 +62,6 @@ export class ItinerarioNovoComponent implements OnInit {
          key: [null],
          codigo: [
             null, [
-               Validators.minLength(1),
                Validators.maxLength(15)
             ]
          ],

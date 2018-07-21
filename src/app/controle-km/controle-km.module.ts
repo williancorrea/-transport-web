@@ -7,7 +7,7 @@ import {TransportSharedModule} from '../transort-shared/transport-share.module';
 import {CoreModule} from '../core/core.module';
 import {
    CalendarModule,
-   DataTableModule,
+   DataTableModule, DialogModule,
    DropdownModule,
    InputMaskModule,
    InputTextareaModule,
@@ -54,7 +54,8 @@ import {ControleKmNovoComponent} from './controle-km-novo/controle-km-novo.compo
 
       CalendarModule,
       KeyFilterModule,
-      InputMaskModule
+      InputMaskModule,
+      DialogModule
    ],
    declarations: [ControleKmPesquisaComponent, ControleKmNovoComponent],
    providers: [

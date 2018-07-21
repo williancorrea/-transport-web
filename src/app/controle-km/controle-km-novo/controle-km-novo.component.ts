@@ -193,7 +193,7 @@ export class ControleKmNovoComponent implements OnInit {
    }
 
    save() {
-      console.log(this.form);
+      // console.log(this.form);
 
       if (this.form.valid) {
          this.showLoading(true);

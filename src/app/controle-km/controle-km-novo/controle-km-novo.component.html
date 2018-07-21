@@ -7,8 +7,7 @@
 
             <h1 *ngIf="loading === true">{{('commons.loading') | translate}}</h1>
             <h1 *ngIf="loading === false">{{(form.get('key').value?.length > 0 ? 'controleKm.acoes.editar' :
-               'controleKm.acoes.adicionar') |
-               translate}}</h1>
+               'controleKm.acoes.adicionar') | translate}}</h1>
          </div>
 
          <p-messages [(value)]="msgs"></p-messages>

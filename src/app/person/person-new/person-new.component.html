@@ -20,7 +20,7 @@
                       name="key"
                       formControlName="key">
 
-               <div *ngIf="form.get('key').value == null" class="ui-sm-12 ui-g-12 person-group-type-record">
+               <div *ngIf="form.get('key').value == null && ocultarSelecaoTipoPessoa === false" class="ui-sm-12 ui-g-12 person-group-type-record">
                   <p-radioButton name="groupname"
                                  label="{{'person.labels.person_physical' | translate}}"
                                  value="FISICA"
@@ -61,6 +61,17 @@
                         <p-inputMask mask="999.999.999-99" slotChar="_" formControlName="cpf"
                                      [disabled]="form.get('key').value != null"></p-inputMask>
                         <app-message [form]="f" [control]="form.get('pessoaFisica').get('cpf')"></app-message>
+                     </div>
+
+                     <!--PESSOA FISICA - JURIDICA-->
+                     <div *ngIf="form.get('tipo').value === 'JURIDICA' ? true : false"
+                          class="ui-sm-3 ui-g-3 ui-fluid"
+                          formGroupName="pessoaJuridica">
+                        <label>{{'person.fields.cnpj'| translate}}</label>
+                        <span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                        <p-inputMask mask="99.999.999/9999-99" slotChar="_" formControlName="cnpj"
+                                     [disabled]="form.get('key').value != null"></p-inputMask>
+                        <app-message [form]="f" [control]="form.get('pessoaJuridica').get('cnpj')"></app-message>
                      </div>
 
                      <!--PESSOA - NOME-->

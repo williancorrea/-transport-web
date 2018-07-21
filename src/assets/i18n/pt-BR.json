@@ -278,7 +278,8 @@
          "reservistaCategoria": "Categoria",
          "nomeMae": "Nome da Mãe",
          "nomePai": "Nome do Pai",
-         "estadoCivil": "Estado Cívil"
+         "estadoCivil": "Estado Cívil",
+         "cnpj": "CNPJ"
       },
       "labels": {
          "person_legal": "Pessoa Jurídica",

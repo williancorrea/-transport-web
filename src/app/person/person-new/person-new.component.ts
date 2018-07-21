@@ -23,6 +23,8 @@ export class PersonNewComponent implements OnInit {
    estadoCivilList;
    sexos: any;
 
+   ocultarSelecaoTipoPessoa: boolean;
+
 
    constructor(private router: Router,
                private activatedRoute: ActivatedRoute,
@@ -51,13 +53,20 @@ export class PersonNewComponent implements OnInit {
          const isEditing = this.activatedRoute.snapshot.params['key'];
 
          this.carregarEstadosCivis();
-
+         this.ocultarSelecaoTipoPessoa = false;
          if (isEditing) {
+            this.ocultarSelecaoTipoPessoa = true;
             this.title.setTitle(s['actions']['edit']);
 
             this.personService.findOne(isEditing)
                .then(response => {
-                  // this.bank = response;
+
+                  if (response['tipo'] === 'FISICA') {
+                     this.form.removeControl('pessoaJuridica');
+                  } else {
+                     this.form.removeControl('pessoaFisica');
+                  }
+
                   this.form.patchValue(response);
                   this.showLoading(false);
                })
@@ -86,7 +95,6 @@ export class PersonNewComponent implements OnInit {
          tipo: ['FISICA'],
          email: [
             null, [
-               Validators.minLength(5),
                Validators.maxLength(250)
             ]
          ],
@@ -101,6 +109,33 @@ export class PersonNewComponent implements OnInit {
          fornecedor: [false],
          colaborador: [false],
          transportadora: [false],
+         pessoaJuridica: this.formBuild.group({
+            cnpj: [
+               null, [
+                  Validators.required,
+                  Validators.minLength(18),
+                  Validators.maxLength(18)
+               ]
+            ],
+            fantasia: [
+               null, [Validators.maxLength(250)]
+            ],
+            inscricaoMunicipal: [
+               null, [Validators.maxLength(50)]
+            ],
+            inscricaoEstadual: [
+               null, [Validators.maxLength(50)]
+            ],
+            tipoRegime: [
+               null, [Validators.maxLength(20)]
+            ],
+            crt: [
+               null, [Validators.maxLength(50)]
+            ],
+            suframa: [
+               null, [Validators.maxLength(50)]
+            ],
+         }),
          pessoaFisica: this.formBuild.group({
             cpf: [
                null, [
@@ -205,6 +240,15 @@ export class PersonNewComponent implements OnInit {
    }
 
    save() {
+      console.log(this.form);
+
+      this.ocultarSelecaoTipoPessoa = true;
+      if (this.form.get('tipo').value === 'FISICA') {
+         this.form.removeControl('pessoaJuridica');
+      } else {
+         this.form.removeControl('pessoaFisica');
+      }
+
       if (this.form.valid) {
          this.showLoading(true);
          if (this.form.get('key').value) {

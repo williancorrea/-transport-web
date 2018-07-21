@@ -5697,7 +5697,7 @@ var documentElement = document.documentElement;
 	container.appendChild( div );
 
 	// Executing both pixelPosition & boxSizingReliable tests require only one layout
-	// so they're executed at the same time to save the second computation.
+	// so they're executed at the same time to salvar the second computation.
 	function computeStyleTests() {
 		div.style.cssText =
 
@@ -9151,7 +9151,7 @@ jQuery.ajaxTransport( function( options ) {
 
 							// Allow onerror to be called first,
 							// but that will not handle a native abort
-							// Also, save errorCallback to a variable
+							// Also, salvar errorCallback to a variable
 							// as xhr.onerror cannot be accessed
 							window.setTimeout( function() {
 								if ( callback ) {
