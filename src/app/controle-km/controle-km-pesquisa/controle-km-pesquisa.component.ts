@@ -14,7 +14,7 @@ import * as moment from 'moment';
 import {ItinerarioService} from '../../itinerario/itinerario.service';
 import {PersonService} from '../../person/person.service';
 import {VeiculoService} from '../../veiculo/veiculo.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Form, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
    selector: 'app-controle-km-pesquisa',
@@ -54,6 +54,7 @@ export class ControleKmPesquisaComponent implements OnInit {
     */
    @ViewChild('dataTable') tabelaBind;
    @ViewChild('globalFilter') filtroGlobalBind;
+   @ViewChild('f') formBind;
 
 
    constructor(private router: Router,
@@ -308,6 +309,10 @@ export class ControleKmPesquisaComponent implements OnInit {
       this.kmSaidaMinimo = '';
       this.msgs = null;
       this.configForm();
+
+      this.form.reset();
+      this.formBind['submitted'] = false;
+
       this.mostrarJanelaEdicao = true;
    }
 
@@ -373,6 +378,52 @@ export class ControleKmPesquisaComponent implements OnInit {
             ]
          ]
       });
+
+
+
+      // this.form = new FormGroup({
+      //    key: new FormControl(null),
+      //    pessoa: new FormGroup({
+      //       key: new FormControl([null, Validators.required])
+      //    }),
+      //    veiculo: new FormGroup({
+      //       key: new FormControl([null, Validators.required])
+      //    }),
+      //    itinerario: new FormGroup({
+      //       key: new FormControl([null, Validators.required])
+      //    }),
+      //    dataHoraSaida: new FormControl([null, Validators.required]),
+      //    dataHoraChegada: new FormControl([null, Validators.required]),
+      //    origem: new FormControl([
+      //       null, [
+      //          Validators.required,
+      //          Validators.minLength(3),
+      //          Validators.maxLength(150)
+      //       ], {updateOn: 'blur'}
+      //    ]),
+      //    destino: new FormControl([
+      //       null, [
+      //          Validators.required,
+      //          Validators.minLength(3),
+      //          Validators.maxLength(150)
+      //       ]
+      //    ]),
+      //    obs: new FormControl([null, Validators.maxLength(512)]),
+      //    kmSaida: new FormControl([
+      //       null, [
+      //          Validators.required,
+      //          Validators.minLength(1),
+      //          Validators.maxLength(30)
+      //       ]
+      //    ]),
+      //    kmChegada: new FormControl([
+      //       null, [
+      //          Validators.required,
+      //          Validators.minLength(1),
+      //          Validators.maxLength(30)
+      //       ]
+      //    ])
+      // }, {updateOn: 'blur'});
    }
 
    carregarKmSaidaMinimo() {

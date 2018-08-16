@@ -349,7 +349,7 @@
          </div>
 
          <div class="ui-sm-6 ui-g-6 ui-fluid">
-            <label>{{'controleKm.campos.origem' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+            <app-wc-label label="{{'controleKm.campos.origem' | translate}}" label_required="{{'validation.requiredLabel' | translate}}"></app-wc-label>
             <textarea [rows]="1"
                       [cols]="30"
                       pInputTextarea
@@ -386,7 +386,7 @@
 
          <div class="ui-sm-6 ui-g-6 ui-fluid">
             <label>{{'controleKm.campos.destino' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
-            <textarea [rows]="1"
+            <textarea id="txtDestino" [rows]="1"
                       [cols]="30"
                       pInputTextarea
                       name="destino"

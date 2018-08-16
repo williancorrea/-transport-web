@@ -4,7 +4,7 @@ import {Component, Input} from '@angular/core';
 @Component({
    selector: 'app-message',
    template: `
-      <div *ngIf="hasError()" class="ui-message ui-messages-error">
+      <div *ngIf="temErro()" class="ui-message ui-messages-error">
          <p *ngIf="control.hasError('required')">{{'validation.required' | translate}}</p>
          <p *ngIf="control.hasError('minlength')">{{'validation.minlength' | translate}}
             {{control.errors?.minlength?.requiredLength }} {{'validation.character' | translate}}</p>
@@ -15,13 +15,23 @@ import {Component, Input} from '@angular/core';
    `,
    styles: [`
       .ui-messages-error {
-         margin: 0;
-         margin-top: 4px;
+      margin: 0;
+      margin-top: 4px;
       }
 
       .ui-messages-error p {
-         margin: 0px;
+      margin: 0px;
       }
+
+      /*.wc-ui-messages-error {*/
+         /*border: 0px;*/
+         /*background: none;*/
+         /*margin-top: -5px;*/
+         /*color: #bf0000;*/
+         /*font-weight: bold;*/
+         /*font-size: 10px;*/
+         /*position: absolute;*/
+      /*}*/
    `]
 })
 
@@ -31,7 +41,10 @@ export class MessageComponent {
    @Input() form: any;
    @Input() label: string;
 
-   hasError(): boolean {
-      return this.control.errors !== null && this.control.enabled && (this.form.submitted  || this.control.dirty || this.control.touched);
+   temErro(): boolean {
+      // console.log(this.control);
+      // console.log(this.form);
+      // return this.control.errors !== null && this.control.enabled && (this.form.submitted || (this.control.updateOn !== 'blur') || this.control.dirty || this.control.touched);
+      return this.control.invalid && this.control.enabled && (this.control.dirty || this.control.touched || this.form.submitted);
    }
 }
