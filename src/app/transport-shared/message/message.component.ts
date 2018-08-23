@@ -15,22 +15,22 @@ import {Component, Input} from '@angular/core';
    `,
    styles: [`
       .ui-messages-error {
-      margin: 0;
-      margin-top: 4px;
+         margin: 0;
+         margin-top: 4px;
       }
 
       .ui-messages-error p {
-      margin: 0px;
+         margin: 0px;
       }
 
       /*.wc-ui-messages-error {*/
-         /*border: 0px;*/
-         /*background: none;*/
-         /*margin-top: -5px;*/
-         /*color: #bf0000;*/
-         /*font-weight: bold;*/
-         /*font-size: 10px;*/
-         /*position: absolute;*/
+      /*border: 0px;*/
+      /*background: none;*/
+      /*margin-top: -5px;*/
+      /*color: #bf0000;*/
+      /*font-weight: bold;*/
+      /*font-size: 10px;*/
+      /*position: absolute;*/
       /*}*/
    `]
 })
@@ -46,5 +46,6 @@ export class MessageComponent {
       // console.log(this.form);
       // return this.control.errors !== null && this.control.enabled && (this.form.submitted || (this.control.updateOn !== 'blur') || this.control.dirty || this.control.touched);
       return this.control.invalid && this.control.enabled && (this.control.dirty || this.control.touched || this.form.submitted);
+      // return this.control.invalid && this.control.enabled && (this.control.dirty || this.control.touched) && this.form.submitted;
    }
 }

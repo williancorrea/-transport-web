@@ -9,7 +9,7 @@ import {CoreModule} from '../core/core.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import {TranslateModule, TranslateService} from 'ng2-translate';
-import {TransportSharedModule} from '../transort-shared/transport-share.module';
+import {TransportSharedModule} from '../transport-shared/transport-share.module';
 import {SharedModule} from 'primeng/shared';
 import {PanelModule} from 'primeng/panel';
 import {TableModule} from 'primeng/table';

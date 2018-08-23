@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TranslateModule, TranslateService} from 'ng2-translate';
-import {TransportSharedModule} from '../transort-shared/transport-share.module';
+import {TransportSharedModule} from '../transport-shared/transport-share.module';
 import {SharedModule} from 'primeng/shared';
 import {RouterModule} from '@angular/router';
 import {

@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ControleKmPesquisaComponent} from './controle-km-pesquisa/controle-km-pesquisa.component';
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
-import {TransportSharedModule} from '../transort-shared/transport-share.module';
+import {TransportSharedModule} from '../transport-shared/transport-share.module';
 import {CoreModule} from '../core/core.module';
 import {
    CalendarModule,

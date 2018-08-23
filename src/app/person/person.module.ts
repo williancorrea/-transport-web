@@ -19,7 +19,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TableModule} from 'primeng/table';
 import {PanelModule} from 'primeng/panel';
 import {TranslateModule, TranslateService} from 'ng2-translate';
-import {TransportSharedModule} from '../transort-shared/transport-share.module';
+import {TransportSharedModule} from '../transport-shared/transport-share.module';
 import {CoreModule} from '../core/core.module';
 import {ButtonModule} from 'primeng/button';
 import {RouterModule} from '@angular/router';

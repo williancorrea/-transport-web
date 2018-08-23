@@ -8,7 +8,7 @@ import {DataTableModule, DropdownModule, InputTextareaModule, InputTextModule, P
 import {CoreModule} from '../core/core.module';
 import {MessageModule} from 'primeng/message';
 import {TranslateModule, TranslateService} from 'ng2-translate';
-import {TransportSharedModule} from '../transort-shared/transport-share.module';
+import {TransportSharedModule} from '../transport-shared/transport-share.module';
 import {ButtonModule} from 'primeng/button';
 import {SharedModule} from 'primeng/shared';
 import {RouterModule} from '@angular/router';
