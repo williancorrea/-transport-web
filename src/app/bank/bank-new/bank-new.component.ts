@@ -6,18 +6,19 @@ import {BankService} from '../bank.service';
 import {ErrorHandlerService} from '../../core/error-handler.service';
 import {ToastyService} from 'ng2-toasty';
 import {AuthService} from '../../security/auth.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
+import {BaseFormComponent} from '../../transport-shared/base-form/base-form.component';
 
 @Component({
    selector: 'app-bank-new',
    templateUrl: './bank-new.component.html',
    styleUrls: ['./bank-new.component.css']
 })
-export class BankNewComponent implements OnInit {
+export class BankNewComponent extends BaseFormComponent implements OnInit {
 
-   form: FormGroup;
+
    bankTranslate: any;
-   loading: boolean;
+
 
    constructor(private router: Router,
                private activatedRoute: ActivatedRoute,
@@ -28,6 +29,7 @@ export class BankNewComponent implements OnInit {
                public auth: AuthService,
                private errorHandler: ErrorHandlerService,
                private formBuild: FormBuilder) {
+      super();
    }
 
    ngOnInit() {
@@ -73,10 +75,6 @@ export class BankNewComponent implements OnInit {
       });
    }
 
-   showLoading(value: boolean) {
-      this.loading = value;
-   }
-
    save() {
       if (this.form.valid) {
          this.showLoading(true);
@@ -117,4 +115,7 @@ export class BankNewComponent implements OnInit {
    }
 
 
+   salvar() {
+      // METODO ABSTRATO DA CLASSE BASE-FORM
+   }
 }

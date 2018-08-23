@@ -118,6 +118,7 @@ import {PersonModule} from './person/person.module';
 import {VeiculoModule} from './veiculo/veiculo.module';
 import {ItinerarioModule} from './itinerario/itinerario.module';
 import {ControleKmModule} from './controle-km/controle-km.module';
+import { BaseFormComponent } from './transport-shared/base-form/base-form.component';
 
 export function HttpLoaderFactory(http: Http) {
    return new TranslateStaticLoader(http, '/assets/i18n', '.json');

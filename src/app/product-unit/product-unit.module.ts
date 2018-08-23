@@ -9,7 +9,7 @@ import {CoreModule} from '../core/core.module';
 import {TableModule} from 'primeng/table';
 import {SharedModule} from 'primeng/shared';
 import {RouterModule} from '@angular/router';
-import {TransportSharedModule} from '../transort-shared/transport-share.module';
+import {TransportSharedModule} from '../transport-shared/transport-share.module';
 import {TranslateModule, TranslateService} from 'ng2-translate';
 import {ProductUnitSearchComponent} from './product-unit-search/product-unit-search.component';
 import { ProductUnitNewComponent } from './product-unit-new/product-unit-new.component';

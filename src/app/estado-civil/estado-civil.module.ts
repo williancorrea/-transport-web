@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {TransportSharedModule} from '../transort-shared/transport-share.module';
+import {TransportSharedModule} from '../transport-shared/transport-share.module';
 import {TableModule} from 'primeng/table';
 import {TranslateModule, TranslateService} from 'ng2-translate';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';

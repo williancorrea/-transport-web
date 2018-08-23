@@ -12,7 +12,7 @@ import {LogoutService} from './logout.service';
 import {AuthService} from './auth.service';
 import {TransportHttp} from './transport-http';
 import {LoginFormComponent} from './login-form/login-form.component';
-import {TransportSharedModule} from '../transort-shared/transport-share.module';
+import {TransportSharedModule} from '../transport-shared/transport-share.module';
 import {CoreModule} from '../core/core.module';
 import {TranslateModule, TranslateService} from 'ng2-translate';
 import {MessageModule} from 'primeng/message';
