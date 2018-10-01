@@ -79,6 +79,8 @@ import {AppSideBarTabContentComponent} from './app.sidebartabcontent.component';
 import {AppTopbarComponent} from './app.topbar.component';
 import {AppRodapeComponent} from './app.rodape.component';
 import {DashboardDemoComponent} from './dashboard/dashboarddemo.component';
+
+// TODO: REMOVER
 import {SampleDemoComponent} from './demo/view/sampledemo.component';
 import {FormsDemoComponent} from './demo/view/formsdemo.component';
 import {DataDemoComponent} from './demo/view/datademo.component';

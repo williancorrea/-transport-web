@@ -327,29 +327,36 @@
 
          <div class="ui-sm-12 ui-g-3 ui-fluid">
             <label>{{'controleKm.campos.dataHoraSaida' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
-            <p-inputMask formControlName="dataHoraSaida"
-                         mask="99/99/9999 99:99"
-                         pattern="([0-2][0-9]|3[0-1])\/(0[0-9]|1[0-2])\/[0-9]{4} ([0-1][0-9]|2[0-3]):[0-5][0-9]"
-                         (onBlur)="carregarKmSaidaMinimo()">
-            </p-inputMask>
+            <div class="ui-inputgroup">
+               <span class="ui-inputgroup-addon"><i class="fa fa-calendar"></i></span>
+               <p-inputMask formControlName="dataHoraSaida"
+                            mask="99/99/9999 99:99"
+                            pattern="([0-2][0-9]|3[0-1])\/(0[0-9]|1[0-2])\/[0-9]{4} ([0-1][0-9]|2[0-3]):[0-5][0-9]"
+                            (onBlur)="carregarKmSaidaMinimo()">
+               </p-inputMask>
+            </div>
             <app-message [form]="f" [control]="form.get('dataHoraSaida')"></app-message>
          </div>
 
          <div class="ui-sm-4 ui-g-3 ui-fluid">
             <label>{{'controleKm.campos.kmSaida' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
             <span class="wc-label-km-opcao">{{kmSaidaMinimo}}</span>
-            <input pInputText
-                   type="text"
-                   name="kmSaida"
-                   class="wc-align-right"
-                   formControlName="kmSaida"
-                   [disabled]="form.get('dataHoraSaida').invalid ? form.get('kmSaida').disable() :form.get('kmSaida').enable()"
-                   pKeyFilter="pnum">
+            <div class="ui-inputgroup">
+               <input pInputText
+                      type="text"
+                      name="kmSaida"
+                      class="wc-align-right"
+                      formControlName="kmSaida"
+                      [disabled]="form.get('dataHoraSaida').invalid ? form.get('kmSaida').disable() :form.get('kmSaida').enable()"
+                      pKeyFilter="pnum">
+               <span class="ui-inputgroup-addon">km</span>
+            </div>
             <app-message [form]="f" [control]="form.get('kmSaida')"></app-message>
          </div>
 
          <div class="ui-sm-6 ui-g-6 ui-fluid">
-            <app-wc-label label="{{'controleKm.campos.origem' | translate}}" label_required="{{'validation.requiredLabel' | translate}}"></app-wc-label>
+            <app-wc-label label="{{'controleKm.campos.origem' | translate}}"
+                          label_required="{{'validation.requiredLabel' | translate}}"></app-wc-label>
             <textarea [rows]="1"
                       [cols]="30"
                       pInputTextarea
@@ -362,24 +369,30 @@
 
          <div class="ui-sm-12 ui-g-3 ui-fluid">
             <label>{{'controleKm.campos.dataHoraChegada' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
-            <p-inputMask formControlName="dataHoraChegada"
-                         mask="99/99/9999 99:99"
-                         pattern="([0-2][0-9]|3[0-1])\/(0[0-9]|1[0-2])\/[0-9]{4} ([0-1][0-9]|2[0-3]):[0-5][0-9]"
-                         (onBlur)="carregarKmChegadaMaximo()">
-            </p-inputMask>
+            <div class="ui-inputgroup">
+               <span class="ui-inputgroup-addon"><i class="fa fa-calendar"></i></span>
+               <p-inputMask formControlName="dataHoraChegada"
+                            mask="99/99/9999 99:99"
+                            pattern="([0-2][0-9]|3[0-1])\/(0[0-9]|1[0-2])\/[0-9]{4} ([0-1][0-9]|2[0-3]):[0-5][0-9]"
+                            (onBlur)="carregarKmChegadaMaximo()">
+               </p-inputMask>
+            </div>
             <app-message [form]="f" [control]="form.get('dataHoraChegada')"></app-message>
          </div>
 
          <div class="ui-sm-4 ui-g-3 ui-fluid">
             <label>{{'controleKm.campos.kmChegada' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
             <span class="wc-label-km-opcao">{{kmChegadaMaximo}}</span>
-            <input pInputText
-                   type="text"
-                   name="kmChegada"
-                   class="wc-align-right"
-                   [disabled]="form.get('dataHoraChegada').invalid ? form.get('kmChegada').disable() :form.get('kmChegada').enable()"
-                   formControlName="kmChegada"
-                   pKeyFilter="pnum">
+            <div class="ui-inputgroup">
+               <input pInputText
+                      type="text"
+                      name="kmChegada"
+                      class="wc-align-right"
+                      [disabled]="form.get('dataHoraChegada').invalid ? form.get('kmChegada').disable() :form.get('kmChegada').enable()"
+                      formControlName="kmChegada"
+                      pKeyFilter="pnum">
+               <span class="ui-inputgroup-addon">km</span>
+            </div>
             <app-message [form]="f" [control]="form.get('kmChegada')"></app-message>
          </div>
 
