@@ -33,7 +33,8 @@
       "persons": "Pessoas",
       "veiculo": "Veículos",
       "itinerario": "Itinerários",
-      "controle-km": "Controle Km"
+      "controle-km": "Controle Km",
+      "classe-despeza": "Classe de Despeza"
    },
    "flags": {
       "brazil": "Brasil",
@@ -300,6 +301,24 @@
          "delete_success": "Pessoa removida com sucesso!",
          "add_success": "Pessoa adicionada com sucesso.",
          "update_success": "Pessoa atualizada com sucesso."
+      }
+   },
+   "classe-despeza": {
+      "campos": {
+         "descricao": "Descrição",
+         "inativo" : "Inativo"
+      },
+      "rotulos": {
+         "selecione-uma-classe-despeza": "Selecione uma classe de despeza"
+      },
+      "titulo": "Classe de Despeza",
+      "lista": "Lista das Classes de Despezas",
+      "acoes": {
+         "adicionar": "Adicionar nova classe de Despeza",
+         "editar": "Editar classe de despeza",
+         "deletar_sucesso": "Classe de Despeza removida com sucesso!",
+         "adicionar_sucesso": "Classe de Despeza adicionada com sucesso.",
+         "atualizar_sucesso": "Classe de Despeza atualizada com sucesso."
       }
    }
 }

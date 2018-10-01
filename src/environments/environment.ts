@@ -5,6 +5,7 @@
 
 export const environment = {
    production: false,
+   // apiUrl: 'http://192.168.0.110:8080',
    apiUrl: 'http://localhost:8080',
 
    dataTable: {
@@ -13,3 +14,8 @@ export const environment = {
       rowsPerPageOptions: [5, 10, 20, 50, 100]
    }
 };
+
+
+
+
+// ng serve --port 4200 --host 192.168.0.110

@@ -24,6 +24,7 @@ import {PersonService} from '../person/person.service';
 import {VeiculoService} from '../veiculo/veiculo.service';
 import {ItinerarioService} from '../itinerario/itinerario.service';
 import {ControleKmService} from '../controle-km/controle-km.service';
+import {ClasseDespezaService} from '../classe-despeza/classe-despeza.service';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import {ControleKmService} from '../controle-km/controle-km.service';
       VeiculoService,
       ItinerarioService,
       ControleKmService,
+      ClasseDespezaService,
 
       ConfirmationService,
       JwtHelper,

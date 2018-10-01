@@ -47,8 +47,8 @@ export class MessageComponent {
       // return this.control.errors !== null && this.control.enabled && (this.form.submitted || (this.control.updateOn !== 'blur') || this.control.dirty || this.control.touched);
 
       if (this.form.submitted) {
-         this.control.markAsDirty();
-         this.control.markAsTouched();
+         // this.control.markAsDirty();
+         // this.control.markAsTouched();
       }
       return this.control.invalid && this.control.enabled && (this.control.dirty || this.control.touched || this.form.submitted);
       // return this.control.invalid && this.control.enabled && (this.control.dirty || this.control.touched) && this.form.submitted;

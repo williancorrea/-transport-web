@@ -36,6 +36,8 @@ import {ItinerarioPesquisaComponent} from './itinerario/itinerario-pesquisa/itin
 import {ItinerarioNovoComponent} from './itinerario/itinerario-novo/itinerario-novo.component';
 import {ControleKmPesquisaComponent} from './controle-km/controle-km-pesquisa/controle-km-pesquisa.component';
 import {ControleKmNovoComponent} from './controle-km/controle-km-novo/controle-km-novo.component';
+import {ClasseDespezaPesquisarComponent} from './classe-despeza/classe-despeza-pesquisar/classe-despeza-pesquisar.component';
+import {ClasseDespezaNovoComponent} from './classe-despeza/classe-despeza-novo/classe-despeza-novo.component';
 
 export const routes: Routes = [
    {
@@ -108,6 +110,10 @@ export const routes: Routes = [
    {path: 'controleKm', component: ControleKmPesquisaComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_CONTROLE-KM']}},
    {path: 'controleKm/novo', component: ControleKmNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_CONTROLE-KM']}},
    {path: 'controleKm/:key', component: ControleKmNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_CONTROLE-KM']}},
+
+   {path: 'classeDespeza', component: ClasseDespezaPesquisarComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_CLASSE-DESPEZA']}},
+   {path: 'classeDespeza/novo', component: ClasseDespezaNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_CLASSE-DESPEZA']}},
+   {path: 'classeDespeza/:key', component: ClasseDespezaNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_CLASSE-DESPEZA']}},
 
 
    {path: '**', redirectTo: 'page-not-found'}

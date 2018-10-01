@@ -121,6 +121,7 @@ import {VeiculoModule} from './veiculo/veiculo.module';
 import {ItinerarioModule} from './itinerario/itinerario.module';
 import {ControleKmModule} from './controle-km/controle-km.module';
 import { BaseFormComponent } from './transport-shared/base-form/base-form.component';
+import {ClasseDespezaModule} from './classe-despeza/classe-despeza.module';
 
 export function HttpLoaderFactory(http: Http) {
    return new TranslateStaticLoader(http, '/assets/i18n', '.json');
@@ -232,7 +233,8 @@ export function HttpLoaderFactory(http: Http) {
       PersonModule,
       VeiculoModule,
       ItinerarioModule,
-      ControleKmModule
+      ControleKmModule,
+      ClasseDespezaModule
    ],
    declarations: [
       AppComponent,
