@@ -6,15 +6,15 @@ import {ToastyService} from 'ng2-toasty';
 import {AuthService} from '../../security/auth.service';
 import {ErrorHandlerService} from '../../core/error-handler.service';
 import {FormBuilder, Validators} from '@angular/forms';
-import {ClasseDespezaService} from '../classe-despeza.service';
+import {ClasseDespesaService} from '../classe-despesa.service';
 import {BaseFormComponent} from '../../transport-shared/base-form/base-form.component';
 
 @Component({
-  selector: 'app-classe-despeza-novo',
-  templateUrl: './classe-despeza-novo.component.html',
-  styleUrls: ['./classe-despeza-novo.component.css']
+  selector: 'app-classe-despesa-novo',
+  templateUrl: './classe-despesa-novo.component.html',
+  styleUrls: ['./classe-despesa-novo.component.css']
 })
-export class ClasseDespezaNovoComponent extends BaseFormComponent  implements OnInit {
+export class ClasseDespesaNovoComponent extends BaseFormComponent  implements OnInit {
 
    bankTranslate: any;
 
@@ -22,7 +22,7 @@ export class ClasseDespezaNovoComponent extends BaseFormComponent  implements On
                private activatedRoute: ActivatedRoute,
                private translate: TranslateService,
                private title: Title,
-               private classeDespezaService: ClasseDespezaService,
+               private classeDespesaService: ClasseDespesaService,
                private toasty: ToastyService,
                public auth: AuthService,
                private errorHandler: ErrorHandlerService,
@@ -33,14 +33,14 @@ export class ClasseDespezaNovoComponent extends BaseFormComponent  implements On
    ngOnInit() {
       this.configForm();
       this.showLoading(true);
-      this.translate.get('classe-despeza').subscribe(s => {
+      this.translate.get('classe-despesa').subscribe(s => {
          this.bankTranslate = s;
 
          const isEditing = this.activatedRoute.snapshot.params['key'];
          if (isEditing) {
             this.title.setTitle(s['acoes']['editar']);
 
-            this.classeDespezaService.findOne(isEditing)
+            this.classeDespesaService.findOne(isEditing)
                .then(response => {
                   // this.bank = response;
                   this.form.patchValue(response);
@@ -76,24 +76,24 @@ export class ClasseDespezaNovoComponent extends BaseFormComponent  implements On
       if (this.form.valid) {
          this.showLoading(true);
          if (this.form.get('key').value) {
-            this.classeDespezaService.update(this.form.value)
+            this.classeDespesaService.update(this.form.value)
                .then(
                   response => {
                      this.toasty.success(this.bankTranslate['acoes']['atualizar_sucesso']);
                      this.showLoading(false);
-                     this.router.navigateByUrl('/classeDespeza');
+                     this.router.navigateByUrl('/classeDespesa');
                   }
                ).catch(error => {
                this.errorHandler.handle(error);
                this.showLoading(false);
             });
          } else {
-            this.classeDespezaService.save(this.form.value)
+            this.classeDespesaService.save(this.form.value)
                .then(
                   response => {
                      this.toasty.success(this.bankTranslate['acoes']['atualizar_sucesso']);
                      this.showLoading(false);
-                     this.router.navigateByUrl('/classeDespeza');
+                     this.router.navigateByUrl('/classeDespesa');
                   }
                ).catch(erro => {
                this.errorHandler.handle(erro);
@@ -108,7 +108,7 @@ export class ClasseDespezaNovoComponent extends BaseFormComponent  implements On
    }
 
    cancel() {
-      this.router.navigateByUrl('/classeDespeza');
+      this.router.navigateByUrl('/classeDespesa');
    }
 
 

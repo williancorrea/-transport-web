@@ -1,4 +1,4 @@
-export class ClasseDespezaFiltro {
+export class ClasseDespesaFiltro {
    descricao: string;
 
    constructor() {

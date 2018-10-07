@@ -1,0 +1,136 @@
+<ngx-loading [show]="loading"></ngx-loading>
+
+<div class="ui-g">
+   <div class="ui-g-12">
+      <div class="card card-w-title">
+
+         <div>
+            <h1>{{'classe-despesa.lista' | translate}}</h1>
+            <a pButton class="btn-add-new ui-button-secondary"
+               *ngIf="auth.hasPermission('ROLE_SALVAR_CLASSE-DESPESA')"
+               label="{{'classe-despesa.acoes.adicionar' | translate}}"
+               iconPos="left" icon="fa-plus"
+               tooltipPosition="top" pTooltip="{{'actions.tooltip.new' | translate}}"
+               routerLink="/classeDespesa/novo">
+            </a>
+         </div>
+
+         <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+
+            <!--GLOBAL FILTER-->
+            <div class="ui-inputgroup" ngClass="{{showFilter ? 'd-none': ''}}">
+               <span class="ui-inputgroup-addon"><i class="fa fa-search"></i></span>
+               <input #globalFilter pInputText type="text" size="50"
+                      (input)="dataTable.filterGlobal($event.target.value, 'contains')"
+                      placeholder="{{'actions.global_filter' | translate}}">
+               <button pButton
+                       type="button" icon="fa-close"
+                       class="ui-button-danger"
+                       *ngIf="globalFilter.value.length > 0"
+                       (click)="findAll(globalFilter, dataTable)"></button>
+               <button pButton
+                       type="button" icon="fa-filter"
+                       *ngIf="globalFilter.value.length === 0"
+                       label="{{'commons.filter.more_filters' | translate}}"
+                       class="ui-button-secondary"
+                       (click)="showFilterFields(true)"></button>
+            </div>
+
+            <!--FILTER BY FIELDS-->
+            <div class="ui-g" ngClass="{{!showFilter ? 'd-none': ''}}">
+               <div class="ui-g-12 filter-title">
+                  <h2>{{'commons.filter.fields' | translate}}</h2>
+               </div>
+               <div class="ui-g-4 ui-fluid">
+                  <label>{{'classe-despesa.campos.descricao' | translate}}</label>
+                  <input pInputText
+                         type="text"
+                         name="txtDescricao"
+                         [(ngModel)]="classeDespesaFiltro.descricao"
+                         maxlength="30"
+                  >
+               </div>
+               <div class="ui-g-12" style="text-align: right">
+                  <button pButton
+                          type="button" icon="fa-minus"
+                          label="{{'commons.filter.less_filters' | translate}}"
+                          class="ui-button-secondary"
+                          (click)="findAll(globalFilter, dataTable)"></button>
+                  <button pButton
+                          type=" button" icon="fa-filter"
+                          (click)="filterFields(dataTable)"
+                          label="{{'commons.filter.filter' | translate}}"></button>
+               </div>
+            </div>
+         </div>
+         <p-table #dataTable
+                  [value]="classeDespesa"
+                  [(selection)]="classeDespesaSelecionada"
+                  selectionMode="single"
+                  dataKey="key"
+
+                  [lazy]="true"
+                  [(totalRecords)]="totalRecords"
+                  (onLazyLoad)="loadBank($event)"
+
+                  [filterDelay]="env.dataTable.filterDelay"
+                  [paginator]="true"
+                  [rows]="env.dataTable.rows"
+                  [rowsPerPageOptions]="env.dataTable.rowsPerPageOptions"
+                  [responsive]="true"
+
+                  [columns]="COLS"
+         >
+            <ng-template pTemplate="emptymessage">
+               <tr>
+                  <td colspan="3"> {{ 'actions.no_records_found' | translate}}</td>
+               </tr>
+            </ng-template>
+
+            <ng-template pTemplate="header" let-columns>
+               <tr>
+                  <th *ngFor="let col of columns" [pSortableColumn]="col.field" [hidden]="col.hidden" [class]="col.class">
+                     {{col.header}}
+                     <p-sortIcon [field]="col.field"></p-sortIcon>
+                  </th>
+               </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-rowData let-columns="columns" let-obj>
+               <tr [pSelectableRow]="rowData">
+                  <td *ngFor="let col of columns" [hidden]="col.hidden" [class]="col.class">
+                     {{rowData[col.field]}}
+                  </td>
+               </tr>
+            </ng-template>
+
+            <ng-template pTemplate="paginatorleft">
+               <a pButton icon="fa-refresh"
+                  (click)="findAll(globalFilter, dataTable)"
+                  tooltipPosition="top" pTooltip="{{'actions.refresh' | translate}}"></a>
+            </ng-template>
+
+            <ng-template pTemplate="paginatorright" let-obj="rowData">
+               <button type="button"
+                       *ngIf="auth.hasPermission('ROLE_ATUALIZAR_CLASSE-DESPESA')"
+                       pButton
+                       icon="fa-pencil"
+                       label="{{'actions.edit' | translate}}"
+                       [disabled]="classeDespesaSelecionada ? false :true"
+                       tooltipPosition="top" pTooltip="{{'actions.tooltip.edit' | translate}}"
+                       (click)="edit()"></button>
+               <button type="button"
+                       *ngIf="auth.hasPermission('ROLE_DELETAR_CLASSE-DESPESA')"
+                       pButton
+                       icon="fa-trash"
+                       class="ui-button-danger"
+                       label="{{'actions.delete' | translate}}"
+                       [disabled]="classeDespesaSelecionada ? false :true"
+                       tooltipPosition="top" pTooltip="{{'actions.tooltip.delete' | translate}}"
+                       (click)="ConfirmDeletion(obj)"></button>
+            </ng-template>
+         </p-table>
+
+      </div>
+   </div>
+</div>

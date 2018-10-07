@@ -1,22 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 
 @Component({
    selector: 'app-base-form',
    template: '<div></div>'
 })
-export abstract class BaseFormComponent implements OnInit {
+export class BaseFormComponent {
 
    form: FormGroup;
    loading: boolean;
 
    constructor() {
    }
-
-   ngOnInit() {
-   }
-
-   abstract salvar();
 
    resetarForm() {
       this.form.reset();

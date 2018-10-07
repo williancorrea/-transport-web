@@ -31,7 +31,7 @@ export class AppMenuComponent implements OnInit {
                {
                   label: m['base'], icon: 'fa fa-fw fa-book',
                   items: [
-                     {label:  m['bank'], icon: 'fa fa-fw fa-building', routerLink: ['/classeDespeza'], visible: this.auth.hasPermission('ROLE_LIST_BANK')},
+                     {label:  m['bank'], icon: 'fa fa-fw fa-building', routerLink: ['/banks'], visible: this.auth.hasPermission('ROLE_LIST_BANK')},
                      {label:  m['product-unit'], icon: 'fa fa-fw fa-pencil-square-o', routerLink: ['/product-units'], visible: this.auth.hasPermission('ROLE_LIST_PRODUCT-UNIT')},
                      // {label:  m['types-of-relationships'], icon: 'fa fa-fw fa-handshake-o', routerLink: ['/types-of-relationships'], visible: this.auth.hasPermission('ROLE_LIST_TYPE-RELATIONSHIP')},
                      // {label:  m['level-of-education'], icon: 'fa fa-fw fa-lightbulb-o', routerLink: ['/levels-of-education'], visible: this.auth.hasPermission('ROLE_LIST_LEVEL-OF-EDUCATION')},
@@ -39,7 +39,8 @@ export class AppMenuComponent implements OnInit {
                      {label:  m['veiculo'], icon: 'fa fa-fw fa-car', routerLink: ['/veiculo'], visible: this.auth.hasPermission('ROLE_LISTAR_VEICULO')},
                      {label:  m['persons'], icon: 'fa fa-fw fa-address-book-o', routerLink: ['/persons'], visible: this.auth.hasPermission('ROLE_LIST_PERSON')},
                      {label:  m['itinerario'], icon: 'fa fa-fw fa-truck', routerLink: ['/itinerario'], visible: this.auth.hasPermission('ROLE_LISTAR_ITINERARIO')},
-                     {label:  m['classe-despeza'], icon: 'fa fa-fw fa-list', routerLink: ['/classeDespeza'], visible: this.auth.hasPermission('ROLE_LISTAR_CLASSE-DESPEZA')}
+                     {label:  m['classe-despesa'], icon: 'fa fa-fw fa-list', routerLink: ['/classeDespesa'], visible: this.auth.hasPermission('ROLE_LISTAR_CLASSE-DESPESA')},
+                     {label:  m['centro-de-custo'], icon: 'fa fa-fw fa-list', routerLink: ['/centroDeCusto'], visible: this.auth.hasPermission('ROLE_LISTAR_CENTRO-DE-CUSTO')}
                   ]
                },
               {label:  m['controle-km'], icon: 'fa fa-fw fa-map-signs', routerLink: ['/controleKm'], visible: this.auth.hasPermission('ROLE_LISTAR_CONTROLE-KM')}

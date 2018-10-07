@@ -1,0 +1,69 @@
+<ngx-loading [show]="loading"></ngx-loading>
+
+<div class="ui-g">
+   <div class="ui-g-12">
+      <div class="card card-w-title">
+         <div>
+
+            <h1 *ngIf="loading === true">{{('commons.loading') | translate}}</h1>
+            <h1 *ngIf="loading === false">{{(form.get('key').value?.length > 0 ? 'centro-de-custo.acoes.editar' : 'centro-de-custo.acoes.adicionar') |
+               translate}}</h1>
+         </div>
+
+         <form #f="ngForm" novalidate (submit)="save()" autocomplete="off" [formGroup]="form">
+
+            <div class="ui-g">
+               <input pInputText
+                      type="text"
+                      [hidden]="true"
+                      name="key"
+                      formControlName="key">
+
+               <!-- CLASSE -->
+               <div class="ui-sm-4 ui-g-4 ui-fluid" formGroupName="classeDespesa">
+                  <label>{{'classe-despesa.titulo'| translate}}</label>
+                  <span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <p-dropdown emptyFilterMessage="{{'actions.no_records_found' | translate }}"
+                              [options]="classeDespesaList"
+                              formControlName="key"
+                              [showClear]="true"
+                              [filter]="true" [autoWidth]="false"
+                              placeholder="{{'actions.select2' | translate}}">
+                  </p-dropdown>
+                  <app-message [form]="f" [control]="form.get('classeDespesa').get('key')"></app-message>
+               </div>
+
+               <div class="ui-sm-12 ui-g-12 ui-fluid">
+                  <label>{{'centro-de-custo.campos.descricao' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <input pInputText
+                         type="text"
+                         name="name"
+                         formControlName="descricao">
+                  <app-message [form]="f" [control]="form.get('descricao')"></app-message>
+               </div>
+
+               <div class="ui-sm-12 ui-g-12 ui-fluid">
+                  <label>{{'centro-de-custo.campos.inativo' | translate}}</label>
+                  <p-inputSwitch formControlName="inativo"></p-inputSwitch>
+               </div>
+
+               <div class="ui-sm-12 ui-g-12">
+                  <button pButton type="button"
+                          label="{{'actions.cancel' | translate}}"
+                          class="ui-button-danger"
+                          tooltipPosition="top" pTooltip="{{'actions.tooltip.cancel' | translate}}"
+                          (click)="cancel()"></button>
+                  <button pButton type="submit"
+                          *ngIf="form.get('key').value ? auth.hasPermission('ROLE_ATUALIZAR_CENTRO-DE-CUSTO') : auth.hasPermission('ROLE_SALVAR_CENTRO-DE-CUSTO')"
+                          label="{{(form.get('key').value ? 'actions.update' : 'actions.save') | translate}}"
+                          tooltipPosition="top" pTooltip="{{'actions.tooltip.save' | translate}}"
+                          class="ui-button-success"></button>
+               </div>
+
+            </div>
+
+         </form>
+
+      </div>
+   </div>
+</div>

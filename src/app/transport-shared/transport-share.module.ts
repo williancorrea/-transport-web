@@ -3,20 +3,23 @@ import {CommonModule} from '@angular/common';
 import {TranslateModule} from 'ng2-translate';
 import {MessageComponent} from './message/message.component';
 import {WCLabelComponent} from './wcLabel/wc-label.component';
+import {BaseFormComponent} from './base-form/base-form.component';
 
 @NgModule({
    imports: [
       CommonModule,
 
-      TranslateModule,
+      TranslateModule
    ],
    declarations: [
       MessageComponent,
-      WCLabelComponent
+      WCLabelComponent,
+      BaseFormComponent
    ],
    exports: [
       MessageComponent,
-      WCLabelComponent
+      WCLabelComponent,
+      BaseFormComponent
    ]
 })
 export class TransportSharedModule {

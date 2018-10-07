@@ -34,7 +34,8 @@
       "veiculo": "Veículos",
       "itinerario": "Itinerários",
       "controle-km": "Controle Km",
-      "classe-despeza": "Classe de Despeza"
+      "classe-despesa": "Classe de Despesas",
+      "centro-de-custo": "Centro de Custo"
    },
    "flags": {
       "brazil": "Brasil",
@@ -303,22 +304,41 @@
          "update_success": "Pessoa atualizada com sucesso."
       }
    },
-   "classe-despeza": {
+   "classe-despesa": {
       "campos": {
          "descricao": "Descrição",
          "inativo" : "Inativo"
       },
       "rotulos": {
-         "selecione-uma-classe-despeza": "Selecione uma classe de despeza"
+         "selecione-uma-classe-despesa": "Selecione uma classe de despesa"
       },
-      "titulo": "Classe de Despeza",
-      "lista": "Lista das Classes de Despezas",
+      "titulo": "Classe de Despesa",
+      "lista": "Lista das Classes de Despesas",
       "acoes": {
-         "adicionar": "Adicionar nova classe de Despeza",
-         "editar": "Editar classe de despeza",
-         "deletar_sucesso": "Classe de Despeza removida com sucesso!",
-         "adicionar_sucesso": "Classe de Despeza adicionada com sucesso.",
-         "atualizar_sucesso": "Classe de Despeza atualizada com sucesso."
+         "adicionar": "Adicionar nova classe de Despesa",
+         "editar": "Editar classe de despesa",
+         "deletar_sucesso": "Classe de Despesa removida com sucesso!",
+         "adicionar_sucesso": "Classe de Despesa adicionada com sucesso.",
+         "atualizar_sucesso": "Classe de Despesa atualizada com sucesso."
+      }
+   },
+   "centro-de-custo": {
+      "campos": {
+         "classe-despesa": "Classe de Despesa",
+         "descricao": "Descrição",
+         "inativo" : "Inativo"
+      },
+      "rotulos": {
+         "selecione-um-centro-de-custo": "Selecione um Centro de Custo"
+      },
+      "titulo": "Centro de Custo",
+      "lista": "Lista dos Centros de Custos",
+      "acoes": {
+         "adicionar": "Adicionar novo Centro de Custo",
+         "editar": "Editar Centro de Custo",
+         "deletar_sucesso": "Centro de Custo removido com sucesso!",
+         "adicionar_sucesso": "Centro de Custo adicionado com sucesso.",
+         "atualizar_sucesso": "Centro de Custo atualizado com sucesso."
       }
    }
 }

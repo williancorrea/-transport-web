@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
+import {CentroDeCustoFiltro} from '../../core/model/CentroDeCustoFiltro';
 import {Router} from '@angular/router';
 import {TranslateService} from 'ng2-translate';
 import {AuthService} from '../../security/auth.service';
@@ -7,20 +8,19 @@ import {ToastyService} from 'ng2-toasty';
 import {ConfirmationService, LazyLoadEvent} from 'primeng/api';
 import {Title} from '@angular/platform-browser';
 import {environment} from '../../../environments/environment';
-import {ClasseDespezaService} from '../classe-despeza.service';
-import {ClasseDespezaFiltro} from '../../core/model/ClasseDespezaFiltro';
+import {CentroDeCustoService} from '../centro-de-custo.service';
 
 @Component({
-   selector: 'app-classe-despeza-pesquisar',
-   templateUrl: './classe-despeza-pesquisar.component.html',
-   styleUrls: ['./classe-despeza-pesquisar.component.css']
+   selector: 'app-centro-de-custo-pesquisar',
+   templateUrl: './centro-de-custo-pesquisar.component.html',
+   styleUrls: ['./centro-de-custo-pesquisar.component.css']
 })
-export class ClasseDespezaPesquisarComponent implements OnInit {
+export class CentroDeCustoPesquisarComponent implements OnInit {
 
-   classeDespeza = [];
-   classeDespezaFiltro: ClasseDespezaFiltro;
+   centroDeCusto = [];
+   centroDeCustoFiltro: CentroDeCustoFiltro;
    showFilter: boolean;
-   classeDespezaSelecionada = null;
+   centroDeCustoSelecionada = null;
    loading: boolean;
    totalRecords = 0;
    env: any;
@@ -35,7 +35,7 @@ export class ClasseDespezaPesquisarComponent implements OnInit {
 
    constructor(private router: Router,
                private translate: TranslateService,
-               private classeDespezaService: ClasseDespezaService,
+               private centroDeCustoService: CentroDeCustoService,
                public auth: AuthService,
                private errorHandler: ErrorHandlerService,
                private toasty: ToastyService,
@@ -48,14 +48,20 @@ export class ClasseDespezaPesquisarComponent implements OnInit {
     */
    ngOnInit() {
       this.showFilter = false;
-      this.classeDespezaFiltro = new ClasseDespezaFiltro();
+      this.centroDeCustoFiltro = new CentroDeCustoFiltro();
 
       this.env = environment;
       this.setLoading(true);
-      this.translate.get('classe-despeza').subscribe(s => {
+      this.translate.get('centro-de-custo').subscribe(s => {
          this.title.setTitle(s['lista']);
 
          this.COLS = [
+            {
+               field: ['classeDespesa']['descricao'],
+               header: s['campos']['classe-despesa'],
+               hidden: false,
+               class: ''
+            },
             {
                field: 'descricao',
                header: s['campos']['descricao'],
@@ -88,7 +94,7 @@ export class ClasseDespezaPesquisarComponent implements OnInit {
     */
    showFilterFields(value: boolean) {
       this.showFilter = value;
-      this.classeDespezaFiltro = new ClasseDespezaFiltro();
+      this.centroDeCustoFiltro = new CentroDeCustoFiltro();
       if (this.filterGrid) {
          this.filterGrid.nativeElement.value = '';
       }
@@ -112,10 +118,10 @@ export class ClasseDespezaPesquisarComponent implements OnInit {
     */
    loadBank(lazyLoad: LazyLoadEvent) {
       this.setLoading(true);
-      this.classeDespezaSelecionada = null;
-      this.classeDespezaService.findAll(lazyLoad, this.classeDespezaFiltro).then(result => {
+      this.centroDeCustoSelecionada = null;
+      this.centroDeCustoService.findAll(lazyLoad, this.centroDeCustoFiltro).then(result => {
          this.totalRecords = result.totalElements;
-         this.classeDespeza = result.content;
+         this.centroDeCusto = result.content;
          this.setLoading(false);
       })
          .catch(error => {
@@ -166,7 +172,7 @@ export class ClasseDespezaPesquisarComponent implements OnInit {
     * Redirects you to the data edit screen
     */
    edit() {
-      this.router.navigateByUrl(`classeDespeza/${this.classeDespezaSelecionada.key}`);
+      this.router.navigateByUrl(`centroDeCusto/${this.centroDeCustoSelecionada.key}`);
    }
 
    /**
@@ -190,8 +196,8 @@ export class ClasseDespezaPesquisarComponent implements OnInit {
     */
    delete() {
       this.loading = true;
-      this.translate.get('classe-despeza').subscribe(s => {
-         this.classeDespezaService.delete(this.classeDespezaSelecionada.key)
+      this.translate.get('centro-de-custo').subscribe(s => {
+         this.centroDeCustoService.delete(this.centroDeCustoSelecionada.key)
             .then(() => {
                this.grid.first = 0;
                this.findAll(this.filterGrid.nativeElement, this.grid);

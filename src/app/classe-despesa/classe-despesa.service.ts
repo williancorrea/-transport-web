@@ -1,21 +1,21 @@
 import {Injectable} from '@angular/core';
 import {AuthHttp} from 'angular2-jwt';
 import {environment} from '../../environments/environment';
-import {ClasseDespezaFiltro} from '../core/model/ClasseDespezaFiltro';
+import {ClasseDespesaFiltro} from '../core/model/ClasseDespesaFiltro';
 
 @Injectable()
-export class ClasseDespezaService {
+export class ClasseDespesaService {
 
    apiUrl: string;
 
    constructor(private http: AuthHttp) {
-      this.apiUrl = `${environment.apiUrl}/classes_despezas`;
+      this.apiUrl = `${environment.apiUrl}/classes_despesas`;
    }
 
    /**
     * List all records according to the filters passed by parameter
     */
-   findAll(filter: any, classeDespezaFiltro: ClasseDespezaFiltro): Promise<any> {
+   findAll(filter: any, classeDespesaFiltro: ClasseDespesaFiltro): Promise<any> {
       /*
          in a real application, make a remote request to load data using state metadata from event
          event.first = First row offset
@@ -35,8 +35,8 @@ export class ClasseDespezaService {
       if (filter.globalFilter && filter.globalFilter.length > 0) {
          config.params['filtroGlobal'] = filter.globalFilter;
       }
-      if (classeDespezaFiltro.descricao && classeDespezaFiltro.descricao.length > 0) {
-         config.params['descricao'] = classeDespezaFiltro.descricao;
+      if (classeDespesaFiltro && classeDespesaFiltro.descricao && classeDespesaFiltro.descricao.length > 0) {
+         config.params['descricao'] = classeDespesaFiltro.descricao;
       }
 
       return this.http.get(`${this.apiUrl}`, config)
@@ -72,8 +72,8 @@ export class ClasseDespezaService {
    /**
     * Save the record
     */
-   save(classeDespeza: any): Promise<any> {
-      const clone = JSON.parse(JSON.stringify(classeDespeza));
+   save(classeDespesa: any): Promise<any> {
+      const clone = JSON.parse(JSON.stringify(classeDespesa));
       delete clone['key'];
       delete clone['controle'];
 
@@ -88,10 +88,10 @@ export class ClasseDespezaService {
    /**
     * Updates
     */
-   update(classeDespeza: any): Promise<any> {
-      const key = classeDespeza.key;
+   update(classeDespesa: any): Promise<any> {
+      const key = classeDespesa.key;
 
-      const clone = JSON.parse(JSON.stringify(classeDespeza));
+      const clone = JSON.parse(JSON.stringify(classeDespesa));
       delete clone['key'];
       delete clone['controle'];
 

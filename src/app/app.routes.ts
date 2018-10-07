@@ -36,8 +36,10 @@ import {ItinerarioPesquisaComponent} from './itinerario/itinerario-pesquisa/itin
 import {ItinerarioNovoComponent} from './itinerario/itinerario-novo/itinerario-novo.component';
 import {ControleKmPesquisaComponent} from './controle-km/controle-km-pesquisa/controle-km-pesquisa.component';
 import {ControleKmNovoComponent} from './controle-km/controle-km-novo/controle-km-novo.component';
-import {ClasseDespezaPesquisarComponent} from './classe-despeza/classe-despeza-pesquisar/classe-despeza-pesquisar.component';
-import {ClasseDespezaNovoComponent} from './classe-despeza/classe-despeza-novo/classe-despeza-novo.component';
+import {ClasseDespesaPesquisarComponent} from './classe-despesa/classe-despesa-pesquisar/classe-despesa-pesquisar.component';
+import {ClasseDespesaNovoComponent} from './classe-despesa/classe-despesa-novo/classe-despesa-novo.component';
+import {CentroDeCustoPesquisarComponent} from './centro-de-custo/centro-de-custo-pesquisar/centro-de-custo-pesquisar.component';
+import {CentroDeCustoNovoComponent} from './centro-de-custo/centro-de-custo-novo/centro-de-custo-novo.component';
 
 export const routes: Routes = [
    {
@@ -111,9 +113,15 @@ export const routes: Routes = [
    {path: 'controleKm/novo', component: ControleKmNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_CONTROLE-KM']}},
    {path: 'controleKm/:key', component: ControleKmNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_CONTROLE-KM']}},
 
-   {path: 'classeDespeza', component: ClasseDespezaPesquisarComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_CLASSE-DESPEZA']}},
-   {path: 'classeDespeza/novo', component: ClasseDespezaNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_CLASSE-DESPEZA']}},
-   {path: 'classeDespeza/:key', component: ClasseDespezaNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_CLASSE-DESPEZA']}},
+   {path: 'classeDespesa', component: ClasseDespesaPesquisarComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_CLASSE-DESPESA']}},
+   {path: 'classeDespesa/novo', component: ClasseDespesaNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_CLASSE-DESPESA']}},
+   {path: 'classeDespesa/:key', component: ClasseDespesaNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_CLASSE-DESPESA']}},
+
+   {path: 'centroDeCusto', component: CentroDeCustoPesquisarComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_CENTRO-DE-CUSTO']}},
+   {path: 'centroDeCusto/novo', component: CentroDeCustoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_CENTRO-DE-CUSTO']}},
+   {path: 'centroDeCusto/:key', component: CentroDeCustoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_CENTRO-DE-CUSTO']}},
+
+
 
 
    {path: '**', redirectTo: 'page-not-found'}

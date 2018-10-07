@@ -6,7 +6,7 @@
          <div>
 
             <h1 *ngIf="loading === true">{{('commons.loading') | translate}}</h1>
-            <h1 *ngIf="loading === false">{{(form.get('key').value?.length > 0 ? 'classe-despeza.acoes.editar' : 'classe-despeza.acoes.adicionar') |
+            <h1 *ngIf="loading === false">{{(form.get('key').value?.length > 0 ? 'classe-despesa.acoes.editar' : 'classe-despesa.acoes.adicionar') |
                translate}}</h1>
          </div>
 
@@ -20,7 +20,7 @@
                       formControlName="key">
 
                <div class="ui-sm-12 ui-g-12 ui-fluid">
-                  <label>{{'classe-despeza.campos.descricao' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <label>{{'classe-despesa.campos.descricao' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
                   <input pInputText
                          type="text"
                          name="name"
@@ -29,7 +29,7 @@
                </div>
 
                <div class="ui-sm-12 ui-g-12 ui-fluid">
-                  <label>{{'classe-despeza.campos.inativo' | translate}}</label>
+                  <label>{{'classe-despesa.campos.inativo' | translate}}</label>
                   <p-inputSwitch formControlName="inativo"></p-inputSwitch>
                </div>
 
@@ -40,7 +40,7 @@
                           tooltipPosition="top" pTooltip="{{'actions.tooltip.cancel' | translate}}"
                           (click)="cancel()"></button>
                   <button pButton type="submit"
-                          *ngIf="form.get('key').value ? auth.hasPermission('ROLE_ATUALIZAR_CLASSE-DESPEZA') : auth.hasPermission('ROLE_SALVAR_CLASSE-DESPEZA')"
+                          *ngIf="form.get('key').value ? auth.hasPermission('ROLE_ATUALIZAR_CLASSE-DESPESA') : auth.hasPermission('ROLE_SALVAR_CLASSE-DESPESA')"
                           label="{{(form.get('key').value ? 'actions.update' : 'actions.save') | translate}}"
                           tooltipPosition="top" pTooltip="{{'actions.tooltip.save' | translate}}"
                           class="ui-button-success"></button>

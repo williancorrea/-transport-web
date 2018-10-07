@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ClasseDespezaNovoComponent} from './classe-despeza-novo/classe-despeza-novo.component';
-import {ClasseDespezaPesquisarComponent} from './classe-despeza-pesquisar/classe-despeza-pesquisar.component';
+import {ClasseDespesaNovoComponent} from './classe-despesa-novo/classe-despesa-novo.component';
+import {ClasseDespesaPesquisarComponent} from './classe-despesa-pesquisar/classe-despesa-pesquisar.component';
 import {TranslateModule, TranslateService} from 'ng2-translate';
 import {TransportSharedModule} from '../transport-shared/transport-share.module';
 import {CoreModule} from '../core/core.module';
@@ -44,13 +44,13 @@ import {TableModule} from 'primeng/table';
       InputSwitchModule
    ],
    declarations: [
-      ClasseDespezaNovoComponent,
-      ClasseDespezaPesquisarComponent
+      ClasseDespesaNovoComponent,
+      ClasseDespesaPesquisarComponent
    ],
    exports: [],
    providers: [
       TranslateService
    ]
 })
-export class ClasseDespezaModule {
+export class ClasseDespesaModule {
 }

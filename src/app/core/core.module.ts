@@ -1,7 +1,7 @@
 import {Title} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
 import {HttpModule} from '@angular/http';
-import {NgModule, LOCALE_ID} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {ConfirmationService} from 'primeng/components/common/api';
@@ -24,7 +24,9 @@ import {PersonService} from '../person/person.service';
 import {VeiculoService} from '../veiculo/veiculo.service';
 import {ItinerarioService} from '../itinerario/itinerario.service';
 import {ControleKmService} from '../controle-km/controle-km.service';
-import {ClasseDespezaService} from '../classe-despeza/classe-despeza.service';
+import {ClasseDespesaService} from '../classe-despesa/classe-despesa.service';
+import {CentroDeCustoService} from '../centro-de-custo/centro-de-custo.service';
+import {BaseFormComponent} from '../transport-shared/base-form/base-form.component';
 
 
 @NgModule({
@@ -35,7 +37,7 @@ import {ClasseDespezaService} from '../classe-despeza/classe-despeza.service';
       TranslateModule,
       ButtonModule,
 
-      ConfirmDialogModule,
+      ConfirmDialogModule
    ],
    declarations: [
       PageNotFoundComponent,
@@ -58,7 +60,8 @@ import {ClasseDespezaService} from '../classe-despeza/classe-despeza.service';
       VeiculoService,
       ItinerarioService,
       ControleKmService,
-      ClasseDespezaService,
+      ClasseDespesaService,
+      CentroDeCustoService,
 
       ConfirmationService,
       JwtHelper,
