@@ -40,6 +40,8 @@ import {ClasseDespesaPesquisarComponent} from './classe-despesa/classe-despesa-p
 import {ClasseDespesaNovoComponent} from './classe-despesa/classe-despesa-novo/classe-despesa-novo.component';
 import {CentroDeCustoPesquisarComponent} from './centro-de-custo/centro-de-custo-pesquisar/centro-de-custo-pesquisar.component';
 import {CentroDeCustoNovoComponent} from './centro-de-custo/centro-de-custo-novo/centro-de-custo-novo.component';
+import {TipoPagamentoPesquisarComponent} from './tipo-pagamento/tipo-pagamento-pesquisar/tipo-pagamento-pesquisar.component';
+import {TipoPagamentoNovoComponent} from './tipo-pagamento/tipo-pagamento-novo/tipo-pagamento-novo.component';
 
 export const routes: Routes = [
    {
@@ -120,6 +122,10 @@ export const routes: Routes = [
    {path: 'centroDeCusto', component: CentroDeCustoPesquisarComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_CENTRO-DE-CUSTO']}},
    {path: 'centroDeCusto/novo', component: CentroDeCustoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_CENTRO-DE-CUSTO']}},
    {path: 'centroDeCusto/:key', component: CentroDeCustoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_CENTRO-DE-CUSTO']}},
+
+   {path: 'tipoPagamento', component: TipoPagamentoPesquisarComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_TIPO-PAGAMENTO']}},
+   {path: 'tipoPagamento/novo', component: TipoPagamentoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_TIPO-PAGAMENTO']}},
+   {path: 'tipoPagamento/:key', component: TipoPagamentoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_TIPO-PAGAMENTO']}},
 
 
 

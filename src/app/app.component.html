@@ -8,12 +8,10 @@
          <router-outlet></router-outlet>
          <app-footer *ngIf="showMenus()" class="footer-fixed"></app-footer>
 
-         <ng2-toasty></ng2-toasty>
+         <ng2-toasty [position]="'bottom-center'"></ng2-toasty>
       </div>
    </div>
 </div>
-
-
 
 <p-confirmDialog header="{{'actions.confirm' | translate}}" icon="fa fa-question-circle" #confirm [width]="400">
    <p-footer>

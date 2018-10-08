@@ -1,26 +1,26 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
+import {TipoPagamentoFiltro} from '../../core/model/TipoPagamentoFiltro';
 import {Router} from '@angular/router';
 import {TranslateService} from 'ng2-translate';
+import {TipoPagamentoService} from '../../tipo-pagamento/tipo-pagamento.service';
 import {AuthService} from '../../security/auth.service';
 import {ErrorHandlerService} from '../../core/error-handler.service';
 import {ToastyService} from 'ng2-toasty';
 import {ConfirmationService, LazyLoadEvent} from 'primeng/api';
 import {Title} from '@angular/platform-browser';
 import {environment} from '../../../environments/environment';
-import {ClasseDespesaService} from '../classe-despesa.service';
-import {ClasseDespesaFiltro} from '../../core/model/ClasseDespesaFiltro';
 
 @Component({
-   selector: 'app-classe-despesa-pesquisar',
-   templateUrl: './classe-despesa-pesquisar.component.html',
-   styleUrls: ['./classe-despesa-pesquisar.component.css']
+   selector: 'app-tipo-pagamento-pesquisar',
+   templateUrl: './tipo-pagamento-pesquisar.component.html',
+   styleUrls: ['./tipo-pagamento-pesquisar.component.css']
 })
-export class ClasseDespesaPesquisarComponent implements OnInit {
+export class TipoPagamentoPesquisarComponent implements OnInit {
 
-   classeDespesa = [];
-   classeDespesaFiltro: ClasseDespesaFiltro;
+   tipoPagamento = [];
+   tipoPagamentoFiltro: TipoPagamentoFiltro;
    showFilter: boolean;
-   classeDespesaSelecionada = null;
+   tipoPagamentoSelecionada = null;
    loading: boolean;
    totalRecords = 0;
    env: any;
@@ -35,7 +35,7 @@ export class ClasseDespesaPesquisarComponent implements OnInit {
 
    constructor(private router: Router,
                private translate: TranslateService,
-               private classeDespesaService: ClasseDespesaService,
+               private tipoPagamentoService: TipoPagamentoService,
                public auth: AuthService,
                private errorHandler: ErrorHandlerService,
                private toasty: ToastyService,
@@ -48,11 +48,11 @@ export class ClasseDespesaPesquisarComponent implements OnInit {
     */
    ngOnInit() {
       this.showFilter = false;
-      this.classeDespesaFiltro = new ClasseDespesaFiltro();
+      this.tipoPagamentoFiltro = new TipoPagamentoFiltro();
 
       this.env = environment;
       this.setLoading(true);
-      this.translate.get('classe-despesa').subscribe(s => {
+      this.translate.get('tipo-pagamento').subscribe(s => {
          this.title.setTitle(s['lista']);
 
          this.COLS = [
@@ -88,7 +88,7 @@ export class ClasseDespesaPesquisarComponent implements OnInit {
     */
    showFilterFields(value: boolean) {
       this.showFilter = value;
-      this.classeDespesaFiltro = new ClasseDespesaFiltro();
+      this.tipoPagamentoFiltro = new TipoPagamentoFiltro();
       if (this.filterGrid) {
          this.filterGrid.nativeElement.value = '';
       }
@@ -112,10 +112,10 @@ export class ClasseDespesaPesquisarComponent implements OnInit {
     */
    loadBank(lazyLoad: LazyLoadEvent) {
       this.setLoading(true);
-      this.classeDespesaSelecionada = null;
-      this.classeDespesaService.findAll(lazyLoad, this.classeDespesaFiltro).then(result => {
+      this.tipoPagamentoSelecionada = null;
+      this.tipoPagamentoService.findAll(lazyLoad, this.tipoPagamentoFiltro).then(result => {
          this.totalRecords = result.totalElements;
-         this.classeDespesa = result.content;
+         this.tipoPagamento = result.content;
          this.setLoading(false);
       })
          .catch(error => {
@@ -166,7 +166,7 @@ export class ClasseDespesaPesquisarComponent implements OnInit {
     * Redirects you to the data edit screen
     */
    edit() {
-      this.router.navigateByUrl(`classeDespesa/${this.classeDespesaSelecionada.key}`);
+      this.router.navigateByUrl(`tipoPagamento/${this.tipoPagamentoSelecionada.key}`);
    }
 
    /**
@@ -190,8 +190,8 @@ export class ClasseDespesaPesquisarComponent implements OnInit {
     */
    delete() {
       this.loading = true;
-      this.translate.get('classe-despesa').subscribe(s => {
-         this.classeDespesaService.delete(this.classeDespesaSelecionada.key)
+      this.translate.get('tipo-pagamento').subscribe(s => {
+         this.tipoPagamentoService.delete(this.tipoPagamentoSelecionada.key)
             .then(() => {
                this.grid.first = 0;
                this.findAll(this.filterGrid.nativeElement, this.grid);

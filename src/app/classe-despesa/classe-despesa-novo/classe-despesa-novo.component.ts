@@ -18,43 +18,43 @@ export class ClasseDespesaNovoComponent extends BaseFormComponent  implements On
 
    bankTranslate: any;
 
-   constructor(private router: Router,
-               private activatedRoute: ActivatedRoute,
-               private translate: TranslateService,
-               private title: Title,
-               private classeDespesaService: ClasseDespesaService,
-               private toasty: ToastyService,
-               public auth: AuthService,
-               private errorHandler: ErrorHandlerService,
-               private formBuild: FormBuilder) {
-      super();
-   }
+         constructor(private router: Router,
+            private activatedRoute: ActivatedRoute,
+            private translate: TranslateService,
+            private title: Title,
+            private classeDespesaService: ClasseDespesaService,
+            private toasty: ToastyService,
+            public auth: AuthService,
+            private errorHandler: ErrorHandlerService,
+            private formBuild: FormBuilder) {
+            super();
+         }
 
-   ngOnInit() {
-      this.configForm();
-      this.showLoading(true);
-      this.translate.get('classe-despesa').subscribe(s => {
-         this.bankTranslate = s;
+         ngOnInit() {
+            this.configForm();
+            this.showLoading(true);
+            this.translate.get('classe-despesa').subscribe(s => {
+               this.bankTranslate = s;
 
-         const isEditing = this.activatedRoute.snapshot.params['key'];
-         if (isEditing) {
-            this.title.setTitle(s['acoes']['editar']);
+               const isEditing = this.activatedRoute.snapshot.params['key'];
+               if (isEditing) {
+                  this.title.setTitle(s['acoes']['editar']);
 
-            this.classeDespesaService.findOne(isEditing)
-               .then(response => {
-                  // this.bank = response;
-                  this.form.patchValue(response);
-                  this.showLoading(false);
-               })
-               .catch(error => {
-                  this.errorHandler.handle(error);
+                  this.classeDespesaService.findOne(isEditing)
+                     .then(response => {
+                        // this.bank = response;
+                        this.form.patchValue(response);
+                        this.showLoading(false);
+                     })
+                     .catch(error => {
+                        this.errorHandler.handle(error);
+                        this.title.setTitle(s['acoes']['adicionar']);
+                        this.showLoading(false);
+                     });
+               } else {
                   this.title.setTitle(s['acoes']['adicionar']);
                   this.showLoading(false);
-               });
-         } else {
-            this.title.setTitle(s['acoes']['adicionar']);
-            this.showLoading(false);
-         }
+               }
       });
    }
 

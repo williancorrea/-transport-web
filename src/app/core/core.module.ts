@@ -27,6 +27,8 @@ import {ControleKmService} from '../controle-km/controle-km.service';
 import {ClasseDespesaService} from '../classe-despesa/classe-despesa.service';
 import {CentroDeCustoService} from '../centro-de-custo/centro-de-custo.service';
 import {BaseFormComponent} from '../transport-shared/base-form/base-form.component';
+import {TipoPagamentoModule} from '../tipo-pagamento/tipo-pagamento.module';
+import {TipoPagamentoService} from '../tipo-pagamento/tipo-pagamento.service';
 
 
 @NgModule({
@@ -62,6 +64,7 @@ import {BaseFormComponent} from '../transport-shared/base-form/base-form.compone
       ControleKmService,
       ClasseDespesaService,
       CentroDeCustoService,
+      TipoPagamentoService,
 
       ConfirmationService,
       JwtHelper,

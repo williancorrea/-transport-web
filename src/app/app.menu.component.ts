@@ -40,7 +40,8 @@ export class AppMenuComponent implements OnInit {
                      {label:  m['persons'], icon: 'fa fa-fw fa-address-book-o', routerLink: ['/persons'], visible: this.auth.hasPermission('ROLE_LIST_PERSON')},
                      {label:  m['itinerario'], icon: 'fa fa-fw fa-truck', routerLink: ['/itinerario'], visible: this.auth.hasPermission('ROLE_LISTAR_ITINERARIO')},
                      {label:  m['classe-despesa'], icon: 'fa fa-fw fa-list', routerLink: ['/classeDespesa'], visible: this.auth.hasPermission('ROLE_LISTAR_CLASSE-DESPESA')},
-                     {label:  m['centro-de-custo'], icon: 'fa fa-fw fa-list', routerLink: ['/centroDeCusto'], visible: this.auth.hasPermission('ROLE_LISTAR_CENTRO-DE-CUSTO')}
+                     {label:  m['centro-de-custo'], icon: 'fa fa-fw fa-list', routerLink: ['/centroDeCusto'], visible: this.auth.hasPermission('ROLE_LISTAR_CENTRO-DE-CUSTO')},
+                     {label:  m['tipo-pagamento'], icon: 'fa fa-fw fa-list', routerLink: ['/tipoPagamento'], visible: this.auth.hasPermission('ROLE_LISTAR_TIPO-PAGAMENTO')}
                   ]
                },
               {label:  m['controle-km'], icon: 'fa fa-fw fa-map-signs', routerLink: ['/controleKm'], visible: this.auth.hasPermission('ROLE_LISTAR_CONTROLE-KM')}

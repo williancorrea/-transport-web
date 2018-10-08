@@ -201,7 +201,7 @@ export class CentroDeCustoPesquisarComponent implements OnInit {
             .then(() => {
                this.grid.first = 0;
                this.findAll(this.filterGrid.nativeElement, this.grid);
-               this.toasty.success(s['delete_success']);
+               this.toasty.success(s['acoes']['deletar_sucesso']);
                this.loading = false;
             })
             .catch(

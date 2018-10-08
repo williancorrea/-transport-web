@@ -35,7 +35,8 @@
       "itinerario": "Itinerários",
       "controle-km": "Controle Km",
       "classe-despesa": "Classe de Despesas",
-      "centro-de-custo": "Centro de Custo"
+      "centro-de-custo": "Centro de Custo",
+      "tipo-pagamento": "Tipo de Pagamento"
    },
    "flags": {
       "brazil": "Brasil",
@@ -307,7 +308,7 @@
    "classe-despesa": {
       "campos": {
          "descricao": "Descrição",
-         "inativo" : "Inativo"
+         "inativo": "Inativo"
       },
       "rotulos": {
          "selecione-uma-classe-despesa": "Selecione uma classe de despesa"
@@ -326,7 +327,7 @@
       "campos": {
          "classe-despesa": "Classe de Despesa",
          "descricao": "Descrição",
-         "inativo" : "Inativo"
+         "inativo": "Inativo"
       },
       "rotulos": {
          "selecione-um-centro-de-custo": "Selecione um Centro de Custo"
@@ -339,6 +340,24 @@
          "deletar_sucesso": "Centro de Custo removido com sucesso!",
          "adicionar_sucesso": "Centro de Custo adicionado com sucesso.",
          "atualizar_sucesso": "Centro de Custo atualizado com sucesso."
+      }
+   },
+   "tipo-pagamento": {
+      "campos": {
+         "descricao": "Descrição",
+         "inativo": "Inativo"
+      },
+      "rotulos": {
+         "selecione-um-tipo-pagamento": "Selecione um Centro de Custo"
+      },
+      "titulo": "Tipo de Pagamento",
+      "lista": "Lista dos Tipos de Pagamentos",
+      "acoes": {
+         "adicionar": "Adicionar novo Tipo de Pagamento",
+         "editar": "Editar Tipo de Pagamento",
+         "deletar_sucesso": "Tipo de Pagamento removido com sucesso!",
+         "adicionar_sucesso": "Tipo de Pagamento adicionado com sucesso.",
+         "atualizar_sucesso": "Tipo de Pagamento atualizado com sucesso."
       }
    }
 }
