@@ -28,26 +28,26 @@
                          formControlName="code">
                   <app-message [form]="f" [control]="form.get('code')"></app-message>
                </div>
+               <div class="ui-g-9"></div>
 
-               <div class="ui-sm-12 ui-g-12 ui-fluid">
+
+               <div class="ui-sm-12 ui-g-6 ui-fluid">
                   <label for="nome" class="required">{{'bank.fields.name' | translate}}</label>
                   <input pInputText
                          id="nome"
                          type="text"
                          name="name"
-                         formControlName="name"
-                  >
+                         formControlName="name">
                   <app-message [form]="f" [control]="form.get('name')"></app-message>
                </div>
 
-               <div class="ui-sm-12 ui-g-12 ui-fluid">
+               <div class="ui-sm-12 ui-g-6 ui-fluid">
                   <label for="url">{{'bank.fields.url' | translate}}</label>
                   <input pInputText
                          id="url"
                          type="text"
                          name="url"
-                         formControlName="url"
-                  >
+                         formControlName="url">
                   <app-message [form]="f" [control]="form.get('url')"></app-message>
                </div>
 

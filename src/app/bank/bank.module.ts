@@ -10,7 +10,7 @@ import {
    DataTableModule,
    DropdownModule, InputSwitchModule,
    InputTextModule,
-   ProgressBarModule,
+   ProgressBarModule, ToolbarModule,
    TooltipModule
 } from 'primeng/primeng';
 import {SharedModule} from 'primeng/shared';
