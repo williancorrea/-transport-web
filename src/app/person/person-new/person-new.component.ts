@@ -67,6 +67,10 @@ export class PersonNewComponent implements OnInit {
                      this.form.removeControl('pessoaFisica');
                   }
 
+                  if (response['pessoaFisica'] && !response['pessoaFisica']['estadoCivil']) {
+                     response['pessoaFisica']['estadoCivil'] = {key: null};
+                  }
+
                   this.form.patchValue(response);
                   this.showLoading(false);
                })
@@ -219,9 +223,113 @@ export class PersonNewComponent implements OnInit {
                ]
             ],
             estadoCivil: this.formBuild.group({
-               key: [null, Validators.required]
+               key: [null]
             })
+         }),
+         // listaPessoaEndereco: this.formBuild.array([this.createPessoaEndereco()]),
+         listaPessoaEndereco: [[]],
+         listaPessoaTelefone: [[]],
+         listaPessoaContato: [[]],
+         listaPessoaAuditoria: [[]]
+      });
+   }
+
+   createPessoaEndereco(): FormGroup {
+      return this.formBuild.group({
+         key: [null],
+         logradouro: [
+            null, [
+               Validators.maxLength(150)
+            ]
+         ],
+         numero: [
+            null, [
+               Validators.maxLength(15)
+            ]
+         ],
+         complemento: [
+            null, [
+               Validators.maxLength(80)
+            ]
+         ],
+         bairro: [
+            null, [
+               Validators.maxLength(100)
+            ]
+         ],
+         cep: [
+            null, [
+               Validators.maxLength(8)
+            ]
+         ],
+         principal: [false],
+         entrega: [false],
+         cobranca: [false],
+         correspondencia: [false],
+         cidade: this.formBuild.group({
+            key: [null, Validators.required]
          })
+      });
+   }
+
+   createPessoaTelefone(): FormGroup {
+      return this.formBuild.group({
+         key: [null],
+         telefoneTipo: [
+            null, [
+               Validators.required
+            ]
+         ],
+         numero: [
+            null, [
+               Validators.maxLength(14)
+            ]
+         ],
+         observacao: [
+            null, [
+               Validators.maxLength(250)
+            ]
+         ]
+      });
+   }
+
+   createPessoaContato(): FormGroup {
+      return this.formBuild.group({
+         key: [null],
+         nome: [
+            null, [
+               Validators.maxLength(150)
+            ]
+         ],
+         email: [
+            null, [
+               Validators.maxLength(250)
+            ]
+         ],
+         foneComercial: [
+            null, [
+               Validators.maxLength(14)
+            ]
+         ],
+         foneResidencial: [
+            null, [
+               Validators.maxLength(14)
+            ]
+         ],
+         foneCelular: [
+            null, [
+               Validators.maxLength(14)
+            ],
+         ],
+         inativo: [false]
+      });
+   }
+
+   createPessoaAuditoria(): FormGroup {
+      return this.formBuild.group({
+         key: [null],
+         dataAlteracao: [null],
+         objetoAlterado: [null]
       });
    }
 
@@ -251,6 +359,7 @@ export class PersonNewComponent implements OnInit {
 
       if (this.form.valid) {
          this.showLoading(true);
+
          if (this.form.get('key').value) {
             this.personService.update(this.form.value)
                .then(

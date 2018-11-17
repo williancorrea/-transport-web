@@ -68,6 +68,7 @@ export class TipoPagamentoNovoComponent extends BaseFormComponent implements OnI
                Validators.maxLength(150)
             ]
          ],
+         naoPodeSerAlterado: [null],
          inativo: [null]
       });
    }

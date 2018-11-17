@@ -1,7 +1,7 @@
 {
    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
    "project": {
-      "name": "atlantis"
+      "name": "Gestao"
    },
    "apps": [
       {
@@ -35,7 +35,9 @@
             "../node_modules/moment/moment.js",
             "../node_modules/chart.js/dist/Chart.js",
             "../node_modules/fullcalendar/dist/fullcalendar.js",
-            "../node_modules/quill/dist/quill.js"
+            "../node_modules/quill/dist/quill.js",
+            "assets/js/jquery.mask.js",
+            "assets/js/jquery.maskMoney.js"
          ],
          "environmentSource": "environments/environment.ts",
          "environments": {

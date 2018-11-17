@@ -3,6 +3,8 @@ import {TranslateService} from 'ng2-translate';
 import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastyConfig} from 'ng2-toasty';
+import {Title} from '@angular/platform-browser';
+import {AuthService} from './security/auth.service';
 
 enum MenuOrientation {
    STATIC,
@@ -25,6 +27,7 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
    topbarItemClick: boolean;
    activeTopbarItem: any;
    documentClickListener: Function;
+   // showPage: boolean;
 
    private subscription: Subscription;
 
@@ -32,8 +35,11 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
                private toastyConfig: ToastyConfig,
                private translate: TranslateService,
                private activatedRoute: ActivatedRoute,
-               private router: Router) {
+               private router: Router,
+               private titulo: Title,
+               private auth: AuthService) {
 
+      // this.showPage = false;
       this.translate.addLangs(['pt-BR', 'en']);
       this.translate.setDefaultLang('en');
       const browserLang = translate.getBrowserLang();
@@ -50,10 +56,17 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
             if (locale !== undefined) {
                this.translate.use(locale);
             }
+
+            this.translate.get('sistema').subscribe(s => {
+               this.titulo.setTitle(s['titulo']);
+            });
+
+            // this.showPage = !this.auth.isInvalidAccessToken();
          });
    }
 
    showMenus(): boolean {
+      // return !this.auth.isInvalidAccessToken();
       return (this.router.url !== '/login' && this.router.url !== '/page-not-found');
    }
 

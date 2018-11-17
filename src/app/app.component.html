@@ -1,4 +1,5 @@
-<div class="layout-wrapper" [ngClass]="{'layout-wrapper-menu-active':sidebarActive, 'layout-overlay-menu':overlay}">
+<div class="layout-wrapper"
+     [ngClass]="{'layout-wrapper-menu-active':sidebarActive, 'layout-overlay-menu':overlay}">
 
    <app-topbar *ngIf="showMenus()"></app-topbar>
    <app-sidebar *ngIf="showMenus()"></app-sidebar>
@@ -12,6 +13,10 @@
       </div>
    </div>
 </div>
+
+<!--<div *ngIf="!showPage" class="validando-sessao">-->
+   <!--<span>{{'sistema.validando-sessao' | translate}}</span>-->
+<!--</div>-->
 
 <p-confirmDialog header="{{'actions.confirm' | translate}}" icon="fa fa-question-circle" #confirm [width]="400">
    <p-footer>

@@ -20,8 +20,9 @@
                       formControlName="key">
 
                <div class="ui-g-3 ui-fluid">
-                  <label>{{'bank.fields.code' | translate}}</label>
+                  <label for="codigo">{{'bank.fields.code' | translate}}</label>
                   <input pInputText
+                         id="codigo"
                          type="text"
                          name="code"
                          formControlName="code">
@@ -29,8 +30,9 @@
                </div>
 
                <div class="ui-sm-12 ui-g-12 ui-fluid">
-                  <label>{{'bank.fields.name' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <label for="nome" class="required">{{'bank.fields.name' | translate}}</label>
                   <input pInputText
+                         id="nome"
                          type="text"
                          name="name"
                          formControlName="name"
@@ -39,8 +41,9 @@
                </div>
 
                <div class="ui-sm-12 ui-g-12 ui-fluid">
-                  <label>{{'bank.fields.url' | translate}}</label>
+                  <label for="url">{{'bank.fields.url' | translate}}</label>
                   <input pInputText
+                         id="url"
                          type="text"
                          name="url"
                          formControlName="url"

@@ -110,6 +110,21 @@ textarea {
    text-align: left;
 }
 
+
+
+
+//TESTES
+label.required::after {
+   content: " *";
+   color: #da3d3d;;
+}
+
+body .ui-state-disabled, body .ui-widget:disabled {
+   opacity: 0.75;
+   cursor: not-allowed !important;
+}
+
+
 //.ui-tabview .ui-tabview-panel{
 //   border-bottom: none !important;
 //}

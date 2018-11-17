@@ -116,7 +116,7 @@
                        pButton
                        icon="fa-pencil"
                        label="{{'actions.edit' | translate}}"
-                       [disabled]="tipoPagamentoSelecionada ? false :true"
+                       [disabled]="(tipoPagamentoSelecionada && tipoPagamentoSelecionada.naoPodeSerAlterado == false) ? false :true"
                        tooltipPosition="top" pTooltip="{{'actions.tooltip.edit' | translate}}"
                        (click)="edit()"></button>
                <button type="button"
@@ -125,7 +125,7 @@
                        icon="fa-trash"
                        class="ui-button-danger"
                        label="{{'actions.delete' | translate}}"
-                       [disabled]="tipoPagamentoSelecionada ? false :true"
+                       [disabled]="(tipoPagamentoSelecionada && tipoPagamentoSelecionada.naoPodeSerAlterado == false) ? false :true"
                        tooltipPosition="top" pTooltip="{{'actions.tooltip.delete' | translate}}"
                        (click)="ConfirmDeletion(obj)"></button>
             </ng-template>

@@ -53,6 +53,7 @@ export class VeiculoPesquisaComponent implements OnInit {
       this.variaveisAmbiente = environment;
 
       this.setMostrarTelaCarregando(true);
+
       this.traduzir.get('veiculo').subscribe(s => {
          this.titulo.setTitle(s['lista']);
 

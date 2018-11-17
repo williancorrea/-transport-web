@@ -40,6 +40,7 @@
                           tooltipPosition="top" pTooltip="{{'actions.tooltip.cancel' | translate}}"
                           (click)="cancel()"></button>
                   <button pButton type="submit"
+                          [disabled]="form.get('naoPodeSerAlterado').value"
                           *ngIf="form.get('key').value ? auth.hasPermission('ROLE_ATUALIZAR_TIPO-PAGAMENTO') : auth.hasPermission('ROLE_SALVAR_TIPO-PAGAMENTO')"
                           label="{{(form.get('key').value ? 'actions.update' : 'actions.save') | translate}}"
                           tooltipPosition="top" pTooltip="{{'actions.tooltip.save' | translate}}"

@@ -2,14 +2,13 @@
 <html>
 <head>
    <meta charset="utf-8">
-   <title>Atlantis</title>
+   <title>Aguarde...</title>
    <base href="/">
 
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="icon" type="image/x-icon" href="favicon.ico">
 
    <script src="assets/js/jquery-3.2.1.js"></script>
-   <!--<script src="assets/js/jquery.mask.js" ></script>-->
 
    <!-- Layout CSS -->
    <link id="theme-css" rel="stylesheet" type="text/css" href="assets/theme/theme-blue.css">
@@ -26,6 +25,52 @@
 </app-root>
 
 <script>
+
+   // Funcao que faz o texto ficar em uppercase
+   function upperText(obj) {
+      // Para tratar o colar
+      jQuery(obj).bind('paste', function (e) {
+         var el = jQuery(this);
+         setTimeout(function () {
+            var text = jQuery(el).val();
+            el.val(text.toUpperCase());
+         }, 100);
+      });
+      // Para tratar quando é digitado
+      jQuery(obj).keypress(function () {
+         var el = jQuery(this);
+         setTimeout(function () {
+            var text = jQuery(el).val();
+            el.val(text.toUpperCase());
+         }, 100);
+      });
+   }
+
+   // Funcao que faz o texto ficar em uppercase
+   function lowerText(obj) {
+      // Para tratar o colar
+      jQuery(obj).bind('paste', function (e) {
+         var el = jQuery(this);
+         setTimeout(function () {
+            var text = jQuery(el).val();
+            el.val(text.toLowerCase());
+         }, 100);
+      });
+      // Para tratar quando é digitado
+      jQuery(obj).keypress(function () {
+         var el = jQuery(this);
+         setTimeout(function () {
+            var text = jQuery(el).val();
+            el.val(text.toLowerCase());
+         }, 100);
+      });
+   }
+
+   function configurarMoeda() {
+      $(".moeda").maskMoney({prefix: "R$ ", decimal: ",", thousands: ".", allowZero: true});
+   }
+
+
    //  https://igorescobar.github.io/jQuery-Mask-Plugin/docs.html
    $(document).ready(function () {
       $('.rg_mask').mask('00.000.000-A', {reverse: false});
@@ -39,6 +84,12 @@
             placeholder: "___-____"
          }
       );
+
+      configurarMoeda();
+      upperText(".uppercase");
+      upperText("input");
+
+      lowerText(".lowercase");
    });
 </script>
 

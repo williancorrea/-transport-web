@@ -25,6 +25,8 @@ export class DashboardDemoComponent implements OnInit {
    }
 
    ngOnInit() {
+
+      //TODO: REMOVER
       this.carService.getCarsSmall().then(cars => this.cars = cars);
 
       this.eventService.getEvents().then(events => {

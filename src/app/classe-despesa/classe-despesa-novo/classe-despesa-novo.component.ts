@@ -64,7 +64,7 @@ export class ClasseDespesaNovoComponent extends BaseFormComponent  implements On
          descricao: [
             null, [
                Validators.required,
-               Validators.minLength(5),
+               Validators.minLength(2),
                Validators.maxLength(150)
             ]
          ],

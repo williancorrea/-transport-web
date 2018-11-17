@@ -72,7 +72,7 @@ export class CentroDeCustoNovoComponent extends BaseFormComponent implements OnI
          descricao: [
             null, [
                Validators.required,
-               Validators.minLength(5),
+               Validators.minLength(2),
                Validators.maxLength(150)
             ]
          ],
