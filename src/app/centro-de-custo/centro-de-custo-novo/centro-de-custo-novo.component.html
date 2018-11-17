@@ -6,7 +6,8 @@
          <div>
 
             <h1 *ngIf="loading === true">{{('commons.loading') | translate}}</h1>
-            <h1 *ngIf="loading === false">{{(form.get('key').value?.length > 0 ? 'centro-de-custo.acoes.editar' : 'centro-de-custo.acoes.adicionar') |
+            <h1 *ngIf="loading === false">{{(form.get('key').value?.length > 0 ? 'centro-de-custo.acoes.editar' :
+               'centro-de-custo.acoes.adicionar') |
                translate}}</h1>
          </div>
 
@@ -21,8 +22,7 @@
 
                <!-- CLASSE -->
                <div class="ui-sm-4 ui-g-4 ui-fluid" formGroupName="classeDespesa">
-                  <label>{{'classe-despesa.titulo'| translate}}</label>
-                  <span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <label class="required">{{'classe-despesa.titulo'| translate}}</label>
                   <p-dropdown emptyFilterMessage="{{'actions.no_records_found' | translate }}"
                               [options]="classeDespesaList"
                               formControlName="key"
@@ -34,7 +34,7 @@
                </div>
 
                <div class="ui-sm-12 ui-g-12 ui-fluid">
-                  <label>{{'centro-de-custo.campos.descricao' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <label class="required">{{'centro-de-custo.campos.descricao' | translate}}</label>
                   <input pInputText
                          type="text"
                          name="name"

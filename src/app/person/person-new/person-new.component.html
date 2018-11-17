@@ -56,8 +56,7 @@
                      <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
                           class="ui-sm-3 ui-g-3 ui-fluid"
                           formGroupName="pessoaFisica">
-                        <label>{{'person.fields.cpf'| translate}}</label>
-                        <span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                        <label class="required">{{'person.fields.cpf'| translate}}</label>
                         <p-inputMask mask="999.999.999-99" slotChar="_" formControlName="cpf"
                                      [disabled]="form.get('key').value != null"></p-inputMask>
                         <app-message [form]="f" [control]="form.get('pessoaFisica').get('cpf')"></app-message>
@@ -67,8 +66,7 @@
                      <div *ngIf="form.get('tipo').value === 'JURIDICA' ? true : false"
                           class="ui-sm-3 ui-g-3 ui-fluid"
                           formGroupName="pessoaJuridica">
-                        <label>{{'person.fields.cnpj'| translate}}</label>
-                        <span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                        <label class="required">{{'person.fields.cnpj'| translate}}</label>
                         <p-inputMask mask="99.999.999/9999-99" slotChar="_" formControlName="cnpj"
                                      [disabled]="form.get('key').value != null"></p-inputMask>
                         <app-message [form]="f" [control]="form.get('pessoaJuridica').get('cnpj')"></app-message>
@@ -76,9 +74,8 @@
 
                      <!--PESSOA - NOME-->
                      <div class="ui-sm-9 ui-g-9 ui-fluid">
-                        <label>{{(form.get('tipo').value === 'FISICA' ? 'person.fields.name' :
+                        <label class="required">{{(form.get('tipo').value === 'FISICA' ? 'person.fields.name' :
                            'person.labels.social_reason') | translate}}</label>
-                        <span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
                         <input pInputText type="text" formControlName="nome" class="txt-upercase">
                         <app-message [form]="f" [control]="form.get('nome')"></app-message>
                      </div>
@@ -106,8 +103,7 @@
                      <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
                           class="ui-g-3 ui-fluid"
                           formGroupName="pessoaFisica">
-                        <label>{{'person.fields.sexo'| translate}}</label>
-                        <span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                        <label class="required">{{'person.fields.sexo'| translate}}</label>
                         <p-dropdown emptyFilterMessage="{{'actions.no_records_found' | translate }}"
                                     [options]="sexos"
                                     formControlName="sexo"
@@ -122,8 +118,7 @@
                           class="ui-sm-3 ui-g-3 ui-fluid"
                           formGroupName="pessoaFisica">
                         <div formGroupName="estadoCivil">
-                           <label>{{'person.fields.estadoCivil'| translate}}</label>
-                           <span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                           <label class="required">{{'person.fields.estadoCivil'| translate}}</label>
                            <p-dropdown emptyFilterMessage="{{'actions.no_records_found' | translate }}"
                                        [options]="estadoCivilList"
                                        formControlName="key"

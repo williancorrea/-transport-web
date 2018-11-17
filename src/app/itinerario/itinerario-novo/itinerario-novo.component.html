@@ -20,13 +20,6 @@
                       name="key"
                       formControlName="key">
 
-               <div class="ui-g-12">
-                  <p-inputSwitch formControlName="ativo"
-                                 onLabel="{{'actions.active' | translate }}"
-                                 offLabel="{{'actions.disabled' | translate}}">
-                  </p-inputSwitch>
-               </div>
-
                <div class="ui-sm-3 ui-g-3 ui-fluid">
                   <label>{{'itinerario.campos.codigo' | translate}}</label>
                   <input pInputText
@@ -38,7 +31,7 @@
                </div>
 
                <div class="ui-sm-6 ui-g-6 ui-fluid">
-                  <label>{{'itinerario.campos.nome' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <label class="required">{{'itinerario.campos.nome' | translate}}</label>
                   <input pInputText
                          type="text"
                          name="nome"
@@ -48,8 +41,7 @@
                </div>
 
                <div class="ui-sm-3 ui-g-3 ui-fluid">
-                  <label>{{'itinerario.campos.validoAte' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
-
+                  <label class="required">{{'itinerario.campos.validoAte' | translate}}</label>
                   <!--TODO: TRADUZIR O COMPONENTE CALENDAR-->
                   <!--TODO: ADICIONAR NAVEGAÇÃO POR ANO NO COMPONENTE CALENDAR-->
                   <!--TODO: ADICIONAR MASCARA AO CAMPO-->

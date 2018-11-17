@@ -21,7 +21,7 @@
                       formControlName="key">
 
                <div class="ui-sm-12 ui-g-12 ui-fluid">
-                  <label>{{'estado-civil.campos.nome' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <label class="required">{{'estado-civil.campos.nome' | translate}}</label>
                   <input pInputText
                          type="text"
                          name="nome"
@@ -31,7 +31,7 @@
                </div>
 
                <div class="ui-sm-12 ui-g-12 ui-fluid">
-                  <label>{{'estado-civil.campos.descricao' | translate}}</label><span class="requiredLabel">{{'validation.requiredLabel' | translate}}</span>
+                  <label class="required">{{'estado-civil.campos.descricao' | translate}}</label>
                   <textarea [rows]="5"
                             [cols]="30"
                             pInputTextarea
