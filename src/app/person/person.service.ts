@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {PersonFilters} from '../core/model/PersonFilters';
 import {AuthHttp} from 'angular2-jwt';
+import * as moment from 'moment';
 
 @Injectable()
 export class PersonService {
@@ -49,7 +50,13 @@ export class PersonService {
       return this.http.get(`${this.apiUrl}`, config)
          .toPromise()
          .then(response => {
-            return response.json();
+
+            const lista = response.json();
+            for (let i = 0; i < lista.content.length; i++) {
+               lista.content[i] = this.formatarCamposDoTipoData(lista.content[i]);
+            }
+
+            return lista;
          });
    }
 
@@ -63,8 +70,26 @@ export class PersonService {
       return this.http.get(`${this.apiUrl}/${key}`)
          .toPromise()
          .then(response => {
-            return response.json();
+            let obj = response.json();
+            obj = this.formatarCamposDoTipoData(obj);
+            return obj;
          });
+   }
+
+   formatarCamposDoTipoData(obj): any {
+
+      if (obj['pessoaFisica']) {
+         if (obj['pessoaFisica']['dataNascimento']) {
+            obj['pessoaFisica']['dataNascimento'] = new Date(obj['pessoaFisica']['dataNascimento']);
+         }
+         if (obj['pessoaFisica']['dataEmissaoRg']) {
+            obj['pessoaFisica']['dataEmissaoRg'] = new Date(obj['pessoaFisica']['dataEmissaoRg']);
+         }
+         if (obj['pessoaFisica']['cnhVencimento']) {
+            obj['pessoaFisica']['cnhVencimento'] = new Date(obj['pessoaFisica']['cnhVencimento']);
+         }
+      }
+      return obj;
    }
 
    /**

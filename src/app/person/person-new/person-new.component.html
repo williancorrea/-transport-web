@@ -148,11 +148,10 @@
                         </div>
 
                         <!--PESSOA FISICA - DATA NASCIMENTO-->
-                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false"
-                             class="ui-g-3 ui-fluid"
+                        <div *ngIf="form.get('tipo').value === 'FISICA' ? true : false" class="ui-g-3 ui-fluid"
                              formGroupName="pessoaFisica">
                            <label>{{'person.fields.dataNascimento'| translate}}</label>
-                           <p-calendar formGroupName="dataNascimento"
+                           <p-calendar formControlName="dataNascimento"
                                        dateFormat="dd/mm/yy"
                                        [readonlyInput]="false"
                                        [showIcon]="true"
@@ -176,7 +175,7 @@
                              class="ui-g-3 ui-fluid"
                              formGroupName="pessoaFisica">
                            <label>{{'person.fields.dataEmissaoRg'| translate}}</label>
-                           <p-calendar formGroupName="dataEmissaoRg"
+                           <p-calendar formControlName="dataEmissaoRg"
                                        dateFormat="dd/mm/yy"
                                        [readonlyInput]="true"
                                        [showIcon]="true"
