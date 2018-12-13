@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Bank} from '../core/model/bank';
 import {AuthHttp} from 'angular2-jwt';
 import {environment} from '../../environments/environment';
 import {TypeRelationshipFilters} from '../core/model/typeRelationshipFilters';
@@ -17,7 +16,7 @@ export class TypeRelationshipService {
     * List all records according to the filters passed by parameters
     *
     * @param filter
-    * @param {BankFilters} typeRelationshipFilters
+    * @param {BancoFiltro} typeRelationshipFilters
     * @returns {Promise<any>}
     */
    findAll(filter: any, typeRelationshipFilters: TypeRelationshipFilters): Promise<any> {
@@ -61,9 +60,9 @@ export class TypeRelationshipService {
     * Search for the record according to the key passed by parameter
     *
     * @param key
-    * @returns {Promise<Bank>}
+    * @returns {Promise<any>}
     */
-   findOne(key): Promise<Bank> {
+   findOne(key): Promise<any> {
       return this.http.get(`${this.apiUrl}/${key}`)
          .toPromise()
          .then(response => {

@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {environment} from './../../environments/environment';
 import {AuthHttp} from 'angular2-jwt';
-import {Bank} from '../core/model/bank';
-import {BankFilters} from '../core/model/bankFilters';
+import {BancoFiltro} from './bancoFiltro';
 
 @Injectable()
 export class BankService {
@@ -10,17 +9,18 @@ export class BankService {
    apiUrl: string;
 
    constructor(private http: AuthHttp) {
-      this.apiUrl = `${environment.apiUrl}/banks`;
+      this.apiUrl = `${environment.apiUrl}/bancos`;
    }
 
    /**
     * List all records according to the filters passed by parameters
+    * Lista todos os registro de acordo com os filtros passados por parametros
     *
-    * @param filter
-    * @param {BankFilters} bankFilters
+    * @param grid
+    * @param {BancoFiltro} bancoFiltro
     * @returns {Promise<any>}
     */
-   findAll(filter: any, bankFilters: BankFilters): Promise<any> {
+   findAll(grid: any, bancoFiltro: BancoFiltro): Promise<any> {
       /*
          in a real application, make a remote request to load data using state metadata from event
          event.first = First row offset
@@ -31,23 +31,23 @@ export class BankService {
       */
       const config = {
          params: {
-            'size': filter.rows,
-            'page': filter.first / filter.rows,
-            'sortOrder': filter.sortOrder > 0 ? 'asc' : 'desc',
-            'sortField': filter.sortField,
+            'size': grid.rows,
+            'page': grid.first / grid.rows,
+            'ordemClassificacao': grid.sortOrder > 0 ? 'ASC' : 'DESC',
+            'campoOrdenacao': grid.sortField,
          }
       };
-      if (filter.globalFilter && filter.globalFilter.length > 0) {
-         config.params['globalFilter'] = filter.globalFilter;
+      if (grid.globalFilter && grid.globalFilter.length > 0) {
+         config.params['filtroGlobal'] = grid.globalFilter;
       }
-      if (bankFilters.code && bankFilters.code.length > 0) {
-         config.params['code'] = bankFilters.code;
+      if (bancoFiltro.codigo && bancoFiltro.codigo.length > 0) {
+         config.params['codigo'] = bancoFiltro.codigo;
       }
-      if (bankFilters.name && bankFilters.name.length > 0) {
-         config.params['name'] = bankFilters.name;
+      if (bancoFiltro.nome && bancoFiltro.nome.length > 0) {
+         config.params['nome'] = bancoFiltro.nome;
       }
-      if (bankFilters.url && bankFilters.url.length > 0) {
-         config.params['url'] = bankFilters.url;
+      if (bancoFiltro.url && bancoFiltro.url.length > 0) {
+         config.params['url'] = bancoFiltro.url;
       }
 
       return this.http.get(`${this.apiUrl}`, config)
@@ -58,21 +58,21 @@ export class BankService {
    }
 
    /**
-    * Search for the record according to the key passed by parameter
+    * Busca por um registro especifico de acordo com a Key passada por paramentro
     *
     * @param key
-    * @returns {Promise<Bank>}
+    * @returns {Promise<any>}
     */
-   findOne(key): Promise<Bank> {
+   findOne(key): Promise<any> {
       return this.http.get(`${this.apiUrl}/${key}`)
          .toPromise()
          .then(response => {
-            return response.json() as Bank;
+            return response.json();
          });
    }
 
    /**
-    * Delete the record according to the key passed by parameter
+    * Exclui um registro de acordo com a Key passafa por parametro
     *
     * @param {String} key
     * @returns {Promise<any>}
@@ -85,41 +85,42 @@ export class BankService {
 
    /**
     * Save the record
+    * Salva um registro
     *
-    * @param {Bank} bank
-    * @returns {Promise<Bank>}
+    * @param {Banco} obj
+    * @returns {Promise<Banco>}
     */
-   save(bank: Bank): Promise<Bank> {
-      const clone = JSON.parse(JSON.stringify(bank));
+   save(obj: any): Promise<any> {
+      const clone = JSON.parse(JSON.stringify(obj));
       delete clone['key'];
-      delete clone['properties'];
+      delete clone['controle'];
 
       return this.http.post(this.apiUrl,
          JSON.stringify(clone))
          .toPromise()
          .then(response => {
-            return response.json() as Bank;
+            return response.json();
          });
    }
 
    /**
-    * Updates the registry
+    * Atualiza o registro
     *
-    * @param {Bank} bank
-    * @returns {Promise<Bank>}
+    * @param {Banco} obj
+    * @returns {Promise<Banco>}
     */
-   update(bank: Bank): Promise<Bank> {
-      const key = bank.key;
+   update(obj: any): Promise<any> {
+      const key = obj.key;
 
-      const clone = JSON.parse(JSON.stringify(bank));
+      const clone = JSON.parse(JSON.stringify(obj));
       delete clone['key'];
-      delete clone['properties'];
+      delete clone['controle'];
 
       return this.http.put(`${this.apiUrl}/${key}`,
          JSON.stringify(clone))
          .toPromise()
          .then(response => {
-            return response.json() as Bank;
+            return response.json();
          });
    }
 

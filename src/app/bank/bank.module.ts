@@ -7,6 +7,7 @@ import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import {MessageModule} from 'primeng/message';
 import {
+   CheckboxModule,
    DataTableModule,
    DropdownModule, InputSwitchModule,
    InputTextModule,
@@ -44,7 +45,8 @@ import {LoadingModule} from 'ngx-loading';
       PanelModule,
       TooltipModule,
       ProgressBarModule,
-      InputSwitchModule
+      InputSwitchModule,
+      CheckboxModule
    ],
    declarations: [
       BankSearchComponent,

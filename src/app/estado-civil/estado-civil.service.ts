@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {EstadoCivilFiltro} from '../core/model/estadoCivilFiltro';
-import {Bank} from '../core/model/bank';
 import {environment} from '../../environments/environment';
 import {AuthHttp} from 'angular2-jwt';
 
@@ -17,7 +16,7 @@ export class EstadoCivilService {
     * Lista todos os registro de acordo com os filtros passados por parametros
     *
     * @param filter
-    * @param {BankFilters} estadoCivilFiltro
+    * @param {BancoFiltro} estadoCivilFiltro
     * @returns {Promise<any>}
     */
    findAll(filter: any, estadoCivilFiltro: EstadoCivilFiltro): Promise<any> {
@@ -65,9 +64,9 @@ export class EstadoCivilService {
     * Search for the record according to the key passed by parameter
     *
     * @param key
-    * @returns {Promise<Bank>}
+    * @returns {Promise<any>}
     */
-   findOne(key): Promise<Bank> {
+   findOne(key): Promise<any> {
       return this.http.get(`${this.apiUrl}/${key}`)
          .toPromise()
          .then(response => {

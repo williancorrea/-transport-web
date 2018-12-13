@@ -102,19 +102,20 @@
       "access_denied": "Você não tem permissão para executar esta ação",
       "service_error": "Erro ao processar serviço remoto. Tente novamente."
    },
-   "bank": {
-      "fields": {
-         "code": "Código",
-         "name": "Nome",
-         "url": "URL"
+   "banco": {
+      "campos": {
+         "codigo" : "Código",
+         "nome": "Nome",
+         "url": "URL",
+         "inativo": "Inativo"
       },
-      "title": "Banco",
-      "list_of_banks": "Lista de Bancos",
-      "add_bank": "Adicionar novo banco",
-      "edit_bank": "Editar Banco",
-      "delete_success": "Banco removido com sucesso!",
-      "add_success": "Banco adicionado com sucesso.",
-      "update_success": "Banco atualizado com sucesso."
+      "titulo": "Banco",
+      "lista": "Lista de Bancos",
+      "adicionar": "Adicionar novo banco",
+      "adicionado": "Banco adicionado com sucesso.",
+      "editar": "Editar Banco",
+      "excluir": "Banco removido com sucesso!",
+      "atualizar": "Banco atualizado com sucesso."
    },
    "product_unit": {
       "fields": {

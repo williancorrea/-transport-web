@@ -17,7 +17,7 @@ export class PersonService {
     * List all records according to the filters passed by parameters
     *
     * @param filter
-    * @param {BankFilters} personFilters
+    * @param {BancoFiltro} personFilters
     * @returns {Promise<any>}
     */
    findAll(filter: any, personFilters: PersonFilters): Promise<any> {

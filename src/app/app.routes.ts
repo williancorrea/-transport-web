@@ -51,7 +51,7 @@ export const routes: Routes = [
       canActivate: [AuthGuard],
       data: {
          roles: [
-            'ROLE_LIST_BANK',
+            'ROLE_LISTAR_BANCO',
             'ROLE_LIST_PRODUCT-UNIT',
             'ROLE_LIST_TYPE-RELATIONSHIP',
             'ROLE_LIST_LEVEL-OF-EDUCATION',
@@ -79,9 +79,9 @@ export const routes: Routes = [
    {path: 'page-not-found', component: PageNotFoundComponent},
    {path: 'login', component: LoginFormComponent},
 
-   {path: 'banks', component: BankSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_BANK']}},
-   {path: 'banks/new', component: BankNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_BANK']}},
-   {path: 'banks/:key', component: BankNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_BANK']}},
+   {path: 'banks', component: BankSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_BANCO']}},
+   {path: 'banks/new', component: BankNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_BANCO']}},
+   {path: 'banks/:key', component: BankNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_BANCO']}},
 
    {path: 'product-units', component: ProductUnitSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_PRODUCT-UNIT']}},
    {path: 'product-units/new', component: ProductUnitNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_PRODUCT-UNIT']}},

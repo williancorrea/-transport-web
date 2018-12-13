@@ -19,7 +19,7 @@ export class ControleKmService {
     * Lista todos os registro de acordo com os filtros passados por parametros
     *
     * @param filter
-    * @param {BankFilters} controleKmFiltro
+    * @param {BancoFiltro} controleKmFiltro
     * @returns {Promise<any>}
     */
    findAll(filter: any, controleKmFiltro: ControleKmFiltro) {

@@ -8,7 +8,7 @@ import {AuthService} from '../../security/auth.service';
 import {ErrorHandlerService} from '../../core/error-handler.service';
 import {Title} from '@angular/platform-browser';
 import {environment} from '../../../environments/environment';
-import {BankFilters} from '../../core/model/bankFilters';
+import {BancoFiltro} from '../bancoFiltro';
 
 @Component({
    selector: 'app-bank-search',
@@ -18,7 +18,7 @@ import {BankFilters} from '../../core/model/bankFilters';
 export class BankSearchComponent implements OnInit {
 
    banks = [];
-   bankFilters: BankFilters;
+   bankFilters: BancoFiltro;
    showFilter: boolean;
    selectedBank = null;
    loading: boolean;
@@ -48,12 +48,12 @@ export class BankSearchComponent implements OnInit {
     */
    ngOnInit() {
       this.showFilter = false;
-      this.bankFilters = new BankFilters();
+      this.bankFilters = new BancoFiltro();
 
       this.env = environment;
       this.setLoading(true);
-      this.translate.get('bank').subscribe(s => {
-         this.title.setTitle(s['list_of_banks']);
+      this.translate.get('banco').subscribe(s => {
+         this.title.setTitle(s['lista']);
 
          this.COLS = [
             {
@@ -63,22 +63,28 @@ export class BankSearchComponent implements OnInit {
                class: ''
             },
             {
-               field: 'code',
-               header: s['fields']['code'],
+               field: 'codigo',
+               header: s['campos']['codigo'],
                hidden: false,
                class: 'datatable-collum-field-code'
             },
             {
-               field: 'name',
-               header: s['fields']['name'],
+               field: 'nome',
+               header: s['campos']['nome'],
                hidden: false,
                class: ''
             },
             {
                field: 'url',
-               header: s['fields']['url'],
+               header: s['campos']['url'],
                hidden: false,
                class: ''
+            },
+            {
+               field: 'inativo',
+               header: s['campos']['inativo'],
+               hidden: false,
+               class: 'datatable-collum-field-code'
             }
          ];
       });
@@ -100,7 +106,7 @@ export class BankSearchComponent implements OnInit {
     */
    showFilterFields(value: boolean) {
       this.showFilter = value;
-      this.bankFilters = new BankFilters();
+      this.bankFilters = new BancoFiltro();
       if (this.filterGrid) {
          this.filterGrid.nativeElement.value = '';
       }
@@ -202,12 +208,12 @@ export class BankSearchComponent implements OnInit {
     */
    delete() {
       this.loading = true;
-      this.translate.get('bank').subscribe(s => {
+      this.translate.get('banco').subscribe(s => {
          this.bankService.delete(this.selectedBank.key)
             .then(() => {
                this.grid.first = 0;
                this.findAll(this.filterGrid.nativeElement, this.grid);
-               this.toasty.success(s['delete_success']);
+               this.toasty.success(s['excluir']);
                this.loading = false;
             })
             .catch(

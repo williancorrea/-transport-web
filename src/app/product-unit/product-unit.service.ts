@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BankFilters} from '../core/model/bankFilters';
-import {Bank} from '../core/model/bank';
+import {BancoFiltro} from '../bank/bancoFiltro';
 import {AuthHttp} from 'angular2-jwt';
 import {environment} from '../../environments/environment';
 import {ProductUnitFilters} from '../core/model/productUnitFilters';
@@ -18,7 +17,7 @@ export class ProductUnitService {
     * List all records according to the filters passed by parameters
     *
     * @param filter
-    * @param {BankFilters} productUnitFilters
+    * @param {BancoFiltro} productUnitFilters
     * @returns {Promise<any>}
     */
    findAll(filter: any, productUnitFilters: ProductUnitFilters): Promise<any> {
@@ -84,10 +83,10 @@ export class ProductUnitService {
    /**
     * Save the record
     *
-    * @param {Bank} obj
+    * @param {Banco} obj
     * @returns {Promise<any>}
     */
-   save(obj: Bank): Promise<any> {
+   save(obj: any): Promise<any> {
       const clone = JSON.parse(JSON.stringify(obj));
       delete clone['key'];
       delete clone['properties'];
@@ -96,17 +95,17 @@ export class ProductUnitService {
          JSON.stringify(clone))
          .toPromise()
          .then(response => {
-            return response.json() as Bank;
+            return response.json();
          });
    }
 
    /**
     * Updates the registry
     *
-    * @param {Bank} bank
-    * @returns {Promise<Bank>}
+    * @param {Banco} bank
+    * @returns {Promise<Banco>}
     */
-   update(obj: Bank): Promise<Bank> {
+   update(obj: any): Promise<any> {
       const key = obj.key;
 
       const clone = JSON.parse(JSON.stringify(obj));
@@ -117,7 +116,7 @@ export class ProductUnitService {
          JSON.stringify(clone))
          .toPromise()
          .then(response => {
-            return response.json() as Bank;
+            return response.json();
          });
    }
 }

@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Bank} from '../core/model/bank';
 import {AuthHttp} from 'angular2-jwt';
 import {environment} from '../../environments/environment';
 import {VeiculoFiltro} from '../core/model/veiculoFiltro';
@@ -16,7 +15,7 @@ export class VeiculoService {
     * Lista todos os registro de acordo com os filtros passados por parametros
     *
     * @param filter
-    * @param {BankFilters} veiculoFiltro
+    * @param {BancoFiltro} veiculoFiltro
     * @returns {Promise<any>}
     */
    findAll(filter: any, veiculoFiltro: VeiculoFiltro): Promise<any> {
@@ -64,9 +63,9 @@ export class VeiculoService {
     * Search for the record according to the key passed by parameter
     *
     * @param key
-    * @returns {Promise<Bank>}
+    * @returns {Promise<any>}
     */
-   findOne(key): Promise<Bank> {
+   findOne(key): Promise<any> {
       return this.http.get(`${this.apiUrl}/${key}`)
          .toPromise()
          .then(response => {

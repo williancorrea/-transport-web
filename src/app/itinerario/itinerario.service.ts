@@ -17,7 +17,7 @@ export class ItinerarioService {
     * Lista todos os registro de acordo com os filtros passados por parametros
     *
     * @param filter
-    * @param {BankFilters} itinerarioFiltro
+    * @param {BancoFiltro} itinerarioFiltro
     * @returns {Promise<any>}
     */
    findAll(filter: any, itinerarioFiltro: ItinerarioFiltro) {

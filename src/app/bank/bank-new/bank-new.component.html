@@ -6,7 +6,7 @@
          <div>
 
             <h1 *ngIf="loading === true">{{('commons.loading') | translate}}</h1>
-            <h1 *ngIf="loading === false">{{(bank?.key?.length > 0 ? 'bank.edit_bank' : 'bank.add_bank') |
+            <h1 *ngIf="loading === false">{{(form.get('key')?.value?.length > 0 ? 'banco.editar' : 'banco.adicionar') |
                translate}}</h1>
          </div>
 
@@ -20,37 +20,39 @@
                       formControlName="key">
 
                <div class="ui-g-3 ui-fluid">
-                  <label for="codigo">{{'bank.fields.code' | translate}}</label>
+                  <label for="codigo">{{'banco.campos.codigo' | translate}}</label>
                   <input pInputText
                          id="codigo"
                          type="text"
-                         name="code"
-                         formControlName="code">
-                  <app-message [form]="f" [control]="form.get('code')"></app-message>
+                         formControlName="codigo">
+                  <app-message [form]="f" [control]="form.get('codigo')"></app-message>
                </div>
                <div class="ui-g-9"></div>
 
 
                <div class="ui-sm-12 ui-g-6 ui-fluid">
-                  <label for="nome" class="required">{{'bank.fields.name' | translate}}</label>
+                  <label for="nome" class="required">{{'banco.campos.nome' | translate}}</label>
                   <input pInputText
                          id="nome"
                          type="text"
-                         name="name"
-                         formControlName="name">
-                  <app-message [form]="f" [control]="form.get('name')"></app-message>
+                         formControlName="nome">
+                  <app-message [form]="f" [control]="form.get('nome')"></app-message>
                </div>
 
                <div class="ui-sm-12 ui-g-6 ui-fluid">
-                  <label for="url">{{'bank.fields.url' | translate}}</label>
+                  <label for="url">{{'banco.campos.url' | translate}}</label>
                   <input pInputText
                          id="url"
                          type="text"
-                         name="url"
                          formControlName="url">
                   <app-message [form]="f" [control]="form.get('url')"></app-message>
                </div>
 
+               <div class="ui-sm-12 ui-g-6 ui-fluid">
+                  <p-checkbox id="chkInativo" [formControl]="form.controls['inativo']"
+                              binary="true"
+                              label="{{'banco.campos.inativo' | translate}}"></p-checkbox>
+               </div>
 
                <div class="ui-sm-12 ui-g-12">
                   <button pButton type="button"
@@ -59,7 +61,7 @@
                           tooltipPosition="top" pTooltip="{{'actions.tooltip.cancel' | translate}}"
                           (click)="cancel()"></button>
                   <button pButton type="submit"
-                          *ngIf="form.get('key').value ? auth.hasPermission('ROLE_UPDATE_BANK') : auth.hasPermission('ROLE_SAVE_BANK')"
+                          *ngIf="form.get('key').value ? auth.hasPermission('ROLE_ATUALIZAR_BANCO') : auth.hasPermission('ROLE_SALVAR_BANCO')"
                           label="{{(form.get('key').value ? 'actions.update' : 'actions.save') | translate}}"
                           tooltipPosition="top" pTooltip="{{'actions.tooltip.save' | translate}}"
                           class="ui-button-success"></button>

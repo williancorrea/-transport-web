@@ -35,12 +35,12 @@ export class BankNewComponent extends BaseFormComponent implements OnInit {
    ngOnInit() {
       this.configForm();
       this.showLoading(true);
-      this.translate.get('bank').subscribe(s => {
+      this.translate.get('banco').subscribe(s => {
          this.bankTranslate = s;
 
          const isEditing = this.activatedRoute.snapshot.params['key'];
          if (isEditing) {
-            this.title.setTitle(s['edit_bank']);
+            this.title.setTitle(s['editar']);
 
             this.bankService.findOne(isEditing)
                .then(response => {
@@ -50,11 +50,11 @@ export class BankNewComponent extends BaseFormComponent implements OnInit {
                })
                .catch(error => {
                   this.errorHandler.handle(error);
-                  this.title.setTitle(s['add_bank']);
+                  this.title.setTitle(s['adicionar']);
                   this.showLoading(false);
                });
          } else {
-            this.title.setTitle(s['add_bank']);
+            this.title.setTitle(s['adicionar']);
             this.showLoading(false);
          }
       });
@@ -63,15 +63,16 @@ export class BankNewComponent extends BaseFormComponent implements OnInit {
    configForm() {
       this.form = this.formBuild.group({
          key: [null],
-         code: [null, Validators.maxLength(10)],
-         name: [
+         codigo: [null, Validators.maxLength(10)],
+         nome: [
             null, [
                Validators.required,
                Validators.minLength(5),
                Validators.maxLength(150)
             ]
          ],
-         url: [null, Validators.maxLength(150)]
+         url: [null, Validators.maxLength(150)],
+         inativo: [false]
       });
    }
 
@@ -82,7 +83,7 @@ export class BankNewComponent extends BaseFormComponent implements OnInit {
             this.bankService.update(this.form.value)
                .then(
                   response => {
-                     this.toasty.success(this.bankTranslate['update_success']);
+                     this.toasty.success(this.bankTranslate['atualizar']);
                      this.showLoading(false);
                      this.router.navigateByUrl('/banks');
                   }
@@ -94,7 +95,7 @@ export class BankNewComponent extends BaseFormComponent implements OnInit {
             this.bankService.save(this.form.value)
                .then(
                   response => {
-                     this.toasty.success(this.bankTranslate['add_success']);
+                     this.toasty.success(this.bankTranslate['adicionado']);
                      this.showLoading(false);
                      this.router.navigateByUrl('/banks');
                   }
