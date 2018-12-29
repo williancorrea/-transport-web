@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {TranslateService} from 'ng2-translate';
 import {AuthService} from '../../security/auth.service';
-import {ErrorHandlerService} from '../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {Title} from '@angular/platform-browser';
 import {ToastyService} from 'ng2-toasty';
 import {ControleKmService} from '../controle-km.service';
@@ -61,7 +61,7 @@ export class ControleKmPesquisaComponent implements OnInit {
                private traduzir: TranslateService,
                private controleKmService: ControleKmService,
                public auth: AuthService,
-               private manipuladorErros: ErrorHandlerService,
+               private manipuladorErros: ErroManipuladorService,
                private toasty: ToastyService,
                private confirmacao: ConfirmationService,
                private veiculoService: VeiculoService,

@@ -7,7 +7,7 @@ import {ToastyService} from 'ng2-toasty';
 import {TranslateService} from 'ng2-translate';
 
 @Injectable()
-export class ErrorHandlerService {
+export class ErroManipuladorService {
    labels: any;
 
    constructor(private toasty: ToastyService,
@@ -50,6 +50,7 @@ export class ErrorHandlerService {
       } else {
          mensagemErro = this.labels['service_error'];
          console.error('An error has occurred', errorResponse);
+         this.router.navigate(['/erro']);
       }
 
       this.toasty.error(mensagemErro);

@@ -3,7 +3,7 @@ import {TranslateService} from 'ng2-translate';
 import {environment} from '../../../environments/environment';
 import {ConfirmationService, LazyLoadEvent} from 'primeng/api';
 import {AuthService} from '../../security/auth.service';
-import {ErrorHandlerService} from '../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {Title} from '@angular/platform-browser';
 import {VeiculoFiltro} from '../../core/model/veiculoFiltro';
 import {Router} from '@angular/router';
@@ -37,7 +37,7 @@ export class VeiculoPesquisaComponent implements OnInit {
                private traduzir: TranslateService,
                private maritalStatusService: VeiculoService,
                public auth: AuthService,
-               private manipuladorErros: ErrorHandlerService,
+               private manipuladorErros: ErroManipuladorService,
                private toasty: ToastyService,
                private confirmacao: ConfirmationService,
                private titulo: Title) {

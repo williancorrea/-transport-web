@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {LevelOfEducationFilters} from '../../core/model/levelOfEducationFilters';
 import {AuthService} from '../../security/auth.service';
-import {ErrorHandlerService} from '../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {ConfirmationService, LazyLoadEvent} from 'primeng/api';
 import {environment} from '../../../environments/environment';
 import {Router} from '@angular/router';
@@ -37,7 +37,7 @@ export class LevelOfEducationSearchComponent implements OnInit {
                private translate: TranslateService,
                private levelOfEducationService: LevelOfEducationService,
                public auth: AuthService,
-               private errorHandler: ErrorHandlerService,
+               private errorHandler: ErroManipuladorService,
                private toasty: ToastyService,
                private confirmation: ConfirmationService,
                private title: Title) {

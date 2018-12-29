@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {TranslateService} from 'ng2-translate';
-import {ErrorHandlerService} from '../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {Title} from '@angular/platform-browser';
 import {ConfirmationService, LazyLoadEvent} from 'primeng/api';
 import {environment} from '../../../environments/environment';
@@ -37,7 +37,7 @@ export class ProductUnitSearchComponent implements OnInit {
                private translate: TranslateService,
                private productUnitService: ProductUnitService,
                public auth: AuthService,
-               private errorHandler: ErrorHandlerService,
+               private errorHandler: ErroManipuladorService,
                private toasty: ToastyService,
                private confirmation: ConfirmationService,
                private title: Title) {

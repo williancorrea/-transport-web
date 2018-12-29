@@ -5,7 +5,7 @@ import {Title} from '@angular/platform-browser';
 import {TipoPagamentoService} from '../../tipo-pagamento/tipo-pagamento.service';
 import {ToastyService} from 'ng2-toasty';
 import {AuthService} from '../../security/auth.service';
-import {ErrorHandlerService} from '../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseFormComponent} from '../../transport-shared/base-form/base-form.component';
 
@@ -25,7 +25,7 @@ export class TipoPagamentoNovoComponent extends BaseFormComponent implements OnI
                private tipoPagamentoService: TipoPagamentoService,
                private toasty: ToastyService,
                public auth: AuthService,
-               private errorHandler: ErrorHandlerService,
+               private errorHandler: ErroManipuladorService,
                private formBuild: FormBuilder) {
       super();
    }

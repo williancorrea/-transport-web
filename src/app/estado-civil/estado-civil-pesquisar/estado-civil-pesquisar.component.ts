@@ -5,7 +5,7 @@ import {TranslateService} from 'ng2-translate';
 import {AuthService} from '../../security/auth.service';
 import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
-import {ErrorHandlerService} from '../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {EstadoCivilService} from '../estado-civil.service';
 import {Title} from '@angular/platform-browser';
 import {ToastyService} from 'ng2-toasty';
@@ -38,7 +38,7 @@ export class EstadoCivilPesquisarComponent implements OnInit {
                private traduzir: TranslateService,
                private maritalStatusService: EstadoCivilService,
                public auth: AuthService,
-               private manipuladorErros: ErrorHandlerService,
+               private manipuladorErros: ErroManipuladorService,
                private toasty: ToastyService,
                private confirmacao: ConfirmationService,
                private titulo: Title) {

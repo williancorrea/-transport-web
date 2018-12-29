@@ -10,7 +10,7 @@ import {ToastyModule} from 'ng2-toasty';
 import {JwtHelper} from 'angular2-jwt';
 
 import {AuthService} from './../security/auth.service';
-import {ErrorHandlerService} from './error-handler.service';
+import {ErroManipuladorService} from './erro-manipulador.service';
 import {AccessDeniedComponent} from './access-denied.component';
 import {PageNotFoundComponent} from './page-not-found.component';
 import {BankService} from '../bank/bank.service';
@@ -29,6 +29,7 @@ import {CentroDeCustoService} from '../centro-de-custo/centro-de-custo.service';
 import {BaseFormComponent} from '../transport-shared/base-form/base-form.component';
 import {TipoPagamentoModule} from '../tipo-pagamento/tipo-pagamento.module';
 import {TipoPagamentoService} from '../tipo-pagamento/tipo-pagamento.service';
+import {ErroComponent} from './erro.component';
 
 
 @NgModule({
@@ -43,14 +44,15 @@ import {TipoPagamentoService} from '../tipo-pagamento/tipo-pagamento.service';
    ],
    declarations: [
       PageNotFoundComponent,
-      AccessDeniedComponent
+      AccessDeniedComponent,
+      ErroComponent
    ],
    exports: [
       ToastyModule,
       ConfirmDialogModule
    ],
    providers: [
-      ErrorHandlerService,
+      ErroManipuladorService,
       AuthService,
 
       BankService,

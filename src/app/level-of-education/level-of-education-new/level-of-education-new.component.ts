@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../security/auth.service';
-import {ErrorHandlerService} from '../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TranslateService} from 'ng2-translate';
 import {ToastyService} from 'ng2-toasty';
@@ -26,7 +26,7 @@ export class LevelOfEducationNewComponent implements OnInit {
                private levelOfEducationService: LevelOfEducationService,
                private toasty: ToastyService,
                public auth: AuthService,
-               private errorHandler: ErrorHandlerService,
+               private errorHandler: ErroManipuladorService,
                private formBuild: FormBuilder) {
    }
 

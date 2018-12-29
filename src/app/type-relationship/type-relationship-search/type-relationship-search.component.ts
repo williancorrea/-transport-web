@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from '../../security/auth.service';
 import {Router} from '@angular/router';
-import {ErrorHandlerService} from '../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {TypeRelationshipFilters} from '../../core/model/typeRelationshipFilters';
 import {ConfirmationService, LazyLoadEvent} from 'primeng/api';
 import {environment} from '../../../environments/environment';
@@ -37,7 +37,7 @@ export class TypeRelationshipSearchComponent implements OnInit {
                private translate: TranslateService,
                private typeRelationshipService: TypeRelationshipService,
                public auth: AuthService,
-               private errorHandler: ErrorHandlerService,
+               private errorHandler: ErroManipuladorService,
                private toasty: ToastyService,
                private confirmation: ConfirmationService,
                private title: Title) {

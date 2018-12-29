@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {TranslateService} from 'ng2-translate';
 import {Title} from '@angular/platform-browser';
 import {BankService} from '../bank.service';
-import {ErrorHandlerService} from '../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {ToastyService} from 'ng2-toasty';
 import {AuthService} from '../../security/auth.service';
 import {FormBuilder, Validators} from '@angular/forms';
@@ -27,7 +27,7 @@ export class BankNewComponent extends BaseFormComponent implements OnInit {
                private bankService: BankService,
                private toasty: ToastyService,
                public auth: AuthService,
-               private errorHandler: ErrorHandlerService,
+               private errorHandler: ErroManipuladorService,
                private formBuild: FormBuilder) {
       super();
    }

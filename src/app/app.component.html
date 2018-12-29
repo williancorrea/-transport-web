@@ -9,13 +9,14 @@
          <router-outlet></router-outlet>
          <app-footer *ngIf="showMenus()" class="footer-fixed"></app-footer>
 
-         <ng2-toasty [position]="'bottom-center'"></ng2-toasty>
+         <!--Mensagens de notificacao para o usuario-->
+         <ng2-toasty></ng2-toasty>
       </div>
    </div>
 </div>
 
 <!--<div *ngIf="!showPage" class="validando-sessao">-->
-   <!--<span>{{'sistema.validando-sessao' | translate}}</span>-->
+<!--<span>{{'sistema.validando-sessao' | translate}}</span>-->
 <!--</div>-->
 
 <p-confirmDialog header="{{'actions.confirm' | translate}}" icon="fa fa-question-circle" #confirm [width]="400">

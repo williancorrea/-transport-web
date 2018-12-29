@@ -32,19 +32,19 @@ export class AppMenuComponent implements OnInit {
                   label: m['base'], icon: 'fa fa-fw fa-book',
                   items: [
                      {label:  m['bank'], icon: 'fa fa-fw fa-building', routerLink: ['/banks'], visible: this.auth.hasPermission('ROLE_LISTAR_BANCO')},
-                     {label:  m['product-unit'], icon: 'fa fa-fw fa-pencil-square-o', routerLink: ['/product-units'], visible: this.auth.hasPermission('ROLE_LIST_PRODUCT-UNIT')},
+                     // {label:  m['product-unit'], icon: 'fa fa-fw fa-pencil-square-o', routerLink: ['/product-units'], visible: this.auth.hasPermission('ROLE_LIST_PRODUCT-UNIT')},
                      // {label:  m['types-of-relationships'], icon: 'fa fa-fw fa-handshake-o', routerLink: ['/types-of-relationships'], visible: this.auth.hasPermission('ROLE_LIST_TYPE-RELATIONSHIP')},
                      // {label:  m['level-of-education'], icon: 'fa fa-fw fa-lightbulb-o', routerLink: ['/levels-of-education'], visible: this.auth.hasPermission('ROLE_LIST_LEVEL-OF-EDUCATION')},
-                     {label:  m['estado-civil'], icon: 'fa fa-fw fa-heart-o', routerLink: ['/estado-civil'], visible: this.auth.hasPermission('ROLE_LISTAR_ESTADO_CIVIL')},
-                     {label:  m['veiculo'], icon: 'fa fa-fw fa-car', routerLink: ['/veiculo'], visible: this.auth.hasPermission('ROLE_LISTAR_VEICULO')},
-                     {label:  m['persons'], icon: 'fa fa-fw fa-address-book-o', routerLink: ['/persons'], visible: this.auth.hasPermission('ROLE_LIST_PERSON')},
-                     {label:  m['itinerario'], icon: 'fa fa-fw fa-truck', routerLink: ['/itinerario'], visible: this.auth.hasPermission('ROLE_LISTAR_ITINERARIO')},
-                     {label:  m['classe-despesa'], icon: 'fa fa-fw fa-list', routerLink: ['/classeDespesa'], visible: this.auth.hasPermission('ROLE_LISTAR_CLASSE-DESPESA')},
-                     {label:  m['centro-de-custo'], icon: 'fa fa-fw fa-list', routerLink: ['/centroDeCusto'], visible: this.auth.hasPermission('ROLE_LISTAR_CENTRO-DE-CUSTO')},
-                     {label:  m['tipo-pagamento'], icon: 'fa fa-fw fa-money', routerLink: ['/tipoPagamento'], visible: this.auth.hasPermission('ROLE_LISTAR_TIPO-PAGAMENTO')}
+                     // {label:  m['estado-civil'], icon: 'fa fa-fw fa-heart-o', routerLink: ['/estado-civil'], visible: this.auth.hasPermission('ROLE_LISTAR_ESTADO_CIVIL')},
+                     // {label:  m['veiculo'], icon: 'fa fa-fw fa-car', routerLink: ['/veiculo'], visible: this.auth.hasPermission('ROLE_LISTAR_VEICULO')},
+                     // {label:  m['persons'], icon: 'fa fa-fw fa-address-book-o', routerLink: ['/persons'], visible: this.auth.hasPermission('ROLE_LIST_PERSON')},
+                     // {label:  m['itinerario'], icon: 'fa fa-fw fa-truck', routerLink: ['/itinerario'], visible: this.auth.hasPermission('ROLE_LISTAR_ITINERARIO')},
+                     // {label:  m['classe-despesa'], icon: 'fa fa-fw fa-list', routerLink: ['/classeDespesa'], visible: this.auth.hasPermission('ROLE_LISTAR_CLASSE-DESPESA')},
+                     // {label:  m['centro-de-custo'], icon: 'fa fa-fw fa-list', routerLink: ['/centroDeCusto'], visible: this.auth.hasPermission('ROLE_LISTAR_CENTRO-DE-CUSTO')},
+                     // {label:  m['tipo-pagamento'], icon: 'fa fa-fw fa-money', routerLink: ['/tipoPagamento'], visible: this.auth.hasPermission('ROLE_LISTAR_TIPO-PAGAMENTO')}
                   ]
                },
-              {label:  m['controle-km'], icon: 'fa fa-fw fa-map-signs', routerLink: ['/controleKm'], visible: this.auth.hasPermission('ROLE_LISTAR_CONTROLE-KM')}
+              // {label:  m['controle-km'], icon: 'fa fa-fw fa-map-signs', routerLink: ['/controleKm'], visible: this.auth.hasPermission('ROLE_LISTAR_CONTROLE-KM')},
                // ,
                // {
                //     label: 'Themes', icon: 'fa fa-fw fa-paint-brush', badge: '5',
@@ -73,15 +73,15 @@ export class AppMenuComponent implements OnInit {
                //         {label: 'Cyan', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('cyan'); }},
                //     ]
                // },
-               // {
-               //     label: 'Menu Modes', icon: 'fa fa-fw fa-bars',
-               //     items: [
-               //         {label: 'Static Menu', icon: 'fa fa-fw fa-bars',  command: () => this.app.changeToStaticMenu()},
-               //         {label: 'Overlay Menu', icon: 'fa fa-fw fa-bars',  command: () => this.app.changeToOverlayMenu()},
-               //         {label: 'Light Menu', icon: 'fa fa-fw fa-bars',  command: () => this.app.darkMenu = false},
-               //         {label: 'Dark Menu', icon: 'fa fa-fw fa-bars',  command: () => this.app.darkMenu = true}
-               //     ]
-               // },
+               {
+                   label: 'Menu Modes', icon: 'fa fa-fw fa-bars',
+                   items: [
+                       {label: 'Static Menu', icon: 'fa fa-fw fa-bars',  command: () => this.app.changeToStaticMenu()},
+                       {label: 'Overlay Menu', icon: 'fa fa-fw fa-bars',  command: () => this.app.changeToOverlayMenu()},
+                       {label: 'Light Menu', icon: 'fa fa-fw fa-bars',  command: () => this.app.darkMenu = false},
+                       {label: 'Dark Menu', icon: 'fa fa-fw fa-bars',  command: () => this.app.darkMenu = true}
+                   ]
+               },
                // {
                //     label: 'Components', icon: 'fa fa-fw fa-sitemap', badge: '2', badgeStyleClass: 'orange-badge',
                //     items: [
@@ -98,16 +98,16 @@ export class AppMenuComponent implements OnInit {
                //     ]
                // },
                // {label: 'Landing Page', icon: 'fa fa-fw fa-certificate', url: 'assets/pages/landing.html', target: '_blank'},
-               // {
-               //     label: 'Template Pages', icon: 'fa fa-fw fa-life-saver',
-               //     items: [
-               //         {label: 'Empty Page', icon: 'fa fa-fw fa-square-o', routerLink: ['/empty']},
-               //         {label: 'Login Page', icon: 'fa fa-fw fa-sign-in', url: 'assets/pages/login.html', target: '_blank'},
-               //         {label: 'Error Page', icon: 'fa fa-fw fa-exclamation-circle', url: 'assets/pages/error.html', target: '_blank'},
-               //         {label: '404 Page', icon: 'fa fa-fw fa-times', url: 'assets/pages/404.html', target: '_blank'},
-               //         {label: 'Denied Page', icon: 'fa fa-fw fa-exclamation-triangle', url: 'assets/pages/access.html', target: '_blank'}
-               //     ]
-               // },
+               {
+                   label: 'Template Pages', icon: 'fa fa-fw fa-life-saver',
+                   items: [
+                       {label: 'Empty Page', icon: 'fa fa-fw fa-square-o', routerLink: ['/empty']},
+                       {label: 'Login Page', icon: 'fa fa-fw fa-sign-in', url: 'assets/pages/login.html', target: '_blank'},
+                       {label: 'Error Page', icon: 'fa fa-fw fa-exclamation-circle', url: 'assets/pages/error.html', target: '_blank'},
+                       {label: '404 Page', icon: 'fa fa-fw fa-times', url: 'assets/pages/404.html', target: '_blank'},
+                       {label: 'Denied Page', icon: 'fa fa-fw fa-exclamation-triangle', url: 'assets/pages/access.html', target: '_blank'}
+                   ]
+               }
                // {
                //     label: 'Menu Hierarchy', icon: 'fa fa-fw fa-gg',
                //     items: [

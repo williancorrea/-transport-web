@@ -3,7 +3,7 @@ import {CentroDeCustoFiltro} from '../../core/model/CentroDeCustoFiltro';
 import {Router} from '@angular/router';
 import {TranslateService} from 'ng2-translate';
 import {AuthService} from '../../security/auth.service';
-import {ErrorHandlerService} from '../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {ToastyService} from 'ng2-toasty';
 import {ConfirmationService, LazyLoadEvent} from 'primeng/api';
 import {Title} from '@angular/platform-browser';
@@ -37,7 +37,7 @@ export class CentroDeCustoPesquisarComponent implements OnInit {
                private translate: TranslateService,
                private centroDeCustoService: CentroDeCustoService,
                public auth: AuthService,
-               private errorHandler: ErrorHandlerService,
+               private errorHandler: ErroManipuladorService,
                private toasty: ToastyService,
                private confirmation: ConfirmationService,
                private title: Title) {

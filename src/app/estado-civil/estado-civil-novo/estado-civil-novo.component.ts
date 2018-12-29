@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TranslateService} from 'ng2-translate';
 import {AuthService} from '../../security/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ErrorHandlerService} from '../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {EstadoCivilService} from '../estado-civil.service';
 import {Title} from '@angular/platform-browser';
@@ -26,7 +26,7 @@ export class EstadoCivilNovoComponent implements OnInit {
                private maritalStatusService: EstadoCivilService,
                private toasty: ToastyService,
                public auth: AuthService,
-               private errorHandler: ErrorHandlerService,
+               private errorHandler: ErroManipuladorService,
                private formBuild: FormBuilder) {
    }
 

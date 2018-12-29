@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TranslateService} from 'ng2-translate';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../security/auth.service';
-import {ErrorHandlerService} from '../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
 import {VeiculoService} from '../../veiculo/veiculo.service';
@@ -26,7 +26,7 @@ export class VeiculoNovoComponent implements OnInit {
                private maritalStatusService: VeiculoService,
                private toasty: ToastyService,
                public auth: AuthService,
-               private errorHandler: ErrorHandlerService,
+               private errorHandler: ErroManipuladorService,
                private formBuild: FormBuilder) {
    }
 

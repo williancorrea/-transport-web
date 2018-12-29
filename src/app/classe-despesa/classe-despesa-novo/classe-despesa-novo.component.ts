@@ -4,7 +4,7 @@ import {TranslateService} from 'ng2-translate';
 import {Title} from '@angular/platform-browser';
 import {ToastyService} from 'ng2-toasty';
 import {AuthService} from '../../security/auth.service';
-import {ErrorHandlerService} from '../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {FormBuilder, Validators} from '@angular/forms';
 import {ClasseDespesaService} from '../classe-despesa.service';
 import {BaseFormComponent} from '../../transport-shared/base-form/base-form.component';
@@ -25,7 +25,7 @@ export class ClasseDespesaNovoComponent extends BaseFormComponent  implements On
             private classeDespesaService: ClasseDespesaService,
             private toasty: ToastyService,
             public auth: AuthService,
-            private errorHandler: ErrorHandlerService,
+            private errorHandler: ErroManipuladorService,
             private formBuild: FormBuilder) {
             super();
          }

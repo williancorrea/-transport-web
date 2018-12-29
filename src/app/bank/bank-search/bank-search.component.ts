@@ -5,7 +5,7 @@ import {ConfirmationService, LazyLoadEvent} from 'primeng/api';
 import {BankService} from '../bank.service';
 import {ToastyService} from 'ng2-toasty';
 import {AuthService} from '../../security/auth.service';
-import {ErrorHandlerService} from '../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {Title} from '@angular/platform-browser';
 import {environment} from '../../../environments/environment';
 import {BancoFiltro} from '../bancoFiltro';
@@ -37,7 +37,7 @@ export class BankSearchComponent implements OnInit {
                private translate: TranslateService,
                private bankService: BankService,
                public auth: AuthService,
-               private errorHandler: ErrorHandlerService,
+               private errorHandler: ErroManipuladorService,
                private toasty: ToastyService,
                private confirmation: ConfirmationService,
                private title: Title) {

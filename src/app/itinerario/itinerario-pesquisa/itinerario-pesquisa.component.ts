@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from '../../security/auth.service';
 import {TranslateService} from 'ng2-translate';
-import {ErrorHandlerService} from '../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {ConfirmationService, LazyLoadEvent} from 'primeng/api';
 import {environment} from '../../../environments/environment';
 import {Title} from '@angular/platform-browser';
@@ -40,7 +40,7 @@ export class ItinerarioPesquisaComponent implements OnInit {
                private traduzir: TranslateService,
                private maritalStatusService: ItinerarioService,
                public auth: AuthService,
-               private manipuladorErros: ErrorHandlerService,
+               private manipuladorErros: ErroManipuladorService,
                private toasty: ToastyService,
                private confirmacao: ConfirmationService,
                private titulo: Title) {

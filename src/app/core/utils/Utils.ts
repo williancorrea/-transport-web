@@ -1,6 +1,6 @@
 export class Utils {
 
-   public static cloneObject(obj: any): any {
+   public static clonarObjeto(obj: any): any {
       return Object.assign({}, obj);
    }
 }

@@ -1,7 +1,7 @@
 import {Router} from '@angular/router';
 import {Component, OnInit} from '@angular/core';
 
-import {ErrorHandlerService} from './../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {AuthService} from './../auth.service';
 import {TranslateService} from 'ng2-translate';
 
@@ -18,7 +18,7 @@ export class LoginFormComponent implements OnInit {
    public loading = false;
 
    constructor(private auth: AuthService,
-               private errorHandler: ErrorHandlerService,
+               private errorHandler: ErroManipuladorService,
                private router: Router,
                private translate: TranslateService) {
    }

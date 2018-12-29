@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TranslateService} from 'ng2-translate';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ErrorHandlerService} from '../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {AuthService} from '../../security/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
@@ -26,7 +26,7 @@ export class ProductUnitNewComponent implements OnInit {
                private productUnitService: ProductUnitService,
                private toasty: ToastyService,
                public auth: AuthService,
-               private errorHandler: ErrorHandlerService,
+               private errorHandler: ErroManipuladorService,
                private formBuild: FormBuilder) {
    }
 

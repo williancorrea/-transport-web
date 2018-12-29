@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../security/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ErrorHandlerService} from '../../core/error-handler.service';
+import {ErroManipuladorService} from '../../core/erro-manipulador.service';
 import {TranslateService} from 'ng2-translate';
 import {Title} from '@angular/platform-browser';
 import {ToastyService} from 'ng2-toasty';
@@ -26,7 +26,7 @@ export class TypeRelationshipNewComponent implements OnInit {
                private typeRelationshipService: TypeRelationshipService,
                private toasty: ToastyService,
                public auth: AuthService,
-               private errorHandler: ErrorHandlerService,
+               private errorHandler: ErroManipuladorService,
                private formBuild: FormBuilder) {
    }
 

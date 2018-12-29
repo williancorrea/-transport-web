@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {AppComponent} from './app.component';
 import {LogoutService} from './security/logout.service';
-import {ErrorHandlerService} from './core/error-handler.service';
+import {ErroManipuladorService} from './core/erro-manipulador.service';
 import {Router} from '@angular/router';
 import {AuthService} from './security/auth.service';
 
@@ -174,7 +174,7 @@ export class AppTopbarComponent {
    constructor(public app: AppComponent,
                public auth: AuthService,
                private logoutService: LogoutService,
-               private errorHandler: ErrorHandlerService,
+               private errorHandler: ErroManipuladorService,
                private router: Router) {
    }
 

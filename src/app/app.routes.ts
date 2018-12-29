@@ -42,6 +42,7 @@ import {CentroDeCustoPesquisarComponent} from './centro-de-custo/centro-de-custo
 import {CentroDeCustoNovoComponent} from './centro-de-custo/centro-de-custo-novo/centro-de-custo-novo.component';
 import {TipoPagamentoPesquisarComponent} from './tipo-pagamento/tipo-pagamento-pesquisar/tipo-pagamento-pesquisar.component';
 import {TipoPagamentoNovoComponent} from './tipo-pagamento/tipo-pagamento-novo/tipo-pagamento-novo.component';
+import {ErroComponent} from './core/erro.component';
 
 export const routes: Routes = [
    {
@@ -75,8 +76,11 @@ export const routes: Routes = [
    {path: 'utils', component: UtilsDemoComponent},
    {path: 'documentation', component: DocumentationComponent},
 
+
+
    {path: 'access-denied', component: AccessDeniedComponent},
    {path: 'page-not-found', component: PageNotFoundComponent},
+   {path: 'erro', component: ErroComponent},
    {path: 'login', component: LoginFormComponent},
 
    {path: 'banks', component: BankSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_BANCO']}},
