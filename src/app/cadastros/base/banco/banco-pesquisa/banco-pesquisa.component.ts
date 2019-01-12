@@ -2,32 +2,32 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {TranslateService} from 'ng2-translate';
 import {Router} from '@angular/router';
 import {ConfirmationService, LazyLoadEvent} from 'primeng/api';
-import {BankService} from '../bank.service';
+import {BancoService} from '../banco.service';
 import {ToastyService} from 'ng2-toasty';
-import {AuthService} from '../../security/auth.service';
-import {ErroManipuladorService} from '../../core/erro-manipulador.service';
+import {AuthService} from '../../../../security/auth.service';
+import {ErroManipuladorService} from '../../../../core/erro-manipulador.service';
 import {Title} from '@angular/platform-browser';
-import {environment} from '../../../environments/environment';
+import {environment} from '../../../../../environments/environment';
 import {BancoFiltro} from '../bancoFiltro';
 
 @Component({
    selector: 'app-bank-search',
-   templateUrl: './bank-search.component.html',
-   styleUrls: ['./bank-search.component.css']
+   templateUrl: './banco-pesquisa.component.html',
+   styleUrls: ['./banco-pesquisa.component.css']
 })
-export class BankSearchComponent implements OnInit {
+export class BancoPesquisaComponent implements OnInit {
 
-   banks = [];
-   bankFilters: BancoFiltro;
-   showFilter: boolean;
-   selectedBank = null;
+   bancos = [];
+   bancoFiltro: BancoFiltro;
+   mostrarFiltros: boolean;
+   bancoSelecionado = null;
    loading: boolean;
    totalRecords = 0;
    env: any;
    COLS: any;
 
    /*
-    * Binds with items on html page
+    * Binds com os item da pagina html
     */
    @ViewChild('dataTable') grid;
    @ViewChild('globalFilter') filterGrid;
@@ -35,7 +35,7 @@ export class BankSearchComponent implements OnInit {
 
    constructor(private router: Router,
                private translate: TranslateService,
-               private bankService: BankService,
+               private bankService: BancoService,
                public auth: AuthService,
                private errorHandler: ErroManipuladorService,
                private toasty: ToastyService,
@@ -44,11 +44,11 @@ export class BankSearchComponent implements OnInit {
    }
 
    /**
-    * Run the information as soon as the page finishes rendering
+    * Executar as informações assim que a página terminar de renderizar
     */
    ngOnInit() {
-      this.showFilter = false;
-      this.bankFilters = new BancoFiltro();
+      this.mostrarFiltros = false;
+      this.bancoFiltro = new BancoFiltro();
 
       this.env = environment;
       this.setLoading(true);
@@ -91,7 +91,7 @@ export class BankSearchComponent implements OnInit {
    }
 
    /**
-    * Assigns the value to enable or disable the mostrarTelaCarregando icon in the datatable
+    * Atribui o valor para ativar ou desativar o ícone mostradoTelaCarregando na tabela de dados
     *
     * @param loading
     */
@@ -100,13 +100,13 @@ export class BankSearchComponent implements OnInit {
    }
 
    /**
-    * Show more filters with individual fields
+    * Mostrar mais filtros com campos individuais
     *
     * @param {boolean} value
     */
    showFilterFields(value: boolean) {
-      this.showFilter = value;
-      this.bankFilters = new BancoFiltro();
+      this.mostrarFiltros = value;
+      this.bancoFiltro = new BancoFiltro();
       if (this.filterGrid) {
          this.filterGrid.nativeElement.value = '';
       }
@@ -114,7 +114,7 @@ export class BankSearchComponent implements OnInit {
    }
 
    /**
-    * Filter through individual fields
+    * Filtrar por campos individuais
     *
     * @param dataTable
     */
@@ -124,16 +124,16 @@ export class BankSearchComponent implements OnInit {
 
 
    /**
-    * Load lazy datatable according to the information passed in the filters
+    * Carregar Lazy loading de acordo com as informações passadas nos filtros
     *
     * @param {LazyLoadEvent} lazyLoad
     */
    loadBank(lazyLoad: LazyLoadEvent) {
       this.setLoading(true);
-      this.selectedBank = null;
-      this.bankService.findAll(lazyLoad, this.bankFilters).then(result => {
+      this.bancoSelecionado = null;
+      this.bankService.findAll(lazyLoad, this.bancoFiltro).then(result => {
             this.totalRecords = result.totalElements;
-            this.banks = result.content;
+            this.bancos = result.content;
             this.setLoading(false);
          })
          .catch(error => {
@@ -143,35 +143,35 @@ export class BankSearchComponent implements OnInit {
    }
 
    /**
-    * Reloads all DataTable records
+    * Recarrega todos os registros do DataTable
     *
-    * @param filter
+    * @param filtro
     * @param dataTable
     */
-   findAll(filter, dataTable) {
+   findAll(filtro, dataTable) {
       this.setLoading(true);
-      if (filter) {
-         filter.value = '';
+      if (filtro) {
+         filtro.value = '';
       }
 
       this.grid.first = 0;
 
       this.showFilterFields(false);
-      this.setFilterDataTable(filter, dataTable);
+      this.setFilterDataTable(filtro, dataTable);
    }
 
    /**
-    * Assigns values to DataTable LazyLoading
+    * Atribui valores ao DataTable lazy-loading
     *
-    * @param filter
+    * @param filtro
     * @param dataTable
     */
-   setFilterDataTable(filter, dataTable) {
+   setFilterDataTable(filtro, dataTable) {
       this.loadBank(
          {
             filters: dataTable.filters,
             first: 0,
-            globalFilter: filter && filter.value ? filter.value : '',
+            globalFilter: filtro && filtro.value ? filtro.value : '',
             multiSortMeta: dataTable.multiSortMeta,
             rows: dataTable.rows,
             sortField: dataTable.sortField,
@@ -181,14 +181,14 @@ export class BankSearchComponent implements OnInit {
    }
 
    /**
-    * Redirects you to the data edit screen
+    * Redireciona você para a tela de edição de dados
     */
    edit() {
-      this.router.navigateByUrl(`banks/${this.selectedBank.key}`);
+      this.router.navigateByUrl(`bancos/${this.bancoSelecionado.key}`);
    }
 
    /**
-    * Opens the popup to confirm the deletion of the registry
+    * Abre o pop-up para confirmar a exclusão do registro
     *
     * @constructor
     */
@@ -204,12 +204,12 @@ export class BankSearchComponent implements OnInit {
    }
 
    /**
-    * Deletes the selected record
+    * Exclui o registro selecionado
     */
    delete() {
       this.loading = true;
       this.translate.get('banco').subscribe(s => {
-         this.bankService.delete(this.selectedBank.key)
+         this.bankService.delete(this.bancoSelecionado.key)
             .then(() => {
                this.grid.first = 0;
                this.findAll(this.filterGrid.nativeElement, this.grid);

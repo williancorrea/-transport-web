@@ -31,7 +31,7 @@ export class AppMenuComponent implements OnInit {
                {
                   label: m['base'], icon: 'fa fa-fw fa-book',
                   items: [
-                     {label:  m['bank'], icon: 'fa fa-fw fa-building', routerLink: ['/banks'], visible: this.auth.hasPermission('ROLE_LISTAR_BANCO')},
+                     {label:  m['bank'], icon: 'fa fa-fw fa-building', routerLink: ['/bancos'], visible: this.auth.hasPermission('ROLE_LISTAR_BANCO')},
                      // {label:  m['product-unit'], icon: 'fa fa-fw fa-pencil-square-o', routerLink: ['/product-units'], visible: this.auth.hasPermission('ROLE_LIST_PRODUCT-UNIT')},
                      // {label:  m['types-of-relationships'], icon: 'fa fa-fw fa-handshake-o', routerLink: ['/types-of-relationships'], visible: this.auth.hasPermission('ROLE_LIST_TYPE-RELATIONSHIP')},
                      // {label:  m['level-of-education'], icon: 'fa fa-fw fa-lightbulb-o', routerLink: ['/levels-of-education'], visible: this.auth.hasPermission('ROLE_LIST_LEVEL-OF-EDUCATION')},
@@ -45,34 +45,33 @@ export class AppMenuComponent implements OnInit {
                   ]
                },
               // {label:  m['controle-km'], icon: 'fa fa-fw fa-map-signs', routerLink: ['/controleKm'], visible: this.auth.hasPermission('ROLE_LISTAR_CONTROLE-KM')},
-               // ,
-               // {
-               //     label: 'Themes', icon: 'fa fa-fw fa-paint-brush', badge: '5',
-               //     items: [
-               //         {label: 'Blue', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('blue'); }},
-               //         {label: 'Pink', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('pink'); }},
-               //         {label: 'Steel', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('steel'); }},
-               //         {label: 'Orange', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('orange'); }},
-               //         {label: 'Green', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('green'); }},
-               //         {label: 'Turquoise', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('turquoise'); }},
-               //         {label: 'Purple', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('purple'); }},
-               //         {label: 'Cyan', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('cyan'); }},
-               //     ]
-               // },
-               // {
-               //     label: 'Layout Colors', icon: 'fa fa-fw fa-paint-brush',
-               //     items: [
-               //         {label: 'Dark', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('dark'); }},
-               //         {label: 'Blue', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('blue'); }},
-               //         {label: 'Pink', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('pink'); }},
-               //         {label: 'Steel', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('steel'); }},
-               //         {label: 'Orange', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('orange'); }},
-               //         {label: 'Green', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('green'); }},
-               //         {label: 'Turquoise', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('turquoise'); }},
-               //         {label: 'Purple', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('purple'); }},
-               //         {label: 'Cyan', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('cyan'); }},
-               //     ]
-               // },
+               {
+                   label: 'Themes', icon: 'fa fa-fw fa-paint-brush', badge: '5',
+                   items: [
+                       {label: 'Blue', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('blue'); }},
+                       {label: 'Pink', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('pink'); }},
+                       {label: 'Steel', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('steel'); }},
+                       {label: 'Orange', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('orange'); }},
+                       {label: 'Green', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('green'); }},
+                       {label: 'Turquoise', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('turquoise'); }},
+                       {label: 'Purple', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('purple'); }},
+                       {label: 'Cyan', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeTheme('cyan'); }},
+                   ]
+               },
+               {
+                   label: 'Layout Colors', icon: 'fa fa-fw fa-paint-brush',
+                   items: [
+                       {label: 'Dark', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('dark'); }},
+                       {label: 'Blue', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('blue'); }},
+                       {label: 'Pink', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('pink'); }},
+                       {label: 'Steel', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('steel'); }},
+                       {label: 'Orange', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('orange'); }},
+                       {label: 'Green', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('green'); }},
+                       {label: 'Turquoise', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('turquoise'); }},
+                       {label: 'Purple', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('purple'); }},
+                       {label: 'Cyan', icon: 'fa fa-fw fa-paint-brush', command: (event) => {this.changeLayout('cyan'); }},
+                   ]
+               },
                {
                    label: 'Menu Modes', icon: 'fa fa-fw fa-bars',
                    items: [
@@ -102,10 +101,10 @@ export class AppMenuComponent implements OnInit {
                    label: 'Template Pages', icon: 'fa fa-fw fa-life-saver',
                    items: [
                        {label: 'Empty Page', icon: 'fa fa-fw fa-square-o', routerLink: ['/empty']},
-                       {label: 'Login Page', icon: 'fa fa-fw fa-sign-in', url: 'assets/pages/login.html', target: '_blank'},
-                       {label: 'Error Page', icon: 'fa fa-fw fa-exclamation-circle', url: 'assets/pages/error.html', target: '_blank'},
-                       {label: '404 Page', icon: 'fa fa-fw fa-times', url: 'assets/pages/404.html', target: '_blank'},
-                       {label: 'Denied Page', icon: 'fa fa-fw fa-exclamation-triangle', url: 'assets/pages/access.html', target: '_blank'}
+                       {label: 'Login Page', icon: 'fa fa-fw fa-sign-in', routerLink: ['/login']},
+                       {label: 'Error Page', icon: 'fa fa-fw fa-exclamation-circle', routerLink: ['/erro'], target: '_blank'},
+                       {label: '404 Page', icon: 'fa fa-fw fa-times', routerLink: ['/page-not-found']},
+                       {label: 'Denied Page', icon: 'fa fa-fw fa-exclamation-triangle', routerLink: ['/access-denied'], target: '_blank'}
                    ]
                }
                // {

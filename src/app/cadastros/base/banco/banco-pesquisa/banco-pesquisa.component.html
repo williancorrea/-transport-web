@@ -11,14 +11,14 @@
                label="{{'banco.adicionar' | translate}}"
                iconPos="left" icon="fa-plus"
                tooltipPosition="top" pTooltip="{{'actions.tooltip.new' | translate}}"
-               routerLink="/banks/new">
+               routerLink="/bancos/novo">
             </a>
          </div>
 
          <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
 
             <!--GLOBAL FILTER-->
-            <div class="ui-inputgroup" ngClass="{{showFilter ? 'd-none': ''}}">
+            <div class="ui-inputgroup" ngClass="{{mostrarFiltros ? 'd-none': ''}}">
                <span class="ui-inputgroup-addon"><i class="fa fa-search"></i></span>
                <input #globalFilter pInputText type="text" size="50"
                       (input)="dataTable.filterGlobal($event.target.value, 'contains')"
@@ -37,7 +37,7 @@
             </div>
 
             <!--FILTER BY FIELDS-->
-            <div class="ui-g" ngClass="{{!showFilter ? 'd-none': ''}}">
+            <div class="ui-g" ngClass="{{!mostrarFiltros ? 'd-none': ''}}">
                <div class="ui-g-12 filter-title">
                   <h2>{{'commons.filter.fields' | translate}}</h2>
                </div>
@@ -45,7 +45,7 @@
                   <label>{{'banco.campos.codigo' | translate}}</label>
                   <input pInputText
                          type="text"
-                         [(ngModel)]="bankFilters.codigo"
+                         [(ngModel)]="bancoFiltro.codigo"
                          maxlength="30"
                   >
                </div>
@@ -53,7 +53,7 @@
                   <label>{{'banco.campos.nome' | translate}}</label>
                   <input pInputText
                          type="text"
-                         [(ngModel)]="bankFilters.nome"
+                         [(ngModel)]="bancoFiltro.nome"
                          maxlength="30"
                   >
                </div>
@@ -61,7 +61,7 @@
                   <label>{{'banco.campos.url' | translate}}</label>
                   <input pInputText
                          type="text"
-                         [(ngModel)]="bankFilters.url"
+                         [(ngModel)]="bancoFiltro.url"
                          maxlength="30"
                   >
                </div>
@@ -79,8 +79,8 @@
             </div>
          </div>
          <p-table #dataTable
-                  [value]="banks"
-                  [(selection)]="selectedBank"
+                  [value]="bancos"
+                  [(selection)]="bancoSelecionado"
                   selectionMode="single"
                   dataKey="key"
 
@@ -132,7 +132,7 @@
                        pButton
                        icon="fa-pencil"
                        label="{{'actions.edit' | translate}}"
-                       [disabled]="selectedBank ? false :true"
+                       [disabled]="bancoSelecionado ? false :true"
                        tooltipPosition="top" pTooltip="{{'actions.tooltip.edit' | translate}}"
                        (click)="edit()"></button>
                <button type="button"
@@ -141,7 +141,7 @@
                        icon="fa-trash"
                        class="ui-button-danger"
                        label="{{'actions.delete' | translate}}"
-                       [disabled]="selectedBank ? false :true"
+                       [disabled]="bancoSelecionado ? false :true"
                        tooltipPosition="top" pTooltip="{{'actions.tooltip.delete' | translate}}"
                        (click)="ConfirmDeletion(obj)"></button>
             </ng-template>

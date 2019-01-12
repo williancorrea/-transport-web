@@ -7,6 +7,24 @@
       "razao_social": "Rosinha Transportes e Turismo Ltda - ME",
       "cnpj": "CNPJ: 26.166.778/0001-69"
    },
+   "menu": {
+      "cadastros": "Cadastros",
+      "dashboard": "Ínicio",
+      "base": "Base",
+      "bank": "Bancos",
+      "product-unit": "Unidades de Produto",
+      "financial": "Financeiro",
+      "types-of-relationships": "Relacionamentos",
+      "level-of-education": "Nível de Formação",
+      "estado-civil": "Estado Civil",
+      "persons": "Pessoas",
+      "veiculo": "Veículos",
+      "itinerario": "Itinerários",
+      "controle-km": "Controle Km",
+      "classe-despesa": "Classe de Despesas",
+      "centro-de-custo": "Centro de Custo",
+      "tipo-pagamento": "Tipo de Pagamento"
+   },
    "commons": {
       "language": "Idioma",
       "loading": "Aguarde, carregando ...",
@@ -24,23 +42,6 @@
          "less_filters": "Menos Filtros",
          "fields": "Filtrar campos contendo qualquer parte do(s) conteúdo(s) abaixo"
       }
-   },
-   "menu": {
-      "dashboard": "Ínicio",
-      "base": "Base",
-      "bank": "Bancos",
-      "product-unit": "Unidades de Produto",
-      "financial": "Financeiro",
-      "types-of-relationships": "Relacionamentos",
-      "level-of-education": "Nível de Formação",
-      "estado-civil": "Estado Civil",
-      "persons": "Pessoas",
-      "veiculo": "Veículos",
-      "itinerario": "Itinerários",
-      "controle-km": "Controle Km",
-      "classe-despesa": "Classe de Despesas",
-      "centro-de-custo": "Centro de Custo",
-      "tipo-pagamento": "Tipo de Pagamento"
    },
    "flags": {
       "brazil": "Brasil",

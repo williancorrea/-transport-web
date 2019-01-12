@@ -21,7 +21,7 @@ export class BaseFormComponent {
       return this.form.get(campo);
    }
 
-   showLoading(value: boolean) {
+   mostrarModalCarregando(value: boolean) {
       this.loading = value;
    }
 }

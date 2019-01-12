@@ -13,7 +13,7 @@ import {AuthService} from './../security/auth.service';
 import {ErroManipuladorService} from './erro-manipulador.service';
 import {AccessDeniedComponent} from './access-denied.component';
 import {PageNotFoundComponent} from './page-not-found.component';
-import {BankService} from '../bank/bank.service';
+import {BancoService} from '../cadastros/base/banco/banco.service';
 import {TranslateModule} from 'ng2-translate';
 import {ButtonModule} from 'primeng/button';
 import {ProductUnitService} from '../product-unit/product-unit.service';
@@ -55,7 +55,7 @@ import {ErroComponent} from './erro.component';
       ErroManipuladorService,
       AuthService,
 
-      BankService,
+      BancoService,
       ProductUnitService,
       TypeRelationshipService,
       LevelOfEducationService,

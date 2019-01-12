@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BancoFiltro} from '../bank/bancoFiltro';
+import {BancoFiltro} from '../cadastros/base/banco/bancoFiltro';
 import {AuthHttp} from 'angular2-jwt';
 import {environment} from '../../environments/environment';
 import {ProductUnitFilters} from '../core/model/productUnitFilters';

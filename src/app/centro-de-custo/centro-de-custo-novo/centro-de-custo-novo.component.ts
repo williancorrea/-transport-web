@@ -35,7 +35,7 @@ export class CentroDeCustoNovoComponent extends BaseFormComponent implements OnI
 
    ngOnInit() {
       this.configForm();
-      this.showLoading(true);
+      this.mostrarModalCarregando(true);
       this.translate.get('centro-de-custo').subscribe(s => {
          this.bankTranslate = s;
 
@@ -49,16 +49,16 @@ export class CentroDeCustoNovoComponent extends BaseFormComponent implements OnI
                .then(response => {
                   // this.bank = response;
                   this.form.patchValue(response);
-                  this.showLoading(false);
+                  this.mostrarModalCarregando(false);
                })
                .catch(error => {
                   this.errorHandler.handle(error);
                   this.title.setTitle(s['acoes']['adicionar']);
-                  this.showLoading(false);
+                  this.mostrarModalCarregando(false);
                });
          } else {
             this.title.setTitle(s['acoes']['adicionar']);
-            this.showLoading(false);
+            this.mostrarModalCarregando(false);
          }
       });
    }
@@ -96,30 +96,30 @@ export class CentroDeCustoNovoComponent extends BaseFormComponent implements OnI
 
    save() {
       if (this.form.valid) {
-         this.showLoading(true);
+         this.mostrarModalCarregando(true);
          if (this.form.get('key').value) {
             this.centroDeCustoService.update(this.form.value)
                .then(
                   response => {
                      this.toasty.success(this.bankTranslate['acoes']['atualizar_sucesso']);
-                     this.showLoading(false);
+                     this.mostrarModalCarregando(false);
                      this.router.navigateByUrl('/centroDeCusto');
                   }
                ).catch(error => {
                this.errorHandler.handle(error);
-               this.showLoading(false);
+               this.mostrarModalCarregando(false);
             });
          } else {
             this.centroDeCustoService.save(this.form.value)
                .then(
                   response => {
                      this.toasty.success(this.bankTranslate['acoes']['atualizar_sucesso']);
-                     this.showLoading(false);
+                     this.mostrarModalCarregando(false);
                      this.router.navigateByUrl('/centroDeCusto');
                   }
                ).catch(erro => {
                this.errorHandler.handle(erro);
-               this.showLoading(false);
+               this.mostrarModalCarregando(false);
             });
          }
       } else {

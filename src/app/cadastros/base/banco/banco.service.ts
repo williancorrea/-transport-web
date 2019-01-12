@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {environment} from './../../environments/environment';
+import {environment} from '../../../../environments/environment';
 import {AuthHttp} from 'angular2-jwt';
 import {BancoFiltro} from './bancoFiltro';
 
 @Injectable()
-export class BankService {
+export class BancoService {
 
    apiUrl: string;
 
@@ -34,7 +34,7 @@ export class BankService {
             'size': grid.rows,
             'page': grid.first / grid.rows,
             'ordemClassificacao': grid.sortOrder > 0 ? 'ASC' : 'DESC',
-            'campoOrdenacao': grid.sortField,
+            'campoOrdenacao': grid.sortField
          }
       };
       if (grid.globalFilter && grid.globalFilter.length > 0) {
@@ -84,7 +84,6 @@ export class BankService {
    }
 
    /**
-    * Save the record
     * Salva um registro
     *
     * @param {Banco} obj

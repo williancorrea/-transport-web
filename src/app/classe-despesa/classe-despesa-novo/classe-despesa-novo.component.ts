@@ -32,7 +32,7 @@ export class ClasseDespesaNovoComponent extends BaseFormComponent  implements On
 
          ngOnInit() {
             this.configForm();
-            this.showLoading(true);
+            this.mostrarModalCarregando(true);
             this.translate.get('classe-despesa').subscribe(s => {
                this.bankTranslate = s;
 
@@ -44,16 +44,16 @@ export class ClasseDespesaNovoComponent extends BaseFormComponent  implements On
                      .then(response => {
                         // this.bank = response;
                         this.form.patchValue(response);
-                        this.showLoading(false);
+                        this.mostrarModalCarregando(false);
                      })
                      .catch(error => {
                         this.errorHandler.handle(error);
                         this.title.setTitle(s['acoes']['adicionar']);
-                        this.showLoading(false);
+                        this.mostrarModalCarregando(false);
                      });
                } else {
                   this.title.setTitle(s['acoes']['adicionar']);
-                  this.showLoading(false);
+                  this.mostrarModalCarregando(false);
                }
       });
    }
@@ -74,30 +74,30 @@ export class ClasseDespesaNovoComponent extends BaseFormComponent  implements On
 
    save() {
       if (this.form.valid) {
-         this.showLoading(true);
+         this.mostrarModalCarregando(true);
          if (this.form.get('key').value) {
             this.classeDespesaService.update(this.form.value)
                .then(
                   response => {
                      this.toasty.success(this.bankTranslate['acoes']['atualizar_sucesso']);
-                     this.showLoading(false);
+                     this.mostrarModalCarregando(false);
                      this.router.navigateByUrl('/classeDespesa');
                   }
                ).catch(error => {
                this.errorHandler.handle(error);
-               this.showLoading(false);
+               this.mostrarModalCarregando(false);
             });
          } else {
             this.classeDespesaService.save(this.form.value)
                .then(
                   response => {
                      this.toasty.success(this.bankTranslate['acoes']['atualizar_sucesso']);
-                     this.showLoading(false);
+                     this.mostrarModalCarregando(false);
                      this.router.navigateByUrl('/classeDespesa');
                   }
                ).catch(erro => {
                this.errorHandler.handle(erro);
-               this.showLoading(false);
+               this.mostrarModalCarregando(false);
             });
          }
       } else {

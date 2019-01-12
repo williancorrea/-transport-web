@@ -14,10 +14,10 @@ import {ChartsDemoComponent} from './demo/view/chartsdemo.component';
 import {FileDemoComponent} from './demo/view/filedemo.component';
 import {UtilsDemoComponent} from './demo/view/utilsdemo.component';
 import {DocumentationComponent} from './demo/view/documentation.component';
-import {BankSearchComponent} from './bank/bank-search/bank-search.component';
+import {BancoPesquisaComponent} from './cadastros/base/banco/banco-pesquisa/banco-pesquisa.component';
 import {AccessDeniedComponent} from './core/access-denied.component';
 import {PageNotFoundComponent} from './core/page-not-found.component';
-import {BankNewComponent} from './bank/bank-new/bank-new.component';
+import {BancoNovoComponent} from './cadastros/base/banco/banco-novo/banco-novo.component';
 import {LoginFormComponent} from './security/login-form/login-form.component';
 import {AuthGuard} from './security/auth.guard';
 import {ProductUnitSearchComponent} from './product-unit/product-unit-search/product-unit-search.component';
@@ -83,9 +83,9 @@ export const routes: Routes = [
    {path: 'erro', component: ErroComponent},
    {path: 'login', component: LoginFormComponent},
 
-   {path: 'banks', component: BankSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_BANCO']}},
-   {path: 'banks/new', component: BankNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_BANCO']}},
-   {path: 'banks/:key', component: BankNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_BANCO']}},
+   {path: 'bancos', component: BancoPesquisaComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_BANCO']}},
+   {path: 'bancos/novo', component: BancoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_BANCO']}},
+   {path: 'bancos/:key', component: BancoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_BANCO']}},
 
    {path: 'product-units', component: ProductUnitSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_PRODUCT-UNIT']}},
    {path: 'product-units/new', component: ProductUnitNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_PRODUCT-UNIT']}},

@@ -99,7 +99,7 @@ import {CarService} from './demo/service/carservice';
 import {CountryService} from './demo/service/countryservice';
 import {EventService} from './demo/service/eventservice';
 import {NodeService} from './demo/service/nodeservice';
-import {BankModule} from './bank/bank.module';
+import {BancoModule} from './cadastros/base/banco/banco.module';
 
 
 import {Http} from '@angular/http';
@@ -227,7 +227,7 @@ export function HttpLoaderFactory(http: Http) {
          fullScreenBackdrop: true
       }),
 
-      BankModule,
+      BancoModule,
       ProductUnitModule,
       TypeRelationshipModule,
       LevelOfEducationModule,
