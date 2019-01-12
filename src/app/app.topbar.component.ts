@@ -14,10 +14,9 @@ import {AuthService} from './security/auth.service';
                <img src="assets/layout/images/logo.png">
             </a>
          </div>
-         
+
          <span class="wc-app-name">{{'empresa.razao_social' | translate}}</span>
          <span class="wc-app-cnpj">{{'empresa.cnpj' | translate}}</span>
-         
 
 
          <a id="topbar-menu-button" href="#" (click)="app.onTopbarMenuButtonClick($event)">
@@ -157,14 +156,6 @@ import {AuthService} from './security/auth.service';
                   </li>
                </ul>
             </li>
-
-            <li #search class="search-item" [ngClass]="{'active-topmenuitem':app.activeTopbarItem === search}"
-                (click)="app.onTopbarItemClick($event,search)">
-                    <span class="md-inputfield">
-                        <input type="text" pInputText>
-                        <i class="fa fa-search"></i>
-                    </span>
-            </li>
          </ul>
       </div>
    `
@@ -181,6 +172,7 @@ export class AppTopbarComponent {
    logout() {
       this.logoutService.logout()
          .then(() => {
+            // TODO: Voltar para thema padrao da aplicacao
             this.router.navigate(['/login']);
          })
          .catch(error => this.errorHandler.handle(error));
