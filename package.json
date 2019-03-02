@@ -32,6 +32,7 @@
     "chart.js": "2.7.2",
     "codelyzer": "^4.0.1",
     "core-js": "^2.4.1",
+    "ember-cli-cors": "0.0.2",
     "font-awesome": "^4.7.0",
     "fullcalendar": "3.9.0",
     "intl": "1.2.5",
