@@ -4,7 +4,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
-import {AppRoutes} from './app.routes';
 import 'rxjs/add/operator/toPromise';
 import {AppComponent} from './app.component';
 import {AppMenuComponent, AppSubMenuComponent} from './app.menu.component';
@@ -20,13 +19,7 @@ import {BancoModule} from './cadastros/base/banco/banco.module';
 
 import {Http} from '@angular/http';
 import {MyMissingTranslationHandler} from './missingtemplate.component';
-import {
-   MissingTranslationHandler,
-   TranslateLoader,
-   TranslateModule,
-   TranslateService,
-   TranslateStaticLoader
-} from 'ng2-translate';
+import {MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateService, TranslateStaticLoader} from 'ng2-translate';
 import {CoreModule} from './core/core.module';
 import {SecurityModule} from './security/security.module';
 import {ToastyModule} from 'ng2-toasty';
@@ -42,6 +35,7 @@ import {ControleKmModule} from './controle-km/controle-km.module';
 import {ClasseDespesaModule} from './classe-despesa/classe-despesa.module';
 import {CentroDeCustoModule} from './centro-de-custo/centro-de-custo.module';
 import {TipoPagamentoModule} from './tipo-pagamento/tipo-pagamento.module';
+import {AppRoutingModule} from './app-routing.module';
 
 export function HttpLoaderFactory(http: Http) {
    return new TranslateStaticLoader(http, '/assets/i18n', '.json');
@@ -53,7 +47,6 @@ export function HttpLoaderFactory(http: Http) {
       BrowserAnimationsModule,
 
       FormsModule,
-      // SharedModule,
 
       HttpClientModule,
 
@@ -66,7 +59,7 @@ export function HttpLoaderFactory(http: Http) {
       ToastyModule.forRoot(),
       CoreModule,
       SecurityModule,
-      AppRoutes,
+      AppRoutingModule,
 
       LoadingModule.forRoot({
          animationType: ANIMATION_TYPES.wanderingCubes,
@@ -79,6 +72,7 @@ export function HttpLoaderFactory(http: Http) {
       }),
 
       BancoModule,
+
       ProductUnitModule,
       TypeRelationshipModule,
       LevelOfEducationModule,
@@ -102,16 +96,9 @@ export function HttpLoaderFactory(http: Http) {
       DashboardDemoComponent,
    ],
    providers: [
-      {
-         provide: LocationStrategy,
-         useClass: HashLocationStrategy
-      },
-
       TranslateService,
-      {
-         provide: MissingTranslationHandler,
-         useClass: MyMissingTranslationHandler
-      },
+      {provide: LocationStrategy, useClass: HashLocationStrategy},
+      {provide: MissingTranslationHandler, useClass: MyMissingTranslationHandler},
    ],
    bootstrap: [AppComponent]
 })

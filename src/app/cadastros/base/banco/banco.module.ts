@@ -14,6 +14,7 @@ import {CoreModule} from '../../../core/core.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoadingModule} from 'ngx-loading';
 import {BancoRoutingModule} from './banco-routing.module';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
    imports: [
@@ -25,7 +26,9 @@ import {BancoRoutingModule} from './banco-routing.module';
       CoreModule,
 
       SharedModule,
-      BancoRoutingModule,
+
+      RouterModule,
+      // BancoRoutingModule,
 
       FormsModule,
       ReactiveFormsModule,
