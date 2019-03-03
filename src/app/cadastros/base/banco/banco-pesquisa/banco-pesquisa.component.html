@@ -1,4 +1,5 @@
 <ngx-loading [show]="loading"></ngx-loading>
+<p-progressBar *ngIf="loading" mode="indeterminate" styleClass="wc-progress-bar-indeterminate"></p-progressBar>
 
 <div class="ui-g">
    <div class="ui-g-12">
@@ -94,7 +95,7 @@
                   [rowsPerPageOptions]="env.dataTable.rowsPerPageOptions"
                   [responsive]="true"
 
-                  [columns]="COLS"
+                  [columns]="COLUNAS"
          >
             <ng-template pTemplate="emptymessage">
                <tr>

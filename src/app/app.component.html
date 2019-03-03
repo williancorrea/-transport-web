@@ -7,11 +7,12 @@
    <div class="layout-main">
       <div class="layout-main-content">
          <router-outlet></router-outlet>
-         <app-footer *ngIf="showMenus()" class="footer-fixed"></app-footer>
+
 
          <!--Mensagens de notificacao para o usuario-->
          <ng2-toasty></ng2-toasty>
       </div>
+      <app-footer *ngIf="showMenus()" class="footer-fixed"></app-footer>
    </div>
 </div>
 

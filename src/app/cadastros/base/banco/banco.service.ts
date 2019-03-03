@@ -13,8 +13,7 @@ export class BancoService {
    }
 
    /**
-    * List all records according to the filters passed by parameters
-    * Lista todos os registro de acordo com os filtros passados por parametros
+    * Lista todos registro de acordo com os filtros passados por parametro
     *
     * @param grid
     * @param {BancoFiltro} bancoFiltro

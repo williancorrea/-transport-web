@@ -24,7 +24,7 @@ export class BancoPesquisaComponent implements OnInit {
    loading: boolean;
    totalRecords = 0;
    env: any;
-   COLS: any;
+   COLUNAS: any;
 
    /*
     * Binds com os item da pagina html
@@ -55,7 +55,7 @@ export class BancoPesquisaComponent implements OnInit {
       this.translate.get('banco').subscribe(s => {
          this.title.setTitle(s['lista']);
 
-         this.COLS = [
+         this.COLUNAS = [
             {
                field: 'key',
                header: '',
@@ -132,10 +132,10 @@ export class BancoPesquisaComponent implements OnInit {
       this.setLoading(true);
       this.bancoSelecionado = null;
       this.bankService.findAll(lazyLoad, this.bancoFiltro).then(result => {
-            this.totalRecords = result.totalElements;
-            this.bancos = result.content;
-            this.setLoading(false);
-         })
+         this.totalRecords = result.totalElements;
+         this.bancos = result.content;
+         this.setLoading(false);
+      })
          .catch(error => {
             this.setLoading(false);
             this.errorHandler.handle(error);
@@ -218,7 +218,7 @@ export class BancoPesquisaComponent implements OnInit {
             })
             .catch(
                error => {
-                  this.errorHandler.handle(error)
+                  this.errorHandler.handle(error);
                   this.loading = false;
                }
             );
