@@ -402,6 +402,26 @@
             "adicionar_sucesso": "Classe de Despesa adicionada com sucesso.",
             "atualizar_sucesso": "Classe de Despesa atualizada com sucesso."
          }
+      },
+      "permissoes-de-acesso": {
+         "campos": {
+            "descricao": "Descrição",
+            "inativo": "Inativo"
+         },
+         "rotulos": {
+            "selecione-uma-classe-despesa": "Selecione uma classe de despesa"
+         },
+         "menu": "Classe de Despesa",
+         "link-pagina" : "/cadastros/base/classe-despesa",
+         "titulo": "Alterar permissões de acesso",
+         "lista": "Lista das Classes de Despesas",
+         "acoes": {
+            "adicionar": "Adicionar nova classe de Despesa",
+            "editar": "Editar classe de despesa",
+            "deletar_sucesso": "Classe de Despesa removida com sucesso!",
+            "adicionar_sucesso": "Classe de Despesa adicionada com sucesso.",
+            "atualizar_sucesso": "Classe de Despesa atualizada com sucesso."
+         }
       }
    }
 }

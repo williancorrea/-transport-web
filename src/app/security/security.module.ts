@@ -17,6 +17,8 @@ import {CoreModule} from '../core/core.module';
 import {TranslateModule, TranslateService} from 'ng2-translate';
 import {MessageModule} from 'primeng/message';
 import {LoadingModule} from 'ngx-loading';
+import {PermissoesDeAcessoComponent} from '../cadastros/seguranca/permissoes-de-acesso/permissoes-de-acesso.component';
+import {ProgressBarModule} from 'primeng/primeng';
 
 export function authHttpServiceFactory(auth: AuthService, http: Http, options: RequestOptions) {
    const config = new AuthConfig({
@@ -41,8 +43,9 @@ export function authHttpServiceFactory(auth: AuthService, http: Http, options: R
       MessageModule,
       InputTextModule,
       ButtonModule,
+      ProgressBarModule
    ],
-   declarations: [LoginFormComponent],
+   declarations: [LoginFormComponent, PermissoesDeAcessoComponent],
    providers: [
       {
          provide: AuthHttp,

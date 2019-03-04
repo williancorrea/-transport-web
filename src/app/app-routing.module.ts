@@ -31,6 +31,7 @@ import {TypeRelationshipSearchComponent} from './type-relationship/type-relation
 import {TypeRelationshipNewComponent} from './type-relationship/type-relationship-new/type-relationship-new.component';
 import {LevelOfEducationSearchComponent} from './level-of-education/level-of-education-search/level-of-education-search.component';
 import {LevelOfEducationNewComponent} from './level-of-education/level-of-education-new/level-of-education-new.component';
+import {PermissoesDeAcessoComponent} from './cadastros/seguranca/permissoes-de-acesso/permissoes-de-acesso.component';
 
 const routes: Routes = [
    // {path: 'bancos', loadChildren: 'app/cadastros/base/banco/banco.module#BancoModule'},
@@ -38,6 +39,9 @@ const routes: Routes = [
    {path: 'bancos', component: BancoPesquisaComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_BANCO']}},
    {path: 'bancos/novo', component: BancoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_BANCO']}},
    {path: 'bancos/:key', component: BancoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_BANCO']}},
+
+
+   {path: 'cadastros/seguranca/alterar-permissoes', component: PermissoesDeAcessoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ALTERAR_PERMISSOES_ACESSO']}},
 
 
    {path: 'product-units', component: ProductUnitSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_PRODUCT-UNIT']}},

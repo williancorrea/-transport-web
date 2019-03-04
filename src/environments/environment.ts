@@ -5,7 +5,7 @@
 
 export const environment = {
    production: false,
-   // apiUrl: 'http://192.168.0.109:8080',
+   // apiUrl: 'http://192.168.0.134:8080',
    apiUrl: 'http://localhost:8080',
 
    dataTable: {

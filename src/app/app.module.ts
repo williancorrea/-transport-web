@@ -33,7 +33,6 @@ import {ClasseDespesaModule} from './cadastros/base/classe-despesa/classe-despes
 import {CentroDeCustoModule} from './centro-de-custo/centro-de-custo.module';
 import {TipoPagamentoModule} from './tipo-pagamento/tipo-pagamento.module';
 import {AppRoutingModule} from './app-routing.module';
-import {TransportSharedModule} from './transport-shared/transport-share.module';
 import {BancoModule} from './cadastros/base/banco/banco.module';
 
 export function HttpLoaderFactory(http: Http) {
@@ -95,7 +94,7 @@ export function HttpLoaderFactory(http: Http) {
       AppSideBarTabContentComponent,
       AppTopbarComponent,
       AppRodapeComponent,
-      DashboardDemoComponent,
+      DashboardDemoComponent
    ],
    providers: [
       TranslateService,
