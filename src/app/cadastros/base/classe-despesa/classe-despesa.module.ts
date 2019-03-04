@@ -3,18 +3,22 @@ import {CommonModule} from '@angular/common';
 import {ClasseDespesaNovoComponent} from './classe-despesa-novo/classe-despesa-novo.component';
 import {ClasseDespesaPesquisarComponent} from './classe-despesa-pesquisar/classe-despesa-pesquisar.component';
 import {TranslateModule, TranslateService} from 'ng2-translate';
-import {TransportSharedModule} from '../transport-shared/transport-share.module';
-import {CoreModule} from '../core/core.module';
+import {TransportSharedModule} from '../../../transport-shared/transport-share.module';
+import {CoreModule} from '../../../core/core.module';
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoadingModule} from 'ngx-loading';
 import {
    ButtonModule,
+   CheckboxModule,
    DataTableModule,
-   DropdownModule, InputSwitchModule,
+   DropdownModule,
    InputTextModule,
-   MessageModule, PanelModule, ProgressBarModule,
-   SharedModule, TooltipModule
+   MessageModule,
+   PanelModule,
+   ProgressBarModule,
+   SharedModule,
+   TooltipModule
 } from 'primeng/primeng';
 import {TableModule} from 'primeng/table';
 
@@ -41,7 +45,7 @@ import {TableModule} from 'primeng/table';
       PanelModule,
       TooltipModule,
       ProgressBarModule,
-      InputSwitchModule
+      CheckboxModule
    ],
    declarations: [
       ClasseDespesaNovoComponent,

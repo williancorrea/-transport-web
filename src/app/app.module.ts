@@ -14,9 +14,6 @@ import {AppRodapeComponent} from './app.rodape.component';
 import {DashboardDemoComponent} from './dashboard/dashboarddemo.component';
 
 
-import {BancoModule} from './cadastros/base/banco/banco.module';
-
-
 import {Http} from '@angular/http';
 import {MyMissingTranslationHandler} from './missingtemplate.component';
 import {MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateService, TranslateStaticLoader} from 'ng2-translate';
@@ -32,10 +29,12 @@ import {PersonModule} from './person/person.module';
 import {VeiculoModule} from './veiculo/veiculo.module';
 import {ItinerarioModule} from './itinerario/itinerario.module';
 import {ControleKmModule} from './controle-km/controle-km.module';
-import {ClasseDespesaModule} from './classe-despesa/classe-despesa.module';
+import {ClasseDespesaModule} from './cadastros/base/classe-despesa/classe-despesa.module';
 import {CentroDeCustoModule} from './centro-de-custo/centro-de-custo.module';
 import {TipoPagamentoModule} from './tipo-pagamento/tipo-pagamento.module';
 import {AppRoutingModule} from './app-routing.module';
+import {TransportSharedModule} from './transport-shared/transport-share.module';
+import {BancoModule} from './cadastros/base/banco/banco.module';
 
 export function HttpLoaderFactory(http: Http) {
    return new TranslateStaticLoader(http, '/assets/i18n', '.json');
@@ -55,6 +54,9 @@ export function HttpLoaderFactory(http: Http) {
          useFactory: HttpLoaderFactory,
          deps: [Http]
       }),
+
+      // TransportSharedModule.forRoot(),
+
 
       ToastyModule.forRoot(),
       CoreModule,

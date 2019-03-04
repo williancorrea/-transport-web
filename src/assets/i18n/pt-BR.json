@@ -7,24 +7,6 @@
       "razao_social": "Rosinha Transportes e Turismo Ltda - ME",
       "cnpj": "CNPJ: 26.166.778/0001-69"
    },
-   "menu": {
-      "cadastros": "Cadastros",
-      "dashboard": "Ínicio",
-      "base": "Base",
-      "bank": "Bancos",
-      "product-unit": "Unidades de Produto",
-      "financial": "Financeiro",
-      "types-of-relationships": "Relacionamentos",
-      "level-of-education": "Nível de Formação",
-      "estado-civil": "Estado Civil",
-      "persons": "Pessoas",
-      "veiculo": "Veículos",
-      "itinerario": "Itinerários",
-      "controle-km": "Controle Km",
-      "classe-despesa": "Classe de Despesas",
-      "centro-de-custo": "Centro de Custo",
-      "tipo-pagamento": "Tipo de Pagamento"
-   },
    "commons": {
       "language": "Idioma",
       "loading": "Aguarde, carregando ...",
@@ -311,24 +293,6 @@
          "update_success": "Pessoa atualizada com sucesso."
       }
    },
-   "classe-despesa": {
-      "campos": {
-         "descricao": "Descrição",
-         "inativo": "Inativo"
-      },
-      "rotulos": {
-         "selecione-uma-classe-despesa": "Selecione uma classe de despesa"
-      },
-      "titulo": "Classe de Despesa",
-      "lista": "Lista das Classes de Despesas",
-      "acoes": {
-         "adicionar": "Adicionar nova classe de Despesa",
-         "editar": "Editar classe de despesa",
-         "deletar_sucesso": "Classe de Despesa removida com sucesso!",
-         "adicionar_sucesso": "Classe de Despesa adicionada com sucesso.",
-         "atualizar_sucesso": "Classe de Despesa atualizada com sucesso."
-      }
-   },
    "centro-de-custo": {
       "campos": {
          "classe-despesa": "Classe de Despesa",
@@ -364,6 +328,80 @@
          "deletar_sucesso": "Tipo de Pagamento removido com sucesso!",
          "adicionar_sucesso": "Tipo de Pagamento adicionado com sucesso.",
          "atualizar_sucesso": "Tipo de Pagamento atualizado com sucesso."
+      }
+   },
+
+   "app": {
+      "menu": {
+         "cadastros": "Cadastros",
+         "dashboard": "Ínicio",
+         "base": "Base",
+         "bank": "Bancos",
+         "product-unit": "Unidades de Produto",
+         "financial": "Financeiro",
+         "types-of-relationships": "Relacionamentos",
+         "level-of-education": "Nível de Formação",
+         "estado-civil": "Estado Civil",
+         "persons": "Pessoas",
+         "veiculo": "Veículos",
+         "itinerario": "Itinerários",
+         "controle-km": "Controle Km",
+         "classe-despesa": "Classe de Despesas",
+         "centro-de-custo": "Centro de Custo",
+         "tipo-pagamento": "Tipo de Pagamento"
+      },
+      "acoes": {
+         "tooltip": {
+            "editar": "Editar item selecionado",
+            "excluir": "Excluir item selecionado",
+            "salvar": "Salvar dados",
+            "cancelar": "Retornar para a lista",
+            "novo": "Adicionar item"
+         },
+         "editar": "Editar",
+         "atualizar": "Atualizar",
+         "recarregar": "Recarregar",
+         "salvar": "Salvar",
+         "adicionar": "Adicionar",
+         "cancelar": "Cancelar",
+         "excluir": "Excluir",
+         "excluido": "Deletado",
+         "removido": "Removido",
+         "selecione": "Selecione",
+         "selecione2": "Selecione ...",
+         "filtro-global": "Filtro global - min 3 caracteres",
+         "nenhum-registro-encontrado": "Nenhum registro encontrado",
+         "requerido": "Obrigatório",
+         "confirmar": "Confirmação",
+         "confirmar-exclusao": "Tem certeza que deseja excluir o item selecionado?",
+         "buscar-por-tipo": "Buscar por tipo",
+         "sucesso": "Sucesso",
+         "erro": "Erro",
+         "informacao": "Informação",
+         "sim": "Sim",
+         "nao": "Não",
+         "ativo": "Habilitado",
+         "desativado": "Desativado"
+      },
+      "classe-despesa": {
+         "campos": {
+            "descricao": "Descrição",
+            "inativo": "Inativo"
+         },
+         "rotulos": {
+            "selecione-uma-classe-despesa": "Selecione uma classe de despesa"
+         },
+         "menu": "Classe de Despesa",
+         "link-pagina" : "/cadastros/base/classe-despesa",
+         "titulo": "Classe de Despesa",
+         "lista": "Lista das Classes de Despesas",
+         "acoes": {
+            "adicionar": "Adicionar nova classe de Despesa",
+            "editar": "Editar classe de despesa",
+            "deletar_sucesso": "Classe de Despesa removida com sucesso!",
+            "adicionar_sucesso": "Classe de Despesa adicionada com sucesso.",
+            "atualizar_sucesso": "Classe de Despesa atualizada com sucesso."
+         }
       }
    }
 }

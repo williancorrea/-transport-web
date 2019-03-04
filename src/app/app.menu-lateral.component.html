@@ -6,7 +6,7 @@
                 <a href="#" class="tabmenuitem-link" (click)="app.onTabClick($event, 0)"><i class="fa fa-cube"></i></a>
                 <div class="layout-tabmenu-tooltip">
                     <div class="layout-tabmenu-tooltip-arrow"></div>
-                    <div class="layout-tabmenu-tooltip-text">{{'menu.cadastros' | translate}}</div>
+                    <div class="layout-tabmenu-tooltip-text">{{'app.menu.cadastros' | translate}}</div>
                 </div>
             </li>
 
@@ -45,7 +45,7 @@
         <div class="layout-tabmenu-contents">
             <div class="layout-tabmenu-content" [ngClass]="{'layout-tabmenu-content-active': app.activeTabIndex === 0}">
                 <div class="layout-submenu-title clearfix">
-                    <span>{{'menu.cadastros' | translate}}</span>
+                    <span>{{'app.menu.cadastros' | translate}}</span>
                     <a href="#" class="menu-button" (click)="app.closeSidebar($event)">
                         <i class="fa fa-bars"></i>
                     </a>

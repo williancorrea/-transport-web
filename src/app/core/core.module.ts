@@ -24,7 +24,7 @@ import {PersonService} from '../person/person.service';
 import {VeiculoService} from '../veiculo/veiculo.service';
 import {ItinerarioService} from '../itinerario/itinerario.service';
 import {ControleKmService} from '../controle-km/controle-km.service';
-import {ClasseDespesaService} from '../classe-despesa/classe-despesa.service';
+import {ClasseDespesaService} from '../cadastros/base/classe-despesa/classe-despesa.service';
 import {CentroDeCustoService} from '../centro-de-custo/centro-de-custo.service';
 import {BaseFormComponent} from '../transport-shared/base-form/base-form.component';
 import {TipoPagamentoModule} from '../tipo-pagamento/tipo-pagamento.module';

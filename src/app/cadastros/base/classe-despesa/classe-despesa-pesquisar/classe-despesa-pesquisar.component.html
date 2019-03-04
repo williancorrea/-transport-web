@@ -1,17 +1,18 @@
 <ngx-loading [show]="loading"></ngx-loading>
+<p-progressBar *ngIf="loading" mode="indeterminate" styleClass="wc-progress-bar-indeterminate"></p-progressBar>
 
 <div class="ui-g">
    <div class="ui-g-12">
       <div class="card card-w-title">
 
          <div>
-            <h1>{{'classe-despesa.lista' | translate}}</h1>
+            <h1>{{'app.classe-despesa.lista' | translate}}</h1>
             <a pButton class="btn-add-new ui-button-secondary"
                *ngIf="auth.hasPermission('ROLE_SALVAR_CLASSE-DESPESA')"
-               label="{{'classe-despesa.acoes.adicionar' | translate}}"
+               label="{{'app.classe-despesa.acoes.adicionar' | translate}}"
                iconPos="left" icon="fa-plus"
                tooltipPosition="top" pTooltip="{{'actions.tooltip.new' | translate}}"
-               routerLink="/classeDespesa/novo">
+               routerLink="{{'app.classe-despesa.link-pagina' | translate}}/novo">
             </a>
          </div>
 
@@ -22,7 +23,7 @@
                <span class="ui-inputgroup-addon"><i class="fa fa-search"></i></span>
                <input #globalFilter pInputText type="text" size="50"
                       (input)="dataTable.filterGlobal($event.target.value, 'contains')"
-                      placeholder="{{'actions.global_filter' | translate}}">
+                      placeholder="{{'app.acoes.filtro-global' | translate}}">
                <button pButton
                        type="button" icon="fa-close"
                        class="ui-button-danger"
@@ -42,7 +43,7 @@
                   <h2>{{'commons.filter.fields' | translate}}</h2>
                </div>
                <div class="ui-g-4 ui-fluid">
-                  <label>{{'classe-despesa.campos.descricao' | translate}}</label>
+                  <label>{{'app.classe-despesa.campos.descricao' | translate}}</label>
                   <input pInputText
                          type="text"
                          name="txtDescricao"
@@ -83,13 +84,14 @@
          >
             <ng-template pTemplate="emptymessage">
                <tr>
-                  <td colspan="3"> {{ 'actions.no_records_found' | translate}}</td>
+                  <td colspan="3"> {{ 'app.acoes.nenhum-registro-encontrado' | translate}}</td>
                </tr>
             </ng-template>
 
             <ng-template pTemplate="header" let-columns>
                <tr>
-                  <th *ngFor="let col of columns" [pSortableColumn]="col.field" [hidden]="col.hidden" [class]="col.class">
+                  <th *ngFor="let col of columns" [pSortableColumn]="col.field" [hidden]="col.hidden"
+                      [class]="col.class">
                      {{col.header}}
                      <p-sortIcon [field]="col.field"></p-sortIcon>
                   </th>
@@ -107,7 +109,7 @@
             <ng-template pTemplate="paginatorleft">
                <a pButton icon="fa-refresh"
                   (click)="findAll(globalFilter, dataTable)"
-                  tooltipPosition="top" pTooltip="{{'actions.refresh' | translate}}"></a>
+                  tooltipPosition="top" pTooltip="{{'app.acoes.recarregar' | translate}}"></a>
             </ng-template>
 
             <ng-template pTemplate="paginatorright" let-obj="rowData">
@@ -117,7 +119,7 @@
                        icon="fa-pencil"
                        label="{{'actions.edit' | translate}}"
                        [disabled]="classeDespesaSelecionada ? false :true"
-                       tooltipPosition="top" pTooltip="{{'actions.tooltip.edit' | translate}}"
+                       tooltipPosition="top" pTooltip="{{'app.acoes.tooltip.editar' | translate}}"
                        (click)="edit()"></button>
                <button type="button"
                        *ngIf="auth.hasPermission('ROLE_DELETAR_CLASSE-DESPESA')"
@@ -126,7 +128,7 @@
                        class="ui-button-danger"
                        label="{{'actions.delete' | translate}}"
                        [disabled]="classeDespesaSelecionada ? false :true"
-                       tooltipPosition="top" pTooltip="{{'actions.tooltip.delete' | translate}}"
+                       tooltipPosition="top" pTooltip="{{'app.acoes.tooltip.excluir' | translate}}"
                        (click)="ConfirmDeletion(obj)"></button>
             </ng-template>
          </p-table>

@@ -1,4 +1,5 @@
 <ngx-loading [show]="loading"></ngx-loading>
+<p-progressBar *ngIf="loading" mode="indeterminate" styleClass="wc-progress-bar-indeterminate"></p-progressBar>
 
 <div class="ui-g">
    <div class="ui-g-12">
@@ -6,7 +7,7 @@
          <div>
 
             <h1 *ngIf="loading === true">{{('commons.loading') | translate}}</h1>
-            <h1 *ngIf="loading === false">{{(form.get('key').value?.length > 0 ? 'classe-despesa.acoes.editar' : 'classe-despesa.acoes.adicionar') |
+            <h1 *ngIf="loading === false">{{(form.get('key').value?.length > 0 ? 'app.classe-despesa.acoes.editar' : 'app.classe-despesa.acoes.adicionar') |
                translate}}</h1>
          </div>
 
@@ -20,7 +21,7 @@
                       formControlName="key">
 
                <div class="ui-sm-12 ui-g-12 ui-fluid">
-                  <label class="required">{{'classe-despesa.campos.descricao' | translate}}</label>
+                  <label class="required">{{'app.classe-despesa.campos.descricao' | translate}}</label>
                   <input pInputText
                          type="text"
                          name="name"
@@ -28,9 +29,10 @@
                   <app-message [form]="f" [control]="form.get('descricao')"></app-message>
                </div>
 
-               <div class="ui-sm-12 ui-g-12 ui-fluid">
-                  <label>{{'classe-despesa.campos.inativo' | translate}}</label>
-                  <p-inputSwitch formControlName="inativo"></p-inputSwitch>
+               <div class="ui-sm-12 ui-g-6 ui-fluid">
+                  <p-checkbox id="chkInativo" [formControl]="form.controls['inativo']"
+                              binary="true"
+                              label="{{'app.classe-despesa.campos.inativo' | translate}}"></p-checkbox>
                </div>
 
                <div class="ui-sm-12 ui-g-12">

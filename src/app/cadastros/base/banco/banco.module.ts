@@ -13,7 +13,6 @@ import {TransportSharedModule} from '../../../transport-shared/transport-share.m
 import {CoreModule} from '../../../core/core.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoadingModule} from 'ngx-loading';
-import {BancoRoutingModule} from './banco-routing.module';
 import {RouterModule} from '@angular/router';
 
 @NgModule({

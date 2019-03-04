@@ -21,8 +21,8 @@ import {PersonSearchComponent} from './person/person-search/person-search.compon
 import {PersonNewComponent} from './person/person-new/person-new.component';
 import {ControleKmPesquisaComponent} from './controle-km/controle-km-pesquisa/controle-km-pesquisa.component';
 import {ControleKmNovoComponent} from './controle-km/controle-km-novo/controle-km-novo.component';
-import {ClasseDespesaPesquisarComponent} from './classe-despesa/classe-despesa-pesquisar/classe-despesa-pesquisar.component';
-import {ClasseDespesaNovoComponent} from './classe-despesa/classe-despesa-novo/classe-despesa-novo.component';
+import {ClasseDespesaPesquisarComponent} from './cadastros/base/classe-despesa/classe-despesa-pesquisar/classe-despesa-pesquisar.component';
+import {ClasseDespesaNovoComponent} from './cadastros/base/classe-despesa/classe-despesa-novo/classe-despesa-novo.component';
 import {CentroDeCustoPesquisarComponent} from './centro-de-custo/centro-de-custo-pesquisar/centro-de-custo-pesquisar.component';
 import {CentroDeCustoNovoComponent} from './centro-de-custo/centro-de-custo-novo/centro-de-custo-novo.component';
 import {TipoPagamentoPesquisarComponent} from './tipo-pagamento/tipo-pagamento-pesquisar/tipo-pagamento-pesquisar.component';
@@ -36,31 +36,13 @@ const routes: Routes = [
    {path: 'bancos/:key', component: BancoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_BANCO']}},
 
 
-   {
-      path: '',
-      component: DashboardDemoComponent,
-      pathMatch: 'full',
-      canActivate: [AuthGuard],
-      data: {
-         roles: [
-            'ROLE_LISTAR_BANCO',
-            'ROLE_LIST_PRODUCT-UNIT',
-            'ROLE_LIST_TYPE-RELATIONSHIP',
-            'ROLE_LIST_LEVEL-OF-EDUCATION',
-            'ROLE_LISTAR_ESTADO_CIVIL',
-            'ROLE_LIST_PERSON'
-         ]
-      }
-   },
-
-   {path: 'access-denied', component: AccessDeniedComponent},
-   {path: 'page-not-found', component: PageNotFoundComponent},
-   {path: 'erro', component: ErroComponent},
-   {path: 'login', component: LoginFormComponent},
-
    {path: 'product-units', component: ProductUnitSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_PRODUCT-UNIT']}},
    {path: 'product-units/new', component: ProductUnitNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_PRODUCT-UNIT']}},
    {path: 'product-units/:key', component: ProductUnitNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_PRODUCT-UNIT']}},
+
+   {path: 'cadastros/base/classe-despesa', component: ClasseDespesaPesquisarComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_CLASSE-DESPESA']}},
+   {path: 'cadastros/base/classe-despesa/novo', component: ClasseDespesaNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_CLASSE-DESPESA']}},
+   {path: 'cadastros/base/classe-despesa/:key', component: ClasseDespesaNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_CLASSE-DESPESA']}},
 
    // {path: 'types-of-relationships', component: TypeRelationshipSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_TYPE-RELATIONSHIP']}},
    // {path: 'types-of-relationships/new', component: TypeRelationshipNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_TYPE-RELATIONSHIP']}},
@@ -145,24 +127,6 @@ const routes: Routes = [
       data: {roles: ['ROLE_ATUALIZAR_CONTROLE-KM']}
    },
 
-   {
-      path: 'classeDespesa',
-      component: ClasseDespesaPesquisarComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_LISTAR_CLASSE-DESPESA']}
-   },
-   {
-      path: 'classeDespesa/novo',
-      component: ClasseDespesaNovoComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_SALVAR_CLASSE-DESPESA']}
-   },
-   {
-      path: 'classeDespesa/:key',
-      component: ClasseDespesaNovoComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_ATUALIZAR_CLASSE-DESPESA']}
-   },
 
    {
       path: 'centroDeCusto',
@@ -202,6 +166,24 @@ const routes: Routes = [
       data: {roles: ['ROLE_ATUALIZAR_TIPO-PAGAMENTO']}
    },
 
+
+   {
+      path: '',
+      component: DashboardDemoComponent,
+      pathMatch: 'full',
+      canActivate: [AuthGuard],
+      data: {
+         roles: [
+            'ROLE_LISTAR_BANCO',
+            'ROLE_LIST_PRODUCT-UNIT'
+         ]
+      }
+   },
+
+   {path: 'access-denied', component: AccessDeniedComponent},
+   {path: 'page-not-found', component: PageNotFoundComponent},
+   {path: 'erro', component: ErroComponent},
+   {path: 'login', component: LoginFormComponent},
 
    {path: '**', redirectTo: 'page-not-found'}
 ];

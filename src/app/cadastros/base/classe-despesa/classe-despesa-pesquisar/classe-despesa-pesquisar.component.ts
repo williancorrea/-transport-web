@@ -1,14 +1,14 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {TranslateService} from 'ng2-translate';
-import {AuthService} from '../../security/auth.service';
-import {ErroManipuladorService} from '../../core/erro-manipulador.service';
+import {AuthService} from '../../../../security/auth.service';
+import {ErroManipuladorService} from '../../../../core/erro-manipulador.service';
 import {ToastyService} from 'ng2-toasty';
 import {ConfirmationService, LazyLoadEvent} from 'primeng/api';
 import {Title} from '@angular/platform-browser';
-import {environment} from '../../../environments/environment';
+import {environment} from '../../../../../environments/environment';
 import {ClasseDespesaService} from '../classe-despesa.service';
-import {ClasseDespesaFiltro} from '../../core/model/ClasseDespesaFiltro';
+import {ClasseDespesaFiltro} from '../../../../core/model/ClasseDespesaFiltro';
 
 @Component({
    selector: 'app-classe-despesa-pesquisar',
@@ -18,6 +18,7 @@ import {ClasseDespesaFiltro} from '../../core/model/ClasseDespesaFiltro';
 export class ClasseDespesaPesquisarComponent implements OnInit {
 
    classeDespesa = [];
+   traduzir: any;
    classeDespesaFiltro: ClasseDespesaFiltro;
    showFilter: boolean;
    classeDespesaSelecionada = null;
@@ -52,19 +53,20 @@ export class ClasseDespesaPesquisarComponent implements OnInit {
 
       this.env = environment;
       this.setLoading(true);
-      this.translate.get('classe-despesa').subscribe(s => {
-         this.title.setTitle(s['lista']);
+      this.translate.get('app').subscribe(s => {
+         this.traduzir = s;
+         this.title.setTitle(this.traduzir['classe-despesa']['lista']);
 
          this.COLS = [
             {
                field: 'descricao',
-               header: s['campos']['descricao'],
+               header: this.traduzir['classe-despesa']['campos']['descricao'],
                hidden: false,
                class: ''
             },
             {
                field: 'inativo',
-               header: s['campos']['inativo'],
+               header: this.traduzir['classe-despesa']['campos']['inativo'],
                hidden: false,
                class: 'datatable-collum-field-code'
             }
@@ -166,7 +168,7 @@ export class ClasseDespesaPesquisarComponent implements OnInit {
     * Redirects you to the data edit screen
     */
    edit() {
-      this.router.navigateByUrl(`classeDespesa/${this.classeDespesaSelecionada.key}`);
+      this.router.navigateByUrl(this.traduzir['classe-despesa']['link-pagina'] + `/${this.classeDespesaSelecionada.key}`);
    }
 
    /**
@@ -175,13 +177,11 @@ export class ClasseDespesaPesquisarComponent implements OnInit {
     * @constructor
     */
    ConfirmDeletion() {
-      this.translate.get('actions').subscribe(s => {
-         this.confirmation.confirm({
-            message: s['confirm-deletion'],
-            accept: () => {
-               this.delete();
-            }
-         });
+      this.confirmation.confirm({
+         message: this.traduzir['acoes']['confirmar-exclusao'],
+         accept: () => {
+            this.delete();
+         }
       });
    }
 
@@ -190,20 +190,18 @@ export class ClasseDespesaPesquisarComponent implements OnInit {
     */
    delete() {
       this.loading = true;
-      this.translate.get('classe-despesa').subscribe(s => {
-         this.classeDespesaService.delete(this.classeDespesaSelecionada.key)
-            .then(() => {
-               this.grid.first = 0;
-               this.findAll(this.filterGrid.nativeElement, this.grid);
-               this.toasty.success(s['acoes']['deletar_sucesso']);
+      this.classeDespesaService.delete(this.classeDespesaSelecionada.key)
+         .then(() => {
+            this.grid.first = 0;
+            this.findAll(this.filterGrid.nativeElement, this.grid);
+            this.toasty.success(this.traduzir['acoes']['deletar_sucesso']);
+            this.loading = false;
+         })
+         .catch(
+            error => {
+               this.errorHandler.handle(error);
                this.loading = false;
-            })
-            .catch(
-               error => {
-                  this.errorHandler.handle(error);
-                  this.loading = false;
-               }
-            );
-      });
+            }
+         );
    }
 }
