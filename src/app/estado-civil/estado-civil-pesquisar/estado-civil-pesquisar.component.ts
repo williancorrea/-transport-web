@@ -21,7 +21,7 @@ export class EstadoCivilPesquisarComponent implements OnInit {
    estadoCivilFiltro: EstadoCivilFiltro;
    estadoCivilSelecionado = null;
    mostarFiltros: boolean;
-   mostrarTelaCarregando: boolean;
+   loading: boolean;
    totalRegistros = 0;
 
    variaveisAmbiente: any;
@@ -71,7 +71,7 @@ export class EstadoCivilPesquisarComponent implements OnInit {
     * @param carregando
     */
    setMostrarTelaCarregando(carregando) {
-      this.mostrarTelaCarregando = carregando;
+      this.loading = carregando;
    }
 
    /**

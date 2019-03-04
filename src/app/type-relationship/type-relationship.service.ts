@@ -19,7 +19,7 @@ export class TypeRelationshipService {
     * @param {BancoFiltro} typeRelationshipFilters
     * @returns {Promise<any>}
     */
-   findAll(filter: any, typeRelationshipFilters: TypeRelationshipFilters): Promise<any> {
+   findAll(grid: any, typeRelationshipFilters: TypeRelationshipFilters): Promise<any> {
       /*
          in a real application, make a remote request to load data using state metadata from event
          event.first = First row offset
@@ -30,15 +30,17 @@ export class TypeRelationshipService {
       */
       const config = {
          params: {
-            'size': filter.rows,
-            'page': filter.first / filter.rows,
-            'sortOrder': filter.sortOrder > 0 ? 'asc' : 'desc',
-            'sortField': filter.sortField,
+            'size': grid.rows,
+            'page': grid.first / grid.rows,
+            'ordemClassificacao': grid.sortOrder > 0 ? 'ASC' : 'DESC',
+            'campoOrdenacao': grid.sortField
          }
       };
-      if (filter.globalFilter && filter.globalFilter.length > 0) {
-         config.params['globalFilter'] = filter.globalFilter;
+      if (grid.globalFilter && grid.globalFilter.length > 0) {
+         config.params['filtroGlobal'] = grid.globalFilter;
       }
+
+
       if (typeRelationshipFilters.code && typeRelationshipFilters.code.length > 0) {
          config.params['code'] = typeRelationshipFilters.code;
       }

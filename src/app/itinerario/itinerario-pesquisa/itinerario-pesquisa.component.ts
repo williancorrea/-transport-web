@@ -23,7 +23,7 @@ export class ItinerarioPesquisaComponent implements OnInit {
    itinerarioFiltro: ItinerarioFiltro;
    itinerarioSelecionado = null;
    mostarFiltros: boolean;
-   mostrarTelaCarregando: boolean;
+   loading: boolean;
    totalRegistros = 0;
 
    variaveisAmbiente: any;
@@ -79,7 +79,7 @@ export class ItinerarioPesquisaComponent implements OnInit {
     * @param carregando
     */
    setMostrarTelaCarregando(carregando) {
-      this.mostrarTelaCarregando = carregando;
+      this.loading = carregando;
    }
 
    /**

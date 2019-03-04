@@ -22,7 +22,7 @@ export class ControleKmService {
     * @param {BancoFiltro} controleKmFiltro
     * @returns {Promise<any>}
     */
-   findAll(filter: any, controleKmFiltro: ControleKmFiltro) {
+   findAll(grid: any, controleKmFiltro: ControleKmFiltro) {
       /*
          in a real application, make a remote request to load data using state metadata from event
          event.first = First row offset
@@ -34,15 +34,14 @@ export class ControleKmService {
 
       const config = {
          params: {
-            'size': filter.rows,
-            'page': filter.first / filter.rows,
-            'sortOrder': 'desc'
+            'size': grid.rows,
+            'page': grid.first / grid.rows,
+            'ordemClassificacao': grid.sortOrder > 0 ? 'ASC' : 'DESC',
+            'campoOrdenacao': grid.sortField
          }
       };
-      config.params['sortField'] = 'dataHoraSaida';
-
-      if (filter.globalFilter && filter.globalFilter.length > 0) {
-         config.params['filtroGlobal'] = filter.globalFilter;
+      if (grid.globalFilter && grid.globalFilter.length > 0) {
+         config.params['filtroGlobal'] = grid.globalFilter;
       }
 
 

@@ -1,4 +1,5 @@
-<ngx-loading [show]="mostrarTelaCarregando"></ngx-loading>
+<ngx-loading [show]="loading"></ngx-loading>
+<p-progressBar *ngIf="loading" mode="indeterminate" styleClass="wc-progress-bar-indeterminate"></p-progressBar>
 
 <div class="ui-g">
    <div class="ui-g-12">

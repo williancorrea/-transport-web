@@ -20,7 +20,7 @@ export class VeiculoPesquisaComponent implements OnInit {
    veiculoFiltro: VeiculoFiltro;
    veiculoSelecionado = null;
    mostarFiltros: boolean;
-   mostrarTelaCarregando: boolean;
+   loading: boolean;
    totalRegistros = 0;
 
    variaveisAmbiente: any;
@@ -71,7 +71,7 @@ export class VeiculoPesquisaComponent implements OnInit {
     * @param carregando
     */
    setMostrarTelaCarregando(carregando) {
-      this.mostrarTelaCarregando = carregando;
+      this.loading = carregando;
    }
 
    /**

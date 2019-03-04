@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AuthHttp} from 'angular2-jwt';
 import {environment} from '../../environments/environment';
 import {CentroDeCustoFiltro} from '../core/model/CentroDeCustoFiltro';
@@ -15,7 +15,7 @@ export class CentroDeCustoService {
    /**
     * List all records according to the filters passed by parameter
     */
-   findAll(filter: any, centroDeCustoFiltro: CentroDeCustoFiltro): Promise<any> {
+   findAll(grid: any, centroDeCustoFiltro: CentroDeCustoFiltro): Promise<any> {
       /*
          in a real application, make a remote request to load data using state metadata from event
          event.first = First row offset
@@ -26,15 +26,16 @@ export class CentroDeCustoService {
       */
       const config = {
          params: {
-            'size': filter.rows,
-            'page': filter.first / filter.rows,
-            'sortOrder': filter.sortOrder > 0 ? 'asc' : 'desc',
-            'sortField': filter.sortField,
+            'size': grid.rows,
+            'page': grid.first / grid.rows,
+            'ordemClassificacao': grid.sortOrder > 0 ? 'ASC' : 'DESC',
+            'campoOrdenacao': grid.sortField
          }
       };
-      if (filter.globalFilter && filter.globalFilter.length > 0) {
-         config.params['filtroGlobal'] = filter.globalFilter;
+      if (grid.globalFilter && grid.globalFilter.length > 0) {
+         config.params['filtroGlobal'] = grid.globalFilter;
       }
+
       if (centroDeCustoFiltro && centroDeCustoFiltro.descricao && centroDeCustoFiltro.descricao.length > 0) {
          config.params['descricao'] = centroDeCustoFiltro.descricao;
       }

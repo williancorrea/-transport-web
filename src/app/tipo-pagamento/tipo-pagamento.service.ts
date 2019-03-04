@@ -15,7 +15,7 @@ export class TipoPagamentoService {
    /**
     * List all records according to the filters passed by parameter
     */
-   findAll(filter: any, tipoPagamentoFiltro: TipoPagamentoFiltro): Promise<any> {
+   findAll(grid: any, tipoPagamentoFiltro: TipoPagamentoFiltro): Promise<any> {
       /*
          in a real application, make a remote request to load data using state metadata from event
          event.first = First row offset
@@ -26,15 +26,17 @@ export class TipoPagamentoService {
       */
       const config = {
          params: {
-            'size': filter.rows,
-            'page': filter.first / filter.rows,
-            'sortOrder': filter.sortOrder > 0 ? 'asc' : 'desc',
-            'sortField': filter.sortField,
+            'size': grid.rows,
+            'page': grid.first / grid.rows,
+            'ordemClassificacao': grid.sortOrder > 0 ? 'ASC' : 'DESC',
+            'campoOrdenacao': grid.sortField
          }
       };
-      if (filter.globalFilter && filter.globalFilter.length > 0) {
-         config.params['filtroGlobal'] = filter.globalFilter;
+      if (grid.globalFilter && grid.globalFilter.length > 0) {
+         config.params['filtroGlobal'] = grid.globalFilter;
       }
+
+
       if (tipoPagamentoFiltro && tipoPagamentoFiltro.descricao && tipoPagamentoFiltro.descricao.length > 0) {
          config.params['descricao'] = tipoPagamentoFiltro.descricao;
       }

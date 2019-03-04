@@ -19,7 +19,7 @@ export class EstadoCivilService {
     * @param {BancoFiltro} estadoCivilFiltro
     * @returns {Promise<any>}
     */
-   findAll(filter: any, estadoCivilFiltro: EstadoCivilFiltro): Promise<any> {
+   findAll(grid: any, estadoCivilFiltro: EstadoCivilFiltro): Promise<any> {
       /*
          in a real application, make a remote request to load data using state metadata from event
          event.first = First row offset
@@ -31,16 +31,14 @@ export class EstadoCivilService {
 
       const config = {
          params: {
-            'size': filter.rows,
-            'page': filter.first / filter.rows,
-            'sortOrder': filter.sortOrder > 0 ? 'asc' : 'desc'
+            'size': grid.rows,
+            'page': grid.first / grid.rows,
+            'ordemClassificacao': grid.sortOrder > 0 ? 'ASC' : 'DESC',
+            'campoOrdenacao': grid.sortField
          }
       };
-      if (filter.sortField != null) {
-         config.params['sortField'] = filter.sortField;
-      }
-      if (filter.globalFilter && filter.globalFilter.length > 0) {
-         config.params['filtroGlobal'] = filter.globalFilter;
+      if (grid.globalFilter && grid.globalFilter.length > 0) {
+         config.params['filtroGlobal'] = grid.globalFilter;
       }
 
 

@@ -20,7 +20,7 @@ export class ProductUnitService {
     * @param {BancoFiltro} productUnitFilters
     * @returns {Promise<any>}
     */
-   findAll(filter: any, productUnitFilters: ProductUnitFilters): Promise<any> {
+   findAll(grid: any, productUnitFilters: ProductUnitFilters): Promise<any> {
       /*
          in a real application, make a remote request to load data using state metadata from event
          event.first = First row offset
@@ -31,15 +31,17 @@ export class ProductUnitService {
       */
       const config = {
          params: {
-            'size': filter.rows,
-            'page': filter.first / filter.rows,
-            'sortOrder': filter.sortOrder > 0 ? 'asc' : 'desc',
-            'sortField': filter.sortField,
+            'size': grid.rows,
+            'page': grid.first / grid.rows,
+            'ordemClassificacao': grid.sortOrder > 0 ? 'ASC' : 'DESC',
+            'campoOrdenacao': grid.sortField
          }
       };
-      if (filter.globalFilter && filter.globalFilter.length > 0) {
-         config.params['globalFilter'] = filter.globalFilter;
+      if (grid.globalFilter && grid.globalFilter.length > 0) {
+         config.params['filtroGlobal'] = grid.globalFilter;
       }
+
+
       if (productUnitFilters.name && productUnitFilters.name.length > 0) {
          config.params['name'] = productUnitFilters.name;
       }

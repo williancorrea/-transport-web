@@ -27,7 +27,7 @@ export class ControleKmPesquisaComponent implements OnInit {
    controleKmFiltro: ControleKmFiltro;
    controleKmSelecionado = null;
    mostarFiltros: boolean;
-   mostrarTelaCarregando: boolean;
+   loading: boolean;
    mostrarJanelaEdicao: boolean;
    totalRegistros = 0;
 
@@ -42,7 +42,6 @@ export class ControleKmPesquisaComponent implements OnInit {
    // Variaveis modal edicao
    form: FormGroup;
    translateObj: any;
-   loading: boolean;
    msgs: any;
 
    kmSaidaMinimo: any;
@@ -181,7 +180,7 @@ export class ControleKmPesquisaComponent implements OnInit {
     * @param carregando
     */
    setMostrarTelaCarregando(carregando) {
-      this.mostrarTelaCarregando = carregando;
+      this.loading = carregando;
    }
 
    /**

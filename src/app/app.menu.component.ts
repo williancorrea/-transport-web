@@ -44,7 +44,7 @@ export class AppMenuComponent implements OnInit {
                      {label:  m['menu']['tipo-pagamento'], icon: 'fa fa-fw fa-money', routerLink: ['/tipoPagamento'], visible: this.auth.hasPermission('ROLE_LISTAR_TIPO-PAGAMENTO')}
                   ]
                },
-              // {label:  m['controle-km'], icon: 'fa fa-fw fa-map-signs', routerLink: ['/controleKm'], visible: this.auth.hasPermission('ROLE_LISTAR_CONTROLE-KM')},
+               {label:  m['menu']['controle-km'], icon: 'fa fa-fw fa-map-signs', routerLink: ['/controleKm'], visible: this.auth.hasPermission('ROLE_LISTAR_CONTROLE-KM')},
                {
                    label: 'Themes', icon: 'fa fa-fw fa-paint-brush', badge: '5',
                    items: [
