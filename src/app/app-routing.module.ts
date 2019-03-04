@@ -27,6 +27,10 @@ import {CentroDeCustoPesquisarComponent} from './centro-de-custo/centro-de-custo
 import {CentroDeCustoNovoComponent} from './centro-de-custo/centro-de-custo-novo/centro-de-custo-novo.component';
 import {TipoPagamentoPesquisarComponent} from './tipo-pagamento/tipo-pagamento-pesquisar/tipo-pagamento-pesquisar.component';
 import {TipoPagamentoNovoComponent} from './tipo-pagamento/tipo-pagamento-novo/tipo-pagamento-novo.component';
+import {TypeRelationshipSearchComponent} from './type-relationship/type-relationship-search/type-relationship-search.component';
+import {TypeRelationshipNewComponent} from './type-relationship/type-relationship-new/type-relationship-new.component';
+import {LevelOfEducationSearchComponent} from './level-of-education/level-of-education-search/level-of-education-search.component';
+import {LevelOfEducationNewComponent} from './level-of-education/level-of-education-new/level-of-education-new.component';
 
 const routes: Routes = [
    // {path: 'bancos', loadChildren: 'app/cadastros/base/banco/banco.module#BancoModule'},
@@ -44,128 +48,41 @@ const routes: Routes = [
    {path: 'cadastros/base/classe-despesa/novo', component: ClasseDespesaNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_CLASSE-DESPESA']}},
    {path: 'cadastros/base/classe-despesa/:key', component: ClasseDespesaNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_CLASSE-DESPESA']}},
 
-   // {path: 'types-of-relationships', component: TypeRelationshipSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_TYPE-RELATIONSHIP']}},
-   // {path: 'types-of-relationships/new', component: TypeRelationshipNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_TYPE-RELATIONSHIP']}},
-   // {path: 'types-of-relationships/:key', component: TypeRelationshipNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_TYPE-RELATIONSHIP']}},
+   {path: 'types-of-relationships', component: TypeRelationshipSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_TYPE-RELATIONSHIP']}},
+   {path: 'types-of-relationships/new', component: TypeRelationshipNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_TYPE-RELATIONSHIP']}},
+   {path: 'types-of-relationships/:key', component: TypeRelationshipNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_TYPE-RELATIONSHIP']}},
 
-   // {path: 'levels-of-education', component: LevelOfEducationSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_LEVEL-OF-EDUCATION']}},
-   // {path: 'levels-of-education/new', component: LevelOfEducationNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_LEVEL-OF-EDUCATION']}},
-   // {path: 'levels-of-education/:key', component: LevelOfEducationNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_LEVEL-OF-EDUCATION']}},
+   {path: 'levels-of-education', component: LevelOfEducationSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_LEVEL-OF-EDUCATION']}},
+   {path: 'levels-of-education/new', component: LevelOfEducationNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_LEVEL-OF-EDUCATION']}},
+   {path: 'levels-of-education/:key', component: LevelOfEducationNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_LEVEL-OF-EDUCATION']}},
 
    {path: 'estado-civil', component: EstadoCivilPesquisarComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_ESTADO_CIVIL']}},
    {path: 'estado-civil/novo', component: EstadoCivilNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_ESTADO_CIVIL']}},
-   {
-      path: 'estado-civil/:key',
-      component: EstadoCivilNovoComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_ATUALIZAR_ESTADO_CIVIL']}
-   },
+   {path: 'estado-civil/:key', component: EstadoCivilNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_ESTADO_CIVIL']}},
 
-   {
-      path: 'veiculo',
-      component: VeiculoPesquisaComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_LISTAR_VEICULO']}
-   },
-   {
-      path: 'veiculo/novo',
-      component: VeiculoNovoComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_SALVAR_VEICULO']}
-   },
-   {
-      path: 'veiculo/:key',
-      component: VeiculoNovoComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_ATUALIZAR_VEICULO']}
-   },
+   {path: 'veiculo', component: VeiculoPesquisaComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_VEICULO']}},
+   {path: 'veiculo/novo', component: VeiculoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_VEICULO']}},
+   {path: 'veiculo/:key', component: VeiculoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_VEICULO']}},
 
-   {
-      path: 'itinerario',
-      component: ItinerarioPesquisaComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_LISTAR_ITINERARIO']}
-   },
-   {
-      path: 'itinerario/novo',
-      component: ItinerarioNovoComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_SALVAR_ITINERARIO']}
-   },
-   {
-      path: 'itinerario/:key',
-      component: ItinerarioNovoComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_ATUALIZAR_ITINERARIO']}
-   },
+   {path: 'itinerario', component: ItinerarioPesquisaComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_ITINERARIO']}},
+   {path: 'itinerario/novo', component: ItinerarioNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_ITINERARIO']}},
+   {path: 'itinerario/:key', component: ItinerarioNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_ITINERARIO']}},
 
    {path: 'persons', component: PersonSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_PERSON']}},
    {path: 'persons/new', component: PersonNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SAVE_PERSON']}},
-   {
-      path: 'persons/:key',
-      component: PersonNewComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_UPDATE_PERSON']}
-   },
+   {path: 'persons/:key', component: PersonNewComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_UPDATE_PERSON']}},
 
-   {
-      path: 'controleKm',
-      component: ControleKmPesquisaComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_LISTAR_CONTROLE-KM']}
-   },
-   {
-      path: 'controleKm/novo',
-      component: ControleKmNovoComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_SALVAR_CONTROLE-KM']}
-   },
-   {
-      path: 'controleKm/:key',
-      component: ControleKmNovoComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_ATUALIZAR_CONTROLE-KM']}
-   },
+   {path: 'controleKm', component: ControleKmPesquisaComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_CONTROLE-KM']}},
+   {path: 'controleKm/novo', component: ControleKmNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_CONTROLE-KM']}},
+   {path: 'controleKm/:key', component: ControleKmNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_CONTROLE-KM']}},
 
+   {path: 'centroDeCusto', component: CentroDeCustoPesquisarComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_CENTRO-DE-CUSTO']}},
+   {path: 'centroDeCusto/novo', component: CentroDeCustoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_CENTRO-DE-CUSTO']}},
+   {path: 'centroDeCusto/:key', component: CentroDeCustoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_CENTRO-DE-CUSTO']}},
 
-   {
-      path: 'centroDeCusto',
-      component: CentroDeCustoPesquisarComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_LISTAR_CENTRO-DE-CUSTO']}
-   },
-   {
-      path: 'centroDeCusto/novo',
-      component: CentroDeCustoNovoComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_SALVAR_CENTRO-DE-CUSTO']}
-   },
-   {
-      path: 'centroDeCusto/:key',
-      component: CentroDeCustoNovoComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_ATUALIZAR_CENTRO-DE-CUSTO']}
-   },
-
-   {
-      path: 'tipoPagamento',
-      component: TipoPagamentoPesquisarComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_LISTAR_TIPO-PAGAMENTO']}
-   },
-   {
-      path: 'tipoPagamento/novo',
-      component: TipoPagamentoNovoComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_SALVAR_TIPO-PAGAMENTO']}
-   },
-   {
-      path: 'tipoPagamento/:key',
-      component: TipoPagamentoNovoComponent,
-      canActivate: [AuthGuard],
-      data: {roles: ['ROLE_ATUALIZAR_TIPO-PAGAMENTO']}
-   },
-
+   {path: 'tipoPagamento', component: TipoPagamentoPesquisarComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LISTAR_TIPO-PAGAMENTO']}},
+   {path: 'tipoPagamento/novo', component: TipoPagamentoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_TIPO-PAGAMENTO']}},
+   {path: 'tipoPagamento/:key', component: TipoPagamentoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_TIPO-PAGAMENTO']}},
 
    {
       path: '',

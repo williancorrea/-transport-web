@@ -32,16 +32,16 @@ export class AppMenuComponent implements OnInit {
                   label: m['menu']['base'], icon: 'fa fa-fw fa-book',
                   items: [
                      {label:  m['menu']['bank'], icon: 'fa fa-fw fa-building', routerLink: ['/bancos'], visible: this.auth.hasPermission('ROLE_LISTAR_BANCO')},
-                     // {label:  m['menu']['product-unit'], icon: 'fa fa-fw fa-pencil-square-o', routerLink: ['/product-units'], visible: this.auth.hasPermission('ROLE_LIST_PRODUCT-UNIT')},
-                     // {label:  m['menu']['types-of-relationships'], icon: 'fa fa-fw fa-handshake-o', routerLink: ['/types-of-relationships'], visible: this.auth.hasPermission('ROLE_LIST_TYPE-RELATIONSHIP')},
-                     // {label:  m['menu']['level-of-education'], icon: 'fa fa-fw fa-lightbulb-o', routerLink: ['/levels-of-education'], visible: this.auth.hasPermission('ROLE_LIST_LEVEL-OF-EDUCATION')},
-                     // {label:  m['menu']['estado-civil'], icon: 'fa fa-fw fa-heart-o', routerLink: ['/estado-civil'], visible: this.auth.hasPermission('ROLE_LISTAR_ESTADO_CIVIL')},
-                     // {label:  m['menu']['veiculo'], icon: 'fa fa-fw fa-car', routerLink: ['/veiculo'], visible: this.auth.hasPermission('ROLE_LISTAR_VEICULO')},
-                     // {label:  m['menu']['persons'], icon: 'fa fa-fw fa-address-book-o', routerLink: ['/persons'], visible: this.auth.hasPermission('ROLE_LIST_PERSON')},
-                     // {label:  m['menu']['itinerario'], icon: 'fa fa-fw fa-truck', routerLink: ['/itinerario'], visible: this.auth.hasPermission('ROLE_LISTAR_ITINERARIO')},
+                     {label:  m['menu']['product-unit'], icon: 'fa fa-fw fa-pencil-square-o', routerLink: ['/product-units'], visible: this.auth.hasPermission('ROLE_LIST_PRODUCT-UNIT')},
+                     {label:  m['menu']['types-of-relationships'], icon: 'fa fa-fw fa-handshake-o', routerLink: ['/types-of-relationships'], visible: this.auth.hasPermission('ROLE_LIST_TYPE-RELATIONSHIP')},
+                     {label:  m['menu']['level-of-education'], icon: 'fa fa-fw fa-lightbulb-o', routerLink: ['/levels-of-education'], visible: this.auth.hasPermission('ROLE_LIST_LEVEL-OF-EDUCATION')},
+                     {label:  m['menu']['estado-civil'], icon: 'fa fa-fw fa-heart-o', routerLink: ['/estado-civil'], visible: this.auth.hasPermission('ROLE_LISTAR_ESTADO_CIVIL')},
+                     {label:  m['menu']['veiculo'], icon: 'fa fa-fw fa-car', routerLink: ['/veiculo'], visible: this.auth.hasPermission('ROLE_LISTAR_VEICULO')},
+                     {label:  m['menu']['persons'], icon: 'fa fa-fw fa-address-book-o', routerLink: ['/persons'], visible: this.auth.hasPermission('ROLE_LIST_PERSON')},
+                     {label:  m['menu']['itinerario'], icon: 'fa fa-fw fa-truck', routerLink: ['/itinerario'], visible: this.auth.hasPermission('ROLE_LISTAR_ITINERARIO')},
                      {label:  m['classe-despesa']['menu'], icon: 'fa fa-fw fa-list', routerLink: [m['classe-despesa']['link-pagina']], visible: this.auth.hasPermission('ROLE_LISTAR_CLASSE-DESPESA')},
-                     // {label:  m['centro-de-custo'], icon: 'fa fa-fw fa-list', routerLink: ['/centroDeCusto'], visible: this.auth.hasPermission('ROLE_LISTAR_CENTRO-DE-CUSTO')},
-                     // {label:  m['tipo-pagamento'], icon: 'fa fa-fw fa-money', routerLink: ['/tipoPagamento'], visible: this.auth.hasPermission('ROLE_LISTAR_TIPO-PAGAMENTO')}
+                     {label:  m['menu']['centro-de-custo'], icon: 'fa fa-fw fa-list', routerLink: ['/centroDeCusto'], visible: this.auth.hasPermission('ROLE_LISTAR_CENTRO-DE-CUSTO')},
+                     {label:  m['menu']['tipo-pagamento'], icon: 'fa fa-fw fa-money', routerLink: ['/tipoPagamento'], visible: this.auth.hasPermission('ROLE_LISTAR_TIPO-PAGAMENTO')}
                   ]
                },
               // {label:  m['controle-km'], icon: 'fa fa-fw fa-map-signs', routerLink: ['/controleKm'], visible: this.auth.hasPermission('ROLE_LISTAR_CONTROLE-KM')},
