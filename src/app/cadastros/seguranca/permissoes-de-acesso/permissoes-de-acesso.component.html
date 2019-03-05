@@ -7,69 +7,55 @@
          <div>
 
             <h1 *ngIf="loading === true">{{('commons.loading') | translate}}</h1>
-            <h1 *ngIf="loading === false">{{'permissoes-de-acesso.titulo'| translate}}</h1>
+            <h1 *ngIf="loading === false">{{'app.permissoes-de-acesso.titulo'| translate}}</h1>
          </div>
 
-         <!--<form #f="ngForm" novalidate (submit)="save()" autocomplete="off" [formGroup]="form">-->
+         <p-tabView orientation="left">
+            <p-tabPanel header="Header 1">
+               Content 1
+            </p-tabPanel>
+            <p-tabPanel header="{{'app.permissoes-de-acesso.rotulos.seguranca' | translate}}">
+               <div class="ui-g">
+                  <div class="ui-g-12">
+                     <div class="ui-g-6"><b>Col1</b></div>
+                     <div class="ui-g-2"><b>Col2</b></div>
+                     <div class="ui-g-2"><b>Col3</b></div>
+                     <div class="ui-g-2"><b>Col4</b></div>
+                  </div>
 
-            <!--<div class="ui-g">-->
-               <!--<input pInputText-->
-                      <!--type="text"-->
-                      <!--[hidden]="true"-->
-                      <!--name="key"-->
-                      <!--formControlName="key">-->
+                  <div class="ui-g-12" style="padding: 0px">
+                     <div class="ui-g-6">Descricao teste</div>
+                     <div class="ui-g-2">
+                        <p-inputSwitch></p-inputSwitch>
+                     </div>
+                     <div class="ui-g-2">
+                        <p-inputSwitch></p-inputSwitch>
+                     </div>
+                     <div class="ui-g-2">
+                        <p-inputSwitch></p-inputSwitch>
+                     </div>
+                  </div>
 
-               <!--<div class="ui-g-3 ui-fluid">-->
-                  <!--<label for="codigo">{{'banco.campos.codigo' | translate}}</label>-->
-                  <!--<input pInputText-->
-                         <!--id="codigo"-->
-                         <!--type="text"-->
-                         <!--formControlName="codigo">-->
-                  <!--<app-message [form]="f" [control]="form.get('codigo')"></app-message>-->
-               <!--</div>-->
-               <!--<div class="ui-g-9"></div>-->
+                  <div class="ui-g-12">
+                     <div class="ui-g-6">Descricao teste</div>
+                     <div class="ui-g-2">
+                        <p-inputSwitch></p-inputSwitch>
+                     </div>
+                     <div class="ui-g-2">
+                        <p-inputSwitch></p-inputSwitch>
+                     </div>
+                     <div class="ui-g-2">
+                        <p-inputSwitch></p-inputSwitch>
+                     </div>
+                  </div>
+               </div>
 
+            </p-tabPanel>
+            <p-tabPanel header="Header 3">
+               Content 3
+            </p-tabPanel>
+         </p-tabView>
 
-               <!--<div class="ui-sm-12 ui-g-6 ui-fluid">-->
-                  <!--<label for="nome" class="required">{{'banco.campos.nome' | translate}}</label>-->
-                  <!--<input pInputText-->
-                         <!--id="nome"-->
-                         <!--type="text"-->
-                         <!--formControlName="nome">-->
-                  <!--<app-message [form]="f" [control]="form.get('nome')"></app-message>-->
-               <!--</div>-->
-
-               <!--<div class="ui-sm-12 ui-g-6 ui-fluid">-->
-                  <!--<label for="url">{{'banco.campos.url' | translate}}</label>-->
-                  <!--<input pInputText-->
-                         <!--id="url"-->
-                         <!--type="text"-->
-                         <!--formControlName="url">-->
-                  <!--<app-message [form]="f" [control]="form.get('url')"></app-message>-->
-               <!--</div>-->
-
-               <!--<div class="ui-sm-12 ui-g-6 ui-fluid">-->
-                  <!--<p-checkbox id="chkInativo" [formControl]="form.controls['inativo']"-->
-                              <!--binary="true"-->
-                              <!--label="{{'banco.campos.inativo' | translate}}"></p-checkbox>-->
-               <!--</div>-->
-
-               <!--<div class="ui-sm-12 ui-g-12">-->
-                  <!--<button pButton type="button"-->
-                          <!--label="{{'actions.cancel' | translate}}"-->
-                          <!--class="ui-button-danger"-->
-                          <!--tooltipPosition="top" pTooltip="{{'actions.tooltip.cancel' | translate}}"-->
-                          <!--(click)="cancel()"></button>-->
-                  <!--<button pButton type="submit"-->
-                          <!--*ngIf="form.get('key').value ? auth.hasPermission('ROLE_ATUALIZAR_BANCO') : auth.hasPermission('ROLE_SALVAR_BANCO')"-->
-                          <!--label="{{(form.get('key').value ? 'actions.update' : 'actions.save') | translate}}"-->
-                          <!--tooltipPosition="top" pTooltip="{{'actions.tooltip.save' | translate}}"-->
-                          <!--class="ui-button-success"></button>-->
-               <!--</div>-->
-
-            <!--</div>-->
-
-         <!--</form>-->
 
       </div>
    </div>

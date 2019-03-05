@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {AuthHttp, AuthConfig} from 'angular2-jwt';
+import {AuthConfig, AuthHttp} from 'angular2-jwt';
 import {ButtonModule} from 'primeng/components/button/button';
 import {InputTextModule} from 'primeng/components/inputtext/inputtext';
 
@@ -18,7 +18,7 @@ import {TranslateModule, TranslateService} from 'ng2-translate';
 import {MessageModule} from 'primeng/message';
 import {LoadingModule} from 'ngx-loading';
 import {PermissoesDeAcessoComponent} from '../cadastros/seguranca/permissoes-de-acesso/permissoes-de-acesso.component';
-import {ProgressBarModule} from 'primeng/primeng';
+import {InputSwitchModule, ProgressBarModule, TabViewModule} from 'primeng/primeng';
 
 export function authHttpServiceFactory(auth: AuthService, http: Http, options: RequestOptions) {
    const config = new AuthConfig({
@@ -43,7 +43,9 @@ export function authHttpServiceFactory(auth: AuthService, http: Http, options: R
       MessageModule,
       InputTextModule,
       ButtonModule,
-      ProgressBarModule
+      ProgressBarModule,
+      TabViewModule,
+      InputSwitchModule
    ],
    declarations: [LoginFormComponent, PermissoesDeAcessoComponent],
    providers: [

@@ -404,23 +404,20 @@
          }
       },
       "permissoes-de-acesso": {
-         "campos": {
-            "descricao": "Descrição",
-            "inativo": "Inativo"
-         },
          "rotulos": {
-            "selecione-uma-classe-despesa": "Selecione uma classe de despesa"
+            "seguranca": "Segurança",
+            "selecione-uma-classe-despesa": "Selecione uma permissão"
          },
-         "menu": "Classe de Despesa",
-         "link-pagina" : "/cadastros/base/classe-despesa",
+         "menu": "Permissões de Acesso",
+         "link-pagina" : "/cadastros/seguranca/permissoes-de-acesso",
          "titulo": "Alterar permissões de acesso",
-         "lista": "Lista das Classes de Despesas",
+         "lista": "Lista das Permissões de Acesso",
          "acoes": {
-            "adicionar": "Adicionar nova classe de Despesa",
-            "editar": "Editar classe de despesa",
-            "deletar_sucesso": "Classe de Despesa removida com sucesso!",
-            "adicionar_sucesso": "Classe de Despesa adicionada com sucesso.",
-            "atualizar_sucesso": "Classe de Despesa atualizada com sucesso."
+            "adicionar": "Adicionar nova permissão",
+            "editar": "Editar permissão",
+            "deletar_sucesso": "Permissão removida com sucesso!",
+            "adicionar_sucesso": "Permissão adicionada com sucesso.",
+            "atualizar_sucesso": "Permissão atualizada com sucesso."
          }
       }
    }

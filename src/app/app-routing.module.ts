@@ -40,8 +40,7 @@ const routes: Routes = [
    {path: 'bancos/novo', component: BancoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_SALVAR_BANCO']}},
    {path: 'bancos/:key', component: BancoNovoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ATUALIZAR_BANCO']}},
 
-
-   {path: 'cadastros/seguranca/alterar-permissoes', component: PermissoesDeAcessoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ALTERAR_PERMISSOES_ACESSO']}},
+   {path: 'cadastros/seguranca/permissoes-de-acesso', component: PermissoesDeAcessoComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_ALTERAR_PERMISSOES_ACESSO']}},
 
 
    {path: 'product-units', component: ProductUnitSearchComponent, canActivate: [AuthGuard], data: {roles: ['ROLE_LIST_PRODUCT-UNIT']}},
