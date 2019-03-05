@@ -11,48 +11,80 @@
          </div>
 
          <p-tabView orientation="left">
-            <p-tabPanel header="Header 1">
-               Content 1
-            </p-tabPanel>
-            <p-tabPanel header="{{'app.permissoes-de-acesso.rotulos.seguranca' | translate}}">
+
+            <p-tabPanel id="tabPanelPermissaoAcesso"
+                        header="{{'app.permissoes-de-acesso.rotulos.seguranca' | translate}}">
                <div class="ui-g">
-                  <div class="ui-g-12">
-                     <div class="ui-g-6"><b>Col1</b></div>
-                     <div class="ui-g-2"><b>Col2</b></div>
-                     <div class="ui-g-2"><b>Col3</b></div>
-                     <div class="ui-g-2"><b>Col4</b></div>
+                  <div class="ui-g-12" ngClass="linha-divisoria-grid">
+                     <div class="ui-g-7"><b>Descrição</b></div>
+                     <div class="ui-g-1" ngClass="centralizar"><b>Acessar</b></div>
+                     <div class="ui-g-1" ngClass="centralizar"><b>Listar</b></div>
+                     <div class="ui-g-1" ngClass="centralizar"><b>Salvar</b></div>
+                     <div class="ui-g-1" ngClass="centralizar"><b>Atualizar</b></div>
+                     <div class="ui-g-1" ngClass="centralizar"><b>Excluir</b></div>
                   </div>
 
-                  <div class="ui-g-12" style="padding: 0px">
-                     <div class="ui-g-6">Descricao teste</div>
-                     <div class="ui-g-2">
-                        <p-inputSwitch></p-inputSwitch>
+                  <!--BANCO-->
+                  <div class="ui-g-12" ngClass="destacar">
+                     <div class="ui-g-7">{{'app.menu.bank' | translate}}</div>
+                     <div class="ui-g-1" ngClass="centralizar">
+                        <input type="checkbox" checked="{{ permissoes.get('ROLE_ACESSAR_URI_BANCO') ? 'checked' : ''}}" (change)="manipuladorMudanca($event, 'ROLE_ACESSAR_URI_BANCO')">
                      </div>
-                     <div class="ui-g-2">
-                        <p-inputSwitch></p-inputSwitch>
+                     <div class="ui-g-1" ngClass="centralizar">
+                        <input type="checkbox" checked="{{ permissoes.get('ROLE_LISTAR_BANCO') ? 'checked' : ''}}" (change)="manipuladorMudanca($event, 'ROLE_LISTAR_BANCO')">
                      </div>
-                     <div class="ui-g-2">
-                        <p-inputSwitch></p-inputSwitch>
+                     <div class="ui-g-1" ngClass="centralizar">
+                        <input type="checkbox" checked="{{ permissoes.get('ROLE_SALVAR_BANCO') ? 'checked' : ''}}" (change)="manipuladorMudanca($event, 'ROLE_SALVAR_BANCO')">
+                     </div>
+                     <div class="ui-g-1" ngClass="centralizar">
+                        <input type="checkbox" checked="{{ permissoes.get('ROLE_ATUALIZAR_BANCO') ? 'checked' : ''}}" (change)="manipuladorMudanca($event, 'ROLE_ATUALIZAR_BANCO')">
+                     </div>
+                     <div class="ui-g-1" ngClass="centralizar">
+                        <input type="checkbox" checked="{{ permissoes.get('ROLE_DELETAR_BANCO') ? 'checked' : ''}}" (change)="manipuladorMudanca($event, 'ROLE_DELETAR_BANCO')">
                      </div>
                   </div>
 
-                  <div class="ui-g-12">
-                     <div class="ui-g-6">Descricao teste</div>
-                     <div class="ui-g-2">
-                        <p-inputSwitch></p-inputSwitch>
+                  <!--CLASSE DE DESPESA-->
+                  <div class="ui-g-12" ngClass="destacar">
+                     <div class="ui-g-7">{{'app.classe-despesa.menu' | translate}}</div>
+                     <div class="ui-g-1" ngClass="centralizar">
+                        <input type="checkbox" checked="{{ permissoes.get('ROLE_ACESSAR_URI_CLASSE-DESPESA') ? 'checked' : ''}}" (change)="manipuladorMudanca($event, 'ROLE_ACESSAR_URI_CLASSE-DESPESA')">
                      </div>
-                     <div class="ui-g-2">
-                        <p-inputSwitch></p-inputSwitch>
+                     <div class="ui-g-1" ngClass="centralizar">
+                        <input type="checkbox" checked="{{ permissoes.get('ROLE_LISTAR_CLASSE-DESPESA') ? 'checked' : ''}}" (change)="manipuladorMudanca($event, 'ROLE_LISTAR_CLASSE-DESPESA')">
                      </div>
-                     <div class="ui-g-2">
-                        <p-inputSwitch></p-inputSwitch>
+                     <div class="ui-g-1" ngClass="centralizar">
+                        <input type="checkbox" checked="{{ permissoes.get('ROLE_SALVAR_CLASSE-DESPESA') ? 'checked' : ''}}" (change)="manipuladorMudanca($event, 'ROLE_SALVAR_CLASSE-DESPESA')">
+                     </div>
+                     <div class="ui-g-1" ngClass="centralizar">
+                        <input type="checkbox" checked="{{ permissoes.get('ROLE_ATUALIZAR_CLASSE-DESPESA') ? 'checked' : ''}}" (change)="manipuladorMudanca($event, 'ROLE_ATUALIZAR_CLASSE-DESPESA')">
+                     </div>
+                     <div class="ui-g-1" ngClass="centralizar">
+                        <input type="checkbox" checked="{{ permissoes.get('ROLE_DELETAR_CLASSE-DESPESA') ? 'checked' : ''}}" (change)="manipuladorMudanca($event, 'ROLE_DELETAR_CLASSE-DESPESA')">
                      </div>
                   </div>
+
+                  <!--<div class="ui-g-12" ngclass="destacar-vid">-->
+                  <!--<div class="ui-g-6">Descricao teste</div>-->
+                  <!--<div class="ui-g-2" ngClass="centralizar">-->
+                  <!--<p-inputSwitch onLabel="Sim" offLabel="Não"></p-inputSwitch>-->
+                  <!--</div>-->
+                  <!--<div class="ui-g-2" ngClass="centralizar">-->
+                  <!--<p-inputSwitch onLabel="Sim" offLabel="Não"></p-inputSwitch>-->
+                  <!--</div>-->
+                  <!--<div class="ui-g-2" ngClass="centralizar">-->
+                  <!--<p-inputSwitch onLabel="Sim" offLabel="Não"></p-inputSwitch>-->
+                  <!--</div>-->
+                  <!--</div>-->
                </div>
 
             </p-tabPanel>
             <p-tabPanel header="Header 3">
                Content 3
+            </p-tabPanel>
+
+            <p-tabPanel header="Header 1">
+               Content 1
             </p-tabPanel>
          </p-tabView>
 

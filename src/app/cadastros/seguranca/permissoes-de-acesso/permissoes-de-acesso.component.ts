@@ -17,6 +17,7 @@ import {BaseFormComponent} from '../../../transport-shared/base-form/base-form.c
 export class PermissoesDeAcessoComponent extends BaseFormComponent implements OnInit {
 
    traduzir: any;
+   permissoes = new Map();
 
    constructor(private router: Router,
                private activatedRoute: ActivatedRoute,
@@ -35,9 +36,30 @@ export class PermissoesDeAcessoComponent extends BaseFormComponent implements On
       this.translate.get('app').subscribe(s => {
          this.traduzir = s;
 
+         this.permissoes = new Map([
+            ['ROLE_ACESSAR_URI_BANCO', true],
+            ['ROLE_LISTAR_BANCO', false],
+            ['ROLE_SALVAR_BANCO', true],
+            ['ROLE_ATUALIZAR_BANCO', false],
+            ['ROLE_DELETAR_BANCO', true],
+
+            ['ROLE_ACESSAR_URI_CLASSE-DESPESA', false],
+            ['ROLE_LISTAR_CLASSE-DESPESA', true],
+            ['ROLE_SALVAR_CLASSE-DESPESA', false],
+            ['ROLE_ATUALIZAR_CLASSE-DESPESA', true],
+            ['ROLE_DELETAR_CLASSE-DESPESA', true]
+         ]);
 
          this.mostrarModalCarregando(false);
       });
+   }
+
+   manipuladorMudanca(e, permissao) {
+      this.mostrarModalCarregando(true);
+      console.log(permissao, e.target.checked);
+
+
+      this.mostrarModalCarregando(false);
    }
 
 }
